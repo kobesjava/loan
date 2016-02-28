@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/color_f7f7f7"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/color_333"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/val"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:textColor="@color/red_dark"/>
+    </LinearLayout>
+
+    <com.android.finance.ui.widget.radio.BorderRadioGruop
+        android:id="@+id/group"
+        android:padding="15dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

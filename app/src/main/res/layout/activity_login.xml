@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sbox="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.finance.ui.widget.CommonTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.android.finance.ui.widget.SelectBox
+        android:id="@+id/selectBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        sbox:selectbox_left_title="@string/login_pwd"
+        sbox:selectbox_right_title="@string/login_phone"
+        sbox:selectbox_left_background="@drawable/login_radio_bg_selecter"
+        sbox:selectbox_right_background="@drawable/login_radio_bg_selecter"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,178 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    apt "org.androidannotations:androidannotations:3.3.1"
+    apt 'org.androidannotations:androidannotations-api:3.3.1'
+    compile 'org.androidannotations:androidannotations-api:3.3.1'
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile 'de.greenrobot:eventbus:2.4.0'
+    provided 'org.projectlombok:lombok:1.16.6'
+    apt "org.projectlombok:lombok:1.16.6"
+    compile 'com.facebook.fresco:fresco:0.9.0'
+    compile project(':framework')
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        resourcePackageName 'com.android.finance'
+    }
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.android.finance"
+        minSdkVersion 14
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0.0"
+
+        // dex突破65535的限制
+        multiDexEnabled true
+        // 默认是umeng的渠道
+        manifestPlaceholders = [CHANNEL_ID: "SIT1"]
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['.apt_generated', 'src/main/java']
+            resources.srcDirs = ['.apt_generated', 'src/main/java']
+            aidl.srcDirs = ['.apt_generated', 'src/main/java']
+            renderscript.srcDirs = ['.apt_generated', 'src/main/java']
+            res.srcDirs = ['src/main/res', 'src/main/res/layout']
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    productFlavors {
+        dev {}
+        //sit{}
+        //beta{}
+        //prod{}
+    }
+
+    signingConfigs {
+        release {
+            //storeFile file("manyi.keystore")
+            //storePassword "manyi520"
+            //keyAlias "manyi"
+            //keyPassword "manyi520"
+        }
+        debug {
+            //storeFile file("manyi.keystore")
+            //storePassword "manyi520"
+            //keyAlias "manyi"
+            //keyPassword "manyi520"
+        }
+    }
+
+    //run proguard before signature
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+            proguardFile 'proguard.cfg'
+        }
+
+        release {
+            shrinkResources true // 移除无用的resource文件
+            zipAlignEnabled true
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+            proguardFile 'proguard.cfg'
+        }
+    }
+
+    if (project.hasProperty('profile')) {
+
+        def profile = project['profile']
+        def profile_aaa = "config/${profile}/${profile}.config.properties"
+        def rename_file = "${profile}.config.properties"
+
+        task myCopy(type: Copy) {
+            copy {
+                from(profile_aaa)
+                into('src/main/assets')
+                rename(rename_file, 'config.properties')
+            }
+        }
+
+    } else {
+        def profile_aaa = "config/test/test.config.properties"
+        def rename_file = "test.config.properties"
+
+        task myCopy(type: Copy) {
+            copy {
+                from(profile_aaa)
+                into('src/main/assets')
+                rename(rename_file, 'config.properties')
+            }
+        }
+
+    }
+
+    def pFile = file("src/main/assets/config.properties")
+    def leng = (Integer) pFile.length()
+
+    task fileprocess {
+        pFile.eachByte(leng) { buffer, nReads ->
+            byte[] buffer_new = new byte[leng];
+            for (int i = 0; i < leng; i++) {
+                buffer_new[i] = buffer[i] + 100;
+            }
+            def y = new String(buffer_new, 'GBK');
+            pFile.write(y, 'GBK');
+        }
+
+    }
+
+
+    task runmd5checksum {
+        ant.checksum(fileext: ".txt") {
+            fileset(file: 'src/main/assets/config.properties') {
+                //include(name:"**/*.*")
+            }
+        }
+    }
+
+}

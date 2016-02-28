@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.finance.ui.widget.CommonTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.android.finance.ui.widget.IndicatorView
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ad_height" />
+
+            <com.android.finance.ui.widget.LineView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="1111"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="2222"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnLoanEnterprise"
+                    android:drawableTop="@drawable/enterprise"
+                    android:text="@string/main_loan_enterprise"
+                    style="@style/recommend_btn_item" />
+
+                <TextView
+                    android:id="@+id/btnLoanWorker"
+                    android:drawableTop="@drawable/worker"
+                    android:text="@string/main_loan_worker"
+                    style="@style/recommend_btn_item" />
+
+                <TextView
+                    android:id="@+id/btnLoanCredit"
+                    android:drawableTop="@drawable/credit"
+                    android:text="@string/main_load_credit1"
+                    style="@style/recommend_btn_item" />
+
+                <TextView
+                    android:id="@+id/btnMore"
+                    android:drawableTop="@drawable/more"
+                    android:text="@string/main_more"
+                    style="@style/recommend_btn_item" />
+
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

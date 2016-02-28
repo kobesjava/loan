@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="filter1">
+        <item>贷款金额</item>
+        <item>1万</item>
+        <item>3万</item>
+        <item>5万</item>
+        <item>10万</item>
+        <item>20万</item>
+        <item>30万</item>
+        <item>50万</item>
+        <item>100万</item>
+        <item>300万</item>
+    </string-array>
+
+    <string-array name="filter2">
+        <item>贷款期限</item>
+        <item>3个月</item>
+        <item>6个月</item>
+        <item>12个月</item>
+        <item>24个月</item>
+        <item>36个月</item>
+        <item>60个月</item>
+    </string-array>
+
+    <string-array name="filter3">
+        <item>最新</item>
+        <item>最热</item>
+    </string-array>
+
+    <string-array name="filter4Title">
+        <item>贷款期限</item>
+        <item>职业身份</item>
+        <item>担保方式</item>
+        <item>还款方式</item>
+    </string-array>
+
+    <string-array name="filter41">
+        <item>1个月</item>
+        <item>3个月</item>
+        <item>6个月</item>
+        <item>1年</item>
+        <item>1.5年</item>
+        <item>2年</item>
+        <item>3年</item>
+        <item>5年</item>
+        <item>10年</item>
+    </string-array>
+
+    <string-array name="filter42">
+        <item>不限</item>
+        <item>企业主</item>
+        <item>个体户</item>
+        <item>工薪族</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="filter43">
+        <item>不限</item>
+        <item>信用贷款</item>
+        <item>房产抵押贷款</item>
+        <item>汽车抵押贷款</item>
+        <item>其它</item>
+    </string-array>
+
+    <string-array name="filter44">
+        <item>不限</item>
+        <item>分期还款</item>
+        <item>一次还款</item>
+        <item>随借随还</item>
+    </string-array>
+
+</resources>

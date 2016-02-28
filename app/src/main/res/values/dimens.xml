@@ -1,0 +1,89 @@
+<resources>
+
+    <dimen name="title_bar_height">48dp</dimen>
+    <dimen name="ad_height">120dp</dimen>
+
+    <!--空间边缘距离大小-->
+    <dimen name="margin_step_0">0dp</dimen>
+    <dimen name="margin_step_0.5">0.5dp</dimen>
+    <dimen name="margin_step_1">1dp</dimen>
+    <dimen name="margin_step_2">2dp</dimen>
+    <dimen name="margin_step_3">3dp</dimen>
+    <dimen name="margin_step_5">5dp</dimen>
+    <dimen name="margin_step_4">4dp</dimen>
+    <dimen name="margin_step_6">6dp</dimen>
+    <dimen name="margin_step_7">7dp</dimen>
+    <dimen name="margin_step_8">8dp</dimen>
+    <dimen name="margin_step_9">9dp</dimen>
+    <dimen name="margin_step_10">10dp</dimen>
+    <dimen name="margin_step_11">11dp</dimen>
+    <dimen name="margin_step_12">12dp</dimen>
+    <dimen name="margin_step_13">13dp</dimen>
+    <dimen name="margin_step_14">14dp</dimen>
+    <dimen name="margin_step_15">15dp</dimen>
+    <dimen name="margin_step_16">16dp</dimen>
+    <dimen name="margin_step_18">18dp</dimen>
+    <dimen name="margin_step_20">20dp</dimen>
+    <dimen name="margin_step_21">21dp</dimen>
+    <dimen name="margin_step_22">22dp</dimen>
+    <dimen name="margin_step_23">23dp</dimen>
+    <dimen name="margin_step_24">24dp</dimen>
+    <dimen name="margin_step_25">25dp</dimen>
+    <dimen name="margin_step_26">26dp</dimen>
+    <dimen name="margin_step_28">28dp</dimen>
+    <dimen name="margin_step_30">30dp</dimen>
+    <dimen name="margin_step_32">32dp</dimen>
+    <dimen name="margin_step_34">34dp</dimen>
+    <dimen name="margin_step_36">36dp</dimen>
+    <dimen name="margin_step_39">39dp</dimen>
+    <dimen name="margin_step_40">40dp</dimen>
+    <dimen name="margin_step_45">45dp</dimen>
+    <dimen name="margin_step_46">46dp</dimen>
+    <dimen name="margin_step_48">48dp</dimen>
+    <dimen name="margin_step_50">50dp</dimen>
+    <dimen name="margin_step_56">56dp</dimen>
+    <dimen name="margin_step_64">64dp</dimen>
+    <dimen name="margin_step_70">70dp</dimen>
+    <dimen name="margin_step_72">72dp</dimen>
+    <dimen name="margin_step_76">76dp</dimen>
+    <dimen name="margin_step_80">80dp</dimen>
+    <dimen name="margin_step_90">90dp</dimen>
+    <dimen name="margin_step_102">102dp</dimen>
+    <dimen name="margin_step_120">120dp</dimen>
+    <dimen name="margin_step_125">125dp</dimen>
+    <dimen name="margin_step_135">135dp</dimen>
+    <dimen name="margin_step_140">140dp</dimen>
+    <dimen name="margin_step_142">142dp</dimen>
+    <dimen name="margin_step_180">180dp</dimen>
+    <dimen name="margin_step_195">195dp</dimen>
+    <dimen name="margin_step_200">200dp</dimen>
+    <dimen name="margin_step_300">300dp</dimen>
+    <dimen name="margin_step_320">320dp</dimen>
+
+    <!--文字字体大小-->
+    <dimen name="text_size_5">5sp</dimen>
+    <dimen name="text_size_6">6sp</dimen>
+    <dimen name="text_size_8">8sp</dimen>
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_17">17sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_21">21sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_39">39sp</dimen>
+
+
+    <dimen name="remak_margin_left">12dp</dimen>
+    <dimen name="remak_margin_right">12dp</dimen>
+    <dimen name="height_48">48dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+</resources>

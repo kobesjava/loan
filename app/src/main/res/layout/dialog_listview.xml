@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/credit"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_alert_title"
+        style="@style/text_16_333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_step_13"
+        android:layout_marginLeft="@dimen/margin_step_16"
+        android:layout_marginRight="@dimen/margin_step_16"
+        android:layout_marginTop="@dimen/margin_step_13"
+        android:gravity="center"
+        android:text="" />
+
+    <ListView
+        android:id="@+id/lv_content"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"></ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_ccc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_confirm"
+            style="@style/text_18_333"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/press_btn"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_step_12"
+            android:paddingTop="@dimen/margin_step_12"
+            android:text="@string/confirm" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_ccc" />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            style="@style/text_18_333"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/press_btn"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_step_12"
+            android:paddingTop="@dimen/margin_step_12"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

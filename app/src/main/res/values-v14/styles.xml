@@ -1,0 +1,21 @@
+<resources>
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
+        <!-- API 14 theme customizations can go here. -->
+        <item name="android:windowBackground">@color/color_f7f7f7</item>
+    </style>
+
+    <style name="My_RatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_progress</item>
+        <item name="android:minHeight">13dp</item>
+        <item name="android:maxHeight">13dp</item>
+        <item name="android:stepSize">0.5</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
+</resources>

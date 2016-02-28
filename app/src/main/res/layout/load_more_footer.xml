@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/load_more_footer"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/loading_more_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <com.android.finance.ui.widget.progress.ProgressWheel
+            xmlns:wheel="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/load_more_progressBar"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            wheel:matProg_barColor="@color/main_black_999999"
+            wheel:matProg_barWidth="1dp"
+            wheel:matProg_progressIndeterminate="true" />
+
+        <TextView
+            android:id="@+id/load_text"
+            style="@style/text_14_999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:gravity="center"
+            android:text="加载更多中..." />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/load_complete"
+        style="@style/text_14_999999"
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</RelativeLayout>

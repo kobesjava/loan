@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/editText"
+        android:textSize="14sp"
+        android:paddingLeft="10dp"
+        android:password="true"
+        android:singleLine="true"
+        android:hint="@string/regist_pwd_hint"
+        android:textColorHint="@color/color_999999"
+        android:layout_centerVertical="true"
+        android:maxLength="20"
+        android:digits="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+        android:textColor="@color/color_950000"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <ToggleButton
+        android:id="@+id/btnShowPwd"
+        android:button="@null"
+        android:textOn=""
+        android:text=""
+        android:textOff=""
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/editText"
+        android:background="@drawable/btn_show_pwd_selecter"
+        android:layout_width="40dp"
+        android:layout_height="30dp" />
+
+</RelativeLayout>

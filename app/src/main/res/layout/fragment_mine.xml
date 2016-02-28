@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/red_dark">
+
+                <ImageView
+                    android:layout_marginTop="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textColor="@color/color2"
+                    android:background="@drawable/bg_login_regist"
+                    android:text="@string/mine_login_regist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <com.android.finance.ui.widget.LineView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:id="@+id/btnLoanApply"
+                style="@style/mine_item">
+                <TextView
+                    android:drawableLeft="@drawable/user_center_apply"
+                    android:text="@string/mine_loan_apply"
+                    style="@style/mine_item_text" />
+
+                <ImageView
+                    android:src="@drawable/arrow_right_img"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:id="@+id/btnLoanMaterial"
+                style="@style/mine_item">
+                <TextView
+                    android:drawableLeft="@drawable/user_center_material"
+                    android:text="@string/mine_loan_info"
+                    style="@style/mine_item_text" />
+
+                <ImageView
+                    android:src="@drawable/arrow_right_img"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <com.android.finance.ui.widget.LineView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:id="@+id/btnAboutUs"
+                style="@style/mine_item">
+                <TextView
+                    android:drawableLeft="@drawable/user_center_about"
+                    android:text="@string/mine_about_us"
+                    style="@style/mine_item_text" />
+
+                <ImageView
+                    android:src="@drawable/arrow_right_img"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <com.android.finance.ui.widget.LineView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:id="@+id/btnCall"
+                android:background="@drawable/bg_black_a10_selector"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:src="@drawable/user_dial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/color2"
+                    android:text="客服  400-658-9966"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

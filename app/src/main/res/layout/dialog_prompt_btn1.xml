@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_card"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:background="@color/white"
+        android:textColor="@color/color_666"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    
+    <com.android.finance.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/msg"
+        android:background="@color/white"
+        android:textColor="@color/color_666"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:singleLine="false"
+        android:lineSpacingExtra="5dp"
+        android:textSize="16sp"
+        android:minHeight="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/btnOk"
+        android:text="知道了"
+        android:background="@color/black_a10"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/color_666"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+</LinearLayout>

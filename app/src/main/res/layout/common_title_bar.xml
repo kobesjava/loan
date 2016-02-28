@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_bar_height"
+    android:background="@color/red_dark">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/margin_step_48"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/press_btn"
+        android:scaleType="center"
+        android:gravity="center"
+        android:src="@drawable/mc_back"/>
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:text=""
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18" />
+
+    <TextView
+        android:id="@+id/title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:text=""
+        android:background="@drawable/press_btn"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_step_12"
+        android:paddingRight="@dimen/margin_step_12"
+        android:textColor="@color/color_fff"
+        android:textSize="@dimen/text_size_16" />
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/editText"
+        android:textSize="14sp"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textColorHint="@color/color_999999"
+        android:layout_centerVertical="true"
+        android:textColor="@color/color_950000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:visibility="gone"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/editText"
+        android:background="@drawable/delete_selecter"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+</RelativeLayout>

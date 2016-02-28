@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">融资</string>
+
+    <!-- common -->
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="reset">重置</string>
+    <string name="sms_prompt_4">我知道了</string>
+    <string name="submit">提交</string>
+
+    <!-- recommend tab -->
+    <string name="main_title">融资网</string>
+    <string name="main_recommend">推荐</string>
+    <string name="main_loan">贷款</string>
+    <string name="main_loan_credit">信贷</string>
+    <string name="main_mine">我的</string>
+    <string name="main_loan_enterprise">企业贷款</string>
+    <string name="main_loan_worker">上班族贷款</string>
+    <string name="main_load_credit1">信用贷款</string>
+    <string name="main_more">更多</string>
+    <string name="recommend_title">融资网</string>
+
+    <!-- mine tab -->
+    <string name="mine_login_regist">登录/注册</string>
+    <string name="mine_loan_apply">我的贷款申请</string>
+    <string name="mine_loan_info">我的融资需求书</string>
+    <string name="mine_about_us">关于我们</string>
+
+    <!-- login -->
+    <string name="login_title">登录</string>
+    <string name="login_bar_regist">注册</string>
+    <string name="login_pwd">密码登录</string>
+    <string name="login_pwd_phone_hint">请输入手机号</string>
+    <string name="login_phone">手机动态码登录</string>
+    <string name="login_phone_hint">手机号码</string>
+    <string name="login_code_hint">请输入验证码</string>
+    <string name="login_pwd_hint">请输入密码</string>
+    <string name="login_click_request">点击获取</string>
+    <string name="login_click_request_again">重新获取验证码</string>
+    <string name="login_btn_text">登录</string>
+    <string name="login_forget_pwd">忘记密码</string>
+
+    <!-- regist -->
+    <string name="regist_title">注册</string>
+    <string name="regist_phone_hint">请输入手机号</string>
+    <string name="regist_nickname_hint">请输入您的昵称</string>
+    <string name="regist_next">下一步</string>
+    <string name="regist_request_again">重新获取验证码</string>
+    <string name="regist_pwd_hint">请设置您的密码,6-20位字母和数字</string>
+
+    <!-- forget pwd -->
+    <string name="forget_title">忘记密码</string>
+    <string name="forget_phone_hint">请输入手机号</string>
+    <string name="forget_next">下一步</string>
+    <string name="forget_tip">请输入手机号码获取短信验证码,并设置新的登录密码</string>
+
+    <!-- loan -->
+    <string name="loan_title">贷款</string>
+
+    <!-- product -->
+    <string name="product_detail_title">产品详情</string>
+</resources>

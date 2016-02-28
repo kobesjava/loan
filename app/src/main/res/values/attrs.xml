@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LProgressWheel">
+        <attr name="matProg_progressIndeterminate" format="boolean" />
+        <attr name="matProg_barColor" format="color" />
+        <attr name="matProg_rimColor" format="color" />
+        <attr name="matProg_rimWidth" format="dimension" />
+        <attr name="matProg_spinSpeed" format="float" />
+        <attr name="matProg_barSpinCycleTime" format="integer" />
+        <attr name="matProg_circleRadius" format="dimension" />
+        <attr name="matProg_fillRadius" format="boolean" />
+        <attr name="matProg_barWidth" format="dimension" />
+        <attr name="matProg_linearProgress" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomRefreshListView">
+        <attr name="show_bottom_line" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SelectBox">
+        <attr name="selectbox_left_title" format="string" />
+        <attr name="selectbox_right_title" format="string" />
+        <attr name="selectbox_left_background" format="reference" />
+        <attr name="selectbox_right_background" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="InputEditText">
+        <attr name="input_hint" format="string"/>
+        <attr name="input_pwd" format="boolean"/>
+        <attr name="input_number" format="boolean"/>
+        <attr name="input_limit" format="integer"/>
+    </declare-styleable>
+
+</resources>
