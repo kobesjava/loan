@@ -1,19 +1,19 @@
 package com.android.finance.bean.event;
 
-import com.android.finance.enums.LoanType;
+import com.android.finance.enums.LoanTypeEnum;
 
 /**
  * Created by yanxin on 16/2/24.
  */
 public class LoanTypeEvent {
 
-    private LoanType type;
+    private LoanTypeEnum type;
 
-    public LoanType getType() {
+    public LoanTypeEnum getType() {
         return type;
     }
 
-    public void setType(LoanType type) {
+    public void setType(LoanTypeEnum type) {
         this.type = type;
     }
 }

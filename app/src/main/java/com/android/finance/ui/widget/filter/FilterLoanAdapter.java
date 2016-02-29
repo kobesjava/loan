@@ -1,13 +1,16 @@
 package com.android.finance.ui.widget.filter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.finance.R;
 import com.android.finance.ui.widget.radio.BorderRadioAdapter;
 import com.android.finance.ui.widget.radio.BorderRadioGruop;
+import com.android.finance.util.ToastUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +18,11 @@ import java.util.List;
 /**
  * Created by yanxin on 16/2/25.
  */
-public class FilterAdapter extends BaseFilterAdapter {
+public class FilterLoanAdapter extends BaseFilterAdapter {
 
-    private Context context;
+    private FilterManager mFilterManager;
+
+    private Context mContext;
     private LayoutInflater mLayoutInflater;
 
     private String[] mFilter1,mFilter2,mFilter3;
@@ -28,9 +33,14 @@ public class FilterAdapter extends BaseFilterAdapter {
     private int[] mFilter123Selected;
     private int[] mFilter4Selected;
 
-    public FilterAdapter(Context context) {
-        this.context = context;
+    public FilterLoanAdapter(Context context,FilterManager filterManager) {
+        this.mContext = context;
+        this.mFilterManager = filterManager;
         this.mLayoutInflater = LayoutInflater.from(context);
+    }
+
+    public void setFilterManager(FilterManager filterManager) {
+        this.mFilterManager = filterManager;
     }
 
     public void setData(String[] mFilter1,String[] mFilter2,String[] mFilter3,List<String[]> mFilter4,String[] mFilter4Title,
@@ -43,6 +53,11 @@ public class FilterAdapter extends BaseFilterAdapter {
         this.mFilter123Selected = mFilter123Selected;
         this.mDefaultFilter4Selected = mFilter4Selected;
         this.mFilter4Selected = Arrays.copyOf(mDefaultFilter4Selected, mDefaultFilter4Selected.length);
+    }
+
+    @Override
+    protected boolean isVisible(int position) {
+        return true;
     }
 
     @Override
@@ -83,14 +98,14 @@ public class FilterAdapter extends BaseFilterAdapter {
 
     @Override
     protected String getString(int position, int index) {
+        if(index < 0) return "";
         if(position == 1) {
-            return mFilter1[index];
+            return index<mFilter1.length?mFilter1[index]:"";
         } else if(position == 2) {
-            return mFilter2[index];
+            return index<mFilter2.length?mFilter2[index]:"";
         } else if(position == 3) {
-            return mFilter3[index];
+            return index<mFilter3.length?mFilter3[index]:"";
         }
-
         return "";
     }
 
@@ -110,7 +125,54 @@ public class FilterAdapter extends BaseFilterAdapter {
             }
             return selected;
         }
-        return 1;
+        return position;
+    }
+
+    @Override
+    protected View getFootView(final int posion) {
+        if(posion == 1) {
+            View mFootView = LayoutInflater.from(mContext).inflate(R.layout.filter_pop_item_input, null);
+            final EditText input = (EditText) mFootView.findViewById(R.id.input);
+            mFootView.findViewById(R.id.btnConfirm).setOnClickListener(new View.OnClickListener() {
+
+                int mPosition = posion;
+
+                @Override
+                public void onClick(View v) {
+                    if(TextUtils.isEmpty(input.toString())) {
+                        ToastUtil.showShortToast("您输入金额有误");
+                        return;
+                    }
+                    String cont = input.getText().toString();
+                    try {
+                        int money = Integer.parseInt(cont);
+
+                        if(money <= 0) {
+                            ToastUtil.showShortToast("金额必须大于0");
+                            return;
+                        }
+
+                        String moneyStr = money+"万";
+                        int mFilter1Selected = -1;
+
+                        int index = getIndex(1,moneyStr);
+                        if(index >= 0) mFilter1Selected = index;
+                        mFilterManager.setSelect(mPosition,mFilter1Selected,moneyStr);
+                    }catch (Exception e) {
+                        ToastUtil.showShortToast("您输入金额有误");
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            return mFootView;
+        }
+        return null;
+    }
+
+    @Override
+    protected View getHeadView(int posion) {
+        return null;
     }
 
     @Override
@@ -123,9 +185,26 @@ public class FilterAdapter extends BaseFilterAdapter {
         }
     }
 
-    private View getView123(int position, int index, View view,boolean selected) {
+    private View getView123(final int position, int index, View view,boolean selected) {
 
-        if(view == null) view = mLayoutInflater.inflate(R.layout.filter_pop_item, null);
+        ViewHolder0 holder = null;
+        if(view == null) {
+            view = mLayoutInflater.inflate(R.layout.filter_pop_item, null);
+            holder = new ViewHolder0(view);
+            view.setTag(holder);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ViewHolder0 holder = (ViewHolder0) v.getTag();
+                    if((holder.position == 1 || holder.position == 2) && holder.index == 0 ) return;
+                    mFilterManager.setSelect(holder.position,holder.index,"");
+                }
+            });
+        } else {
+            holder = (ViewHolder0) view.getTag();
+        }
+        holder.position = position;
+        holder.index = index;
 
         String title = "";
         if(position == 1) {
@@ -135,20 +214,20 @@ public class FilterAdapter extends BaseFilterAdapter {
         } else if(position == 3) {
             title = mFilter3[index];
         }
-        ((TextView) view.findViewById(R.id.title)).setText(title);
+        holder.title.setText(title);
 
         if(index == 0 || selected) {
-            view.findViewById(R.id.title).setBackgroundResource(R.color.color_f7f7f7);
+            holder.title.setBackgroundResource(R.color.color_f7f7f7);
         } else {
-            view.findViewById(R.id.title).setBackgroundResource(R.color.white);
+            holder.title.setBackgroundResource(R.color.white);
         }
 
         if(selected) {
-            ((TextView) view.findViewById(R.id.title)).setTextColor(context.getResources().getColor(R.color.red_dark));
-            ((TextView) view.findViewById(R.id.title)).setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.drawable.common_selected_mark), null);
+            holder.title.setTextColor(mContext.getResources().getColor(R.color.red_dark));
+            holder.title.setCompoundDrawablesWithIntrinsicBounds(null, null, mContext.getResources().getDrawable(R.drawable.common_selected_mark), null);
         } else {
-            ((TextView) view.findViewById(R.id.title)).setTextColor(context.getResources().getColor(R.color.color_999999));
-            ((TextView) view.findViewById(R.id.title)).setCompoundDrawables(null, null, null, null);
+            holder.title.setTextColor(mContext.getResources().getColor(R.color.color_999999));
+            holder.title.setCompoundDrawables(null, null, null, null);
         }
 
         return view;
@@ -203,6 +282,14 @@ public class FilterAdapter extends BaseFilterAdapter {
         holder.val.setText(mFilter4.get(index)[mFilter4Selected[index]]);
 
         return view;
+    }
+
+    static class ViewHolder0 {
+        int position,index;
+        TextView title;
+        public ViewHolder0(View view) {
+            title = (TextView) view.findViewById(R.id.title);
+        }
     }
 
     static class ViewHolder {

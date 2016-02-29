@@ -25,8 +25,11 @@
     </string-array>
 
     <string-array name="filter3">
-        <item>最新</item>
-        <item>最热</item>
+        <item>智能排序</item>
+        <item>费用最少</item>
+        <item>月供最少</item>
+        <item>放款最快</item>
+        <item>星级最高</item>
     </string-array>
 
     <string-array name="filter4Title">
@@ -70,5 +73,55 @@
         <item>一次还款</item>
         <item>随借随还</item>
     </string-array>
+
+    <array name="credit_bank">
+        <item>不限</item>
+        <item>交通银行</item>
+        <item>中信银行</item>
+        <item>广发银行</item>
+        <item>平安银行</item>
+        <item>招商银行</item>
+        <item>广大银行</item>
+        <item>建设银行</item>
+        <item>花旗银行</item>
+        <item>渣打银行</item>
+        <item>工商银行</item>
+        <item>农业银行</item>
+        <item>中国银行</item>
+        <item>民生银行</item>
+        <item>北京银行</item>
+        <item>南京银行</item>
+        <item>兴业银行</item>
+        <item>华夏银行</item>
+        <item>上海银行</item>
+    </array>
+
+    <array name="credit_type">
+        <item>不限</item>
+        <item>车主卡</item>
+        <item>旅游卡</item>
+        <item>航空卡</item>
+        <item>标准卡</item>
+        <item>卡通卡</item>
+        <item>购物卡</item>
+        <item>商务卡</item>
+        <item>美食卡</item>
+        <item>酒店卡</item>
+        <item>游戏卡</item>
+    </array>
+
+    <array name="credit_level">
+        <item>不限</item>
+        <item>普卡</item>
+        <item>银卡</item>
+        <item>金卡</item>
+        <item>钛金卡</item>
+        <item>贵宾卡</item>
+        <item>白金卡</item>
+        <item>钻石卡</item>
+        <item>铂金卡</item>
+        <item>无限卡</item>
+        <item>世界卡</item>
+    </array>
 
 </resources>

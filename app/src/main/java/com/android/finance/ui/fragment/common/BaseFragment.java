@@ -11,11 +11,16 @@ import com.android.finance.ui.widget.dialog.AlertDialogUtils;
 import com.android.finance.util.UserInfoUtil;
 import com.finance.framework.umeng.CommonAnalysis;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.EFragment;
+
 import de.greenrobot.event.EventBus;
 
 /**
  * author yanxin
  */
+@EFragment
 public abstract class BaseFragment extends Fragment {
 
     protected UserInfo mUserInfo;
@@ -24,13 +29,19 @@ public abstract class BaseFragment extends Fragment {
 
     protected Dialog mLoadingDialog;
 
+    protected boolean isInit;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mUserInfo = UserInfoUtil.getLocalLoginResponse(getActivity());
         mBundle = getArguments();
+    }
 
+    @AfterViews
+    protected void initView() {
+        isInit = true;
     }
 
     @Override

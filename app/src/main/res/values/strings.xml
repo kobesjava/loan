@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">融资</string>
+    <string name="app_name">钱太太</string>
 
     <!-- common -->
     <string name="confirm">确定</string>
@@ -8,23 +8,28 @@
     <string name="sms_prompt_4">我知道了</string>
     <string name="submit">提交</string>
 
-    <!-- recommend tab -->
-    <string name="main_title">融资网</string>
+    <!-- main -->
     <string name="main_recommend">推荐</string>
     <string name="main_loan">贷款</string>
-    <string name="main_loan_credit">信贷</string>
+    <string name="main_credit">信用卡</string>
     <string name="main_mine">我的</string>
-    <string name="main_loan_enterprise">企业贷款</string>
-    <string name="main_loan_worker">上班族贷款</string>
-    <string name="main_load_credit1">信用贷款</string>
+
+    <!-- recommend tab -->
+    <string name="recommend_title">钱太太金融</string>
+    <string name="recommend_loan_enterprise">企业贷款</string>
+    <string name="recommend_loan_worker">上班族贷款</string>
+    <string name="recommend_loan_credit">信用贷款</string>
+    <string name="recommend_credit_common">普卡</string>
+    <string name="recommend_credit_silver">银卡</string>
+    <string name="recommend_credit_gold">金卡</string>
     <string name="main_more">更多</string>
-    <string name="recommend_title">融资网</string>
 
     <!-- mine tab -->
     <string name="mine_login_regist">登录/注册</string>
     <string name="mine_loan_apply">我的贷款申请</string>
     <string name="mine_loan_info">我的融资需求书</string>
     <string name="mine_about_us">关于我们</string>
+    <string name="mine_setup">设置</string>
 
     <!-- login -->
     <string name="login_title">登录</string>
@@ -54,9 +59,22 @@
     <string name="forget_next">下一步</string>
     <string name="forget_tip">请输入手机号码获取短信验证码,并设置新的登录密码</string>
 
+    <!-- about us -->
+    <string name="about_us_title">关于我们</string>
+    <string name="about_us_introduce">公司介绍</string>
+    <string name="about_us_version">版本号</string>
+
+    <!-- set up -->
+    <string name="setup_title">设置</string>
+    <string name="setup_loginout">退出当前账号</string>
+
     <!-- loan -->
     <string name="loan_title">贷款</string>
 
-    <!-- product -->
+    <!-- loan product -->
     <string name="product_detail_title">产品详情</string>
+
+    <!-- credit -->
+    <string name="credit_title">信用卡</string>
+
 </resources>

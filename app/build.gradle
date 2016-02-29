@@ -91,16 +91,16 @@ android {
 
     signingConfigs {
         release {
-            //storeFile file("manyi.keystore")
-            //storePassword "manyi520"
-            //keyAlias "manyi"
-            //keyPassword "manyi520"
+            storeFile file("qiantaitai.keystore")
+            storePassword "dmmapqtt7877448"
+            keyAlias "qiantaitai"
+            keyPassword "dmmapqtt7877448"
         }
         debug {
-            //storeFile file("manyi.keystore")
-            //storePassword "manyi520"
-            //keyAlias "manyi"
-            //keyPassword "manyi520"
+            storeFile file("qiantaitai.keystore")
+            storePassword "dmmapqtt7877448"
+            keyAlias "qiantaitai"
+            keyPassword "dmmapqtt7877448"
         }
     }
 
@@ -116,7 +116,7 @@ android {
         release {
             shrinkResources true // 移除无用的resource文件
             zipAlignEnabled true
-            minifyEnabled false
+            minifyEnabled true
             signingConfig signingConfigs.release
             proguardFile getDefaultProguardFile('proguard-android.txt')
             proguardFile 'proguard.cfg'

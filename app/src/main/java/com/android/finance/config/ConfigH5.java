@@ -16,6 +16,8 @@ public class ConfigH5 {
 
     public static final String LANDLORD_TRANSFER_FAQ = "/html/FAQ.html";
 
+    public static final String COMPANY_INTRODUCE = "file:///android_asset/introduce.html";
+
     /**
      * 获取合同帮助说明H5地址
      *
@@ -42,6 +44,10 @@ public class ConfigH5 {
     public static String getLandlordTransferFaq()
     {
         return AppConfig.getDomain() + CENTER_PATH + LANDLORD_TRANSFER_FAQ;
+    }
+
+    public static String getCompanyIntroduce() {
+        return COMPANY_INTRODUCE;
     }
 
 }

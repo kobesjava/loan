@@ -25,72 +25,83 @@
                 android:layout_height="@dimen/ad_height" />
 
             <com.android.finance.ui.widget.LineView
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
+
             <LinearLayout
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <TextView
-                    android:text="1111"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/btnLoanEnterprise"
+                    style="@style/recommend_btn_item"
+                    android:drawableTop="@drawable/enterprise"
+                    android:text="@string/recommend_loan_enterprise" />
 
                 <TextView
-                    android:text="2222"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/btnLoanWorker"
+                    style="@style/recommend_btn_item"
+                    android:drawableTop="@drawable/worker"
+                    android:text="@string/recommend_loan_worker" />
+
+                <TextView
+                    android:id="@+id/btnLoanCredit"
+                    style="@style/recommend_btn_item"
+                    android:drawableTop="@drawable/credit"
+                    android:text="@string/recommend_loan_credit" />
+
+                <TextView
+                    android:id="@+id/btnMoreLoan"
+                    style="@style/recommend_btn_item"
+                    android:drawableTop="@drawable/more"
+                    android:text="@string/main_more" />
 
             </LinearLayout>
+
             <com.android.finance.ui.widget.LineView
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
 
             <LinearLayout
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <TextView
-                    android:id="@+id/btnLoanEnterprise"
+                    android:id="@+id/btnCreditCommon"
+                    style="@style/recommend_btn_item"
                     android:drawableTop="@drawable/enterprise"
-                    android:text="@string/main_loan_enterprise"
-                    style="@style/recommend_btn_item" />
+                    android:text="@string/recommend_credit_common" />
 
                 <TextView
-                    android:id="@+id/btnLoanWorker"
+                    android:id="@+id/btnCreditSilver"
+                    style="@style/recommend_btn_item"
                     android:drawableTop="@drawable/worker"
-                    android:text="@string/main_loan_worker"
-                    style="@style/recommend_btn_item" />
+                    android:text="@string/recommend_credit_silver" />
 
                 <TextView
-                    android:id="@+id/btnLoanCredit"
+                    android:id="@+id/btnCreditGold"
+                    style="@style/recommend_btn_item"
                     android:drawableTop="@drawable/credit"
-                    android:text="@string/main_load_credit1"
-                    style="@style/recommend_btn_item" />
+                    android:text="@string/recommend_credit_gold" />
 
                 <TextView
-                    android:id="@+id/btnMore"
+                    android:id="@+id/btnMoreCredit"
+                    style="@style/recommend_btn_item"
                     android:drawableTop="@drawable/more"
-                    android:text="@string/main_more"
-                    style="@style/recommend_btn_item" />
+                    android:text="@string/main_more" />
 
             </LinearLayout>
             <com.android.finance.ui.widget.LineView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
 
         </LinearLayout>
     </android.support.v4.widget.SwipeRefreshLayout>

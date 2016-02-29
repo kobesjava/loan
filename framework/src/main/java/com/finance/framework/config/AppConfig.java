@@ -8,7 +8,7 @@ public class AppConfig {
      */
     public static Application application = null;
     public static int versionCode = 1;
-    public static String versionName = "1.0";
+    public static String versionName = "";
 
     /**
      * 根据项目需求选择完善的属性

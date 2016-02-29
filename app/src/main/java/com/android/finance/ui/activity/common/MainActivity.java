@@ -17,11 +17,12 @@ import com.android.finance.bean.event.TabEvent;
 import com.android.finance.config.Constants;
 import com.android.finance.presenter.IMainPresenter;
 import com.android.finance.presenter.impl.MainPresenterImpl;
-import com.android.finance.ui.fragment.main.LoanCreditFragment;
+import com.android.finance.ui.fragment.main.CreditFragment;
 import com.android.finance.ui.fragment.main.LoanFragment;
 import com.android.finance.ui.fragment.main.MineFragment;
 import com.android.finance.ui.fragment.main.RecommendFragment;
 import com.android.finance.util.ToastUtil;
+import com.android.finance.util.UserInfoUtil;
 import com.android.finance.view.IMainView;
 import com.finance.framework.util.GeneratedClassUtils;
 import com.finance.framework.util.LogUtil;
@@ -42,7 +43,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     private final static String TAB_RECOMMEND = "tab_recommend";
     private final static String TAB_LOAN = "tab_loan";
-    private final static String TAB_LOAN_CREDIT = "tab_loan_credit";
+    private final static String TAB_CREDIT = "tab_credit";
     private final static String TAB_MINE = "tab_mine";
 
     @ViewById(android.R.id.tabhost)
@@ -68,7 +69,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (intent != null && intent.getBooleanExtra("login", false)) {
-            loginOut();
+            //loginOut();
+        } else if(intent != null && intent.getBooleanExtra("main", false)) {
+            mTabHost.setCurrentTab(0);
         }
     }
 
@@ -94,7 +97,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         mTabHost.setBackgroundResource(R.drawable.card_shadow_up);
         mTabHost.addTab(createSpec(TAB_RECOMMEND, getString(R.string.main_recommend), R.drawable.main_tab1_selector), GeneratedClassUtils.get(RecommendFragment.class), null);
         mTabHost.addTab(createSpec(TAB_LOAN, getString(R.string.main_loan), R.drawable.main_tab2_selector), GeneratedClassUtils.get(LoanFragment.class), null);
-        mTabHost.addTab(createSpec(TAB_LOAN_CREDIT, getString(R.string.main_loan_credit), R.drawable.main_tab3_selector), GeneratedClassUtils.get(LoanCreditFragment.class), null);
+        mTabHost.addTab(createSpec(TAB_CREDIT, getString(R.string.main_credit), R.drawable.main_tab3_selector), GeneratedClassUtils.get(CreditFragment.class), null);
         mTabHost.addTab(createSpec(TAB_MINE, getString(R.string.main_mine), R.drawable.main_tab4_selector), GeneratedClassUtils.get(MineFragment.class), null);
     }
 
@@ -151,7 +154,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      * 退出登录
      */
     private void loginOut() {
-
+        UserInfoUtil.cleanUserInfo(getApplicationContext());
     }
 
     /**
@@ -160,6 +163,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      * @param event
      */
     public void onEventMainThread(LoginExpired event) {
+        loginOut();
         if (mTopActivity == null) {
             LogUtil.d(TAG, "顶部没有activity");
             return;
@@ -167,10 +171,10 @@ public class MainActivity extends BaseActivity implements IMainView {
         if (mTopActivity != this) {
             Intent intent = new Intent(MyApplication.getInstance(), GeneratedClassUtils.get(MainActivity.class));
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("login", true);
+            intent.putExtra("main", true);
             mTopActivity.startActivity(intent);
         } else {
-            loginOut();
+            mTabHost.setCurrentTab(0);
         }
     }
 

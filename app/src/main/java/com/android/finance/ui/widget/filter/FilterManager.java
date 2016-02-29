@@ -5,7 +5,7 @@ package com.android.finance.ui.widget.filter;
  */
 public class FilterManager {
 
-    private FilterView mFilterView;
+    private FilterSelect mFilterView;
 
     private BaseFilterAdapter mBaseFilterAdapter;
 
@@ -13,18 +13,30 @@ public class FilterManager {
         return mBaseFilterAdapter;
     }
 
-    public void setmBaseFilterAdapter(BaseFilterAdapter mBaseFilterAdapter) {
+    public void setAdapter(BaseFilterAdapter mBaseFilterAdapter) {
         this.mBaseFilterAdapter = mBaseFilterAdapter;
     }
 
-    public FilterView getmFilterView() {
+    public FilterSelect getmFilterView() {
         return mFilterView;
     }
 
-    public void setmFilterView(FilterView mFilterView,BaseFilterAdapter mBaseFilterAdapter) {
+    public void setComponents(FilterSelect mFilterView,BaseFilterAdapter mBaseFilterAdapter) {
         this.mFilterView = mFilterView;
         this.mBaseFilterAdapter = mBaseFilterAdapter;
         mFilterView.setAdapter(mBaseFilterAdapter);
+    }
+
+    public void setSelect(int position,int index,String defaultStr) {
+        mFilterView.setSelect(position, index, defaultStr);
+    }
+
+    public void reset(int position) {
+        mFilterView.reset(position);
+    }
+
+    public void setSelect(int position,int index,int subIndex) {
+        this.mFilterView.setSelect(position,index,subIndex);
     }
 
 }

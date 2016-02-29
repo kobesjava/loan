@@ -79,7 +79,16 @@
         <activity android:name=".ui.activity.user.ForgetPwdActivity_"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.user.AboutUsActivity_"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.SetupActivity_"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.product.ProductDetailActivity_"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.credit.CreditDetailActivity_"
             android:screenOrientation="portrait"/>
     </application>
 

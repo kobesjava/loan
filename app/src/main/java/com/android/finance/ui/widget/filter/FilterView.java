@@ -23,8 +23,9 @@ import com.android.finance.util.ToastUtil;
 /**
  * Created by yanxin on 16/2/25.
  */
-public class FilterView extends FrameLayout implements View.OnClickListener {
+public class FilterView extends FrameLayout implements FilterSelect,View.OnClickListener {
 
+    View mFilter1,mFilter2,mFilter3,mFilter4;
     TextView mFilter1Text,mFilter2Text,mFilter3Text,mFilter4Text;
 
     TextView mFilter4NumText;
@@ -40,6 +41,9 @@ public class FilterView extends FrameLayout implements View.OnClickListener {
     private int mFilter2Selected;
     private int mFilter3Selected;
 
+    /** 一共显示几个筛选项*/
+    private int mShowItemNum;
+
 
     public FilterView(Context context) {
         super(context);
@@ -50,13 +54,56 @@ public class FilterView extends FrameLayout implements View.OnClickListener {
         init(context, attrs);
     }
 
+    @Override
     public void setAdapter(BaseFilterAdapter mBaseFilterAdapter) {
         this.mBaseFilterAdapter = mBaseFilterAdapter;
-        notifyChanged();
+        initFilterItem();
+    }
+
+    @Override
+    public void setSelect(int position, int index, String defaultStr) {
+        if(mFilterPop012 != null) mFilterPop012.dismiss();
+        if(mFilterPop3 != null) mFilterPop3.dismiss();
+
+        String title = mBaseFilterAdapter.getString(position,index);
+        if(TextUtils.isEmpty(title)) title = defaultStr;
+        if(position == 1) {
+            mFilter1Selected = index;
+            mFilter1Text.setText(title);
+            mFilter1Text.setTextColor(getResources().getColor(R.color.red_dark));
+            mFilter1Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
+        } else if(position == 2) {
+            mFilter2Selected = index;
+            mFilter2Text.setText(title);
+            mFilter2Text.setTextColor(getResources().getColor(R.color.red_dark));
+            mFilter2Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
+        } else if(position == 3) {
+            mFilter3Selected = index;
+            mFilter3Text.setText(title);
+            mFilter3Text.setTextColor(getResources().getColor(R.color.red_dark));
+            mFilter3Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
+        }
+    }
+
+    @Override
+    public void setSelect(int position, int index, int subIndex) {
+        if(mFilterPop3 != null) {
+
+        }
+    }
+
+    @Override
+    public void reset(int position) {
+        if(mFilterPop3 != null) mFilterPop3.reset();
     }
 
     private void init(Context context, AttributeSet attrs) {
         View view = LayoutInflater.from(context).inflate(R.layout.filter_layout,null);
+
+        mFilter1 = view.findViewById(R.id.filter1View);
+        mFilter2 = view.findViewById(R.id.filter2View);
+        mFilter3 = view.findViewById(R.id.filter3View);
+        mFilter4 = view.findViewById(R.id.filter4View);
 
         mFilter1Text = (TextView) view.findViewById(R.id.filter1Text);
         mFilter2Text = (TextView) view.findViewById(R.id.filter2Text);
@@ -78,14 +125,38 @@ public class FilterView extends FrameLayout implements View.OnClickListener {
     /**
      * 初始化item显示
      */
-    private void notifyChanged() {
-        mFilter1Selected = mBaseFilterAdapter.getDefaultIndex(1);
-        mFilter2Selected = mBaseFilterAdapter.getDefaultIndex(2);
-        mFilter3Selected = mBaseFilterAdapter.getDefaultIndex(3);
+    private void initFilterItem() {
 
-        mFilter1Text.setText(mBaseFilterAdapter.getString(1, mFilter1Selected));
-        mFilter2Text.setText(mBaseFilterAdapter.getString(2, mFilter2Selected));
-        mFilter3Text.setText(mBaseFilterAdapter.getString(3, mFilter3Selected));
+        if(mBaseFilterAdapter.isVisible(1)) {
+            mShowItemNum++;
+            mFilter1Selected = mBaseFilterAdapter.getDefaultIndex(1);
+            mFilter1Text.setText(mBaseFilterAdapter.getString(1, mFilter1Selected));
+        } else {
+            mFilter1.setVisibility(View.GONE);
+        }
+
+        if(mBaseFilterAdapter.isVisible(2)) {
+            mShowItemNum++;
+            mFilter2Selected = mBaseFilterAdapter.getDefaultIndex(2);
+            mFilter2Text.setText(mBaseFilterAdapter.getString(2, mFilter2Selected));
+        } else {
+            mFilter2.setVisibility(View.GONE);
+        }
+
+        if(mBaseFilterAdapter.isVisible(3)) {
+            mShowItemNum++;
+            mFilter3Selected = mBaseFilterAdapter.getDefaultIndex(3);
+            mFilter3Text.setText(mBaseFilterAdapter.getString(3, mFilter3Selected));
+        } else {
+            mFilter3.setVisibility(View.GONE);
+        }
+
+        if(!mBaseFilterAdapter.isVisible(4)) {
+            mFilter4.setVisibility(View.GONE);
+        } else {
+            mShowItemNum++;
+        }
+
     }
 
     @Override
@@ -122,7 +193,10 @@ public class FilterView extends FrameLayout implements View.OnClickListener {
 
         ListView mListView;
         PopAdapter mPopAdapter;
+        View[] mFootViews;
         View mFootView;
+        View[] mHeadViews;
+        View mHeadView;
 
         public FilterPop(Context context) {
             super(context, null);
@@ -139,77 +213,50 @@ public class FilterView extends FrameLayout implements View.OnClickListener {
             mListView.setVisibility(View.VISIBLE);
             mPopAdapter = new PopAdapter();
 
-            mFootView = LayoutInflater.from(context).inflate(R.layout.filter_pop_item_input, null);
-            final EditText input = (EditText) mFootView.findViewById(R.id.input);
-            mFootView.findViewById(R.id.btnConfirm).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(TextUtils.isEmpty(input.toString())) {
-                        ToastUtil.showShortToast("您输入金额有误");
-                        return;
-                    }
-                    String cont = input.getText().toString();
-                    try {
-                        int money = Integer.parseInt(cont);
+            mFootViews = new View[mShowItemNum];
+            mHeadViews = new View[mShowItemNum];
+            for(int i=0;i<mFootViews.length;i++) {
+                mFootViews[i] = mBaseFilterAdapter.getFootView(i+1);
+                mHeadViews[i] = mBaseFilterAdapter.getHeadView(i + 1);
+            }
 
-                        if(money <= 0) {
-                            ToastUtil.showShortToast("金额必须大于0");
-                            return;
-                        }
+            if(mHeadViews.length > 1 && mHeadViews[0] != null) {
+                mListView.addHeaderView(mHeadViews[0]);
+                mHeadView = mHeadViews[0];
+            }
 
-                        String moneyStr = money+"万";
-                        mFilter1Selected = -1;
+            if(mFootViews.length > 1 && mFootViews[0] != null) {
+                mListView.addFooterView(mFootViews[0]);
+                mFootView = mFootViews[0];
+            }
 
-                        int index = mBaseFilterAdapter.getIndex(1,moneyStr);
-                        if(index >= 0) mFilter1Selected = index;
-                        mFilter1Text.setText(moneyStr);
-                        mFilter1Text.setTextColor(getResources().getColor(R.color.red_dark));
-                        mFilter1Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
-                        dismiss();
-                    }catch (Exception e) {
-                        ToastUtil.showShortToast("您输入金额有误");
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-            mListView.addFooterView(mFootView);
             mListView.setAdapter(mPopAdapter);
-
-            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    if((mPosition==1 || mPosition== 2) && position == 0) return;
-                    if(position >= mBaseFilterAdapter.getCount(mPosition)) return;
-
-                    if(mPosition == 1) {
-                        mFilter1Selected = position;
-                        mFilter1Text.setText(mBaseFilterAdapter.getString(mPosition,position));
-                        mFilter1Text.setTextColor(getResources().getColor(R.color.red_dark));
-                        mFilter1Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
-                    } else if(mPosition == 2) {
-                        mFilter2Selected = position;
-                        mFilter2Text.setText(mBaseFilterAdapter.getString(mPosition,position));
-                        mFilter2Text.setTextColor(getResources().getColor(R.color.red_dark));
-                        mFilter2Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
-                    } else if(mPosition == 3) {
-                        mFilter3Selected = position;
-                        mFilter3Text.setText(mBaseFilterAdapter.getString(mPosition,position));
-                        mFilter3Text.setTextColor(getResources().getColor(R.color.red_dark));
-                        mFilter3Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
-                    }
-
-                    mFilterPop012.dismiss();
-                }
-            });
         }
 
         void show(boolean refresh) {
-            if (mPosition == 1) {
-                mFootView.setVisibility(View.VISIBLE);
-            } else {
-                mFootView.setVisibility(View.GONE);
+            //检查head
+            if(mHeadView != null && mHeadView != mHeadViews[mPosition-1]) {
+                mListView.removeHeaderView(mHeadView);
             }
+            if(mHeadViews[mPosition-1] == null) {
+                mHeadView = null;
+            } else if(mHeadViews[mPosition-1] != mHeadView) {
+                mHeadView = mHeadViews[mPosition-1];
+                mListView.addHeaderView(mHeadView);
+            }
+
+            //检查foot
+            if(mFootView != null && mFootView != mFootViews[mPosition-1]) {
+                mListView.removeFooterView(mFootView);
+            }
+            if(mFootViews[mPosition-1] == null) {
+                mFootView = null;
+            } else if(mFootViews[mPosition-1] != mFootView) {
+                mFootView = mFootViews[mPosition-1];
+                mListView.addFooterView(mFootView);
+            }
+
+
             mPopAdapter.notifyDataSetChanged();
             showAsDropDown(FilterView.this);
         }

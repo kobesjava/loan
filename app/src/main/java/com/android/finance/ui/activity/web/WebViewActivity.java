@@ -30,14 +30,14 @@ public class WebViewActivity extends BaseActivity {
 	public static final String PARAM_TITLE = "PARAM_TITLE";
 	public static final String PARAM_SHOW_TOOLBAR = "PARAM_SHOW_TOOLBAR";
 
-    @ViewById(R.id.title_bar)
-	CommonTitleBar titleBar;
+    @ViewById(R.id.titleBar)
+	CommonTitleBar mTitleBar;
     @ViewById(R.id.webview)
 	WebView mWebView;
     @ViewById(R.id.wap_toolbar)
 	View mWapToolBar;
     @ViewById(R.id.loading)
-    View loading;
+    View mLoading;
 
 
 	private String mUrl;
@@ -72,8 +72,8 @@ public class WebViewActivity extends BaseActivity {
     @AfterViews
 	void initViews() {
 
-        titleBar.setTitle(TextUtils.isEmpty(mTitle)? "":mTitle);
-        titleBar.setActivity(this);
+		mTitleBar.setTitle(TextUtils.isEmpty(mTitle)? "":mTitle);
+		mTitleBar.setActivity(this);
 
         if (mShowToolbar) {
             mWapToolBar.setVisibility(View.VISIBLE);
@@ -110,7 +110,7 @@ public class WebViewActivity extends BaseActivity {
         	@Override
 			public void onPageFinished(WebView view, String url) {
 				super.onPageFinished(view, url);
-                loading.setVisibility(View.GONE);
+                mLoading.setVisibility(View.GONE);
 			}
         	
         	@Override

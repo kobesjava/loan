@@ -109,6 +109,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
 
+            <RelativeLayout
+                android:id="@+id/btnSetUp"
+                style="@style/mine_item">
+                <TextView
+                    android:drawableLeft="@drawable/user_center_setting"
+                    android:text="@string/mine_setup"
+                    style="@style/mine_item_text" />
+
+                <ImageView
+                    android:src="@drawable/arrow_right_img"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <com.android.finance.ui.widget.LineView
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"

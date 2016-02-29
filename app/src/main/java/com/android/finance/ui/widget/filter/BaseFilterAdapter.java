@@ -60,4 +60,33 @@ public abstract class BaseFilterAdapter {
      */
     protected abstract int getSelected(int position);
 
+    /**
+     * 具体显示第几个筛选选项
+     * @param position 第几个筛选类型
+     * @return
+     */
+    protected abstract boolean isVisible(int position);
+
+    /**
+     * 在最底部添加view
+     * @param posion 第几个筛选类型
+     * @return
+     */
+    protected abstract View getFootView(int posion);
+
+    /**
+     * 在头部添加view
+     * @param posion 第几个筛选类型
+     * @return
+     */
+    protected abstract View getHeadView(int posion);
+
+    /**
+     * 是否可以点击
+     * @param position
+     * @param index
+     * @return
+     */
+    //protected abstract boolean isClickAble(int position,int index);
+
 }
