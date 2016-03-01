@@ -1,56 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <ImageView
-        android:layout_marginLeft="40dp"
-        android:src="@drawable/user_center_loan_status"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
-
-    <ImageView
-        android:layout_marginTop="26dp"
-        android:layout_marginLeft="2dp"
-        android:src="@drawable/user_center_loan_status_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <LinearLayout
-        android:layout_gravity="center_vertical"
-        android:background="@color/color_e5e5e5"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:text="拒绝接单"
-            android:textColor="@color/color_333"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_marginRight="20dp"
-            android:textSize="14sp"
-            android:text="2016/3/1 12:12:33"
-            android:textColor="@color/color_333"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/user_center_loan_status" />
 
         <ImageView
-            android:layout_marginRight="10dp"
-            android:src="@drawable/user_center_loan_status_down"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="21dp"
+            android:src="@drawable/user_center_loan_status_left" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/color_e5e5e5"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:text="拒绝接单"
+                    android:textColor="@color/color_333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/user_center_loan_status_down"
+                    android:text="2016/3/1 12:12:33"
+                    android:textColor="@color/color_950000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/reason"
+                android:textColor="@color/color_950000"
+                android:text="过期自动失效"
+                android:paddingLeft="15dp"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:background="@color/color_e5e5e5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

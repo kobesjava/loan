@@ -1,5 +1,6 @@
 package com.android.finance.ui.activity.loan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +12,7 @@ import com.android.finance.ui.adapter.LoanApplyAdapter;
 import com.android.finance.ui.widget.CommonTitleBar;
 import com.android.finance.ui.widget.load.BottomRefreshListView;
 import com.android.finance.ui.widget.load.RefreshLayout;
+import com.finance.framework.util.GeneratedClassUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -59,8 +61,8 @@ public class LoanApplyListActivity extends BaseActivity {
         mBottomRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(CreditDetailActivity.class));
-                //startActivity(intent);
+                Intent intent = new Intent(LoanApplyListActivity.this, GeneratedClassUtils.get(LoanApplyDetailActivity.class));
+                startActivity(intent);
             }
         });
 
