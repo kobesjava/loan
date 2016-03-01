@@ -122,6 +122,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
         EventBus.getDefault().post(event);
         TabEvent tabEvent = new TabEvent();
         tabEvent.setTabIndex(1);
+        tabEvent.setLoanTypeEnum(loanTypeEnum);
         EventBus.getDefault().post(tabEvent);
     }
 
@@ -131,6 +132,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
      */
     private void goToCreditTab(CreditLevelEnum levelEnum) {
         TabEvent tabEvent = new TabEvent();
+        tabEvent.setCreditLevelEnum(levelEnum);
         tabEvent.setTabIndex(2);
         EventBus.getDefault().post(tabEvent);
         CreditLevelEvent event = new CreditLevelEvent();

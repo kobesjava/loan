@@ -39,10 +39,6 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
         this.mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public void setFilterManager(FilterManager filterManager) {
-        this.mFilterManager = filterManager;
-    }
-
     public void setData(String[] mFilter1,String[] mFilter2,String[] mFilter3,List<String[]> mFilter4,String[] mFilter4Title,
                         int[] mFilter123Selected,int[] mFilter4Selected) {
         this.mFilter1 = mFilter1;
@@ -117,6 +113,26 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
     }
 
     @Override
+    protected void setSelect(int position, int index) {
+        //// TODO: 16/3/1 待完善
+        if(position == 4 && index>=10) {
+            int mIndex = index/10;
+            int mSubindex = index%10;
+            mFilter4Selected[mIndex] = mSubindex;
+        }
+    }
+
+    @Override
+    protected boolean isSelected(int position, int index) {
+        //// TODO: 16/3/1 待完善
+        if(position == 4 && index>=10) {
+            int mIndex = index/10;
+            return mFilter4Selected[mIndex]>0;
+        }
+        return false;
+    }
+
+    @Override
     protected int getSelected(int position) {
         if(position == 4) {
             int selected = 0;
@@ -176,12 +192,12 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
     }
 
     @Override
-    protected View getView(int position, int index, View view,boolean selected) {
+    protected View getView(int position, int index, View view,int selected) {
 
         if(position == 4) {
-           return getView4(index,view);
+           return getView4(index,view,selected);
         } else {
-           return getView123(position,index,view,selected);
+           return getView123(position,index,view,selected==index);
         }
     }
 
@@ -233,7 +249,7 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
         return view;
     }
 
-    private View getView4(final int index, View view) {
+    private View getView4(final int index, View view,int selected) {
         ViewHolder holder = null;
         if(view == null) {
             view = mLayoutInflater.inflate(R.layout.filter_pop_item1, null);
@@ -241,6 +257,12 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
+        }
+
+        if(selected >= 10) {
+            int mIndex = selected/10;
+            int mSubindex = selected%10;
+            mFilter4Selected[mIndex] = mSubindex;
         }
 
         holder.title.setText(mFilter4Title[index] + ": ");

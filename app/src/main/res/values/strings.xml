@@ -71,6 +71,11 @@
     <!-- loan -->
     <string name="loan_title">贷款</string>
 
+    <!-- loan apply -->
+    <string name="loan_apply_title">我的贷款申请</string>
+    <string name="loan_apply_track">申请单跟踪</string>
+    <string name="loan_apply_detail_title">贷款申请详情</string>
+
     <!-- loan product -->
     <string name="product_detail_title">产品详情</string>
 

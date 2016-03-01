@@ -22,7 +22,6 @@ import com.android.finance.ui.widget.load.BottomRefreshListView;
 import com.android.finance.ui.widget.load.RefreshLayout;
 import com.finance.framework.util.GeneratedClassUtils;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -107,6 +106,8 @@ public class CreditFragment extends BaseFragment {
                 mFilter123Selected);
         mFilterManager.setComponents(mFilterView, filterAdapter);
 
+        doLevelSelect((CreditLevelEnum)mBundle.getSerializable("level"));
+
         requestLoans();
     }
 
@@ -188,10 +189,13 @@ public class CreditFragment extends BaseFragment {
         mCreditAdapter.add(lists);
     }
 
-    public void onEventMainThread(CreditLevelEvent event) {
-        CreditLevelEnum levelEnum = event.getLevel();
+    private void doLevelSelect(CreditLevelEnum levelEnum) {
         if(levelEnum == null) levelEnum = CreditLevelEnum.不限;
-        mFilterManager.setSelect(3,levelEnum.getCode(),"");
+        mFilterManager.setSelect(3, levelEnum.getCode(), "");
+    }
+
+    public void onEventMainThread(CreditLevelEvent event) {
+        doLevelSelect(event.getLevel());
     }
 
 }

@@ -200,15 +200,15 @@
     <color name="color_e84a01">#e84a01</color>
     <color name="color_607d8b">#607d8b</color>
     <color name="color_9e9e0e">#9e9e9e</color>
-
     <color name="color_black">#ff000000</color>
     <color name="black_a10">#14000000</color>
     <color name="main_black_999999">#999999</color>
     <color name="color_fd7b28">#fd7b28</color>
     <color name="color_fd5b0a">#fd5b0a</color>
-
     <color name="color_f7f7f7">#f7f7f7</color>
-    
     <color name="color_c1c1c1">#c1c1c1</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_e5e5e5">#e5e5e5</color>
+
     
 </resources>

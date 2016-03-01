@@ -14,6 +14,21 @@ public abstract class BaseFilterAdapter {
     protected abstract void reset(int position);
 
     /**
+     * 设置选中的
+     * @param position
+     * @param index
+     */
+    protected abstract void setSelect(int position,int index);
+
+    /**
+     * 是否被选中
+     * @param position 第几个筛选类型
+     * @param index    第几个筛选项
+     * @return
+     */
+    protected abstract boolean isSelected(int position,int index);
+
+    /**
      * 获取总数
      * @param position 第几个筛选类型
      * @return
@@ -36,7 +51,7 @@ public abstract class BaseFilterAdapter {
      * @param selected 是否之前被选中了
      * @return
      */
-    protected abstract View getView(int position,int index,View view,boolean selected);
+    protected abstract View getView(int position,int index,View view,int selected);
 
     /**
      * 获取筛项文字显示

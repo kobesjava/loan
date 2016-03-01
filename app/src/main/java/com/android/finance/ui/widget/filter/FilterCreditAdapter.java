@@ -101,6 +101,17 @@ public class FilterCreditAdapter extends BaseFilterAdapter {
     }
 
     @Override
+    protected void setSelect(int position, int index) {
+        //// TODO: 16/3/1 待完善
+    }
+
+    @Override
+    protected boolean isSelected(int position, int index) {
+        //// TODO: 16/3/1 待完善
+        return false;
+    }
+
+    @Override
     protected View getFootView(int posion) {
         return null;
     }
@@ -111,7 +122,7 @@ public class FilterCreditAdapter extends BaseFilterAdapter {
     }
 
     @Override
-    protected View getView(int position, int index, View view,boolean selected) {
+    protected View getView(int position, int index, View view,int selected) {
         ViewHolder holder = null;
 
         if(view == null) {
@@ -141,13 +152,14 @@ public class FilterCreditAdapter extends BaseFilterAdapter {
         }
         holder.title.setText(title);
 
-        if(index == 0 || selected) {
+        boolean isSelected = index==selected;
+        if(index == 0 || isSelected) {
             holder.title.setBackgroundResource(R.color.color_f7f7f7);
         } else {
             holder.title.setBackgroundResource(R.color.white);
         }
 
-        if(selected) {
+        if(isSelected) {
             holder.title.setTextColor(context.getResources().getColor(R.color.red_dark));
             holder.title.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.drawable.common_selected_mark), null);
         } else {

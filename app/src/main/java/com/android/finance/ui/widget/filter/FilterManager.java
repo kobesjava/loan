@@ -7,24 +7,16 @@ public class FilterManager {
 
     private FilterSelect mFilterView;
 
-    private BaseFilterAdapter mBaseFilterAdapter;
+    private BaseFilterAdapter mAdapter;
 
-    public BaseFilterAdapter getmBaseFilterAdapter() {
-        return mBaseFilterAdapter;
+    public void setAdapter(BaseFilterAdapter mAdapter) {
+        this.mAdapter = mAdapter;
     }
 
-    public void setAdapter(BaseFilterAdapter mBaseFilterAdapter) {
-        this.mBaseFilterAdapter = mBaseFilterAdapter;
-    }
-
-    public FilterSelect getmFilterView() {
-        return mFilterView;
-    }
-
-    public void setComponents(FilterSelect mFilterView,BaseFilterAdapter mBaseFilterAdapter) {
+    public void setComponents(FilterSelect mFilterView,BaseFilterAdapter mAdapter) {
         this.mFilterView = mFilterView;
-        this.mBaseFilterAdapter = mBaseFilterAdapter;
-        mFilterView.setAdapter(mBaseFilterAdapter);
+        this.mAdapter = mAdapter;
+        mFilterView.setAdapter(mAdapter);
     }
 
     public void setSelect(int position,int index,String defaultStr) {
@@ -33,10 +25,6 @@ public class FilterManager {
 
     public void reset(int position) {
         mFilterView.reset(position);
-    }
-
-    public void setSelect(int position,int index,int subIndex) {
-        this.mFilterView.setSelect(position,index,subIndex);
     }
 
 }

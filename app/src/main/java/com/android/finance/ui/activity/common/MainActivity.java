@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 import com.android.finance.R;
 import com.android.finance.app.MyApplication;
+import com.android.finance.bean.event.LoanTypeEvent;
 import com.android.finance.bean.event.LoginExpired;
 import com.android.finance.bean.event.LoginOutEvent;
 import com.android.finance.bean.event.TabEvent;
 import com.android.finance.config.Constants;
+import com.android.finance.enums.CreditLevelEnum;
 import com.android.finance.presenter.IMainPresenter;
 import com.android.finance.presenter.impl.MainPresenterImpl;
 import com.android.finance.ui.fragment.main.CreditFragment;
@@ -53,6 +55,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     private IMainPresenter iMainPresenter;
 
+    Bundle bundle = new Bundle();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,8 +99,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         mTabHost.getTabWidget().setDividerDrawable(null);
         mTabHost.setBackgroundResource(R.drawable.card_shadow_up);
         mTabHost.addTab(createSpec(TAB_RECOMMEND, getString(R.string.main_recommend), R.drawable.main_tab1_selector), GeneratedClassUtils.get(RecommendFragment.class), null);
-        mTabHost.addTab(createSpec(TAB_LOAN, getString(R.string.main_loan), R.drawable.main_tab2_selector), GeneratedClassUtils.get(LoanFragment.class), null);
-        mTabHost.addTab(createSpec(TAB_CREDIT, getString(R.string.main_credit), R.drawable.main_tab3_selector), GeneratedClassUtils.get(CreditFragment.class), null);
+        mTabHost.addTab(createSpec(TAB_LOAN, getString(R.string.main_loan), R.drawable.main_tab2_selector), GeneratedClassUtils.get(LoanFragment.class), bundle);
+        mTabHost.addTab(createSpec(TAB_CREDIT, getString(R.string.main_credit), R.drawable.main_tab3_selector), GeneratedClassUtils.get(CreditFragment.class), bundle);
         mTabHost.addTab(createSpec(TAB_MINE, getString(R.string.main_mine), R.drawable.main_tab4_selector), GeneratedClassUtils.get(MineFragment.class), null);
     }
 
@@ -188,6 +191,11 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     public void onEventMainThread(TabEvent event) {
+        if(event.getTabIndex() == 1) {
+            bundle.putSerializable("type", event.getLoanTypeEnum());
+        } else if(event.getTabIndex() == 2) {
+            bundle.putSerializable("level", event.getCreditLevelEnum());
+        }
         mTabHost.setCurrentTab(event.getTabIndex());
     }
 

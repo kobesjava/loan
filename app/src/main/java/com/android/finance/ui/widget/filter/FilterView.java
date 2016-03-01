@@ -30,7 +30,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
     TextView mFilter4NumText;
 
-    BaseFilterAdapter mBaseFilterAdapter;
+    BaseFilterAdapter mAdapter;
 
     private int mPosition;
 
@@ -55,8 +55,8 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
     }
 
     @Override
-    public void setAdapter(BaseFilterAdapter mBaseFilterAdapter) {
-        this.mBaseFilterAdapter = mBaseFilterAdapter;
+    public void setAdapter(BaseFilterAdapter mAdapter) {
+        this.mAdapter = mAdapter;
         initFilterItem();
     }
 
@@ -65,7 +65,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         if(mFilterPop012 != null) mFilterPop012.dismiss();
         if(mFilterPop3 != null) mFilterPop3.dismiss();
 
-        String title = mBaseFilterAdapter.getString(position,index);
+        String title = mAdapter.getString(position,index);
         if(TextUtils.isEmpty(title)) title = defaultStr;
         if(position == 1) {
             mFilter1Selected = index;
@@ -82,18 +82,17 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             mFilter3Text.setText(title);
             mFilter3Text.setTextColor(getResources().getColor(R.color.red_dark));
             mFilter3Text.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.product_filter_focus),null);
-        }
-    }
-
-    @Override
-    public void setSelect(int position, int index, int subIndex) {
-        if(mFilterPop3 != null) {
-
+        } else if(position == 4) {
+            mAdapter.setSelect(position,index);
+            int selected = mAdapter.getSelected(4);
+            mFilter4NumText.setText(selected+"");
+            mFilter4NumText.setVisibility(selected>0?View.VISIBLE:View.GONE);
         }
     }
 
     @Override
     public void reset(int position) {
+        //// TODO: 16/3/1 待完善
         if(mFilterPop3 != null) mFilterPop3.reset();
     }
 
@@ -127,31 +126,31 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
      */
     private void initFilterItem() {
 
-        if(mBaseFilterAdapter.isVisible(1)) {
+        if(mAdapter.isVisible(1)) {
             mShowItemNum++;
-            mFilter1Selected = mBaseFilterAdapter.getDefaultIndex(1);
-            mFilter1Text.setText(mBaseFilterAdapter.getString(1, mFilter1Selected));
+            mFilter1Selected = mAdapter.getDefaultIndex(1);
+            mFilter1Text.setText(mAdapter.getString(1, mFilter1Selected));
         } else {
             mFilter1.setVisibility(View.GONE);
         }
 
-        if(mBaseFilterAdapter.isVisible(2)) {
+        if(mAdapter.isVisible(2)) {
             mShowItemNum++;
-            mFilter2Selected = mBaseFilterAdapter.getDefaultIndex(2);
-            mFilter2Text.setText(mBaseFilterAdapter.getString(2, mFilter2Selected));
+            mFilter2Selected = mAdapter.getDefaultIndex(2);
+            mFilter2Text.setText(mAdapter.getString(2, mFilter2Selected));
         } else {
             mFilter2.setVisibility(View.GONE);
         }
 
-        if(mBaseFilterAdapter.isVisible(3)) {
+        if(mAdapter.isVisible(3)) {
             mShowItemNum++;
-            mFilter3Selected = mBaseFilterAdapter.getDefaultIndex(3);
-            mFilter3Text.setText(mBaseFilterAdapter.getString(3, mFilter3Selected));
+            mFilter3Selected = mAdapter.getDefaultIndex(3);
+            mFilter3Text.setText(mAdapter.getString(3, mFilter3Selected));
         } else {
             mFilter3.setVisibility(View.GONE);
         }
 
-        if(!mBaseFilterAdapter.isVisible(4)) {
+        if(!mAdapter.isVisible(4)) {
             mFilter4.setVisibility(View.GONE);
         } else {
             mShowItemNum++;
@@ -189,7 +188,20 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         }
     }
 
-    private class FilterPop extends PopupWindow {
+    private class FilterPopWindow extends PopupWindow {
+
+        public FilterPopWindow(Context context) {
+            super(context, null);
+            //setAnimationStyle(0);
+            setWidth(android.view.WindowManager.LayoutParams.MATCH_PARENT);
+            setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+            setFocusable(true);
+            setBackgroundDrawable(context.getResources().getDrawable(R.color.transparent));
+        }
+
+    }
+
+    private class FilterPop extends FilterPopWindow {
 
         ListView mListView;
         PopAdapter mPopAdapter;
@@ -199,13 +211,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         View mHeadView;
 
         public FilterPop(Context context) {
-            super(context, null);
-            //setAnimationStyle(0);
-            setWidth(android.view.WindowManager.LayoutParams.MATCH_PARENT);
-            setHeight(WindowManager.LayoutParams.MATCH_PARENT);
-            setFocusable(true);
-            setBackgroundDrawable(context.getResources().getDrawable(R.color.transparent));
-
+            super(context);
             final View popView = LayoutInflater.from(context).inflate(R.layout.filter_pop, null);
             setContentView(popView);
 
@@ -216,8 +222,8 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             mFootViews = new View[mShowItemNum];
             mHeadViews = new View[mShowItemNum];
             for(int i=0;i<mFootViews.length;i++) {
-                mFootViews[i] = mBaseFilterAdapter.getFootView(i+1);
-                mHeadViews[i] = mBaseFilterAdapter.getHeadView(i + 1);
+                mFootViews[i] = mAdapter.getFootView(i+1);
+                mHeadViews[i] = mAdapter.getHeadView(i + 1);
             }
 
             if(mHeadViews.length > 1 && mHeadViews[0] != null) {
@@ -263,7 +269,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
     }
 
-    private class Filter3Pop extends PopupWindow {
+    private class Filter3Pop extends FilterPopWindow {
 
         ListView mListView;
         PopAdapter mPopAdapter;
@@ -271,13 +277,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         EditText moneyInput;
 
         public Filter3Pop(Context context) {
-            super(context, null);
-            //setAnimationStyle(0);
-            setWidth(android.view.WindowManager.LayoutParams.MATCH_PARENT);
-            setHeight(android.view.WindowManager.LayoutParams.WRAP_CONTENT);
-            setFocusable(true);
-            setBackgroundDrawable(context.getResources().getDrawable(R.color.transparent));
-
+            super(context);
             View popView = LayoutInflater.from(context).inflate(R.layout.filter_pop, null);
             setContentView(popView);
 
@@ -343,7 +343,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         }
 
         void confirm() {
-            int selected = mBaseFilterAdapter.getSelected(4);
+            int selected = mAdapter.getSelected(4);
             mFilter4NumText.setText(selected+"");
             mFilter4NumText.setVisibility(selected>0?View.VISIBLE:View.GONE);
         }
@@ -351,7 +351,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         void reset() {
             moneyInput.setText("10");
             mFilter4NumText.setVisibility(View.GONE);
-            mBaseFilterAdapter.reset(4);
+            mAdapter.reset(4);
             mPopAdapter.notifyDataSetChanged();
         }
 
@@ -361,7 +361,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
         @Override
         public int getCount() {
-            return mBaseFilterAdapter==null?0:mBaseFilterAdapter.getCount(mPosition);
+            return mAdapter==null?0:mAdapter.getCount(mPosition);
         }
 
         @Override
@@ -376,11 +376,11 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            boolean selected = false;
-            if(mPosition == 1) selected = mFilter1Selected == position;
-            else if(mPosition == 2) selected = mFilter2Selected == position;
-            else if(mPosition == 3) selected = mFilter3Selected == position;
-            convertView = mBaseFilterAdapter.getView(mPosition,position,convertView,selected);
+            int selected = -1;
+            if(mPosition == 1) selected = mFilter1Selected;
+            else if(mPosition == 2) selected = mFilter2Selected;
+            else if(mPosition == 3) selected = mFilter3Selected;
+            convertView = mAdapter.getView(mPosition,position,convertView,selected);
             return convertView;
         }
     }

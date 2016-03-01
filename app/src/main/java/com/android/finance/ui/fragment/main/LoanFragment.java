@@ -115,9 +115,11 @@ public class LoanFragment extends BaseFragment {
                 getResources().getStringArray(R.array.filter2),
                 getResources().getStringArray(R.array.filter3),
                 list, getResources().getStringArray(R.array.filter4Title),
-                mFilter123Selected,mFilter4Selected);
+                mFilter123Selected, mFilter4Selected);
 
         mFilterManager.setComponents(mFilterView, filterAdapter);
+
+        doSelectType((LoanTypeEnum)mBundle.getSerializable("type"));
 
         requestLoans();
     }
@@ -200,17 +202,21 @@ public class LoanFragment extends BaseFragment {
         mLoanAdapter.add(lists);
     }
 
-    public void onEventMainThread(LoanTypeEvent event) {
-        LoanTypeEnum loanTypeEnum = event.getType();
+    private void doSelectType(LoanTypeEnum loanTypeEnum) {
         if(loanTypeEnum == null) {
             mFilterManager.reset(4);
         } else if(loanTypeEnum.equals(LoanTypeEnum.企业贷款)) {
-            mFilterManager.setSelect(4,0,1);
+            mFilterManager.setSelect(4,11,"");
         } else if(loanTypeEnum.equals(LoanTypeEnum.上班族贷款)) {
-            mFilterManager.setSelect(4,0,3);
+            mFilterManager.setSelect(4,13,"");
         } else if(loanTypeEnum.equals(LoanTypeEnum.信用贷款)) {
-            mFilterManager.setSelect(4,1,1);
+            mFilterManager.setSelect(4,21,"");
         }
+    }
+
+    public void onEventMainThread(LoanTypeEvent event) {
+        LoanTypeEnum loanTypeEnum = event.getType();
+        doSelectType(loanTypeEnum);
     }
 
 }

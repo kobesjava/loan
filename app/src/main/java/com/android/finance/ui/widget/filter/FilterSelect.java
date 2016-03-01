@@ -20,14 +20,6 @@ public interface FilterSelect {
     void setSelect(int position,int index,String defaultStr);
 
     /**
-     * 设置选中项
-     * @param position 第几个选项卡
-     * @param index    选项卡下的第几个选项
-     * @param subIndex 子选项
-     */
-    void setSelect(int position,int index,int subIndex);
-
-    /**
      * 重置内容
      * @param position
      */

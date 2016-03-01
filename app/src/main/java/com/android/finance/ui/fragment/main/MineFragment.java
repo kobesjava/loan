@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.finance.R;
+import com.android.finance.bean.loan.LoanApplyModel;
 import com.android.finance.config.Constants;
+import com.android.finance.ui.activity.loan.LoanApplyListActivity;
 import com.android.finance.ui.activity.user.AboutUsActivity;
 import com.android.finance.ui.activity.user.LoginActivity;
 import com.android.finance.ui.activity.user.SetupActivity;
@@ -57,8 +59,9 @@ public class MineFragment extends BaseFragment {
     }
 
     @Click(R.id.btnLoanApply)
-    void clickLoanApply() {
-
+    void clickMyLoanApply() {
+        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanApplyListActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.btnLoanMaterial)
