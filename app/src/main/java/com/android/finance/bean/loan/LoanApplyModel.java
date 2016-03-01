@@ -9,6 +9,8 @@ public class LoanApplyModel extends LoanModel {
 
     private String status;
 
+    private String reason;
+
     private String source;
 
     private long time;
@@ -43,5 +45,13 @@ public class LoanApplyModel extends LoanModel {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

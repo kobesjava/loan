@@ -9,31 +9,50 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:src="@drawable/user_center_loan_status" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.android.finance.ui.widget.LineVerticalView
+                android:layout_width="1dp"
+                android:layout_height="20dp" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/order_process_node" />
+
+            <com.android.finance.ui.widget.LineVerticalView
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="23dp"
             android:src="@drawable/user_center_loan_status_left" />
 
         <LinearLayout
+            android:id="@+id/statusView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="6dp"
             android:background="@color/color_e5e5e5"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -61,14 +80,15 @@
 
             <TextView
                 android:id="@+id/reason"
-                android:textColor="@color/color_950000"
-                android:text="过期自动失效"
-                android:paddingLeft="15dp"
-                android:textSize="12sp"
-                android:gravity="center_vertical"
-                android:background="@color/color_e5e5e5"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:background="@color/color_e5e5e5"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="过期自动失效"
+                android:textColor="@color/color_950000"
+                android:textSize="12sp" />
 
         </LinearLayout>
     </LinearLayout>
