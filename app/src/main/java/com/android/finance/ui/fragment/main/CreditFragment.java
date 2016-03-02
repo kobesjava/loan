@@ -116,74 +116,74 @@ public class CreditFragment extends BaseFragment {
 
         CreditModel model = new CreditModel();
         model.setId("123");
-        model.setScore(3.5f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(2.5f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(3f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(5f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(4f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(4f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(1f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         model = new CreditModel();
         model.setId("123");
-        model.setScore(0.5f);
-        model.setInterest(2321);
+        model.setApplys(2736);
+        model.setCashPerscent("40%");
         model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
+        model.setLevel(7);
+        model.setDesc("那顿饭你哦万佛破发物品能否门票佛网平安银行");
         lists.add(model);
 
         mCreditAdapter.add(lists);

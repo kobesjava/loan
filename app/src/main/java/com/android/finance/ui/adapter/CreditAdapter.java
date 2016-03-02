@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.android.finance.R;
 import com.android.finance.bean.credit.CreditModel;
 import com.android.finance.bean.loan.LoanModel;
+import com.android.finance.enums.CreditLevelEnum;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class CreditAdapter extends BaseAdapter {
 
     private LayoutInflater mLayoutInflater;
     private List<CreditModel> mList;
-    private CreditModel mLoanModel;
+    private CreditModel model;
 
     public CreditAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
@@ -61,40 +62,39 @@ public class CreditAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.loan_item, null);
+            convertView = mLayoutInflater.inflate(R.layout.credit_item, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        mLoanModel = getItem(position);
+        model = getItem(position);
 
-        viewHolder.enterprise.setText(mLoanModel.getName());
-        viewHolder.type.setText(mLoanModel.getType());
-        viewHolder.interest.setText("总利息 ："+mLoanModel.getInterest()+"元");
-        viewHolder.monthPay.setText("月供 ："+mLoanModel.getMonthPay()+"元");
-
-        viewHolder.rb.setRating(mLoanModel.getScore());
+        viewHolder.nameTxt.setText(model.getName());
+        viewHolder.descTxt.setText(model.getDesc());
+        viewHolder.levelTxt.setText(CreditLevelEnum.findLevel(model.getLevel()));
+        viewHolder.cashTxt.setText("取现额度: "+model.getCashPerscent());
+        viewHolder.applysTxt.setText("申请人数: "+model.getApplys());
 
         return convertView;
     }
 
     static class ViewHolder {
         ImageView img;
-        TextView  enterprise;
-        TextView  type;
-        RatingBar rb;
-        TextView  interest;
-        TextView  monthPay;
+        TextView  nameTxt;
+        TextView  descTxt;
+        TextView levelTxt;
+        TextView  cashTxt;
+        TextView  applysTxt;
 
         public ViewHolder(View view) {
             img = (ImageView) view.findViewById(R.id.img);
-            enterprise = (TextView) view.findViewById(R.id.loanEnterprise);
-            type = (TextView) view.findViewById(R.id.loanType);
-            rb = (RatingBar) view.findViewById(R.id.rb);
-            interest = (TextView) view.findViewById(R.id.interest);
-            monthPay = (TextView) view.findViewById(R.id.monthPay);
+            nameTxt = (TextView) view.findViewById(R.id.name);
+            descTxt = (TextView) view.findViewById(R.id.desc);
+            levelTxt = (TextView) view.findViewById(R.id.level);
+            cashTxt = (TextView) view.findViewById(R.id.cash);
+            applysTxt = (TextView) view.findViewById(R.id.applyNum);
         }
     }
 

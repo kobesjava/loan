@@ -20,47 +20,32 @@ import org.androidannotations.annotations.ViewById;
 /**
  * Created by yanxin on 16/2/25.
  */
-@EActivity(R.layout.activity_product_detail)
+@EActivity(R.layout.activity_credit_detail)
 public class CreditDetailActivity extends BaseActivity {
-
-    /** 金额*/
-    public final static String INTENT_TOTAL = "INTENT_TOTAL";
-    /** 期限*/
-    public final static String INTENT_TERM = "INTENT_TERM";
-
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
 
     @ViewById(R.id.img)
-    ImageView mProductIcon;
+    ImageView mIcon;
 
     @ViewById(R.id.name)
-    TextView mProductName;
+    TextView mCreditName;
 
-    @ViewById(R.id.interestRate)
-    TextView mInterestRate;
+    @ViewById(R.id.free)
+    TextView mFreeDays;
 
-    @ViewById(R.id.imgText)
-    ImgText mImgText;
+    @ViewById(R.id.level)
+    TextView mLevelText;
 
-    @ViewById(R.id.amount)
-    EditText mAmount;
+    @ViewById(R.id.cashPerscent)
+    TextView mCashPerscent;
 
-    @ViewById(R.id.term)
-    EditText mTerm;
+    @ViewById(R.id.currency)
+    TextView mCurrency;
 
-    @ViewById(R.id.loanTip)
-    TextView mLoanTip;
-
-    @ViewById(R.id.interestTotal)
-    TextView mInterestTotal;
-
-    @ViewById(R.id.interestMonth)
-    TextView mInterestMonth;
-
-    @ViewById(R.id.time)
-    TextView mTime;
+    @ViewById(R.id.info)
+    TextView mInfo;
 
     @ViewById(R.id.material)
     TabIndictor mTabIndictor;
@@ -68,16 +53,12 @@ public class CreditDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @AfterViews
     public void initView() {
-        mTitleBar.setTitle(getString(R.string.product_detail_title));
+        mTitleBar.setTitle(getString(R.string.credit_detail_title));
         mTitleBar.setActivity(this);
-
-        mAmount.setText(mIntent.getIntExtra(INTENT_TOTAL,10)+"");
-        mTerm.setText(mIntent.getIntExtra(INTENT_TERM,12)+"");
 
         mTabIndictor.setAdapter(new TabIndictor.BaseAdapter() {
             @Override
@@ -85,15 +66,6 @@ public class CreditDetailActivity extends BaseActivity {
                 return "";
             }
         });
-    }
-
-    @Click(R.id.interestTotalView)
-    void clickInsterestTotal() {
-        String s = "总利息=利息+服务费\n参考月利率 : 0.78%\n参考服务费率 : 0";
-        if(mDialog == null) {
-            mDialog = AlertDialogUtils.showPrompt(this, "总利息说明", s);
-        }
-        mDialog.show();
     }
 
     @Click(R.id.btnSubmit)

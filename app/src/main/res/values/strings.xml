@@ -81,5 +81,6 @@
 
     <!-- credit -->
     <string name="credit_title">信用卡</string>
+    <string name="credit_detail_title">信用卡详情</string>
 
 </resources>

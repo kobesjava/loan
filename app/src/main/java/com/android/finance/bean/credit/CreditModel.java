@@ -11,13 +11,13 @@ public class CreditModel {
 
     private String name;
 
-    private String type;
+    private String desc;
 
-    private float score;
+    private int level;
 
-    private int interest;
+    private String cashPerscent;
 
-    private int monthPay;
+    private int applys;
 
     public String getId() {
         return id;
@@ -43,35 +43,35 @@ public class CreditModel {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public float getScore() {
-        return score;
+    public int getLevel() {
+        return level;
     }
 
-    public void setScore(float score) {
-        this.score = score;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public int getInterest() {
-        return interest;
+    public String getCashPerscent() {
+        return cashPerscent;
     }
 
-    public void setInterest(int interest) {
-        this.interest = interest;
+    public void setCashPerscent(String cashPerscent) {
+        this.cashPerscent = cashPerscent;
     }
 
-    public int getMonthPay() {
-        return monthPay;
+    public int getApplys() {
+        return applys;
     }
 
-    public void setMonthPay(int monthPay) {
-        this.monthPay = monthPay;
+    public void setApplys(int applys) {
+        this.applys = applys;
     }
 }

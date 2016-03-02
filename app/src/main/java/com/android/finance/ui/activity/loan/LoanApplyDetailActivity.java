@@ -1,5 +1,6 @@
 package com.android.finance.ui.activity.loan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,10 +11,13 @@ import android.widget.TextView;
 import com.android.finance.R;
 import com.android.finance.bean.loan.LoanApplyModel;
 import com.android.finance.ui.activity.common.BaseActivity;
+import com.android.finance.ui.activity.product.ProductDetailActivity;
 import com.android.finance.ui.widget.CommonTitleBar;
 import com.finance.framework.util.DateUtil;
+import com.finance.framework.util.GeneratedClassUtils;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -58,24 +62,42 @@ public class LoanApplyDetailActivity extends BaseActivity {
                 view.findViewById(R.id.icon).setBackgroundResource(R.drawable.order_process_node_hl);
             }
 
+            View statusView = view.findViewById(R.id.statusView);
+            TextView reasonView = (TextView)view.findViewById(R.id.reason);
             ((TextView)view.findViewById(R.id.status)).setText(model.getStatus());
             ((TextView)view.findViewById(R.id.time)).setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getTime(), "yyyy/MM/dd HH:mm:ss"));
-            ((TextView)view.findViewById(R.id.reason)).setText(model.getReason());
+            reasonView.setText(model.getReason());
 
-            final TextView reasonView = (TextView)view.findViewById(R.id.reason);
-
-            if(!TextUtils.isEmpty(model.getReason())) {
+            if(i==0 && !TextUtils.isEmpty(model.getReason())) {
+                TextView timeView = ((TextView) view.findViewById(R.id.time));
+                timeView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.user_center_loan_status_down), null);
                 reasonView.setText(model.getReason());
-                view.findViewById(R.id.statusView).setOnClickListener(new View.OnClickListener() {
+                statusView.setTag(reasonView);
+                statusView.setTag(R.id.time,timeView);
+                statusView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        View view = (View) v.getTag();
+                        TextView timeView = (TextView) v.getTag(R.id.time);
+                        if(view.getVisibility() == View.VISIBLE) {
+                            view.setVisibility(View.GONE);
+                            timeView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.user_center_loan_status_down), null);
+                        } else {
+                            view.setVisibility(View.VISIBLE);
+                            timeView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.user_center_loan_status_up), null);
+                        }
                     }
                 });
             }
 
             mLinearLayout.addView(view);
         }
+    }
+
+    @Click(R.id.product)
+    void clickProductDetail() {
+        Intent intent = new Intent(this, GeneratedClassUtils.get(ProductDetailActivity.class));
+        startActivity(intent);
     }
 
     void  requestOrderStatus() {

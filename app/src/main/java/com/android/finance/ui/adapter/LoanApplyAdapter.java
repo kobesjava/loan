@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.android.finance.R;
 import com.android.finance.bean.credit.CreditModel;
 import com.android.finance.bean.loan.LoanApplyModel;
+import com.finance.framework.util.DateUtil;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class LoanApplyAdapter extends BaseAdapter {
 
     private LayoutInflater mLayoutInflater;
     private List<LoanApplyModel> mList;
-    private LoanApplyModel mLoanApplyModel;
+    private LoanApplyModel model;
 
     public LoanApplyAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
@@ -61,40 +62,42 @@ public class LoanApplyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.loan_item, null);
+            convertView = mLayoutInflater.inflate(R.layout.loan_apply_item, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        mLoanApplyModel = getItem(position);
+        model = getItem(position);
 
-        viewHolder.enterprise.setText(mLoanApplyModel.getName());
-        viewHolder.type.setText(mLoanApplyModel.getType());
-        viewHolder.interest.setText("总利息 ："+mLoanApplyModel.getInterest()+"元");
-        viewHolder.monthPay.setText("月供 ："+mLoanApplyModel.getMonthPay()+"元");
-
-        viewHolder.rb.setRating(mLoanApplyModel.getScore());
+        viewHolder.nameTxt.setText(model.getName());
+        viewHolder.amountTxt.setText("金额: "+model.getAomount());
+        viewHolder.statusTxt.setText(model.getStatus());
+        viewHolder.sourceTxt.setText(model.getSource());
+        viewHolder.termTxt.setText("期限: "+model.getTerm());
+        viewHolder.timeTxt.setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getTime(),"yyyy/MM/dd HH:mm:ss"));
 
         return convertView;
     }
 
     static class ViewHolder {
         ImageView img;
-        TextView  enterprise;
-        TextView  type;
-        RatingBar rb;
-        TextView  interest;
-        TextView  monthPay;
+        TextView  nameTxt;
+        TextView  amountTxt;
+        TextView  statusTxt;
+        TextView  termTxt;
+        TextView  sourceTxt;
+        TextView  timeTxt;
 
         public ViewHolder(View view) {
             img = (ImageView) view.findViewById(R.id.img);
-            enterprise = (TextView) view.findViewById(R.id.loanEnterprise);
-            type = (TextView) view.findViewById(R.id.loanType);
-            rb = (RatingBar) view.findViewById(R.id.rb);
-            interest = (TextView) view.findViewById(R.id.interest);
-            monthPay = (TextView) view.findViewById(R.id.monthPay);
+            nameTxt = (TextView) view.findViewById(R.id.name);
+            amountTxt = (TextView) view.findViewById(R.id.amount);
+            statusTxt = (TextView) view.findViewById(R.id.status);
+            sourceTxt = (TextView) view.findViewById(R.id.source);
+            termTxt = (TextView) view.findViewById(R.id.term);
+            timeTxt = (TextView) view.findViewById(R.id.time);
         }
     }
 

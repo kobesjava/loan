@@ -1,95 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/left"
+        android:layout_alignBottom="@+id/statusView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginLeft="40dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <com.android.finance.ui.widget.LineVerticalView
-                android:layout_width="1dp"
-                android:layout_height="20dp" />
-
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="1dp"
-                android:layout_marginTop="1dp"
-                android:src="@drawable/order_process_node" />
-
-            <com.android.finance.ui.widget.LineVerticalView
-                android:layout_width="1dp"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+        <com.android.finance.ui.widget.LineVerticalView
+            android:layout_width="1dp"
+            android:layout_height="20dp" />
 
         <ImageView
+            android:id="@+id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="23dp"
-            android:src="@drawable/user_center_loan_status_left" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/order_process_node" />
+
+        <com.android.finance.ui.widget.LineVerticalView
+            android:layout_width="1dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/middle"
+        android:layout_toRightOf="@id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/user_center_loan_status_left" />
+
+    <LinearLayout
+        android:id="@+id/statusView"
+        android:layout_toRightOf="@id/middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/statusView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
             android:background="@color/color_e5e5e5"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="拒绝接单"
-                    android:textColor="@color/color_333"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/user_center_loan_status_down"
-                    android:text="2016/3/1 12:12:33"
-                    android:textColor="@color/color_950000"
-                    android:textSize="14sp" />
-            </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/reason"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/color_e5e5e5"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="过期自动失效"
-                android:textColor="@color/color_950000"
-                android:textSize="12sp" />
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="拒绝接单"
+                android:textColor="@color/color_333"
+                android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="10dp"
+                android:text="2016/3/1 12:12:33"
+                android:textColor="@color/color_950000"
+                android:textSize="14sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/reason"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_e5e5e5"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="过期自动失效"
+            android:textColor="@color/color_950000"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

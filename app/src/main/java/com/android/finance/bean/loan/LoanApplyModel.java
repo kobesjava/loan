@@ -7,6 +7,10 @@ public class LoanApplyModel extends LoanModel {
 
     private String applyId;
 
+    private int aomount;
+
+    private String term;
+
     private String status;
 
     private String reason;
@@ -53,5 +57,21 @@ public class LoanApplyModel extends LoanModel {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public int getAomount() {
+        return aomount;
+    }
+
+    public void setAomount(int aomount) {
+        this.aomount = aomount;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
     }
 }

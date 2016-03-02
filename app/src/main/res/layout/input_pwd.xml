@@ -15,6 +15,7 @@
         android:maxLength="20"
         android:digits="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
         android:textColor="@color/color_950000"
+        android:background="@drawable/contact_edit_edittext_focused"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 

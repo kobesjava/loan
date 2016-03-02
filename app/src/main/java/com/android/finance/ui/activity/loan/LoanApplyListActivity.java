@@ -79,6 +79,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         model = new LoanApplyModel();
@@ -88,6 +92,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         model = new LoanApplyModel();
@@ -97,6 +105,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         model = new LoanApplyModel();
@@ -106,6 +118,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         model = new LoanApplyModel();
@@ -115,6 +131,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         model = new LoanApplyModel();
@@ -124,6 +144,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         model = new LoanApplyModel();
@@ -142,6 +166,10 @@ public class LoanApplyListActivity extends BaseActivity {
         model.setName("平安银行-新一贷");
         model.setMonthPay(8765);
         model.setType("平安银行");
+        model.setTerm("12个月");
+        model.setSource("自申请");
+        model.setTime(System.currentTimeMillis());
+        model.setStatus("信用经理无反馈");
         lists.add(model);
 
         mAdapter.add(lists);

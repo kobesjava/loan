@@ -34,4 +34,10 @@ public enum CreditLevelEnum {
         }
         return null;
     }
+
+    public static String findLevel(int level) {
+        CreditLevelEnum levelEnum = find(level);
+        if(levelEnum == null || levelEnum.equals(CreditLevelEnum.不限)) return "";
+        return levelEnum.name();
+    }
 }

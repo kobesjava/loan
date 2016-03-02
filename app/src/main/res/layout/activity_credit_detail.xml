@@ -51,8 +51,8 @@
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -68,24 +68,27 @@
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="平安银行-新一贷"
+                        android:text="平安Berbrick"
                         android:textColor="@color/color_333"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/interestRate"
+                        android:id="@+id/free"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="月利率 ：0.78%"
+                        android:text="免息期: 20天 到 50天"
                         android:textColor="@color/color_800000"
                         android:textSize="12sp" />
 
-                    <com.android.finance.ui.widget.ImgText
-                        android:id="@+id/imgText"
-                        android:layout_width="match_parent"
-                        android:layout_height="18dp"
-                        android:layout_alignParentBottom="true" />
+                    <TextView
+                        android:id="@+id/level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="卡等级: 白金"
+                        android:layout_alignParentBottom="true"
+                        android:textColor="@color/color_800000"
+                        android:textSize="12sp" />
 
                 </RelativeLayout>
 
@@ -101,83 +104,41 @@
                 android:paddingRight="25dp">
 
                 <TextView
-                    android:id="@+id/left"
+                    android:id="@+id/cashPerscent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="7dp"
-                    android:text="金额"
-                    android:textColor="@color/color_800000"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/amount"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/left"
-                    android:gravity="center_horizontal"
-                    android:inputType="number"
-                    android:maxLength="6"
-                    android:text="10"
-                    android:textColor="@color/color_3c3c3c"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="7dp"
-                    android:layout_toRightOf="@id/amount"
-                    android:text="万"
+                    android:text="预借现金额度: 信用额度的 50%"
                     android:textColor="@color/color_800000"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/right"
+                    android:id="@+id/currency"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="7dp"
-                    android:text="个月"
+                    android:text="卡币种: 人民币/美元"
                     android:textColor="@color/color_800000"
                     android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/term"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/right"
-                    android:gravity="center_horizontal"
-                    android:inputType="number"
-                    android:maxLength="6"
-                    android:text="12"
-                    android:textColor="@color/color_3c3c3c"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="7dp"
-                    android:layout_toLeftOf="@id/term"
-                    android:text="期限"
-                    android:textColor="@color/color_800000"
-                    android:textSize="12sp" />
-
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/loanTip"
+                android:id="@+id/info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:paddingBottom="10dp"
                 android:paddingLeft="25dp"
-                android:text="额度范围 : 2万-30万   期限范围 : 1个月-48个月"
                 android:textColor="@color/color_800000"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:lineSpacingExtra="1dp"
+                android:text="主卡年费: 金卡附属卡终身免年费,免首年年费,刷卡6次免次年年费\n免年费政策: 首年免年费，刷卡六次免次年年费\n消费验证方式: 密码+签名 签名\n循环信用利息(日息): 每天收取 0.05% 港币最低收费为 1港元 美元最低收费为 1美元 人民\n消费短信通知费: 人民币36元年(主附卡合并计算)\n最低还款: 最低还款所欠金额的 5%\n账单日：账单日系统自动生成，不允许更改账单日"/>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -295,7 +256,8 @@
                 android:background="@color/white"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:text="货物流程"
+                android:paddingBottom="5dp"
+                android:text="办卡流程"
                 android:textColor="@color/color_3c3c3c"
                 android:textSize="14sp" />
 
@@ -303,7 +265,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:src="@drawable/loanflow" />
+                android:paddingBottom="10dp"
+                android:src="@drawable/tit" />
 
             <com.android.finance.ui.widget.LineView
                 android:layout_width="match_parent"
