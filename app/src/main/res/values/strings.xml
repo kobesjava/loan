@@ -7,6 +7,8 @@
     <string name="reset">重置</string>
     <string name="sms_prompt_4">我知道了</string>
     <string name="submit">提交</string>
+    <string name="refresh">刷新</string>
+    <string name="perview">预览</string>
 
     <!-- main -->
     <string name="main_recommend">推荐</string>
@@ -82,5 +84,8 @@
     <!-- credit -->
     <string name="credit_title">信用卡</string>
     <string name="credit_detail_title">信用卡详情</string>
+
+    <!-- financing -->
+    <string name="financing_need_title">我的融资需求书</string>
 
 </resources>
