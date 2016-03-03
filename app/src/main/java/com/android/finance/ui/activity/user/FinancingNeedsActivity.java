@@ -28,11 +28,46 @@ public class FinancingNeedsActivity extends BaseActivity {
         mTitleBar.setTitle(getString(R.string.financing_need_title));
         mTitleBar.setActivity(this);
 
-        mOilgaugeProgress.setProgress(73);
+        mOilgaugeProgress.setProgress(75);
     }
 
     @Click(R.id.btnrefresh)
     void clickRefresh() {
+    }
+
+    @Click(R.id.baseView)
+    void clickBaseView() {
+
+    }
+
+    @Click(R.id.needsView)
+    void clickNeedsView() {
+
+    }
+
+    @Click(R.id.idsView)
+    void clickIdsView() {
+
+    }
+
+    @Click(R.id.creditView)
+    void clickCreditView() {
+
+    }
+
+    @Click(R.id.houseView)
+    void clickHouseView() {
+
+    }
+
+    @Click(R.id.carView)
+    void clickCarView() {
+
+    }
+
+    @Click(R.id.otherView)
+    void clickOtherView() {
+
     }
 
 }

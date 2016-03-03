@@ -17,7 +17,7 @@ import com.finance.framework.util.LogUtil;
  */
 public class OilgaugeProgress extends View {
 
-    private int progress = 73;
+    private int progress;
 
     private String title = "完善度";
 

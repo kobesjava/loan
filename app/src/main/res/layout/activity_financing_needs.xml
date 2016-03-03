@@ -9,64 +9,176 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:background="@color/red_dark"
+    <ScrollView
+        android:scrollbars="none"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/btnrefresh"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-            <ImageView
-                android:background="@drawable/circle"
-                android:scaleType="centerInside"
-                android:src="@drawable/btn_refresh_selector"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-            <TextView
-                android:text="刷新"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/color_f2ffffff"
-                android:textSize="13sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <com.android.finance.ui.widget.OilgaugeProgress
-            android:id="@+id/progress"
-            android:layout_weight="1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:background="@color/red_dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:layout_marginTop="30dp"
-            android:visibility="invisible"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/circle"
-            android:scaleType="centerInside"
-            android:src="@drawable/btn_preview_selector"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+                <LinearLayout
+                    android:id="@+id/btnrefresh"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:background="@drawable/circle"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/btn_refresh_selector"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                    <TextView
+                        android:text="刷新"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/color_f2ffffff"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/finishTip"
-        android:paddingTop="15dp"
-        android:textSize="13sp"
-        android:textColor="@color/color_f2ffffff"
-        android:text="还不错,您和信贷君仅隔一步之遥"
-        android:background="@color/red_dark"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"/>
+                <com.android.finance.ui.widget.OilgaugeProgress
+                    android:id="@+id/progress"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+
+                <ImageView
+                    android:layout_marginTop="30dp"
+                    android:visibility="invisible"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/circle"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/btn_preview_selector"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/finishTip"
+                android:paddingTop="15dp"
+                android:textSize="13sp"
+                android:textColor="@color/color_f2ffffff"
+                android:text="还不错,您和信贷君仅隔一步之遥"
+                android:background="@color/red_dark"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_horizontal"/>
+
+
+            <LinearLayout
+                android:id="@+id/baseView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="基本信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/infoStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/needsView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="需求信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/needsStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/idsView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="身份信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/idsStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/creditView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="信用信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/creditStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/houseView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="房产信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/houseStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/carView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="车产信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/carStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/otherView"
+                style="@style/financing_needs_item">
+                <TextView
+                    android:text="其他信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_text" />
+
+                <TextView
+                    android:id="@+id/otherStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_text_right"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
