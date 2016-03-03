@@ -121,7 +121,7 @@
     <color name="color_4285f4">#4285f4</color>
     <color name="color_0097a7">#0097a7</color>
     <color name="color_cccccc">#cccccc</color>
-    <color name="color_b2ffffff">#b2ffffff</color>
+    <color name="color_88ffffff">#88ffffff</color>
     <color name="color_999999">#999999</color>
     <color name="color_333333">#333333</color>
     <color name="color_aaaaaa">#aaaaaa</color>
@@ -209,6 +209,8 @@
     <color name="color_c1c1c1">#c1c1c1</color>
     <color name="color_f9f9f9">#f9f9f9</color>
     <color name="color_e5e5e5">#e5e5e5</color>
+    <color name="color_f2ffffff">#f2ffffff</color>
+    <color name="color_22000000">#22000000</color>
 
     
 </resources>

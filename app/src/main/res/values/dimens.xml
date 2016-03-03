@@ -78,12 +78,13 @@
     <dimen name="text_size_24">24sp</dimen>
     <dimen name="text_size_39">39sp</dimen>
 
-
     <dimen name="remak_margin_left">12dp</dimen>
     <dimen name="remak_margin_right">12dp</dimen>
     <dimen name="height_48">48dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="oil_progress_radios">20dp</dimen>
 
 </resources>

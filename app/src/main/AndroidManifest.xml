@@ -85,6 +85,9 @@
         <activity android:name=".ui.activity.user.SetupActivity_"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.user.FinancingNeedsActivity_"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.loan.LoanApplyListActivity_"
             android:screenOrientation="portrait"/>
 
