@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.finance.ui.widget.CommonTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_name" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/name"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/baseView"
+                style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:layout_weight="1"
+                    android:text="@string/user_sex" />
+
+                <ToggleButton
+                    android:id="@+id/btnSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/sex_btn_selecter"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textOff=""
+                    android:textOn="" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_age" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/age"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_ids" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/ids"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_phone" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    style="@style/financing_needs_more_right_text"
+                    android:text="15050237961"
+                    android:textColor="@color/color_999" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_province" />
+
+                <TextView
+                    android:id="@+id/province"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_city" />
+
+                <TextView
+                    android:id="@+id/city"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_address" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/address"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_marriage" />
+
+                <TextView
+                    android:id="@+id/marriage"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

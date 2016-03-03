@@ -69,20 +69,19 @@
         <item name="android:layout_height">40dp</item>
     </style>
 
-    <style name="financing_needs_text">
-        <item name="android:drawablePadding">5dp</item>
+    <style name="financing_needs_book_text">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_950000</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="financing_needs_text_right" parent="financing_needs_text">
+    <style name="financing_needs_book_right_text" parent="financing_needs_book_text">
         <item name="android:drawablePadding">5dp</item>
         <item name="android:drawableRight">@drawable/arrow_right_img</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
-    <style name="financing_needs_item">
+    <style name="financing_needs_book_item">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:background">@drawable/bg_white_a10_selector</item>
         <item name="android:orientation">horizontal</item>
@@ -91,6 +90,44 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="financing_needs_more_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="financing_needs_more_right_text" parent="financing_needs_more_text">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textColor">@color/color_950000</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+    </style>
+    <style name="financing_needs_more_left_text" parent="financing_needs_more_text">
+        <item name="android:textColor">@color/color_333</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <style name="financing_needs_more_right_arrow_text" parent="financing_needs_more_right_text">
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:drawableRight">@drawable/arrow_right_img</item>
+        <item name="android:hint">@string/select</item>
+    </style>
+    <style name="financing_needs_more_right_edittext" parent="financing_needs_more_right_text">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="input_background_null">true</item>
+        <item name="input_gravity">21</item>
+        <item name="input_hint">@string/beperfect</item>
+    </style>
+    <style name="financing_needs_more_item">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
     </style>
 
 </resources>

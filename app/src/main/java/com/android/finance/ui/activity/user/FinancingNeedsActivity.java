@@ -1,10 +1,12 @@
 package com.android.finance.ui.activity.user;
 
+import android.content.Intent;
+
 import com.android.finance.R;
 import com.android.finance.ui.activity.common.BaseActivity;
 import com.android.finance.ui.widget.CommonTitleBar;
 import com.android.finance.ui.widget.OilgaugeProgress;
-import com.android.finance.util.ToastUtil;
+import com.finance.framework.util.GeneratedClassUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -37,37 +39,44 @@ public class FinancingNeedsActivity extends BaseActivity {
 
     @Click(R.id.baseView)
     void clickBaseView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(BaseInfoActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.needsView)
     void clickNeedsView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(DemandsActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.idsView)
     void clickIdsView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(IdentityActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.creditView)
     void clickCreditView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(CreditActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.houseView)
     void clickHouseView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(HouseActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.carView)
     void clickCarView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(CarActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.otherView)
     void clickOtherView() {
-
+        Intent intent = new Intent(this, GeneratedClassUtils.get(OtherActivity.class));
+        startActivity(intent);
     }
 
 }

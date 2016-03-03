@@ -82,100 +82,100 @@
 
             <LinearLayout
                 android:id="@+id/baseView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="基本信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/infoStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/needsView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="需求信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/needsStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/idsView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="身份信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/idsStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/creditView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="信用信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/creditStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/houseView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="房产信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/houseStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/carView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="车产信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/carStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/otherView"
-                style="@style/financing_needs_item">
+                style="@style/financing_needs_book_item">
                 <TextView
                     android:text="其他信息"
                     android:layout_weight="1"
-                    style="@style/financing_needs_text" />
+                    style="@style/financing_needs_book_text" />
 
                 <TextView
                     android:id="@+id/otherStatus"
                     android:text="待完善"
-                    style="@style/financing_needs_text_right"/>
+                    style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
 
         </LinearLayout>

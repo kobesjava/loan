@@ -88,6 +88,34 @@
         <activity android:name=".ui.activity.user.FinancingNeedsActivity_"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.user.BaseInfoActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.DemandsActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.IdentityActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.CreditActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.HouseActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.CarActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.user.OtherActivity_"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.loan.LoanApplyListActivity_"
             android:screenOrientation="portrait"/>
 

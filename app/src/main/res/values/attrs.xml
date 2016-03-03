@@ -30,6 +30,8 @@
         <attr name="input_pwd" format="boolean"/>
         <attr name="input_number" format="boolean"/>
         <attr name="input_limit" format="integer"/>
+        <attr name="input_background_null" format="boolean"/>
+        <attr name="input_gravity" format="integer"/>
     </declare-styleable>
 
 </resources>

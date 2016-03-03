@@ -9,6 +9,10 @@
     <string name="submit">提交</string>
     <string name="refresh">刷新</string>
     <string name="perview">预览</string>
+    <string name="beperfect">待完善</string>
+    <string name="select">请选择</string>
+    <string name="save">保存</string>
+
 
     <!-- main -->
     <string name="main_recommend">推荐</string>
@@ -87,5 +91,45 @@
 
     <!-- financing -->
     <string name="financing_need_title">我的融资需求书</string>
+
+    <!-- user -->
+    <string name="user_base_info_title">基本信息</string>
+    <string name="user_name">姓名</string>
+    <string name="user_sex">性别</string>
+    <string name="user_age">年龄 ( 岁 )</string>
+    <string name="user_ids">身份证</string>
+    <string name="user_phone">手机电话</string>
+    <string name="user_province">户籍</string>
+    <string name="user_city">户籍地 ( 市 )</string>
+    <string name="user_address">户籍详细地址</string>
+    <string name="user_marriage">婚姻状况</string>
+    <!-- user demands -->
+    <string name="user_demands_title">需求信息</string>
+    <string name="user_loan_amount">贷款金额 ( 万元 )</string>
+    <string name="user_loan_term">贷款期限 ( 个月 )</string>
+    <string name="user_loan_use_time">用款时间</string>
+    <string name="user_loan_reason">贷款用途</string>
+    <string name="user_payment_source">还款来源</string>
+    <string name="user_payment_way">还款方式</string>
+    <!-- user ids -->
+    <string name="user_identity_title">身份信息</string>
+    <string name="user_identity">身份</string>
+    <!-- user credit -->
+    <string name="user_credit_title">信用信息</string>
+    <string name="user_credit_station">信用情况</string>
+    <string name="user_credit_amount">信用卡总额度</string>
+    <string name="user_credit_debt">欠款情况</string>
+    <!-- user house -->
+    <string name="user_house_title">房产信息</string>
+    <string name="user_house_station">名下房产情况</string>
+    <!-- user car -->
+    <string name="user_car_title">车产信息</string>
+    <string name="user_car_station">名下车产情况</string>
+    <!-- user other -->
+    <string name="user_other_title">其它资产</string>
+    <string name="user_other_name">其它资产名称</string>
+    <string name="user_other_year">持有年限 ( 年 )</string>
+    <string name="user_other_detail">资产详情</string>
+    <string name="user_other_worth">市场价值 ( 万元 )</string>
 
 </resources>

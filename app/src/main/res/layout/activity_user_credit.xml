@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.finance.ui.widget.CommonTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout style="@style/financing_needs_more_item">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_credit_station" />
+
+        <TextView
+            android:id="@+id/station"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/financing_needs_more_item">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_credit_amount" />
+
+        <TextView
+            android:id="@+id/amount"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/financing_needs_more_item">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_credit_debt" />
+
+        <TextView
+            android:id="@+id/debt"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+</LinearLayout>
