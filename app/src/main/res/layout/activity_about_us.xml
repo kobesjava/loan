@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.CommonTitleBar
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -14,7 +14,7 @@
         android:drawableRight="@drawable/arrow_right_img"
         android:text="@string/about_us_introduce"
         style="@style/about_us_text"/>
-    <com.android.finance.ui.widget.LineView
+    <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"/>
 
     </LinearLayout>
-    <com.android.finance.ui.widget.LineView
+    <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 

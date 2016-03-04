@@ -13,7 +13,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.android.finance.ui.widget.LineVerticalView
+        <com.qtt.jinrong.ui.widget.LineVerticalView
             android:layout_width="1dp"
             android:layout_height="20dp" />
 
@@ -25,7 +25,7 @@
             android:layout_marginTop="1dp"
             android:background="@drawable/order_process_node" />
 
-        <com.android.finance.ui.widget.LineVerticalView
+        <com.qtt.jinrong.ui.widget.LineVerticalView
             android:layout_width="1dp"
             android:layout_height="wrap_content" />
     </LinearLayout>

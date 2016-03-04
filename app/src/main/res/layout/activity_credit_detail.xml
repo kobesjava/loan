@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.android.finance.ui.widget.CommonTitleBar
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -242,11 +242,11 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
@@ -268,12 +268,12 @@
                 android:paddingBottom="10dp"
                 android:src="@drawable/tit" />
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
 
-            <com.android.finance.ui.widget.TabIndictor
+            <com.qtt.jinrong.ui.widget.TabIndictor
                 android:id="@+id/material"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

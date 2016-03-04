@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.LineView
+    <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
@@ -25,7 +25,7 @@
             android:textColor="@color/text_black_red_selecter"
             android:textSize="14sp" />
 
-        <com.android.finance.ui.widget.LineVerticalView
+        <com.qtt.jinrong.ui.widget.LineVerticalView
             android:layout_width="1dp"
             android:layout_height="40dp" />
 
@@ -40,7 +40,7 @@
             android:textColor="@color/text_black_red_selecter"
             android:textSize="14sp" />
 
-        <com.android.finance.ui.widget.LineVerticalView
+        <com.qtt.jinrong.ui.widget.LineVerticalView
             android:layout_width="1dp"
             android:layout_height="40dp" />
 
@@ -57,7 +57,7 @@
 
     </RadioGroup>
 
-    <com.android.finance.ui.widget.LineView
+    <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 

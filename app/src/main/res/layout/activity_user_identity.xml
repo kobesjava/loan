@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.CommonTitleBar
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -32,7 +32,7 @@
                     android:id="@+id/identity"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -47,7 +47,7 @@
                     android:id="@+id/type"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -60,11 +60,11 @@
                     style="@style/financing_needs_more_left_text"
                     android:text="@string/user_identity_company_name" />
 
-                <com.android.finance.ui.widget.text.InputEditText
+                <com.qtt.jinrong.ui.widget.text.InputEditText
                     android:id="@+id/name"
                     style="@style/financing_needs_more_right_edittext" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -79,7 +79,7 @@
                     android:id="@+id/position"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -94,7 +94,7 @@
                     android:id="@+id/worktime"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -109,7 +109,7 @@
                     android:id="@+id/province"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -124,7 +124,7 @@
                     android:id="@+id/city"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -135,11 +135,11 @@
                     style="@style/financing_needs_more_left_text"
                     android:text="@string/user_identity_work_address" />
 
-                <com.android.finance.ui.widget.text.InputEditText
+                <com.qtt.jinrong.ui.widget.text.InputEditText
                     android:id="@+id/address"
                     style="@style/financing_needs_more_right_edittext" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -154,7 +154,7 @@
                     android:id="@+id/incomepayway"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -165,13 +165,13 @@
                     style="@style/financing_needs_more_left_text"
                     android:text="@string/user_identity_salary_month_card" />
 
-                <com.android.finance.ui.widget.text.InputEditText
+                <com.qtt.jinrong.ui.widget.text.InputEditText
                     android:id="@+id/salaryMonthCard"
                     input:input_limit="7"
                     input:input_number="true"
                     style="@style/financing_needs_more_right_edittext" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -182,13 +182,13 @@
                     style="@style/financing_needs_more_left_text"
                     android:text="@string/user_identity_salary_month_total" />
 
-                <com.android.finance.ui.widget.text.InputEditText
+                <com.qtt.jinrong.ui.widget.text.InputEditText
                     android:id="@+id/salaryMonthTotal"
                     input:input_limit="8"
                     input:input_number="true"
                     style="@style/financing_needs_more_right_edittext" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -203,7 +203,7 @@
                     android:id="@+id/proof"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -218,7 +218,7 @@
                     android:id="@+id/socialFund"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -233,7 +233,7 @@
                     android:id="@+id/fundYears"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
@@ -248,7 +248,7 @@
                     android:id="@+id/socialYears"
                     style="@style/financing_needs_more_right_arrow_text" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 

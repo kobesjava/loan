@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp" />
     
-    <com.android.finance.ui.widget.LineView
+    <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 

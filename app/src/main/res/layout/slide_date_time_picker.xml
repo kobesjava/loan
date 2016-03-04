@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.datepicker.SlidingTabLayout
+    <com.qtt.jinrong.ui.widget.datepicker.SlidingTabLayout
         android:id="@+id/slidingTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.android.finance.ui.widget.datepicker.CustomViewPager
+    <com.qtt.jinrong.ui.widget.datepicker.CustomViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

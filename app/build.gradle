@@ -16,12 +16,13 @@ dependencies {
     apt "org.projectlombok:lombok:1.16.6"
     compile 'com.facebook.fresco:fresco:0.9.0'
     compile project(':framework')
+    testCompile 'junit:junit:4.12'
 }
 
 apt {
     arguments {
         androidManifestFile variant.outputs[0].processResources.manifestFile
-        resourcePackageName 'com.android.finance'
+        resourcePackageName 'com.qtt.jinrong'
     }
 }
 
@@ -30,7 +31,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.android.finance"
+        applicationId "com.qtt.jinrong"
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
@@ -39,7 +40,7 @@ android {
         // dex突破65535的限制
         multiDexEnabled true
         // 默认是umeng的渠道
-        manifestPlaceholders = [CHANNEL_ID: "SIT1"]
+        manifestPlaceholders = [CHANNEL_ID: "qtt"]
     }
 
     compileOptions {
@@ -83,7 +84,7 @@ android {
     }
 
     productFlavors {
-        dev {}
+        //dev {}
         //sit{}
         //beta{}
         //prod{}
@@ -120,6 +121,18 @@ android {
             signingConfig signingConfigs.release
             proguardFile getDefaultProguardFile('proguard-android.txt')
             proguardFile 'proguard.cfg'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                File file = new File(outputFile.parent,"app-debug-unaligned.apk")
+                file.deleteOnExit()
+                file = new File(outputFile.parent,"app-release-unaligned.apk")
+                file.deleteOnExit()
+            }
         }
     }
 

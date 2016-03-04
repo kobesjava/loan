@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content" />
             </RelativeLayout>
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <RelativeLayout
@@ -81,11 +81,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
 
@@ -125,11 +125,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
 
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
@@ -154,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <com.android.finance.ui.widget.LineView
+            <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
 

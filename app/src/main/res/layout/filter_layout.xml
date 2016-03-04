@@ -17,7 +17,7 @@
             android:text="" />
     </FrameLayout>
 
-    <com.android.finance.ui.widget.LineVerticalView
+    <com.qtt.jinrong.ui.widget.LineVerticalView
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
@@ -35,7 +35,7 @@
             android:text="" />
     </FrameLayout>
 
-    <com.android.finance.ui.widget.LineVerticalView
+    <com.qtt.jinrong.ui.widget.LineVerticalView
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
@@ -54,7 +54,7 @@
             android:text="" />
     </FrameLayout>
 
-    <com.android.finance.ui.widget.LineVerticalView
+    <com.qtt.jinrong.ui.widget.LineVerticalView
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"

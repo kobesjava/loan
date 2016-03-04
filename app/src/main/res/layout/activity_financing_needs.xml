@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.CommonTitleBar
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -48,7 +48,7 @@
                 </LinearLayout>
 
 
-                <com.android.finance.ui.widget.OilgaugeProgress
+                <com.qtt.jinrong.ui.widget.OilgaugeProgress
                     android:id="@+id/progress"
                     android:layout_weight="1"
                     android:layout_marginLeft="20dp"

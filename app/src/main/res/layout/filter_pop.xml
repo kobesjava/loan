@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.LineView
+    <com.qtt.jinrong.ui.widget.LineView
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp" />
@@ -17,7 +17,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <com.android.finance.ui.widget.LineView
+        <com.qtt.jinrong.ui.widget.LineView
             android:layout_width="match_parent"
             android:layout_height="1dp" />
 

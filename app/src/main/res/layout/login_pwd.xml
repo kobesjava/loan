@@ -13,7 +13,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.android.finance.ui.widget.text.InputEditText
+        <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/phoneEdit"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             input:input_hint="@string/login_pwd_phone_hint"
             input:input_number="true"/>
 
-        <com.android.finance.ui.widget.text.InputEditText
+        <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/pwdEdit"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"

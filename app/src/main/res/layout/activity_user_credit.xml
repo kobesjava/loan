@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.android.finance.ui.widget.CommonTitleBar
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -38,7 +38,7 @@
             style="@style/financing_needs_more_left_text"
             android:text="@string/user_credit_count" />
 
-        <com.android.finance.ui.widget.text.InputEditText
+        <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/count"
             input:input_limit="3"
             input:input_number="true"
@@ -51,7 +51,7 @@
             style="@style/financing_needs_more_left_text"
             android:text="@string/user_credit_bank" />
 
-        <com.android.finance.ui.widget.text.InputEditText
+        <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/bank"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>

@@ -30,7 +30,7 @@
             android:textColor="@color/red_dark"/>
     </LinearLayout>
 
-    <com.android.finance.ui.widget.radio.BorderRadioGruop
+    <com.qtt.jinrong.ui.widget.radio.BorderRadioGruop
         android:id="@+id/group"
         android:padding="15dp"
         android:background="@color/white"
