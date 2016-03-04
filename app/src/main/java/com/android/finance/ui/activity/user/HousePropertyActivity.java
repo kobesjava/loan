@@ -2,24 +2,34 @@ package com.android.finance.ui.activity.user;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.finance.R;
+import com.android.finance.enums.CreditDebtEnum;
+import com.android.finance.enums.HousePropertyEnum;
 import com.android.finance.ui.activity.common.BaseActivity;
+import com.android.finance.ui.activity.common.BaseSelectActivity;
 import com.android.finance.ui.widget.CommonTitleBar;
+import com.android.finance.ui.widget.SelectPopView;
 import com.android.finance.util.ToastUtil;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.w3c.dom.Text;
 
 /**
  * Created by yanxin on 16/3/3.
  */
-@EActivity(R.layout.activity_user_other)
-public class OtherActivity extends BaseActivity {
+@EActivity(R.layout.activity_user_house_property)
+public class HousePropertyActivity extends BaseSelectActivity {
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
+
+    @ViewById(R.id.property)
+    TextView mHousePropertyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +38,7 @@ public class OtherActivity extends BaseActivity {
 
     @AfterViews
     void initView() {
-        mTitleBar.setTitle(getString(R.string.user_other_title));
+        mTitleBar.setTitle(getString(R.string.user_house_title));
         mTitleBar.setActivity(this);
         mTitleBar.setRightViewVisible(View.VISIBLE,getString(R.string.save));
         mTitleBar.setTitleBarListener(new CommonTitleBar.TitleBarListener() {
@@ -43,6 +53,18 @@ public class OtherActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Click(R.id.property)
+    void clickProperty() {
+        mSelectView.setData(HousePropertyEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                mHousePropertyText.setText(val);
+            }
+        });
+        show();
     }
 
 }

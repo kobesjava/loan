@@ -55,7 +55,7 @@
             android:text="@string/user_loan_reason" />
 
         <TextView
-            android:id="@+id/reason"
+            android:id="@+id/purpose"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:text="@string/user_payment_source" />
 
         <TextView
-            android:id="@+id/paysource"
+            android:id="@+id/repaysource"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
@@ -77,7 +77,7 @@
             android:text="@string/user_payment_way" />
 
         <TextView
-            android:id="@+id/payway"
+            android:id="@+id/repayway"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 </LinearLayout>

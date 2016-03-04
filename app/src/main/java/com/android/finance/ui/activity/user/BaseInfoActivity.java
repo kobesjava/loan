@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.android.finance.R;
 import com.android.finance.enums.MarriageEnum;
 import com.android.finance.enums.ProvinceEnum;
-import com.android.finance.ui.activity.common.BaseActivity;
+import com.android.finance.ui.activity.common.BaseSelectActivity;
 import com.android.finance.ui.widget.CommonTitleBar;
 import com.android.finance.ui.widget.SelectPopView;
 import com.android.finance.util.ToastUtil;
@@ -24,9 +24,7 @@ import java.util.List;
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_base_info)
-public class BaseInfoActivity extends BaseActivity {
-
-    View mRoot;
+public class BaseInfoActivity extends BaseSelectActivity {
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -37,21 +35,15 @@ public class BaseInfoActivity extends BaseActivity {
     @ViewById(R.id.marriage)
     TextView mMarriageText;
 
-    private SelectPopView mSelectView;
-
     private List<String> provinces;
-    private String mProvince,mCity,mMarriage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mSelectView = new SelectPopView(this);
     }
 
     @AfterViews
     void initView() {
-        mRoot = findViewById(android.R.id.content);
         mTitleBar.setTitle(getString(R.string.user_base_info_title));
         mTitleBar.setActivity(this);
         mTitleBar.setRightViewVisible(View.VISIBLE, getString(R.string.save));
@@ -75,19 +67,18 @@ public class BaseInfoActivity extends BaseActivity {
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                mProvince = val;
                 mProvinceText.setText(val);
             }
         });
-        mSelectView.show(mRoot);
+        show();
     }
 
     @Click(R.id.city)
     void clickCity() {
-        if(TextUtils.isEmpty(mProvince)) {
+        /*if(TextUtils.isEmpty(mProvince)) {
             ToastUtil.showShortToast("请先选择户籍!");
             return;
-        }
+        }*/
         mSelectView.setData(ProvinceEnum.getValues());
     }
 
@@ -97,11 +88,10 @@ public class BaseInfoActivity extends BaseActivity {
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                mMarriage = val;
                 mMarriageText.setText(val);
             }
         });
-        mSelectView.show(mRoot);
+        show();
     }
 
 }

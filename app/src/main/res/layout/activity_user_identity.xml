@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,15 +10,260 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout style="@style/financing_needs_more_item">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="@string/user_identity" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/identity"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity" />
+
+                <TextView
+                    android:id="@+id/identity"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_company_type" />
+
+                <TextView
+                    android:id="@+id/type"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_company_name" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/name"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_position" />
+
+                <TextView
+                    android:id="@+id/position"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_company_worktime" />
+
+                <TextView
+                    android:id="@+id/worktime"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_work_province" />
+
+                <TextView
+                    android:id="@+id/province"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_work_city" />
+
+                <TextView
+                    android:id="@+id/city"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_work_address" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/address"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_income_payment" />
+
+                <TextView
+                    android:id="@+id/incomepayway"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_salary_month_card" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/salaryMonthCard"
+                    input:input_limit="7"
+                    input:input_number="true"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_salary_month_total" />
+
+                <com.android.finance.ui.widget.text.InputEditText
+                    android:id="@+id/salaryMonthTotal"
+                    input:input_limit="8"
+                    input:input_number="true"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_income_proof" />
+
+                <TextView
+                    android:id="@+id/proof"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_social_fund" />
+
+                <TextView
+                    android:id="@+id/socialFund"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_fund_years" />
+
+                <TextView
+                    android:id="@+id/fundYears"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_social_years" />
+
+                <TextView
+                    android:id="@+id/socialYears"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.android.finance.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity_avocation" />
+
+                <TextView
+                    android:id="@+id/avocation"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

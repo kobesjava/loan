@@ -114,17 +114,35 @@
     <!-- user ids -->
     <string name="user_identity_title">身份信息</string>
     <string name="user_identity">身份</string>
+    <string name="user_identity_company_type">就职公司类型</string>
+    <string name="user_identity_company_name">就职公司名称</string>
+    <string name="user_identity_position">职位</string>
+    <string name="user_identity_company_worktime">现单位工龄</string>
+    <string name="user_identity_work_province">工作地 ( 省 )</string>
+    <string name="user_identity_work_city">工作地 ( 市 )</string>
+    <string name="user_identity_work_address">工作详细地址</string>
+    <string name="user_identity_income_payment">收入发放方式</string>
+    <string name="user_identity_salary_month_card">月打卡工资 ( 元 )</string>
+    <string name="user_identity_salary_month_total">月均总收入 ( 元 )</string>
+    <string name="user_identity_income_proof">能否提供收入证明</string>
+    <string name="user_identity_social_fund">社保和公积金</string>
+    <string name="user_identity_fund_years">公积金连续缴纳年限</string>
+    <string name="user_identity_social_years">社保连续缴纳年限</string>
+    <string name="user_identity_avocation">有无副业</string>
     <!-- user credit -->
     <string name="user_credit_title">信用信息</string>
     <string name="user_credit_station">信用情况</string>
     <string name="user_credit_amount">信用卡总额度</string>
+    <string name="user_credit_count">信用卡张数 ( 张 )</string>
+    <string name="user_credit_bank">发卡银行</string>
+    <string name="user_credit_used_limit">已使用额度 ( 元 )</string>
     <string name="user_credit_debt">欠款情况</string>
     <!-- user house -->
     <string name="user_house_title">房产信息</string>
     <string name="user_house_station">名下房产情况</string>
     <!-- user car -->
     <string name="user_car_title">车产信息</string>
-    <string name="user_car_station">名下车产情况</string>
+    <string name="user_car_property">名下车产情况</string>
     <!-- user other -->
     <string name="user_other_title">其它资产</string>
     <string name="user_other_name">其它资产名称</string>

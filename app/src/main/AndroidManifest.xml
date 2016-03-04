@@ -104,15 +104,15 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.user.HouseActivity_"
+        <activity android:name=".ui.activity.user.HousePropertyActivity_"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.user.CarActivity_"
+        <activity android:name=".ui.activity.user.CarPropertyActivity_"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.user.OtherActivity_"
+        <activity android:name=".ui.activity.user.OtherPropertyActivity_"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 

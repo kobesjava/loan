@@ -63,19 +63,19 @@ public class FinancingNeedsActivity extends BaseActivity {
 
     @Click(R.id.houseView)
     void clickHouseView() {
-        Intent intent = new Intent(this, GeneratedClassUtils.get(HouseActivity.class));
+        Intent intent = new Intent(this, GeneratedClassUtils.get(HousePropertyActivity.class));
         startActivity(intent);
     }
 
     @Click(R.id.carView)
     void clickCarView() {
-        Intent intent = new Intent(this, GeneratedClassUtils.get(CarActivity.class));
+        Intent intent = new Intent(this, GeneratedClassUtils.get(CarPropertyActivity.class));
         startActivity(intent);
     }
 
     @Click(R.id.otherView)
     void clickOtherView() {
-        Intent intent = new Intent(this, GeneratedClassUtils.get(OtherActivity.class));
+        Intent intent = new Intent(this, GeneratedClassUtils.get(OtherPropertyActivity.class));
         startActivity(intent);
     }
 

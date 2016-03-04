@@ -15,9 +15,9 @@
             style="@style/financing_needs_more_left_text"
             android:text="@string/user_other_name" />
 
-        <TextView
+        <com.android.finance.ui.widget.text.InputEditText
             android:id="@+id/name"
-            style="@style/financing_needs_more_right_arrow_text" />
+            style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
     <LinearLayout style="@style/financing_needs_more_item">
@@ -26,9 +26,9 @@
             style="@style/financing_needs_more_left_text"
             android:text="@string/user_other_year" />
 
-        <TextView
+        <com.android.finance.ui.widget.text.InputEditText
             android:id="@+id/years"
-            style="@style/financing_needs_more_right_arrow_text" />
+            style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
     <LinearLayout style="@style/financing_needs_more_item">
@@ -37,9 +37,9 @@
             style="@style/financing_needs_more_left_text"
             android:text="@string/user_other_detail" />
 
-        <TextView
+        <com.android.finance.ui.widget.text.InputEditText
             android:id="@+id/detail"
-            style="@style/financing_needs_more_right_arrow_text" />
+            style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
     <LinearLayout style="@style/financing_needs_more_item">
@@ -48,9 +48,9 @@
             style="@style/financing_needs_more_left_text"
             android:text="@string/user_other_worth" />
 
-        <TextView
+        <com.android.finance.ui.widget.text.InputEditText
             android:id="@+id/worth"
-            style="@style/financing_needs_more_right_arrow_text" />
+            style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
 </LinearLayout>

@@ -13,10 +13,10 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="@string/user_car_station" />
+            android:text="@string/user_house_station" />
 
         <TextView
-            android:id="@+id/station"
+            android:id="@+id/property"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
