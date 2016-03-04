@@ -51,6 +51,9 @@ public class InputEditText extends FrameLayout {
         boolean isNumber = a.getBoolean(R.styleable.InputEditText_input_number,false);
         if(isNumber) mEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
 
+        boolean isNumberDecimal = a.getBoolean(R.styleable.InputEditText_input_numberDecimal,false);
+        if(isNumberDecimal) mEditText.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
         int limit = a.getInt(R.styleable.InputEditText_input_limit, 0);
         if(limit > 0) mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(limit)});
 
