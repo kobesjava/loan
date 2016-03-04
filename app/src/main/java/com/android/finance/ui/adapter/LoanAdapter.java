@@ -1,16 +1,17 @@
 package com.android.finance.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.finance.R;
 import com.android.finance.bean.loan.LoanModel;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -73,14 +74,16 @@ public class LoanAdapter extends BaseAdapter {
         viewHolder.type.setText(mLoanModel.getType());
         viewHolder.interest.setText("总利息 ："+mLoanModel.getInterest()+"元");
         viewHolder.monthPay.setText("月供 ："+mLoanModel.getMonthPay()+"元");
-
         viewHolder.rb.setRating(mLoanModel.getScore());
+
+        Uri uri = Uri.parse(mLoanModel.getUrl());
+        viewHolder.img.setImageURI(uri);
 
         return convertView;
     }
 
     static class ViewHolder {
-        ImageView img;
+        SimpleDraweeView img;
         TextView  enterprise;
         TextView  type;
         RatingBar rb;
@@ -88,7 +91,7 @@ public class LoanAdapter extends BaseAdapter {
         TextView  monthPay;
 
         public ViewHolder(View view) {
-            img = (ImageView) view.findViewById(R.id.img);
+            img = (SimpleDraweeView) view.findViewById(R.id.img);
             enterprise = (TextView) view.findViewById(R.id.loanEnterprise);
             type = (TextView) view.findViewById(R.id.loanType);
             rb = (RatingBar) view.findViewById(R.id.rb);

@@ -2,15 +2,16 @@ package com.android.finance.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
+import android.net.Uri;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 
+import com.android.finance.R;
 import com.android.finance.bean.recommend.AdModel;
 import com.android.finance.ui.activity.web.WebViewActivity;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.finance.framework.util.GeneratedClassUtils;
 
 import java.util.ArrayList;
@@ -50,17 +51,16 @@ public class RecommendAdAdapter extends BasePagerAdapter {
 	// 销毁arg1位置的界面
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
-		ImageView view = (ImageView)object;
-		view.setImageBitmap(null);
-		view.setTag(null);
+		//SimpleDraweeView view = (SimpleDraweeView)object;
+		//view.setImageBitmap(null);
+		((View)object).setTag(null);
 		super.destroyItem(container,position,object);
 	}
 	
 	@Override
 	protected View createView() {
-		ImageView imageView = new ImageView(mContext);
-		imageView.setScaleType(ScaleType.CENTER_CROP);
-		imageView.setOnClickListener(new OnClickListener() {
+		SimpleDraweeView draweeView = (SimpleDraweeView) LayoutInflater.from(mContext).inflate(R.layout.recommend_ad_img,null);
+		draweeView.setOnClickListener(new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			if(v.getTag() != null)  {
@@ -70,19 +70,18 @@ public class RecommendAdAdapter extends BasePagerAdapter {
 			}
 		}
 		});
-		return imageView;
+		return draweeView;
 	}
 	
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
-		ImageView imageView = (ImageView) getView();
+		SimpleDraweeView draweeView = (SimpleDraweeView) getView();
 		final AdModel adModel = mFocusImageInfoList.get(position % mFocusImageInfoList.size());
-		imageView.setTag(adModel);
-		//CommonDataLoader.getInstance(mContext).startImageLoader(imageView, info.picUrl);
-		((ViewPager)container).addView(imageView);
-		return imageView;
+		draweeView.setTag(adModel);
+		Uri uri = Uri.parse(adModel.getUrl());
+		draweeView.setImageURI(uri);
+		container.addView(draweeView);
+		return draweeView;
 	}
-
-	
 
 }

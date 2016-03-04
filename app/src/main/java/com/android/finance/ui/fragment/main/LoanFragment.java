@@ -134,6 +134,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0c6e669d0.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -143,6 +144,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0c3a055ac.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -152,6 +154,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0c1bd741c.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -161,6 +164,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0bf9214ce.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -170,6 +174,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0bcf12add.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -179,6 +184,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0bb11cc4d.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -188,6 +194,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0b4b99c72.png");
         lists.add(loanModel);
 
         loanModel = new LoanModel();
@@ -197,6 +204,7 @@ public class LoanFragment extends BaseFragment {
         loanModel.setName("平安银行-新一贷");
         loanModel.setMonthPay(8765);
         loanModel.setType("平安银行");
+        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-07/568e11476f91f.jpg");
         lists.add(loanModel);
 
         mLoanAdapter.add(lists);

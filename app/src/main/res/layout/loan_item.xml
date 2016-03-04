@@ -9,12 +9,11 @@
     android:background="@color/white"
     android:orientation="horizontal">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/img"
-        android:scaleType="centerCrop"
-        android:background="@color/red_dark"
+        android:scaleType="centerInside"
         android:layout_gravity="center_vertical"
-        android:layout_width="60dp"
+        android:layout_width="90dp"
         android:layout_height="60dp" />
 
     <RelativeLayout

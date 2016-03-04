@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import com.android.finance.config.ConfigManager;
 import com.android.finance.config.NetworkManger;
 import com.android.finance.task.TaskManager;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.finance.framework.app.BaseUnCatchExceptionHandler;
 import com.finance.framework.config.AppConfig;
 import com.finance.framework.umeng.CommonAnalysis;
@@ -34,6 +35,7 @@ public class MyApplication extends Application {
         CommonAnalysis.init(getApplicationContext());
         BaseUnCatchExceptionHandler crashHandler = BaseUnCatchExceptionHandler.getInstance();
         crashHandler.init(this);
+        Fresco.initialize(this);
     }
 
     /**

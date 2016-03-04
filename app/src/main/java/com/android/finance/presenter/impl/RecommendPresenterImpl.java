@@ -32,19 +32,19 @@ public class RecommendPresenterImpl implements IRecommendPresenter {
 
         AdModel adModel = new AdModel();
 
-        adModel.setUrl("");
+        adModel.setUrl("http://4006391555.com/leshifu/images/index_banner/banner_20160224.jpg");
         adModels.add(adModel);
 
         adModel = new AdModel();
-        adModel.setUrl("");
+        adModel.setUrl("http://4006391555.com/leshifu/images/index_banner.jpg");
         adModels.add(adModel);
 
         adModel = new AdModel();
-        adModel.setUrl("");
+        adModel.setUrl("http://4006391555.com/leshifu/images/index_banner/banner_20160224.jpg");
         adModels.add(adModel);
 
         adModel = new AdModel();
-        adModel.setUrl("");
+        adModel.setUrl("http://4006391555.com/leshifu/images/index_banner.jpg");
         adModels.add(adModel);
 
         mIRecommendView.onRequestAd(adModels);
