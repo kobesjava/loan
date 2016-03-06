@@ -23,8 +23,4 @@ public class FilterManager {
         mFilterView.setSelect(position, index, defaultStr);
     }
 
-    public void reset(int position) {
-        mFilterView.reset(position);
-    }
-
 }

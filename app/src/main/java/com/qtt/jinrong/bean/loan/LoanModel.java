@@ -7,17 +7,22 @@ public class LoanModel {
 
     private String id;
 
-    private String url;
+    private String productId;
 
-    private String name;
+    private String thumpImg;
 
-    private String type;
+    /** 名称*/
+    private String title;
+
+    private String ownedCompany;
+
+    /** 总利息*/
+    private int rate;
+
+    /** 月供*/
+    private int money;
 
     private float score;
-
-    private int interest;
-
-    private int monthPay;
 
     public String getId() {
         return id;
@@ -25,30 +30,6 @@ public class LoanModel {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public float getScore() {
@@ -59,19 +40,51 @@ public class LoanModel {
         this.score = score;
     }
 
-    public int getInterest() {
-        return interest;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setInterest(int interest) {
-        this.interest = interest;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public int getMonthPay() {
-        return monthPay;
+    public String getThumpImg() {
+        return thumpImg;
     }
 
-    public void setMonthPay(int monthPay) {
-        this.monthPay = monthPay;
+    public void setThumpImg(String thumpImg) {
+        this.thumpImg = thumpImg;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getOwnedCompany() {
+        return ownedCompany;
+    }
+
+    public void setOwnedCompany(String ownedCompany) {
+        this.ownedCompany = ownedCompany;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

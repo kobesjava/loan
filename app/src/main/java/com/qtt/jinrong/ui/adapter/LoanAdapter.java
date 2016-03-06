@@ -9,9 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanModel;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -70,32 +71,36 @@ public class LoanAdapter extends BaseAdapter {
 
         mLoanModel = getItem(position);
 
-        viewHolder.enterprise.setText(mLoanModel.getName());
-        viewHolder.type.setText(mLoanModel.getType());
-        viewHolder.interest.setText("总利息 ："+mLoanModel.getInterest()+"元");
-        viewHolder.monthPay.setText("月供 ："+mLoanModel.getMonthPay()+"元");
+        viewHolder.title.setText(mLoanModel.getTitle());
+        viewHolder.company.setText(mLoanModel.getOwnedCompany());
+        viewHolder.interestTotal.setText("总利息 ："+mLoanModel.getRate()+"元");
+        viewHolder.monthPay.setText("月供 ：" + mLoanModel.getMoney() + "元");
         viewHolder.rb.setRating(mLoanModel.getScore());
 
-        Uri uri = Uri.parse(mLoanModel.getUrl());
-        viewHolder.img.setImageURI(uri);
+        try {
+            Uri uri = Uri.parse(mLoanModel.getThumpImg());
+            viewHolder.img.setImageURI(uri);
+        }catch (Exception e) {
+            LogUtil.d("加载图片","URL="+mLoanModel.getThumpImg()+" Exception="+e.getMessage());
+        }
 
         return convertView;
     }
 
     static class ViewHolder {
         SimpleDraweeView img;
-        TextView  enterprise;
-        TextView  type;
+        TextView  title;
+        TextView  company;
         RatingBar rb;
-        TextView  interest;
+        TextView  interestTotal;
         TextView  monthPay;
 
         public ViewHolder(View view) {
             img = (SimpleDraweeView) view.findViewById(R.id.img);
-            enterprise = (TextView) view.findViewById(R.id.loanEnterprise);
-            type = (TextView) view.findViewById(R.id.loanType);
+            title = (TextView) view.findViewById(R.id.title);
+            company = (TextView) view.findViewById(R.id.company);
             rb = (RatingBar) view.findViewById(R.id.rb);
-            interest = (TextView) view.findViewById(R.id.interest);
+            interestTotal = (TextView) view.findViewById(R.id.interest);
             monthPay = (TextView) view.findViewById(R.id.monthPay);
         }
     }

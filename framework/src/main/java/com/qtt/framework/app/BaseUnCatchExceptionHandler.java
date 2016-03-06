@@ -39,7 +39,7 @@ public class BaseUnCatchExceptionHandler implements Thread.UncaughtExceptionHand
      */
     public void init(Context context) {
 
-        if(!"prod".equals(AppConfig.get_host_env())) return;
+        if(!"prod".equals(AppConfig.host_env)) return;
 
         mContext = context;
 

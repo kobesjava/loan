@@ -16,7 +16,7 @@ import static com.qtt.jinrong.http.action.IWBaseReqsAction.getPostReq7HeardInfo;
 public class RecommendAction {
 
     public static void requestAd(Context context,MCListenerObj.IObjResListener<AdResponse> listener) {
-        getPostReq7HeardInfo(context, Api.AD,new HashMap<String, Object>(),listener,AdResponse.class);
+        getPostReq7HeardInfo(context, Api.URL_AD,new HashMap<String, Object>(),listener,AdResponse.class);
     }
 
 }

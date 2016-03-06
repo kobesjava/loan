@@ -8,12 +8,6 @@ import android.view.View;
 public abstract class BaseFilterAdapter {
 
     /**
-     * 重置
-     * @param position 第几个筛选类型
-     */
-    protected abstract void reset(int position);
-
-    /**
      * 设置选中的
      * @param position
      * @param index

@@ -3,15 +3,21 @@ package com.qtt.jinrong.http;
 import com.qtt.framework.config.AppConfig;
 
 /**
+ * 接口地址
  * Created by yanxin on 16/2/23.
  */
 public class Api {
 
-    public final static String ROOT_URL = AppConfig.getDomain();
-    public final static String CENTER_URL = "/leshifu/api/";
+    private static String ROOT_URL = AppConfig.getRootUrl();
 
-    public final static String URL = ROOT_URL+CENTER_URL;
+    private static final String AD_MOUDLE_PATH = "/advert";
 
-    public final static String AD = URL + "service";
+    private static final String LOAN_MOUDLE_PATH = "/sloan";
 
+    /** 滚动栏*/
+    public final static String URL_AD = ROOT_URL + AD_MOUDLE_PATH + "/queryAdvertList.do";
+
+
+    /**  loan模块  */
+    public final static String LOAN_PRODUCT_LIST = ROOT_URL + LOAN_MOUDLE_PATH + "/querySloanList.do";
 }

@@ -1,6 +1,7 @@
 package com.qtt.jinrong.ui.fragment.main;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,9 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
     @ViewById(R.id.indicator)
     IndicatorView mIndictor;
 
+    @ViewById(R.id.refreshLayout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     RecommendAdAdapter mRecommendAdAdapter;
     IRecommendPresenter mIRecommendPresenter;
 
@@ -68,6 +72,14 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
         mTitltBar.setTitle(getString(R.string.recommend_title));
         mTitltBar.hideLeft();
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mIRecommendPresenter.requestAd();
+            }
+        });
+
         mIRecommendPresenter.requestAd();
     }
 
@@ -143,6 +155,8 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
     /******  IRecommendView  *******/
     @Override
     public void onRequestAd(List<AdModel> adModels) {
+        if(mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
+        if(adModels == null) return;
         if(mRecommendAdAdapter == null) {
             mRecommendAdAdapter = new RecommendAdAdapter(getActivity(),adModels);
             mIndictor.setAdapter(mRecommendAdAdapter);

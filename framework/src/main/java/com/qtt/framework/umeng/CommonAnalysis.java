@@ -19,7 +19,7 @@ public class CommonAnalysis {
      * 请使用AppContext
      */
     public static void init(Context context) {
-        if("prod".equals(AppConfig.get_host_env())) sEnable = true;
+        if("prod".equals(AppConfig.host_env)) sEnable = true;
         else sEnable = false;
         if (!sEnable) return;
         MobclickAgent.setDebugMode(false);

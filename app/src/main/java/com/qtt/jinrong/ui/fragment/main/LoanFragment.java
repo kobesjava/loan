@@ -9,8 +9,11 @@ import android.widget.AdapterView;
 
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.event.LoanTypeEvent;
+import com.qtt.jinrong.bean.loan.LoanListRequest;
 import com.qtt.jinrong.bean.loan.LoanModel;
 import com.qtt.jinrong.enums.LoanTypeEnum;
+import com.qtt.jinrong.presenter.ILoanListPresenter;
+import com.qtt.jinrong.presenter.impl.LoanListPresenterImpl;
 import com.qtt.jinrong.ui.activity.product.ProductDetailActivity;
 import com.qtt.jinrong.ui.adapter.LoanAdapter;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
@@ -21,6 +24,7 @@ import com.qtt.jinrong.ui.widget.filter.FilterView;
 import com.qtt.jinrong.ui.widget.load.BottomRefreshListView;
 import com.qtt.jinrong.ui.widget.load.RefreshLayout;
 import com.qtt.framework.util.GeneratedClassUtils;
+import com.qtt.jinrong.view.ILoanListView;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -34,7 +38,7 @@ import de.greenrobot.event.EventBus;
  * Created by yanxin on 16/2/23.
  */
 @EFragment(R.layout.fragment_loan)
-public class LoanFragment extends BaseFragment {
+public class LoanFragment extends BaseFragment implements ILoanListView {
 
     View mView;
 
@@ -51,13 +55,15 @@ public class LoanFragment extends BaseFragment {
     BottomRefreshListView mBottomRefreshListView;
 
     LoanAdapter mLoanAdapter;
-
     FilterManager mFilterManager;
+    ILoanListPresenter mPresenter;
+    LoanListRequest mRequest;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+        mPresenter = new LoanListPresenterImpl(this);
     }
 
     @Override
@@ -103,12 +109,11 @@ public class LoanFragment extends BaseFragment {
         FilterLoanAdapter filterAdapter = new FilterLoanAdapter(getContext(),mFilterManager);
 
         List<String[]> list = new ArrayList<>();
-        list.add(getResources().getStringArray(R.array.filter41));
         list.add(getResources().getStringArray(R.array.filter42));
         list.add(getResources().getStringArray(R.array.filter43));
         list.add(getResources().getStringArray(R.array.filter44));
         int[] mFilter123Selected = {4,4,0};
-        int[] mFilter4Selected = {3,0,0,0};
+        int[] mFilter4Selected = {0,0,0};
         filterAdapter.setData(getResources().getStringArray(R.array.filter1),
                 getResources().getStringArray(R.array.filter2),
                 getResources().getStringArray(R.array.filter3),
@@ -117,100 +122,16 @@ public class LoanFragment extends BaseFragment {
 
         mFilterManager.setComponents(mFilterView, filterAdapter);
 
-        doSelectType((LoanTypeEnum)mBundle.getSerializable("type"));
+        doSelectType((LoanTypeEnum) mBundle.getSerializable("type"));
 
-        requestLoans();
-    }
+        mRequest = new LoanListRequest();
 
-    private void requestLoans() {
-        List<LoanModel> lists = new ArrayList<>();
-
-        LoanModel loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(3.5f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0c6e669d0.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(2.5f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0c3a055ac.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(3f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0c1bd741c.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(5f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0bf9214ce.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(4f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0bcf12add.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(4f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0bb11cc4d.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(1f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-08/568f0b4b99c72.png");
-        lists.add(loanModel);
-
-        loanModel = new LoanModel();
-        loanModel.setId("123");
-        loanModel.setScore(0.5f);
-        loanModel.setInterest(2321);
-        loanModel.setName("平安银行-新一贷");
-        loanModel.setMonthPay(8765);
-        loanModel.setType("平安银行");
-        loanModel.setUrl("http://www.qttjinrong.com/Public/upload/images/2016-01-07/568e11476f91f.jpg");
-        lists.add(loanModel);
-
-        mLoanAdapter.add(lists);
+        mPresenter.request();
     }
 
     private void doSelectType(LoanTypeEnum loanTypeEnum) {
         if(loanTypeEnum == null) {
-            mFilterManager.reset(4);
+            mFilterManager.setSelect(4,0,"");
         } else if(loanTypeEnum.equals(LoanTypeEnum.企业贷款)) {
             mFilterManager.setSelect(4,11,"");
         } else if(loanTypeEnum.equals(LoanTypeEnum.上班族贷款)) {
@@ -225,4 +146,33 @@ public class LoanFragment extends BaseFragment {
         doSelectType(loanTypeEnum);
     }
 
+    /********/
+    @Override
+    public LoanListRequest getRequest() {
+        return mRequest;
+    }
+
+    @Override
+    public void onRequest(List<LoanModel> list) {
+        boolean isRefresh = mSwipeRefreshLayout.isRefreshing();
+
+        if(isRefresh) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        } else {
+            mBottomRefreshListView.onLoadMoreComplete();
+        }
+
+        if(list == null) return;
+
+        if(isRefresh) {
+            mLoanAdapter.update(list);
+        } else {
+            mLoanAdapter.add(list);
+        }
+
+        if(list.size() < mRequest.getPageSize()) {
+            mBottomRefreshListView.onAllLoaded();
+        }
+
+    }
 }

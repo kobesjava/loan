@@ -1,21 +1,19 @@
 package com.qtt.jinrong.ui.widget.filter;
 
 import android.content.Context;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 
 /**
@@ -29,6 +27,8 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
     TextView mFilter4NumText;
 
     BaseFilterAdapter mAdapter;
+
+    private SelectLisenter mSelectLisenter;
 
     private int mPosition;
 
@@ -60,6 +60,9 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
     @Override
     public void setSelect(int position, int index, String defaultStr) {
+
+        LogUtil.d("SELECT","position="+position+" index="+index+" title="+defaultStr);
+
         if(mFilterPop012 != null) mFilterPop012.dismiss();
         if(mFilterPop3 != null) mFilterPop3.dismiss();
 
@@ -86,12 +89,9 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             mFilter4NumText.setText(selected+"");
             mFilter4NumText.setVisibility(selected>0?View.VISIBLE:View.GONE);
         }
-    }
-
-    @Override
-    public void reset(int position) {
-        //// TODO: 16/3/1 待完善
-        if(mFilterPop3 != null) mFilterPop3.reset();
+        if(mSelectLisenter != null) {
+            mSelectLisenter.onSelect(position);
+        }
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -271,8 +271,6 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
         ListView mListView;
         PopAdapter mPopAdapter;
-        TextView moneyText;
-        EditText moneyInput;
 
         public Filter3Pop(Context context) {
             super(context);
@@ -284,52 +282,22 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             mBottom.findViewById(R.id.btnConfirm).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    confirm();
                     dismiss();
+                    confirm();
                 }
             });
             mBottom.findViewById(R.id.btnReset).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    reset();
+                    setSelect(4,-1,"");
+                    mPopAdapter.notifyDataSetChanged();
+                    dismiss();
                 }
             });
 
             mListView = (ListView) popView.findViewById(R.id.listview);
             mListView.setVisibility(View.VISIBLE);
             mListView.setDividerHeight(0);
-
-            View mHeadView = LayoutInflater.from(context).inflate(R.layout.filter_pop_header, null);
-            moneyText = (TextView) mHeadView.findViewById(R.id.money);
-            moneyInput = (EditText) mHeadView.findViewById(R.id.editText);
-            moneyInput.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    if(TextUtils.isEmpty(s.toString())) {
-                        moneyText.setText("1万");
-                    } else {
-                        try {
-                            int m = Integer.parseInt(s.toString());
-                            if(m <= 0) m = 1;
-                            moneyText.setText(m+"万");
-                        }catch (Exception e) {
-                            moneyText.setText("1万");
-                        }
-                    }
-                }
-            });
-            moneyInput.setText("10");
-            mListView.addHeaderView(mHeadView);
 
             mPopAdapter = new PopAdapter();
             mListView.setAdapter(mPopAdapter);
@@ -344,13 +312,9 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             int selected = mAdapter.getSelected(4);
             mFilter4NumText.setText(selected+"");
             mFilter4NumText.setVisibility(selected>0?View.VISIBLE:View.GONE);
-        }
-
-        void reset() {
-            moneyInput.setText("10");
-            mFilter4NumText.setVisibility(View.GONE);
-            mAdapter.reset(4);
-            mPopAdapter.notifyDataSetChanged();
+            if(mSelectLisenter != null) {
+                mSelectLisenter.onSelect(4);
+            }
         }
 
     }
@@ -381,6 +345,13 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             convertView = mAdapter.getView(mPosition,position,convertView,selected);
             return convertView;
         }
+    }
+
+    public void setSelectLisenter(SelectLisenter mSelectLisenter) {
+        this.mSelectLisenter = mSelectLisenter;
+    }
+    public interface SelectLisenter {
+        void onSelect(int position);
     }
 
 }

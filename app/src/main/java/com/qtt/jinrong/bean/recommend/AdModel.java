@@ -5,6 +5,8 @@ package com.qtt.jinrong.bean.recommend;
  */
 public class AdModel {
 
+    private String imgUrl;
+
     private String url;
 
     public String getUrl() {
@@ -13,5 +15,13 @@ public class AdModel {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

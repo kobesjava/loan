@@ -87,10 +87,6 @@ public class FilterCreditAdapter extends BaseFilterAdapter {
     }
 
     @Override
-    protected void reset(int position) {
-    }
-
-    @Override
     protected int getSelected(int position) {
         return position;
     }

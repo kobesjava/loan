@@ -28,19 +28,19 @@ public class NetworkManger {
     }
 
     public boolean isDev() {
-        return "dev".equals(AppConfig.get_host_env());
+        return "dev".equals(AppConfig.host_env);
     }
 
     public boolean isTest() {
-        return "test".equals(AppConfig.get_host_env());
+        return "test".equals(AppConfig.host_env);
     }
 
     public boolean isBeta() {
-        return "beta".equals(AppConfig.get_host_env());
+        return "beta".equals(AppConfig.host_env);
     }
 
     public boolean isProd() {
-        return "prod".equals(AppConfig.get_host_env());
+        return "prod".equals(AppConfig.host_env);
     }
 
 }

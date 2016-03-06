@@ -69,7 +69,7 @@ public class LoanApplyAdapter extends BaseAdapter {
 
         model = getItem(position);
 
-        viewHolder.nameTxt.setText(model.getName());
+        viewHolder.nameTxt.setText(model.getTitle());
         viewHolder.amountTxt.setText("金额: "+model.getAomount());
         viewHolder.statusTxt.setText(model.getStatus());
         viewHolder.sourceTxt.setText(model.getSource());

@@ -5,21 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
-import com.qtt.jinrong.bean.loan.LoanApplyModel;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.adapter.LoanApplyAdapter;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.load.BottomRefreshListView;
 import com.qtt.jinrong.ui.widget.load.RefreshLayout;
-import com.qtt.framework.util.GeneratedClassUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 我的贷款申请列表
@@ -68,109 +64,7 @@ public class LoanApplyListActivity extends BaseActivity {
     }
 
     void requestApplys() {
-        List<LoanApplyModel> lists = new ArrayList<>();
 
-        LoanApplyModel model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(3.5f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(2.5f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(3f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(5f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(4f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(4f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(1f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        lists.add(model);
-
-        model = new LoanApplyModel();
-        model.setId("123");
-        model.setScore(0.5f);
-        model.setInterest(2321);
-        model.setName("平安银行-新一贷");
-        model.setMonthPay(8765);
-        model.setType("平安银行");
-        model.setTerm("12个月");
-        model.setSource("自申请");
-        model.setTime(System.currentTimeMillis());
-        model.setStatus("信用经理无反馈");
-        lists.add(model);
-
-        mAdapter.add(lists);
     }
 
 }

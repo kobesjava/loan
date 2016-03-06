@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.recommend.AdModel;
 import com.qtt.jinrong.ui.activity.web.WebViewActivity;
@@ -78,8 +79,12 @@ public class RecommendAdAdapter extends BasePagerAdapter {
 		SimpleDraweeView draweeView = (SimpleDraweeView) getView();
 		final AdModel adModel = mFocusImageInfoList.get(position % mFocusImageInfoList.size());
 		draweeView.setTag(adModel);
-		Uri uri = Uri.parse(adModel.getUrl());
-		draweeView.setImageURI(uri);
+		try {
+			Uri uri = Uri.parse(adModel.getImgUrl());
+			draweeView.setImageURI(uri);
+		}catch (Exception e) {
+			LogUtil.d("加载图片出错","url="+adModel.getImgUrl()+" Exception="+e.getMessage());
+		}
 		container.addView(draweeView);
 		return draweeView;
 	}

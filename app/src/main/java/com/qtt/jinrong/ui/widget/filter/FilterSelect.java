@@ -19,10 +19,4 @@ public interface FilterSelect {
      */
     void setSelect(int position,int index,String defaultStr);
 
-    /**
-     * 重置内容
-     * @param position
-     */
-    void reset(int position);
-
 }

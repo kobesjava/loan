@@ -106,19 +106,17 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
     }
 
     @Override
-    protected void reset(int position) {
-        if(position == 4) {
-            this.mFilter4Selected = Arrays.copyOf(mDefaultFilter4Selected,mDefaultFilter4Selected.length);
-        }
-    }
-
-    @Override
     protected void setSelect(int position, int index) {
         //// TODO: 16/3/1 待完善
-        if(position == 4 && index>=10) {
-            int mIndex = index/10;
-            int mSubindex = index%10;
-            mFilter4Selected[mIndex] = mSubindex;
+        if(position == 4) {
+            if(index >= 10) {
+                int mIndex = index/10-1;
+                int mSubindex = index%10;
+                mFilter4Selected[mIndex] = mSubindex;
+            } else {
+                this.mFilter4Selected = Arrays.copyOf(mDefaultFilter4Selected,mDefaultFilter4Selected.length);
+            }
+
         }
     }
 
@@ -126,7 +124,7 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
     protected boolean isSelected(int position, int index) {
         //// TODO: 16/3/1 待完善
         if(position == 4 && index>=10) {
-            int mIndex = index/10;
+            int mIndex = index/10-1;
             return mFilter4Selected[mIndex]>0;
         }
         return false;
