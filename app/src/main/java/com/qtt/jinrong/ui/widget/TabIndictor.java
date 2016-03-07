@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.qtt.jinrong.R;
@@ -13,8 +13,9 @@ import com.qtt.jinrong.R;
 /**
  * Created by yanxin on 16/2/26.
  */
-public class TabIndictor extends FrameLayout implements View.OnClickListener {
+public class TabIndictor extends FrameLayout {
 
+    private RadioGroup radioGroup;
     private TextView mText;
     private BaseAdapter adapter;
 
@@ -27,29 +28,30 @@ public class TabIndictor extends FrameLayout implements View.OnClickListener {
 
         View view = LayoutInflater.from(context).inflate(R.layout.tab_indictor,null);
 
+        radioGroup = (RadioGroup) view.findViewById(R.id.group);
+
         mText = (TextView) view.findViewById(R.id.text);
 
-        view.findViewById(R.id.btn1).setOnClickListener(this);
-        view.findViewById(R.id.btn2).setOnClickListener(this);
-        view.findViewById(R.id.btn3).setOnClickListener(this);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (adapter == null) return;
 
-        ((RadioButton)view.findViewById(R.id.btn1)).setChecked(true);
+                if (checkedId == R.id.btn1) {
+                    mText.setText(adapter.getString(0));
+                } else if (checkedId == R.id.btn2) {
+                    mText.setText(adapter.getString(1));
+                } else if (checkedId == R.id.btn3) {
+                    mText.setText(adapter.getString(2));
+                }
+            }
+        });
 
         addView(view);
     }
 
-
-    @Override
-    public void onClick(View v) {
-        if(adapter == null) return;
-
-        if(v.getId() == R.id.btn1) {
-            mText.setText(adapter.getString(0));
-        } else if(v.getId() == R.id.btn2) {
-            mText.setText(adapter.getString(1));
-        } else if(v.getId() == R.id.btn3) {
-            mText.setText(adapter.getString(2));
-        }
+    public void check() {
+        radioGroup.check(R.id.btn1);
     }
 
     public void setAdapter(BaseAdapter adapter) {

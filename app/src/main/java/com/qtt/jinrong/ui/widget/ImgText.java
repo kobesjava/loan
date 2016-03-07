@@ -16,7 +16,7 @@ import com.qtt.jinrong.R;
  */
 public class ImgText extends View {
 
-    private String[] conts = {"放款快","手续简单","利率低"};
+    private String[] conts;
 
     private Bitmap mBitmap;
 
@@ -42,11 +42,14 @@ public class ImgText extends View {
         textColor = getResources().getColor(R.color.color_800000);
     }
 
+    public void setConts(String[] conts) {
+        this.conts = conts;
+        postInvalidate();
+    }
+
     public void onDraw(Canvas canvas) {
 
         if(conts == null || conts.length == 0) return;
-
-
 
         Paint paint = new Paint();
         paint.setAntiAlias(true);

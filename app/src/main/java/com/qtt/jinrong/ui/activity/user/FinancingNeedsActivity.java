@@ -1,12 +1,18 @@
 package com.qtt.jinrong.ui.activity.user;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
 
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
+import com.qtt.jinrong.bean.account.FinancingDemands;
+import com.qtt.jinrong.presenter.IFinancingDemandPresenter;
+import com.qtt.jinrong.presenter.impl.FinancingDemandPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.OilgaugeProgress;
-import com.qtt.framework.util.GeneratedClassUtils;
+import com.qtt.jinrong.view.IFinancingDemandsView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -17,24 +23,50 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_financing_needs)
-public class FinancingNeedsActivity extends BaseActivity {
+public class FinancingNeedsActivity extends BaseActivity implements IFinancingDemandsView {
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
-
     @ViewById(R.id.progress)
     OilgaugeProgress mOilgaugeProgress;
+    @ViewById(R.id.baseStatus)
+    TextView baseStatus;
+    @ViewById(R.id.needsStatus)
+    TextView needsStatus;
+    @ViewById(R.id.identiStatus)
+    TextView identiStatus;
+    @ViewById(R.id.creditStatus)
+    TextView creditStatus;
+    @ViewById(R.id.houseStatus)
+    TextView houseStatus;
+    @ViewById(R.id.carStatus)
+    TextView carStatus;
+    @ViewById(R.id.otherStatus)
+    TextView otherStatus;
+
+    IFinancingDemandPresenter mPresenter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter = new FinancingDemandPresenterImpl(this);
+    }
 
     @AfterViews
     void initView() {
         mTitleBar.setTitle(getString(R.string.financing_need_title));
         mTitleBar.setActivity(this);
+    }
 
-        mOilgaugeProgress.setProgress(75);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.request();
     }
 
     @Click(R.id.btnrefresh)
     void clickRefresh() {
+        mPresenter.request();
     }
 
     @Click(R.id.baseView)
@@ -79,4 +111,55 @@ public class FinancingNeedsActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    /***  IVIEW  ***/
+    @Override
+    public void onRequest(FinancingDemands financingDemands) {
+
+        int finished = 0;
+
+        if(financingDemands.isBaseStatus()) {
+            finished++;
+            baseStatus.setText(getString(R.string.finished));
+        }
+        else baseStatus.setText(getString(R.string.beperfect));
+
+        if(financingDemands.isDemandStatus()) {
+            finished++;
+            needsStatus.setText(getString(R.string.finished));
+        }
+        else needsStatus.setText(getString(R.string.beperfect));
+
+        if(financingDemands.isIdentityStatus()) {
+            finished++;
+            identiStatus.setText(getString(R.string.finished));
+        }
+        else identiStatus.setText(getString(R.string.beperfect));
+
+        if(financingDemands.isCreditStatus()) {
+            finished++;
+            creditStatus.setText(getString(R.string.finished));
+        }
+        else creditStatus.setText(getString(R.string.beperfect));
+
+        if(financingDemands.isCarStatus()) {
+            finished++;
+            carStatus.setText(getString(R.string.finished));
+        }
+        else carStatus.setText(getString(R.string.beperfect));
+
+        if(financingDemands.isHouseStatus()) {
+            finished++;
+            houseStatus.setText(getString(R.string.finished));
+        }
+        else houseStatus.setText(getString(R.string.beperfect));
+
+        if(financingDemands.isAssetStatus()) {
+            finished++;
+            otherStatus.setText(getString(R.string.finished));
+        }
+        else otherStatus.setText(getString(R.string.beperfect));
+
+        mOilgaugeProgress.setProgress(finished*100/7);
+    }
+    /***  IVIEW  ***/
 }

@@ -1,9 +1,12 @@
 package com.qtt.jinrong.bean.loan;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by yanxin on 16/2/24.
  */
-public class LoanModel {
+public class LoanModel implements Parcelable {
 
     private String id;
 
@@ -17,7 +20,7 @@ public class LoanModel {
     private String ownedCompany;
 
     /** 总利息*/
-    private int rate;
+    private String rate;
 
     /** 月供*/
     private int money;
@@ -72,11 +75,11 @@ public class LoanModel {
         this.ownedCompany = ownedCompany;
     }
 
-    public int getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
 
@@ -87,4 +90,46 @@ public class LoanModel {
     public void setMoney(int money) {
         this.money = money;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.productId);
+        dest.writeString(this.thumpImg);
+        dest.writeString(this.title);
+        dest.writeString(this.ownedCompany);
+        dest.writeString(this.rate);
+        dest.writeInt(this.money);
+        dest.writeFloat(this.score);
+    }
+
+    public LoanModel() {
+    }
+
+    protected LoanModel(Parcel in) {
+        this.id = in.readString();
+        this.productId = in.readString();
+        this.thumpImg = in.readString();
+        this.title = in.readString();
+        this.ownedCompany = in.readString();
+        this.rate = in.readString();
+        this.money = in.readInt();
+        this.score = in.readFloat();
+    }
+
+    public static final Parcelable.Creator<LoanModel> CREATOR = new Parcelable.Creator<LoanModel>() {
+        public LoanModel createFromParcel(Parcel source) {
+            return new LoanModel(source);
+        }
+
+        public LoanModel[] newArray(int size) {
+            return new LoanModel[size];
+        }
+    };
 }

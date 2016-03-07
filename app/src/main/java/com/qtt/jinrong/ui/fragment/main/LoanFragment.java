@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.qtt.framework.util.LogUtil;
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.event.LoanTypeEvent;
 import com.qtt.jinrong.bean.loan.LoanListRequest;
@@ -26,7 +26,6 @@ import com.qtt.jinrong.ui.widget.filter.FilterSelect;
 import com.qtt.jinrong.ui.widget.filter.FilterView;
 import com.qtt.jinrong.ui.widget.load.BottomRefreshListView;
 import com.qtt.jinrong.ui.widget.load.RefreshLayout;
-import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.view.ILoanListView;
 
 import org.androidannotations.annotations.EFragment;
@@ -120,6 +119,7 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(ProductDetailActivity.class));
+                intent.putExtra(ProductDetailActivity.INTENT_LOAN,mLoanAdapter.getItem(position-1));
                 startActivity(intent);
             }
         });
@@ -143,8 +143,6 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
 
             @Override
             public void onSelect(int position, int index, String val) {
-                LogUtil.d("SELECT", "position=" + position + " index=" + index + " val=" + val);
-
                 if (position == 1) {
                     mRequest.setQuota(Integer.parseInt(val.replace("万", "")));
                 } else if (position == 2) {

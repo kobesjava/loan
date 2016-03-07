@@ -89,7 +89,7 @@
                     style="@style/financing_needs_book_text" />
 
                 <TextView
-                    android:id="@+id/infoStatus"
+                    android:id="@+id/baseStatus"
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
@@ -117,7 +117,7 @@
                     style="@style/financing_needs_book_text" />
 
                 <TextView
-                    android:id="@+id/idsStatus"
+                    android:id="@+id/identiStatus"
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
