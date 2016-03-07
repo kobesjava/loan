@@ -8,38 +8,83 @@
     <com.qtt.jinrong.ui.widget.CommonTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <com.qtt.jinrong.ui.widget.text.InputEditText
         android:id="@+id/phoneEdit"
-        android:background="@color/white"
-        android:paddingTop="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
         input:input_hint="@string/forget_phone_hint"
-        input:input_number="true"/>
+        input:input_number="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <com.qtt.jinrong.ui.widget.text.InputEditText
+                android:id="@+id/codeEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                input:input_hint="@string/login_code_hint" />
+
+            <Button
+                android:id="@+id/btnRequestCode"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/bg_orange_corner_selecter"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/login_click_request"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.text.InputPwdEdit
+            android:id="@+id/pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btnNext"
-        android:layout_marginTop="30dp"
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:text="@string/forget_next"
+        android:layout_marginTop="30dp"
         android:background="@drawable/bg_orange_corner_selecter"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
 
     <TextView
-        android:layout_marginTop="25dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/forget_tip"
-        android:textSize="12sp"
-        android:textColor="@color/color_999999"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:text="@string/forget_tip"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.qtt.jinrong.ui.activity.user;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +10,16 @@ import android.widget.ToggleButton;
 
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.common.wrap.WrapCountDownTimer;
+import com.qtt.jinrong.config.Constants;
+import com.qtt.jinrong.presenter.ILoginRegistPresenter;
+import com.qtt.jinrong.presenter.impl.LoginRegistPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
 import com.qtt.jinrong.ui.widget.text.InputPwdEdit;
 import com.qtt.framework.util.CheckDoubleClick;
 import com.qtt.framework.util.GeneratedClassUtils;
+import com.qtt.jinrong.view.IRegistView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -25,10 +30,11 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/2/24.
  */
 @EActivity(R.layout.activity_regist1)
-public class Regist1Activity extends BaseActivity {
+public class Regist1Activity extends BaseActivity implements IRegistView {
 
     public static final String INTENT_PHONE = "INTENT_PHONE";
-    public static final String INTENT_TITLE = "INTENT_TITLE";
+    public static final String INTENT_NICKNAME = "INTENT_NICKNAME";
+    public static final String INTENT_GENDER = "INTENT_GENDER";
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mCommonTitleBar;
@@ -45,10 +51,26 @@ public class Regist1Activity extends BaseActivity {
     @ViewById(R.id.btnRequestCode)
     Button mBtnRequestCode;
 
-    @ViewById(R.id.btnSex)
+    @ViewById(R.id.btnSubmit)
     ToggleButton mBtnSubmit;
 
     MyCountDownTimer mCountDownTimer;
+
+    String mPhoneNum;
+    String mNickname;
+    int mGender;
+
+    ILoginRegistPresenter mPresenter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mPresenter = new LoginRegistPresenterImpl(this);
+        mPhoneNum = mIntent.getStringExtra(INTENT_PHONE);
+        mNickname = mIntent.getStringExtra(INTENT_NICKNAME);
+        mGender = mIntent.getIntExtra(INTENT_GENDER,1);
+    }
 
     @Override
     protected void onDestroy() {
@@ -60,9 +82,7 @@ public class Regist1Activity extends BaseActivity {
 
     @AfterViews
     public void initView() {
-
-        String title = mIntent.getStringExtra(INTENT_TITLE);
-        mCommonTitleBar.setTitle(TextUtils.isEmpty(title)?getString(R.string.regist_title):title);
+        mCommonTitleBar.setTitle(getString(R.string.regist_title));
         mCommonTitleBar.setActivity(this);
         mCommonTitleBar.setRightViewVisible(View.VISIBLE, "登录");
         mCommonTitleBar.setTitleBarListener(new CommonTitleBar.TitleBarListener() {
@@ -79,13 +99,23 @@ public class Regist1Activity extends BaseActivity {
             }
         });
 
-        mPhone.setText(mIntent.getStringExtra(INTENT_PHONE));
+        mPhone.setText(mPhoneNum);
 
         mBtnRequestCode.setEnabled(false);
         mBtnRequestCode.setBackgroundResource(R.color.color_9e9e0e);
         mBtnRequestCode.setTextColor(getResources().getColor(R.color.color_eee));
-        mCountDownTimer = new MyCountDownTimer(5000,1000,this);
+        mCountDownTimer = new MyCountDownTimer(Constants.REQUEST_CODE_TIME,1000,this);
         mCountDownTimer.start();
+    }
+
+    /**
+     * 重新设置发送验证码按钮
+     */
+    void resetCodeBtn() {
+        mBtnRequestCode.setEnabled(true);
+        mBtnRequestCode.setText(getString(R.string.login_click_request_again));
+        mBtnRequestCode.setBackgroundResource(R.drawable.bg_orange_corner_selecter);
+        mBtnRequestCode.setTextColor(getResources().getColor(R.color.white));
     }
 
     @Click(R.id.btnRequestCode)
@@ -96,13 +126,14 @@ public class Regist1Activity extends BaseActivity {
         mBtnRequestCode.setBackgroundResource(R.color.color_9e9e0e);
         mBtnRequestCode.setTextColor(getResources().getColor(R.color.color_eee));
 
-        mCountDownTimer = new MyCountDownTimer(5000,1000,this);
+        mCountDownTimer = new MyCountDownTimer(Constants.REQUEST_CODE_TIME,1000,this);
         mCountDownTimer.start();
+
     }
 
     @Click(R.id.btnSubmit)
     void clickBtnSubmit() {
-
+        mPresenter.regist();
     }
 
     static class MyCountDownTimer extends WrapCountDownTimer<Regist1Activity> {
@@ -113,10 +144,7 @@ public class Regist1Activity extends BaseActivity {
 
         @Override
         protected void onFinish(Regist1Activity activity) {
-            activity.mBtnRequestCode.setEnabled(true);
-            activity.mBtnRequestCode.setText(activity.getString(R.string.login_click_request_again));
-            activity.mBtnRequestCode.setBackgroundResource(R.drawable.bg_orange_corner_selecter);
-            activity.mBtnRequestCode.setTextColor(activity.getResources().getColor(R.color.white));
+            activity.resetCodeBtn();
         }
 
         @Override
@@ -124,4 +152,41 @@ public class Regist1Activity extends BaseActivity {
             activity.mBtnRequestCode.setText("("+(millisUntilFinished/1000)+"秒后)重新获取");
         }
     }
+
+    /***  IRegistView  ***/
+    @Override
+    public void onRequestCode(boolean success) {
+        if(!success) resetCodeBtn();
+    }
+
+    @Override
+    public String getPhone() {
+        return mPhoneNum;
+    }
+
+    @Override
+    public String getCode() {
+        return mCodeEdit.getString();
+    }
+
+    @Override
+    public String getPwd() {
+        return mPwdEdit.getString();
+    }
+
+    @Override
+    public int getGender() {
+        return mGender;
+    }
+
+    @Override
+    public String getNickname() {
+        return mNickname;
+    }
+
+    @Override
+    public void onRegist() {
+        finish();
+    }
+    /***  IRegistView  ***/
 }

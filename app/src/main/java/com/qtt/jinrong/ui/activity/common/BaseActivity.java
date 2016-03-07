@@ -122,7 +122,7 @@ public abstract class BaseActivity extends FragmentActivity {
      * @return
      */
     public String getUserId() {
-        return mUserInfo!=null?mUserInfo.getId():"";
+        return mUserInfo!=null?mUserInfo.getUserId():"";
     }
 
 }

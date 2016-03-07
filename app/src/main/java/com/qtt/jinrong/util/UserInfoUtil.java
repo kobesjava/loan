@@ -14,7 +14,6 @@ import com.qtt.jinrong.bean.user.UserInfo;
 public class UserInfoUtil {
 
     private static final String USER_INFO = "USER_INFO";
-    private static final String USER_CALL_INFO = "USER_CALL_INFO";
 
     /**
      * 保存登录用户信息
@@ -25,9 +24,10 @@ public class UserInfoUtil {
     public static void saveUserInfo(Context context, UserInfo res) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE);
         Editor editor = sharedPreferences.edit();
-        editor.putString("id", res.getId());
-        editor.putString("name", res.getName());
-        editor.putString("mobile", res.getMobile());
+        editor.putString("id", res.getUserId());
+        editor.putString("name", res.getUsername());
+        editor.putString("mobile", res.getCell());
+        editor.putInt("gender", res.getGender());
         editor.apply();
     }
 
@@ -64,49 +64,15 @@ public class UserInfoUtil {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE);
         String id = sharedPreferences.getString("id", "");
-        String name = sharedPreferences.getString("name", "");
-        String mobile = sharedPreferences.getString("mobile", "");
 
-        if (TextUtils.isEmpty(id) || TextUtils.isEmpty(mobile)) return null;
+        if (TextUtils.isEmpty(id)) return null;
 
         UserInfo res = new UserInfo();
-        res.setId(id);
-        res.setName(name);
-        res.setMobile(mobile);
+        res.setUserId(id);
+        res.setUsername(sharedPreferences.getString("name",""));
+        res.setCell(sharedPreferences.getString("mobile",""));
+        res.setGender(sharedPreferences.getInt("gender",1));
         return res;
     }
 
-    public static boolean isHandPhone(Context context) {
-        return context.getSharedPreferences(USER_CALL_INFO, Context.MODE_PRIVATE).getBoolean("isHandPhone", false);
-    }
-
-    public static void saveUserHandlePhone(Context context, boolean isHandlePhone) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_CALL_INFO, Context.MODE_PRIVATE);
-        Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isHandPhone", isHandlePhone);
-        editor.apply();
-    }
-
-    public static void saveUserRingingPhone(Context context, boolean isRingingPhone) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_CALL_INFO, Context.MODE_PRIVATE);
-        Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isRingingPhone", isRingingPhone);
-        editor.apply();
-    }
-
-    public static boolean isRingingPhone(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_CALL_INFO, Context.MODE_PRIVATE);
-        if (sharedPreferences.getBoolean("isRingingPhone", false)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isHandOrRingingPhone(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_CALL_INFO, Context.MODE_PRIVATE);
-        if (sharedPreferences.getBoolean("isHandPhone", false) || sharedPreferences.getBoolean("isRingingPhone", false)) {
-            return true;
-        }
-        return false;
-    }
 }

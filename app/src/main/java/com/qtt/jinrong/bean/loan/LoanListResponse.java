@@ -9,6 +9,13 @@ import java.util.List;
  */
 public class LoanListResponse extends Response {
 
-    List<LoanModel> data;
+    private List<LoanModel> data;
 
+    public List<LoanModel> getData() {
+        return data;
+    }
+
+    public void setData(List<LoanModel> data) {
+        this.data = data;
+    }
 }

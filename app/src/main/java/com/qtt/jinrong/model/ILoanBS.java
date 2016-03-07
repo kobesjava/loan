@@ -16,6 +16,6 @@ public interface ILoanBS extends IBS {
      * @param request
      * @param listenerObj
      */
-    void requestList(Context context, LoanListRequest request, MCListenerObj listenerObj);
+    void requestList(Context context, LoanListRequest request, MCListenerObj.IObjResListener listenerObj);
 
 }

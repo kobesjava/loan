@@ -104,6 +104,14 @@ public class SelectBox extends FrameLayout {
         }
     }
 
+    public boolean isLeftChecked() {
+        return leftRadio.isChecked();
+    }
+
+    public boolean isRightChecked() {
+        return rightRadio.isChecked();
+    }
+
     public void setSelectBoxListner(SelectBoxListener selectBoxListner) {
         this.mSelectBoxListener = selectBoxListner;
     }

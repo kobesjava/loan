@@ -3,12 +3,18 @@ package com.qtt.jinrong.ui.activity.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
 import com.qtt.jinrong.R;
+import com.qtt.jinrong.bean.event.LoginEvent;
+import com.qtt.jinrong.bean.user.UserInfo;
 import com.qtt.jinrong.common.wrap.WrapCountDownTimer;
+import com.qtt.jinrong.config.Constants;
+import com.qtt.jinrong.presenter.ILoginRegistPresenter;
+import com.qtt.jinrong.presenter.impl.LoginRegistPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.adapter.LoginPagerAdapter;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
@@ -16,6 +22,9 @@ import com.qtt.jinrong.ui.widget.SelectBox;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
 import com.qtt.framework.util.CheckDoubleClick;
 import com.qtt.framework.util.GeneratedClassUtils;
+import com.qtt.jinrong.util.ToastUtil;
+import com.qtt.jinrong.util.UserInfoUtil;
+import com.qtt.jinrong.view.ILoginView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -24,11 +33,13 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by yanxin on 16/2/24.
  */
 @EActivity(R.layout.activity_login)
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements ILoginView{
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mCommonTitleBar;
@@ -47,9 +58,12 @@ public class LoginActivity extends BaseActivity {
 
     MyCountDownTimer mCountDownTimer;
 
+    ILoginRegistPresenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter = new LoginRegistPresenterImpl(this);
     }
 
     @Override
@@ -122,15 +136,27 @@ public class LoginActivity extends BaseActivity {
                 clickForgetBtn();
             }
         });
+        loginPwdView.findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPwd();
+            }
+        });
 
         View loginCodeView = LayoutInflater.from(this).inflate(R.layout.login_code,null);
-        mPhone2Edit = (InputEditText) loginPwdView.findViewById(R.id.phoneEdit);
-        mCodeEdit = (InputEditText) loginPwdView.findViewById(R.id.codeEdit);
+        mPhone2Edit = (InputEditText) loginCodeView.findViewById(R.id.phoneEdit);
+        mCodeEdit = (InputEditText) loginCodeView.findViewById(R.id.codeEdit);
         mBtnRequestCode = (Button) loginCodeView.findViewById(R.id.btnRequestCode);
         mBtnRequestCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 requestCode();
+            }
+        });
+        loginCodeView.findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginCode();
             }
         });
 
@@ -144,12 +170,54 @@ public class LoginActivity extends BaseActivity {
         mViewPager.setAdapter(mLoginPagerAdapter);
     }
 
+    void loginCode() {
+        if(TextUtils.isEmpty(mPhone2Edit.getString())) {
+            ToastUtil.showShortToast("请填写手机号码");
+            return;
+        }
+        if(TextUtils.isEmpty(mCodeEdit.getString())) {
+            ToastUtil.showShortToast("请填写验证码");
+            return;
+        }
+
+        mPresenter.loginCode();
+    }
+
+    void loginPwd() {
+
+        if(TextUtils.isEmpty(mPhone1Edit.getString())) {
+            ToastUtil.showShortToast("请填写手机号码");
+            return;
+        }
+        if(TextUtils.isEmpty(mPwdEdit.getString())) {
+            ToastUtil.showShortToast("请填写密码");
+            return;
+        }
+
+        if(mPwdEdit.getString().length() < 6 || mPwdEdit.getString().length() > 20) {
+            ToastUtil.showShortToast("密码长度在6-20");
+            return;
+        }
+
+        mPresenter.loginPwd();
+    }
+
     /**
      * 忘记密码
      */
     private void clickForgetBtn() {
         Intent intent = new Intent(this, GeneratedClassUtils.get(ForgetPwdActivity.class));
         startActivity(intent);
+    }
+
+    /**
+     * 重新设置发送验证码按钮
+     */
+    void resetCodeBtn() {
+        mBtnRequestCode.setEnabled(true);
+        mBtnRequestCode.setText(getString(R.string.login_click_request_again));
+        mBtnRequestCode.setBackgroundResource(R.drawable.bg_orange_corner_selecter);
+        mBtnRequestCode.setTextColor(getResources().getColor(R.color.white));
     }
 
     /**
@@ -162,8 +230,10 @@ public class LoginActivity extends BaseActivity {
         mBtnRequestCode.setBackgroundResource(R.color.color_9e9e0e);
         mBtnRequestCode.setTextColor(getResources().getColor(R.color.color_eee));
 
-        mCountDownTimer = new MyCountDownTimer(5000,1000,this);
+        mCountDownTimer = new MyCountDownTimer(Constants.REQUEST_CODE_TIME,1000,this);
         mCountDownTimer.start();
+
+        mPresenter.requestCode();
     }
 
     static class MyCountDownTimer extends WrapCountDownTimer<LoginActivity> {
@@ -174,10 +244,7 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         protected void onFinish(LoginActivity loginActivity) {
-            loginActivity.mBtnRequestCode.setEnabled(true);
-            loginActivity.mBtnRequestCode.setText(loginActivity.getString(R.string.login_click_request_again));
-            loginActivity.mBtnRequestCode.setBackgroundResource(R.drawable.bg_orange_corner_selecter);
-            loginActivity.mBtnRequestCode.setTextColor(loginActivity.getResources().getColor(R.color.white));
+            loginActivity.resetCodeBtn();
         }
 
         @Override
@@ -186,4 +253,37 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+
+
+    /**  ILoginView **/
+    @Override
+    public String getPhone() {
+        if(mSelectBox.isLeftChecked()) return mPhone1Edit.getString();
+        else return mPhone2Edit.getString();
+    }
+
+    @Override
+    public String getCode() {
+        return mCodeEdit.getString();
+    }
+
+    @Override
+    public String getPwd() {
+        return mPwdEdit.getString();
+    }
+
+    @Override
+    public void onLogin(UserInfo userInfo) {
+        UserInfoUtil.saveUserInfo(this, userInfo);
+        finish();
+        EventBus.getDefault().post(new LoginEvent());
+    }
+
+    @Override
+    public void onRequestCode(boolean success) {
+        if(!success) {
+            resetCodeBtn();
+        }
+    }
+    /**  ILoginView  **/
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.loan.LoanListRequest;
+import com.qtt.jinrong.http.action.LoanReqsAction;
 import com.qtt.jinrong.model.ILoanBS;
 
 /**
@@ -12,8 +13,8 @@ import com.qtt.jinrong.model.ILoanBS;
 public class LoanBSImpl implements ILoanBS {
 
     @Override
-    public void requestList(Context context,LoanListRequest request, MCListenerObj listenerObj) {
-
+    public void requestList(Context context,LoanListRequest request, MCListenerObj.IObjResListener listenerObj) {
+        LoanReqsAction.requestList(context,request,listenerObj);
     }
 
 }

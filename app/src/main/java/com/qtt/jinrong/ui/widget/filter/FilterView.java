@@ -61,8 +61,6 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
     @Override
     public void setSelect(int position, int index, String defaultStr) {
 
-        LogUtil.d("SELECT","position="+position+" index="+index+" title="+defaultStr);
-
         if(mFilterPop012 != null) mFilterPop012.dismiss();
         if(mFilterPop3 != null) mFilterPop3.dismiss();
 
@@ -90,7 +88,7 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             mFilter4NumText.setVisibility(selected>0?View.VISIBLE:View.GONE);
         }
         if(mSelectLisenter != null) {
-            mSelectLisenter.onSelect(position);
+            mSelectLisenter.onSelect(position,index,title);
         }
     }
 
@@ -289,9 +287,9 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
             mBottom.findViewById(R.id.btnReset).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    setSelect(4,-1,"");
-                    mPopAdapter.notifyDataSetChanged();
                     dismiss();
+                    setSelect(4,0,"");
+                    mPopAdapter.notifyDataSetChanged();
                 }
             });
 
@@ -310,10 +308,10 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
 
         void confirm() {
             int selected = mAdapter.getSelected(4);
-            mFilter4NumText.setText(selected+"");
-            mFilter4NumText.setVisibility(selected>0?View.VISIBLE:View.GONE);
+            mFilter4NumText.setText(selected + "");
+            mFilter4NumText.setVisibility(selected > 0 ? View.VISIBLE : View.GONE);
             if(mSelectLisenter != null) {
-                mSelectLisenter.onSelect(4);
+                mSelectLisenter.onSelect(4,0,"");
             }
         }
 
@@ -347,11 +345,8 @@ public class FilterView extends FrameLayout implements FilterSelect,View.OnClick
         }
     }
 
+    @Override
     public void setSelectLisenter(SelectLisenter mSelectLisenter) {
         this.mSelectLisenter = mSelectLisenter;
     }
-    public interface SelectLisenter {
-        void onSelect(int position);
-    }
-
 }

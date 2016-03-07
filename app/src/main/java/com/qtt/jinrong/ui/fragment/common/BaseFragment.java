@@ -82,7 +82,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public String getUserId() {
-        return mUserInfo==null?"":mUserInfo.getId();
+        return mUserInfo==null?"":mUserInfo.getUserId();
     }
 
     public Context getContext() {

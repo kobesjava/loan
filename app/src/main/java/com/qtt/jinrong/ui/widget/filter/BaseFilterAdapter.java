@@ -15,14 +15,6 @@ public abstract class BaseFilterAdapter {
     protected abstract void setSelect(int position,int index);
 
     /**
-     * 是否被选中
-     * @param position 第几个筛选类型
-     * @param index    第几个筛选项
-     * @return
-     */
-    protected abstract boolean isSelected(int position,int index);
-
-    /**
      * 获取总数
      * @param position 第几个筛选类型
      * @return
@@ -89,13 +81,5 @@ public abstract class BaseFilterAdapter {
      * @return
      */
     protected abstract View getHeadView(int posion);
-
-    /**
-     * 是否可以点击
-     * @param position
-     * @param index
-     * @return
-     */
-    //protected abstract boolean isClickAble(int position,int index);
 
 }

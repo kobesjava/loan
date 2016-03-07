@@ -51,6 +51,14 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
         this.mFilter4Selected = Arrays.copyOf(mDefaultFilter4Selected, mDefaultFilter4Selected.length);
     }
 
+    /**
+     * 获取第4个筛选项
+     * @return
+     */
+    public int[] getSelected() {
+        return mFilter4Selected;
+    }
+
     @Override
     protected boolean isVisible(int position) {
         return true;
@@ -118,16 +126,6 @@ public class FilterLoanAdapter extends BaseFilterAdapter {
             }
 
         }
-    }
-
-    @Override
-    protected boolean isSelected(int position, int index) {
-        //// TODO: 16/3/1 待完善
-        if(position == 4 && index>=10) {
-            int mIndex = index/10-1;
-            return mFilter4Selected[mIndex]>0;
-        }
-        return false;
     }
 
     @Override

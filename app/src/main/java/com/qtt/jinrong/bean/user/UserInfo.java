@@ -5,35 +5,45 @@ import com.qtt.jinrong.bean.Response;
 /**
  * @author yanxin
  */
-public class UserInfo extends Response {
+public class UserInfo {
 
-    private String id;
+    private String userId;
 
-    private String name;
+    private String username;
 
-    private String mobile;
+    private String cell;
 
-    public String getId() {
-        return id;
+    private int gender;
+
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getCell() {
+        return cell;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setCell(String cell) {
+        this.cell = cell;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 }

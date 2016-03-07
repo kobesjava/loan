@@ -1,6 +1,7 @@
 package com.qtt.jinrong.bean.loan;
 
 import com.qtt.jinrong.bean.IRequest;
+import com.qtt.jinrong.config.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +11,18 @@ import java.util.Map;
  */
 public class LoanListRequest implements IRequest {
 
+    /** 贷款金额*/
     private int quota;
+    /** 贷款期限*/
     private int limi;
+    /** 职业身份*/
     private int identity;
+    /** 担保方式*/
     private int guaranteeWay;
+    /** 还款方式*/
     private int repay;
     private int orderNo;
-    private int pageSize = 20;
+    private int pageSize = Constants.PAGE_SIZE;
     private int pageNo;
 
     public int getQuota() {

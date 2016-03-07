@@ -97,12 +97,6 @@ public class FilterCreditAdapter extends BaseFilterAdapter {
     }
 
     @Override
-    protected boolean isSelected(int position, int index) {
-        //// TODO: 16/3/1 待完善
-        return false;
-    }
-
-    @Override
     protected View getFootView(int posion) {
         return null;
     }

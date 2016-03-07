@@ -2,11 +2,13 @@ package com.qtt.jinrong.ui.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.event.LoanTypeEvent;
 import com.qtt.jinrong.bean.loan.LoanListRequest;
@@ -20,6 +22,7 @@ import com.qtt.jinrong.ui.fragment.common.BaseFragment;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.filter.FilterLoanAdapter;
 import com.qtt.jinrong.ui.widget.filter.FilterManager;
+import com.qtt.jinrong.ui.widget.filter.FilterSelect;
 import com.qtt.jinrong.ui.widget.filter.FilterView;
 import com.qtt.jinrong.ui.widget.load.BottomRefreshListView;
 import com.qtt.jinrong.ui.widget.load.RefreshLayout;
@@ -55,6 +58,7 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
     BottomRefreshListView mBottomRefreshListView;
 
     LoanAdapter mLoanAdapter;
+    FilterLoanAdapter mFilterAdapter;
     FilterManager mFilterManager;
     ILoanListPresenter mPresenter;
     LoanListRequest mRequest;
@@ -64,6 +68,16 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
         mPresenter = new LoanListPresenterImpl(this);
+
+        //初始化请求对象
+        mRequest = new LoanListRequest();
+        mRequest.setQuota(10);
+        mRequest.setLimi(24);
+        mRequest.setIdentity(1);
+        mRequest.setGuaranteeWay(1);
+        mRequest.setRepay(1);
+        mRequest.setOrderNo(1);
+        mRequest.setPageNo(1);
     }
 
     @Override
@@ -91,10 +105,16 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         mTitleBar.hideLeft();
 
         mSwipeRefreshLayout.setListView(mBottomRefreshListView);
-
         mBottomRefreshListView.addHeaderView(new View(getActivity()));
         mLoanAdapter = new LoanAdapter(getActivity());
         mBottomRefreshListView.setAdapter(mLoanAdapter);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.request();
+            }
+        });
+
 
         mBottomRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -106,27 +126,43 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
 
         //设置筛选
         mFilterManager = new FilterManager();
-        FilterLoanAdapter filterAdapter = new FilterLoanAdapter(getContext(),mFilterManager);
-
+        mFilterAdapter = new FilterLoanAdapter(getContext(),mFilterManager);
         List<String[]> list = new ArrayList<>();
+        list.add(getResources().getStringArray(R.array.filter41));
         list.add(getResources().getStringArray(R.array.filter42));
         list.add(getResources().getStringArray(R.array.filter43));
-        list.add(getResources().getStringArray(R.array.filter44));
-        int[] mFilter123Selected = {4,4,0};
-        int[] mFilter4Selected = {0,0,0};
-        filterAdapter.setData(getResources().getStringArray(R.array.filter1),
+        int[] mFilter123Selected = {4, 4, 0};
+        int[] mFilter4Selected = {0, 0, 0};
+        mFilterAdapter.setData(getResources().getStringArray(R.array.filter1),
                 getResources().getStringArray(R.array.filter2),
                 getResources().getStringArray(R.array.filter3),
                 list, getResources().getStringArray(R.array.filter4Title),
                 mFilter123Selected, mFilter4Selected);
+        mFilterManager.setComponents(mFilterView, mFilterAdapter);
+        mFilterView.setSelectLisenter(new FilterSelect.SelectLisenter() {
 
-        mFilterManager.setComponents(mFilterView, filterAdapter);
+            @Override
+            public void onSelect(int position, int index, String val) {
+                LogUtil.d("SELECT", "position=" + position + " index=" + index + " val=" + val);
+
+                if (position == 1) {
+                    mRequest.setQuota(Integer.parseInt(val.replace("万", "")));
+                } else if (position == 2) {
+                    mRequest.setLimi(Integer.parseInt(val.replace("个月", "")));
+                } else if (position == 3) {
+                    mRequest.setOrderNo(index + 1);
+                } else if (position == 4) {
+                    int mIndex[] = mFilterAdapter.getSelected();
+                    mRequest.setIdentity(mIndex[0] + 1);
+                    mRequest.setGuaranteeWay(mIndex[1] + 1);
+                    mRequest.setRepay(mIndex[2] + 1);
+                }
+
+                mPresenter.request();
+            }
+        });
 
         doSelectType((LoanTypeEnum) mBundle.getSerializable("type"));
-
-        mRequest = new LoanListRequest();
-
-        mPresenter.request();
     }
 
     private void doSelectType(LoanTypeEnum loanTypeEnum) {
@@ -149,6 +185,8 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
     /********/
     @Override
     public LoanListRequest getRequest() {
+        if(mSwipeRefreshLayout.isRefreshing()) mRequest.setPageNo(1);
+        else mRequest.setPageNo(mLoanAdapter.getCount()/mRequest.getPageSize()+1);
         return mRequest;
     }
 

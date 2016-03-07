@@ -28,7 +28,8 @@
             android:layout_height="50dp"
             android:layout_marginBottom="5dp"
             input:input_hint="@string/login_pwd_hint"
-            input:input_pwd="true"/>
+            input:input_pwd="true"
+            input:input_limit="20"/>
 
     </LinearLayout>
 

@@ -19,4 +19,9 @@ public interface FilterSelect {
      */
     void setSelect(int position,int index,String defaultStr);
 
+    void setSelectLisenter(SelectLisenter mSelectLisenter);
+
+    interface SelectLisenter {
+        void onSelect(int position,int index,String val);
+    }
 }
