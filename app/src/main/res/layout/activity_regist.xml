@@ -49,6 +49,7 @@
                 android:textOff=""
                 android:layout_marginLeft="50dp"
                 android:layout_gravity="center"
+                android:checked="true"
                 android:background="@drawable/sex_btn_selecter"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp" />

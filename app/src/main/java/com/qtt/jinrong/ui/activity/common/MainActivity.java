@@ -9,10 +9,11 @@ import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
+import com.qtt.framework.util.GeneratedClassUtils;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.app.MyApplication;
 import com.qtt.jinrong.bean.event.LoginExpired;
-import com.qtt.jinrong.bean.event.LoginOutEvent;
 import com.qtt.jinrong.bean.event.TabEvent;
 import com.qtt.jinrong.config.Constants;
 import com.qtt.jinrong.presenter.IMainPresenter;
@@ -24,8 +25,6 @@ import com.qtt.jinrong.ui.fragment.main.RecommendFragment;
 import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.util.UserInfoUtil;
 import com.qtt.jinrong.view.IMainView;
-import com.qtt.framework.util.GeneratedClassUtils;
-import com.qtt.framework.util.LogUtil;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -69,9 +68,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent != null && intent.getBooleanExtra("login", false)) {
-            //loginOut();
-        } else if(intent != null && intent.getBooleanExtra("main", false)) {
+        if(intent != null && intent.getBooleanExtra("main", false)) {
             mTabHost.setCurrentTab(0);
         }
     }
@@ -177,15 +174,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         } else {
             mTabHost.setCurrentTab(0);
         }
-    }
-
-    /**
-     * 退出登录 事件
-     *
-     * @param event
-     */
-    public void onEventMainThread(LoginOutEvent event) {
-        loginOut();
     }
 
     public void onEventMainThread(TabEvent event) {

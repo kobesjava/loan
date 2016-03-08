@@ -2,12 +2,12 @@ package com.qtt.jinrong.ui.activity.user;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
+import com.qtt.framework.util.CheckDoubleClick;
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.common.wrap.WrapCountDownTimer;
 import com.qtt.jinrong.config.Constants;
@@ -17,8 +17,6 @@ import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
 import com.qtt.jinrong.ui.widget.text.InputPwdEdit;
-import com.qtt.framework.util.CheckDoubleClick;
-import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.view.IRegistView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -41,21 +39,16 @@ public class Regist1Activity extends BaseActivity implements IRegistView {
 
     @ViewById(R.id.phone)
     TextView mPhone;
-
     @ViewById(R.id.codeEdit)
     InputEditText mCodeEdit;
-
     @ViewById(R.id.pwd)
     InputPwdEdit mPwdEdit;
-
     @ViewById(R.id.btnRequestCode)
     Button mBtnRequestCode;
-
     @ViewById(R.id.btnSubmit)
-    ToggleButton mBtnSubmit;
+    Button mBtnSubmit;
 
     MyCountDownTimer mCountDownTimer;
-
     String mPhoneNum;
     String mNickname;
     int mGender;
@@ -65,7 +58,6 @@ public class Regist1Activity extends BaseActivity implements IRegistView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mPresenter = new LoginRegistPresenterImpl(this);
         mPhoneNum = mIntent.getStringExtra(INTENT_PHONE);
         mNickname = mIntent.getStringExtra(INTENT_NICKNAME);
