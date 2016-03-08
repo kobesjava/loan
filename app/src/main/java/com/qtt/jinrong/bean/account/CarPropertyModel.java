@@ -5,13 +5,13 @@ package com.qtt.jinrong.bean.account;
  */
 public class CarPropertyModel {
 
-    private int car;
+    private Integer car;
 
-    public int getCar() {
+    public Integer getCar() {
         return car;
     }
 
-    public void setCar(int car) {
+    public void setCar(Integer car) {
         this.car = car;
     }
 }

@@ -32,4 +32,12 @@ public enum CreditDebtEnum {
         return vals;
     }
 
+    public static CreditDebtEnum find(int code) {
+        CreditDebtEnum[] enums = CreditDebtEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
+
 }

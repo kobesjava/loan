@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qtt.framework.util.DateUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.DemandModel;
 import com.qtt.jinrong.bean.account.DemandSaveRequest;
@@ -19,8 +20,6 @@ import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.datepicker.SlideDateTimeListener;
 import com.qtt.jinrong.ui.widget.datepicker.SlideDateTimePicker;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
-import com.qtt.jinrong.util.ToastUtil;
-import com.qtt.framework.util.DateUtil;
 import com.qtt.jinrong.view.IDemandsInfoView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -75,7 +74,7 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
 
             @Override
             public void rightOnClick() {
-                ToastUtil.showShortToast("保存");
+                mPresenter.save();
             }
         });
 

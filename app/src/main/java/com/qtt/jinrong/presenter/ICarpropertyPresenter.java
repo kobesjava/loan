@@ -3,7 +3,7 @@ package com.qtt.jinrong.presenter;
 /**
  * Created by yanxin on 16/3/8.
  */
-public interface ICarpropertyPresenter extends IPresenter {
+public interface ICarPropertyPresenter extends IPresenter {
 
     /**
      * 获取车产信息

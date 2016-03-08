@@ -5,13 +5,13 @@ package com.qtt.jinrong.bean.account;
  */
 public class HousePropertyModel {
 
-    private int house;
+    private Integer house;
 
-    public int getHouse() {
+    public Integer getHouse() {
         return house;
     }
 
-    public void setHouse(int house) {
+    public void setHouse(Integer house) {
         this.house = house;
     }
 }

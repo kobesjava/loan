@@ -89,7 +89,7 @@ public class FinancingNeedsActivity extends BaseActivity implements IFinancingDe
 
     @Click(R.id.creditView)
     void clickCreditView() {
-        Intent intent = new Intent(this, GeneratedClassUtils.get(CreditActivity.class));
+        Intent intent = new Intent(this, GeneratedClassUtils.get(CreditPropertyActivity.class));
         startActivity(intent);
     }
 

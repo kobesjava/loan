@@ -42,4 +42,12 @@ public enum CreditLimitEnum {
         }
         return titles;
     }
+
+    public static CreditLimitEnum find(int code) {
+        CreditLimitEnum[] enums = CreditLimitEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
 }

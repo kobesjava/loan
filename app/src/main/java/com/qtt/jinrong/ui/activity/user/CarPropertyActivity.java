@@ -5,11 +5,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.qtt.jinrong.R;
+import com.qtt.jinrong.bean.account.CarPropertyModel;
+import com.qtt.jinrong.bean.account.CarPropertySaveRequest;
 import com.qtt.jinrong.enums.CarPropertyEnum;
+import com.qtt.jinrong.presenter.ICarPropertyPresenter;
+import com.qtt.jinrong.presenter.impl.CarPropertyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
-import com.qtt.jinrong.util.ToastUtil;
+import com.qtt.jinrong.view.ICarPropertyView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -20,7 +24,7 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_car_property)
-public class CarPropertyActivity extends BaseSelectActivity {
+public class CarPropertyActivity extends BaseSelectActivity implements ICarPropertyView{
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -28,9 +32,15 @@ public class CarPropertyActivity extends BaseSelectActivity {
     @ViewById(R.id.property)
     TextView mCarPropertyText;
 
+    CarPropertySaveRequest request;
+    ICarPropertyPresenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        request = new CarPropertySaveRequest();
+        request.setUserId(getUserId());
+        mPresenter = new CarPropertyPresenterImpl(this);
     }
 
     @AfterViews
@@ -46,10 +56,10 @@ public class CarPropertyActivity extends BaseSelectActivity {
 
             @Override
             public void rightOnClick() {
-                ToastUtil.showShortToast("保存");
+                mPresenter.save();
             }
         });
-
+        mPresenter.request();
     }
 
     @Click(R.id.property)
@@ -64,4 +74,24 @@ public class CarPropertyActivity extends BaseSelectActivity {
         show();
     }
 
+
+    /***  ICarPropertyView  ***/
+    @Override
+    public void onRequest(CarPropertyModel model) {
+        if(model.getCar() != null) {
+            CarPropertyEnum mEnum = CarPropertyEnum.find(model.getCar());
+            if(mEnum != null) mCarPropertyText.setText(mEnum.name());
+        }
+    }
+
+    @Override
+    public void onSaveSuccess() {
+        finish();
+    }
+
+    @Override
+    public CarPropertySaveRequest getSaveRequest() {
+        return request;
+    }
+    /***  ICarPropertyView  ***/
 }

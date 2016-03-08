@@ -5,11 +5,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.qtt.jinrong.R;
+import com.qtt.jinrong.bean.account.HousePropertyModel;
+import com.qtt.jinrong.bean.account.HousePropertySaveRequest;
 import com.qtt.jinrong.enums.HousePropertyEnum;
+import com.qtt.jinrong.presenter.IHousePropertyPresenter;
+import com.qtt.jinrong.presenter.impl.HousePropertyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
-import com.qtt.jinrong.util.ToastUtil;
+import com.qtt.jinrong.view.IHousePropertyView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -20,7 +24,7 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_house_property)
-public class HousePropertyActivity extends BaseSelectActivity {
+public class HousePropertyActivity extends BaseSelectActivity implements IHousePropertyView {
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -28,9 +32,16 @@ public class HousePropertyActivity extends BaseSelectActivity {
     @ViewById(R.id.property)
     TextView mHousePropertyText;
 
+    HousePropertySaveRequest request;
+    IHousePropertyPresenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        request = new HousePropertySaveRequest();
+        request.setUserId(getUserId());
+        mPresenter = new HousePropertyPresenterImpl(this);
     }
 
     @AfterViews
@@ -46,10 +57,10 @@ public class HousePropertyActivity extends BaseSelectActivity {
 
             @Override
             public void rightOnClick() {
-                ToastUtil.showShortToast("保存");
+                mPresenter.save();
             }
         });
-
+        mPresenter.request();
     }
 
     @Click(R.id.property)
@@ -58,10 +69,30 @@ public class HousePropertyActivity extends BaseSelectActivity {
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
+                request.setHouse(HousePropertyEnum.values()[position].getCode());
                 mHousePropertyText.setText(val);
             }
         });
         show();
     }
 
+    /***  IHousePropertyView  ***/
+    @Override
+    public void onRequest(HousePropertyModel model) {
+        if(model.getHouse() != null) {
+            HousePropertyEnum mEnum = HousePropertyEnum.find(model.getHouse());
+            mHousePropertyText.setText(mEnum.getTitle());
+        }
+    }
+
+    @Override
+    public void onSaveSuccess() {
+        finish();
+    }
+
+    @Override
+    public HousePropertySaveRequest getSaveRequest() {
+        return request;
+    }
+    /***  IHousePropertyView  ***/
 }

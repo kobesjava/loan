@@ -100,7 +100,7 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.user.CreditActivity_"
+        <activity android:name=".ui.activity.user.CreditPropertyActivity_"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 

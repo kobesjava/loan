@@ -29,4 +29,12 @@ public enum CarPropertyEnum {
         return vals;
     }
 
+    public static CarPropertyEnum find(int code) {
+        CarPropertyEnum[] enums = CarPropertyEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
+
 }

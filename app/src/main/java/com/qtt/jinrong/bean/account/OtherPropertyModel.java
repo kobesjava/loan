@@ -7,11 +7,11 @@ public class OtherPropertyModel {
 
     private String assetName;
 
-    private float assetAge;
+    private Float assetAge;
 
     private String assetDetail;
 
-    private float assetPrice;
+    private Float assetPrice;
 
     public String getAssetName() {
         return assetName;
@@ -29,19 +29,19 @@ public class OtherPropertyModel {
         this.assetDetail = assetDetail;
     }
 
-    public float getAssetAge() {
+    public Float getAssetAge() {
         return assetAge;
     }
 
-    public void setAssetAge(float assetAge) {
+    public void setAssetAge(Float assetAge) {
         this.assetAge = assetAge;
     }
 
-    public float getAssetPrice() {
+    public Float getAssetPrice() {
         return assetPrice;
     }
 
-    public void setAssetPrice(float assetPrice) {
+    public void setAssetPrice(Float assetPrice) {
         this.assetPrice = assetPrice;
     }
 }

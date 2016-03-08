@@ -44,4 +44,12 @@ public enum HousePropertyEnum {
         }
         return titles;
     }
+
+    public static HousePropertyEnum find(int code) {
+        HousePropertyEnum[] enums = HousePropertyEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
 }
