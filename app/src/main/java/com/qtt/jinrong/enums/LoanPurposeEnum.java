@@ -32,4 +32,12 @@ public enum LoanPurposeEnum {
         return vals;
     }
 
+    public static LoanPurposeEnum find(int code) {
+        LoanPurposeEnum[] enums = LoanPurposeEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
+
 }

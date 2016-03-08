@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
     <LinearLayout style="@style/financing_needs_more_item">
 
         <TextView
@@ -33,7 +32,7 @@
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/term"
             input:input_number="true"
-            input:input_limit="3"
+            input:input_limit="4"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 

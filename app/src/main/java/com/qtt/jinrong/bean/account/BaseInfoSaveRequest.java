@@ -14,19 +14,19 @@ public class BaseInfoSaveRequest implements IRequest {
 
     private String username;
 
-    private int gender;
+    private Integer gender;
 
-    private int age;
+    private Integer age;
 
     private String idNumber;
 
-    private int registerProvince;
+    private Integer registerProvince;
 
-    private int registerCity;
+    private Integer registerCity;
 
     private String registerAddr;
 
-    private int marriage;
+    private Integer marriage;
 
     public String getUserId() {
         return userId;
@@ -44,19 +44,19 @@ public class BaseInfoSaveRequest implements IRequest {
         this.username = username;
     }
 
-    public int getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -68,19 +68,19 @@ public class BaseInfoSaveRequest implements IRequest {
         this.idNumber = idNumber;
     }
 
-    public int getRegisterProvince() {
+    public Integer getRegisterProvince() {
         return registerProvince;
     }
 
-    public void setRegisterProvince(int registerProvince) {
+    public void setRegisterProvince(Integer registerProvince) {
         this.registerProvince = registerProvince;
     }
 
-    public int getRegisterCity() {
+    public Integer getRegisterCity() {
         return registerCity;
     }
 
-    public void setRegisterCity(int registerCity) {
+    public void setRegisterCity(Integer registerCity) {
         this.registerCity = registerCity;
     }
 
@@ -92,11 +92,11 @@ public class BaseInfoSaveRequest implements IRequest {
         this.registerAddr = registerAddr;
     }
 
-    public int getMarriage() {
+    public Integer getMarriage() {
         return marriage;
     }
 
-    public void setMarriage(int marriage) {
+    public void setMarriage(Integer marriage) {
         this.marriage = marriage;
     }
 

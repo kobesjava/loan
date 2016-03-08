@@ -7,6 +7,8 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
+import android.text.method.NumberKeyListener;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -58,8 +60,22 @@ public class InputEditText extends FrameLayout {
         if(limit > 0) mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(limit)});
 
         boolean isNotBg = a.getBoolean(R.styleable.InputEditText_input_background_null, false);
-        if(isNotBg) {
-            mEditText.setBackgroundDrawable(null);
+        if(isNotBg) mEditText.setBackgroundDrawable(null);
+
+        boolean isIdCard = a.getBoolean(R.styleable.InputEditText_input_idcard, false);
+        if(isIdCard) {
+            mEditText.setFilters(new InputFilter[]{InputFilterUtil.getIDcardFilter()});
+            mEditText.setKeyListener(new NumberKeyListener() {
+                @Override
+                protected char[] getAcceptedChars() {
+                    return new char[]{'1','2','3','4','5','6','7','8','9','0','x','X'};
+                }
+
+                @Override
+                public int getInputType() {
+                    return 0;
+                }
+            });
         }
 
         int grivaty = a.getInt(R.styleable.InputEditText_input_gravity, 0);
@@ -119,8 +135,13 @@ public class InputEditText extends FrameLayout {
         addView(view);
     }
 
+    public void setText(CharSequence text) {
+        mEditText.setText(text);
+    }
+
     public String getString() {
-        return mEditText.getText().toString();
+        String s = mEditText.getText().toString();
+        return s!=null?s.trim():"";
     }
 
     public void setInputType(int inputType) {

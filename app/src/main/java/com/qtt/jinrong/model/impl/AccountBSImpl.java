@@ -5,6 +5,7 @@ import android.content.Context;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.account.BaseInfoResponse;
 import com.qtt.jinrong.bean.account.CarPropertyResponse;
 import com.qtt.jinrong.bean.account.CreditPropertyResponse;
 import com.qtt.jinrong.bean.account.DemandsResponse;
@@ -24,6 +25,16 @@ public class AccountBSImpl implements IAccountBS {
     @Override
     public void requestFinancingDemands(Context context, IRequest request, MCListenerObj.IObjResListener listener) {
         AccountReqsAction.requestFinancingDemands(context,request,listener);
+    }
+
+    @Override
+    public void requestBaseInfo(Context context, IRequest request, MCListenerObj.IObjResListener<BaseInfoResponse> listener) {
+        AccountReqsAction.requestBase(context,request,listener);
+    }
+
+    @Override
+    public void saveBaseInfo(Context context, IRequest request, MCListenerObj.IObjResListener<Response> listener) {
+        AccountReqsAction.saveBase(context,request,listener);
     }
 
     @Override

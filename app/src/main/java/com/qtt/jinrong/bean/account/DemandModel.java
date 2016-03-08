@@ -5,31 +5,32 @@ package com.qtt.jinrong.bean.account;
  */
 public class DemandModel {
 
-    private float loMoney;
-
-    private int loExpires;
-
+    /** 贷款金额*/
+    private Float loMoney;
+    /** 贷款期限*/
+    private Integer loExpires;
+    /** 用款时间*/
     private String loDate;
+    /** 贷款用途*/
+    private Integer loPurpose;
+    /** 还款来源*/
+    private Integer loPaymentSrc;
+    /** 还款方式*/
+    private Integer loPaymentWay;
 
-    private int loPurpose;
-
-    private int loPaymentSrc;
-
-    private int loPaymentWay;
-
-    public float getLoMoney() {
+    public Float getLoMoney() {
         return loMoney;
     }
 
-    public void setLoMoney(float loMoney) {
+    public void setLoMoney(Float loMoney) {
         this.loMoney = loMoney;
     }
 
-    public int getLoExpires() {
+    public Integer getLoExpires() {
         return loExpires;
     }
 
-    public void setLoExpires(int loExpires) {
+    public void setLoExpires(Integer loExpires) {
         this.loExpires = loExpires;
     }
 
@@ -41,27 +42,27 @@ public class DemandModel {
         this.loDate = loDate;
     }
 
-    public int getLoPurpose() {
+    public Integer getLoPurpose() {
         return loPurpose;
     }
 
-    public void setLoPurpose(int loPurpose) {
+    public void setLoPurpose(Integer loPurpose) {
         this.loPurpose = loPurpose;
     }
 
-    public int getLoPaymentSrc() {
+    public Integer getLoPaymentSrc() {
         return loPaymentSrc;
     }
 
-    public void setLoPaymentSrc(int loPaymentSrc) {
+    public void setLoPaymentSrc(Integer loPaymentSrc) {
         this.loPaymentSrc = loPaymentSrc;
     }
 
-    public int getLoPaymentWay() {
+    public Integer getLoPaymentWay() {
         return loPaymentWay;
     }
 
-    public void setLoPaymentWay(int loPaymentWay) {
+    public void setLoPaymentWay(Integer loPaymentWay) {
         this.loPaymentWay = loPaymentWay;
     }
 }

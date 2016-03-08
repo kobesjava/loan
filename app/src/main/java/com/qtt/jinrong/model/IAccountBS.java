@@ -5,6 +5,7 @@ import android.content.Context;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.account.BaseInfoResponse;
 import com.qtt.jinrong.bean.account.CarPropertyResponse;
 import com.qtt.jinrong.bean.account.CreditPropertyResponse;
 import com.qtt.jinrong.bean.account.DemandsResponse;
@@ -27,6 +28,22 @@ public interface IAccountBS extends IBS {
      * @param listener
      */
     void requestFinancingDemands(Context context, IRequest request,MCListenerObj.IObjResListener listener);
+
+    /**
+     * 获取基本信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    void requestBaseInfo(Context context,IRequest request,MCListenerObj.IObjResListener<BaseInfoResponse> listener);
+
+    /**
+     * 保存基本信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    void saveBaseInfo(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener);
 
     /**
      * 获取其他资产信息

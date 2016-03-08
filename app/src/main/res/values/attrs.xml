@@ -33,6 +33,7 @@
         <attr name="input_background_null" format="boolean"/>
         <attr name="input_gravity" format="integer"/>
         <attr name="input_numberDecimal" format="boolean"/>
+        <attr name="input_idcard" format="boolean"/>
     </declare-styleable>
 
 </resources>
