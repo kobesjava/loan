@@ -7,13 +7,13 @@ import com.qtt.jinrong.bean.Response;
  */
 public class FinancingDemandsResponse extends Response {
 
-    private FinancingDemands data;
+    private FinancingDemandsModel data;
 
-    public FinancingDemands getData() {
+    public FinancingDemandsModel getData() {
         return data;
     }
 
-    public void setData(FinancingDemands data) {
+    public void setData(FinancingDemandsModel data) {
         this.data = data;
     }
 }

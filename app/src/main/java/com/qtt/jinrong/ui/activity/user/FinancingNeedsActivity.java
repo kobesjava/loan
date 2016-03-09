@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
-import com.qtt.jinrong.bean.account.FinancingDemands;
+import com.qtt.jinrong.bean.account.FinancingDemandsModel;
 import com.qtt.jinrong.presenter.IFinancingDemandPresenter;
 import com.qtt.jinrong.presenter.impl.FinancingDemandPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
@@ -20,6 +20,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * 我的融资需求书
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_financing_needs)
@@ -113,47 +114,47 @@ public class FinancingNeedsActivity extends BaseActivity implements IFinancingDe
 
     /***  IVIEW  ***/
     @Override
-    public void onRequest(FinancingDemands financingDemands) {
+    public void onRequest(FinancingDemandsModel financingDemandsModel) {
 
         int finished = 0;
 
-        if(financingDemands.isBaseStatus()) {
+        if(financingDemandsModel.isBaseStatus()) {
             finished++;
             baseStatus.setText(getString(R.string.finished));
         }
         else baseStatus.setText(getString(R.string.beperfect));
 
-        if(financingDemands.isDemandStatus()) {
+        if(financingDemandsModel.isDemandStatus()) {
             finished++;
             needsStatus.setText(getString(R.string.finished));
         }
         else needsStatus.setText(getString(R.string.beperfect));
 
-        if(financingDemands.isIdentityStatus()) {
+        if(financingDemandsModel.isIdentityStatus()) {
             finished++;
             identiStatus.setText(getString(R.string.finished));
         }
         else identiStatus.setText(getString(R.string.beperfect));
 
-        if(financingDemands.isCreditStatus()) {
+        if(financingDemandsModel.isCreditStatus()) {
             finished++;
             creditStatus.setText(getString(R.string.finished));
         }
         else creditStatus.setText(getString(R.string.beperfect));
 
-        if(financingDemands.isCarStatus()) {
+        if(financingDemandsModel.isCarStatus()) {
             finished++;
             carStatus.setText(getString(R.string.finished));
         }
         else carStatus.setText(getString(R.string.beperfect));
 
-        if(financingDemands.isHouseStatus()) {
+        if(financingDemandsModel.isHouseStatus()) {
             finished++;
             houseStatus.setText(getString(R.string.finished));
         }
         else houseStatus.setText(getString(R.string.beperfect));
 
-        if(financingDemands.isAssetStatus()) {
+        if(financingDemandsModel.isAssetStatus()) {
             finished++;
             otherStatus.setText(getString(R.string.finished));
         }

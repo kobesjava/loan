@@ -9,9 +9,9 @@ import com.qtt.jinrong.enums.AvocationEnum;
 import com.qtt.jinrong.enums.CompanyTypeEnum;
 import com.qtt.jinrong.enums.FundYearsEnum;
 import com.qtt.jinrong.enums.IdentityEnum;
-import com.qtt.jinrong.enums.IncomMethodEnum;
+import com.qtt.jinrong.enums.IncomePayMethodEnum;
 import com.qtt.jinrong.enums.IncomeProofEnum;
-import com.qtt.jinrong.enums.PositionEnum;
+import com.qtt.jinrong.enums.JobTitleEnum;
 import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.SocialYearsEnum;
@@ -120,7 +120,7 @@ public class IdentityActivity extends BaseSelectActivity {
 
     @Click(R.id.position)
     void clickPosition() {
-        mSelectView.setData(PositionEnum.getValues());
+        mSelectView.setData(JobTitleEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
@@ -161,7 +161,7 @@ public class IdentityActivity extends BaseSelectActivity {
 
     @Click(R.id.incomepayway)
     void clickIncomepayway() {
-        mSelectView.setData(IncomMethodEnum.getValues());
+        mSelectView.setData(IncomePayMethodEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/loan_vertify_car_property_license" />
+
+        <TextView
+            android:id="@+id/carLicense"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+</LinearLayout>

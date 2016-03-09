@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="职业所属公司类型" />
+
+        <TextView
+            android:id="@+id/companyType"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="现单位工龄" />
+
+        <TextView
+            android:id="@+id/companyWorkYears"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="职位" />
+
+        <TextView
+            android:id="@+id/jobTitle"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="收入发放方式" />
+
+        <TextView
+            android:id="@+id/incomePayWay"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="月均总收入" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/monthSalary"
+            style="@style/financing_needs_more_right_edittext"
+            input:input_hint="请输入月均总收入"
+            input:input_number="true" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="社保和公积金" />
+
+        <TextView
+            android:id="@+id/socialFund"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="工作地" />
+
+        <TextView
+            android:id="@+id/workProvince"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="市" />
+
+        <TextView
+            android:id="@+id/workCity"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+
+</LinearLayout>

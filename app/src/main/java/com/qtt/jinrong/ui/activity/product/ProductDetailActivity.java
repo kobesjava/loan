@@ -1,11 +1,14 @@
 package com.qtt.jinrong.ui.activity.product;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanModel;
@@ -13,6 +16,7 @@ import com.qtt.jinrong.bean.loan.LoanProductDetail;
 import com.qtt.jinrong.presenter.ILoanProductPresenter;
 import com.qtt.jinrong.presenter.impl.LoanProductPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
+import com.qtt.jinrong.ui.activity.loan.LoanAptitudeVerifyActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.ImgText;
 import com.qtt.jinrong.ui.widget.TabIndictor;
@@ -90,11 +94,11 @@ public class ProductDetailActivity extends BaseActivity implements ILoanProductD
 
         mTabIndictor.setAdapter(new TabIndictor.BaseAdapter() {
             @Override
-            public String getString(int position) {
+            public CharSequence getString(int position) {
                 if(mDetail == null) return "";
-                else if(position == 0) return mDetail.getApply();
-                else if(position == 1) return mDetail.getMater();
-                else if(position == 2) return mDetail.getRepay();
+                else if(position == 0) return Html.fromHtml(mDetail.getApply());
+                else if(position == 1) return Html.fromHtml(mDetail.getMater());
+                else if(position == 2) return Html.fromHtml(mDetail.getRepay());
                 return "";
             }
         });
@@ -115,6 +119,8 @@ public class ProductDetailActivity extends BaseActivity implements ILoanProductD
     @Click(R.id.btnSubmit)
     void clickBtnSubmit() {
         if(mDetail == null) return;
+        Intent intent = new Intent(this, GeneratedClassUtils.get(LoanAptitudeVerifyActivity.class));
+        startActivity(intent);
     }
 
 

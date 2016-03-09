@@ -6,16 +6,16 @@ import java.util.List;
 /**
  * Created by yanxin on 16/3/4.
  */
-public enum CreditUseStationEnum {
+public enum IncomePayMethodEnum {
 
-    无贷款或信用卡(1,"无贷款或信用卡"),
-    记录良好无逾期(2,"记录良好,无逾期"),
-    有逾期(3,"有逾期");
+    银行打卡(1,"银行打卡"),
+    现金发放(2,"现金发放"),
+    部分打卡部分现金(3,"部分打卡,部分现金");
 
     private int code;
     private String title;
 
-    CreditUseStationEnum(int code, String title) {
+    IncomePayMethodEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -30,18 +30,10 @@ public enum CreditUseStationEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        CreditUseStationEnum[] enums = CreditUseStationEnum.values();
+        IncomePayMethodEnum[] enums = IncomePayMethodEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
-    }
-
-    public static CreditUseStationEnum find(int code) {
-        CreditUseStationEnum[] enums = CreditUseStationEnum.values();
-        for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
-        }
-        return null;
     }
 }

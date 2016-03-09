@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="@string/loan_vertify_tip"
+                android:textColor="@color/color_950000"
+                android:textSize="13sp" />
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_identity" />
+
+                <TextView
+                    android:id="@+id/identity"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <include
+                android:id="@+id/enterprisePersonalMore"
+                android:visibility="gone"
+                layout="@layout/include_enterprise_personal_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <include
+                android:id="@+id/workerOtherMore"
+                android:visibility="gone"
+                layout="@layout/include_worker_other_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/age" />
+
+                <com.qtt.jinrong.ui.widget.text.InputEditText
+                    android:id="@+id/age"
+                    style="@style/financing_needs_more_right_edittext"
+                    input:input_hint="@string/loan_vertify_input_age"
+                    input:input_limit="3"
+                    input:input_number="true" />
+            </LinearLayout>
+
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_credit_station" />
+
+                <TextView
+                    android:id="@+id/creditStation"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <include
+                android:id="@+id/creditOverdueMore"
+                android:visibility="gone"
+                layout="@layout/include_credit_overdue_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_credit_amount" />
+
+                <TextView
+                    android:id="@+id/creditLimit"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <include
+                android:id="@+id/creditMore"
+                android:visibility="gone"
+                layout="@layout/include_credit_limit_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/loan_vertify_house_property" />
+
+                <TextView
+                    android:id="@+id/houseproperty"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <include
+                android:id="@+id/housePropertyMore"
+                android:visibility="gone"
+                layout="@layout/include_house_property_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/loan_vertify_car_property" />
+
+                <TextView
+                    android:id="@+id/carproperty"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <include
+                android:id="@+id/carPropertyMore"
+                android:visibility="gone"
+                layout="@layout/include_car_property_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_orange_corner_selecter"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

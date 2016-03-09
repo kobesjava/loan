@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * Created by yanxin on 16/3/4.
  */
-public enum PositionEnum {
+public enum JobTitleEnum {
 
     高级管理层(1),
     中级管理层(2),
     基层员工(3);
 
     private int code;
-    PositionEnum(int code) {
+    JobTitleEnum(int code) {
         this.code = code;
     }
 
@@ -22,7 +22,7 @@ public enum PositionEnum {
     }
 
     public static List<String> getValues() {
-        PositionEnum[] enums = PositionEnum.values();
+        JobTitleEnum[] enums = JobTitleEnum.values();
         List<String> vals = new ArrayList<>();
         for(int i=0;i<enums.length;i++) {
             vals.add(enums[i].name());

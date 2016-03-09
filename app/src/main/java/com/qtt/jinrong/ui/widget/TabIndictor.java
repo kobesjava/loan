@@ -59,6 +59,6 @@ public class TabIndictor extends FrameLayout {
     }
 
     public interface BaseAdapter {
-        String getString(int position);
+        CharSequence getString(int position);
     }
 }

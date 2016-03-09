@@ -68,6 +68,7 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
+                request.setCar(CarPropertyEnum.values()[position].getCode());
                 mCarPropertyText.setText(val);
             }
         });

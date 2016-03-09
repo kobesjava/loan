@@ -6,16 +6,19 @@ import java.util.List;
 /**
  * Created by yanxin on 16/3/4.
  */
-public enum CreditUseStationEnum {
+public enum LegalPersonEnum {
 
-    无贷款或信用卡(1,"无贷款或信用卡"),
-    记录良好无逾期(2,"记录良好,无逾期"),
-    有逾期(3,"有逾期");
+    法人(1,"法人"),
+    占股10的股东(2,"占股10%的股东"),
+    占股20的股东(3,"占股20%的股东"),
+    占股30的股东(4,"占股30%的股东"),
+    占股50的股东(5,"占股50%的股东"),
+    占股80的股东(6,"占股80%的股东");
 
     private int code;
     private String title;
 
-    CreditUseStationEnum(int code, String title) {
+    LegalPersonEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -30,18 +33,10 @@ public enum CreditUseStationEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        CreditUseStationEnum[] enums = CreditUseStationEnum.values();
+        LegalPersonEnum[] enums = LegalPersonEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
-    }
-
-    public static CreditUseStationEnum find(int code) {
-        CreditUseStationEnum[] enums = CreditUseStationEnum.values();
-        for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
-        }
-        return null;
     }
 }

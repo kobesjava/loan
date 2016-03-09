@@ -13,7 +13,8 @@
     <string name="finished">已完成</string>
     <string name="select">请选择</string>
     <string name="save">保存</string>
-
+    <string name="age">年龄</string>
+    <string name="next">下一步</string>
 
     <!-- main -->
     <string name="main_recommend">推荐</string>
@@ -85,6 +86,16 @@
 
     <!-- loan product -->
     <string name="product_detail_title">产品详情</string>
+
+    <!-- loan verify -->
+    <string name="loan_vertify_title">贷款资质审核</string>
+    <string name="loan_vertify_tip">提示: 请准确提供您的信息,信息越准确,成功申请的几率越高</string>
+    <string name="loan_vertify_input_age">请输入年龄</string>
+    <string name="loan_vertify_house_property">房产信息</string>
+    <string name="loan_vertify_house_property_position">房产位置</string>
+    <string name="loan_vertify_house_property_situation">房产抵押/按揭情况</string>
+    <string name="loan_vertify_car_property">车产信息</string>
+    <string name="loan_vertify_car_property_license">牌照归属地</string>
 
     <!-- credit -->
     <string name="credit_title">信用卡</string>

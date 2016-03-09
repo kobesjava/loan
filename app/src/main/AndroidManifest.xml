@@ -122,6 +122,9 @@
         <activity android:name=".ui.activity.loan.LoanApplyDetailActivity_"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.loan.LoanAptitudeVerifyActivity_"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.product.ProductDetailActivity_"
             android:screenOrientation="portrait"/>
 
