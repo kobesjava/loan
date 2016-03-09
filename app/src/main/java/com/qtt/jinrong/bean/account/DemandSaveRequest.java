@@ -12,17 +12,17 @@ public class DemandSaveRequest implements IRequest {
 
     private String userId;
 
-    private float loMoney;
+    private Float loMoney;
 
-    private int loExpires;
+    private Integer loExpires;
 
     private String loDate;
 
-    private int loPurpose;
+    private Integer loPurpose;
 
-    private int loPaymentSrc;
+    private Integer loPaymentSrc;
 
-    private int loPaymentWay;
+    private Integer loPaymentWay;
 
     public String getUserId() {
         return userId;
@@ -32,19 +32,19 @@ public class DemandSaveRequest implements IRequest {
         this.userId = userId;
     }
 
-    public float getLoMoney() {
+    public Float getLoMoney() {
         return loMoney;
     }
 
-    public void setLoMoney(float loMoney) {
+    public void setLoMoney(Float loMoney) {
         this.loMoney = loMoney;
     }
 
-    public int getLoExpires() {
+    public Integer getLoExpires() {
         return loExpires;
     }
 
-    public void setLoExpires(int loExpires) {
+    public void setLoExpires(Integer loExpires) {
         this.loExpires = loExpires;
     }
 
@@ -56,27 +56,27 @@ public class DemandSaveRequest implements IRequest {
         this.loDate = loDate;
     }
 
-    public int getLoPurpose() {
+    public Integer getLoPurpose() {
         return loPurpose;
     }
 
-    public void setLoPurpose(int loPurpose) {
+    public void setLoPurpose(Integer loPurpose) {
         this.loPurpose = loPurpose;
     }
 
-    public int getLoPaymentSrc() {
+    public Integer getLoPaymentSrc() {
         return loPaymentSrc;
     }
 
-    public void setLoPaymentSrc(int loPaymentSrc) {
+    public void setLoPaymentSrc(Integer loPaymentSrc) {
         this.loPaymentSrc = loPaymentSrc;
     }
 
-    public int getLoPaymentWay() {
+    public Integer getLoPaymentWay() {
         return loPaymentWay;
     }
 
-    public void setLoPaymentWay(int loPaymentWay) {
+    public void setLoPaymentWay(Integer loPaymentWay) {
         this.loPaymentWay = loPaymentWay;
     }
 

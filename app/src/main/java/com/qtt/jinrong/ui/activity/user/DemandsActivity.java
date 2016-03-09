@@ -77,7 +77,7 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
                 mPresenter.save();
             }
         });
-
+        mPresenter.request();
     }
 
     @Click(R.id.time)

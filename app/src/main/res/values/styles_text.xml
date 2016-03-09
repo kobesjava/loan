@@ -101,7 +101,8 @@
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:textColor">@color/color_950000</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:gravity">right</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
     <style name="financing_needs_more_left_text" parent="financing_needs_more_text">
         <item name="android:textColor">@color/color_333</item>
