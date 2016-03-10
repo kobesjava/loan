@@ -4,17 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yanxin on 16/3/4.
+ * 房产估值
+ * Created by yanxin on 16/3/7.
  */
-public enum  MarriageEnum {
+public enum HosuePropertyAssessedEnum {
 
-    已婚(1,"已婚"),
-    未婚离异(2,"未婚/离异");
+    ASSESSED_30(1,"0-30万"),
+    ASSESSED_50(2,"31-50万"),
+    ASSESSED_75(3,"51-75万"),
+    ASSESSED_100(4,"76-100万"),
+    ASSESSED_200(5,"101-200万"),
+    ASSESSED_300(6,"201-300万"),
+    ASSESSED_500(7,"301-500万"),
+    ASSESSED_1000(8,"501-1000万"),
+    ASSESSED_1000以上(9,"1000万以上");
 
     private int code;
     private String title;
 
-    MarriageEnum(int code,String title) {
+    HosuePropertyAssessedEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -29,7 +37,7 @@ public enum  MarriageEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        MarriageEnum[] enums = MarriageEnum.values();
+        HosuePropertyAssessedEnum[] enums = HosuePropertyAssessedEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="房产地段" />
+
+        <TextView
+            android:id="@+id/hpPosition"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="房产地址" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/hpaddress"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="备用房" />
+
+        <TextView
+            android:id="@+id/hpSpare"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="房产面积" />
+
+        <TextView
+            android:id="@+id/hpSpace"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="购买总价 (万元)" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/hpTotalPriceBuy"
+            input:input_numberDecimal="true"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="房产现价 (元/平方米)" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/hpPriceNow"
+            input:input_number="true"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="房产估值" />
+
+        <TextView
+            android:id="@+id/hpPriceAssessed"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="房产抵押/按揭情况" />
+
+        <TextView
+            android:id="@+id/hpSituation"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+</LinearLayout>

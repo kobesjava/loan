@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.qtt.jinrong.R;
-import com.qtt.jinrong.enums.CarLinsceEnum;
+import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
 import com.qtt.jinrong.enums.CompanyTypeEnum;
@@ -35,6 +35,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * 贷款资质审核
  * Created by yanxin on 16/3/9.
  */
 @EActivity(R.layout.activity_loan_aptitude_verify)
@@ -375,11 +376,11 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
     }
     @Click(R.id.carLicense)
     void clickCarLicense() {
-        mSelectView.setData(CarLinsceEnum.getValues());
+        mSelectView.setData(CarLinscePositionEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                CarLinsceEnum mEnum = CarLinsceEnum.values()[position];
+                CarLinscePositionEnum mEnum = CarLinscePositionEnum.values()[position];
                 carLicenseText.setText(val);
             }
         });

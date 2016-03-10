@@ -116,7 +116,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
 
     @Click(R.id.marriage)
     void clickMarriage() {
-        mSelectView.setData(MarriageEnum.getTitles());
+        mSelectView.setData(MarriageEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {

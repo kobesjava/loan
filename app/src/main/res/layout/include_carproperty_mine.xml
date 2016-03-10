@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="汽车品牌" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/cpBrand"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="车牌号" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/cpLicenseNum"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="牌照归属地" />
+
+        <TextView
+            android:id="@+id/cpLicensePosition"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="购买价格 (万元)" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/cpPriceBuy"
+            input:input_numberDecimal="true"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="车产估值" />
+
+        <TextView
+            android:id="@+id/cpAssessed"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="车龄" />
+
+        <TextView
+            android:id="@+id/cpYears"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="行驶里程" />
+
+        <TextView
+            android:id="@+id/cpTravelKM"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="车辆抵押/按揭情况" />
+
+        <TextView
+            android:id="@+id/cpSituation"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+</LinearLayout>

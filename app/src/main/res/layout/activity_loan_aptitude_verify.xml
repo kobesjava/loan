@@ -131,7 +131,7 @@
             <include
                 android:id="@+id/housePropertyMore"
                 android:visibility="gone"
-                layout="@layout/include_house_property_more"
+                layout="@layout/include_houseproperty_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -151,7 +151,7 @@
             <include
                 android:id="@+id/carPropertyMore"
                 android:visibility="gone"
-                layout="@layout/include_car_property_more"
+                layout="@layout/include_carproperty_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yanxin on 16/3/4.
+ * Created by yanxin on 16/3/7.
  */
-public enum CarLinsceEnum {
+public enum HosueSpareEnum {
 
-    本地(1),
-    外地(2);
+    有(1),
+    无(2);
 
     private int code;
-    CarLinsceEnum(int code) {
+    HosueSpareEnum(int code) {
         this.code = code;
     }
 
@@ -21,12 +21,11 @@ public enum CarLinsceEnum {
     }
 
     public static List<String> getValues() {
-        CarLinsceEnum[] enums = CarLinsceEnum.values();
+        HosueSpareEnum[] enums = HosueSpareEnum.values();
         List<String> vals = new ArrayList<>();
         for(int i=0;i<enums.length;i++) {
             vals.add(enums[i].name());
         }
         return vals;
     }
-
 }
