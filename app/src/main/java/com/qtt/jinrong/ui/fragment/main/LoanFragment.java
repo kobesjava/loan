@@ -110,10 +110,17 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                mBottomRefreshListView.onAllLoaded();
                 mPresenter.request();
             }
         });
 
+        mBottomRefreshListView.setOnLoadMoreListener(new BottomRefreshListView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                mPresenter.request();
+            }
+        });
 
         mBottomRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -208,6 +215,8 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
 
         if(list.size() < mRequest.getPageSize()) {
             mBottomRefreshListView.onAllLoaded();
+        } else {
+            mBottomRefreshListView.resetAll();
         }
 
     }
