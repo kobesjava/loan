@@ -5,20 +5,25 @@ package com.qtt.jinrong.bean.account;
  */
 public class CarPropertyModel {
 
+    /** 是否有车产*/
     private Integer car;
 
     private String carBrand;
 
     private String carNo;
 
+    /** 牌照归属地*/
     private Integer carBelong;
 
+    /** 购买价格*/
     private Float carPrice;
 
     private Integer carValuation;
 
+    /** 车龄*/
     private Integer carAge;
 
+    /** 行驶里程*/
     private Integer carRange;
 
     private Integer carMortgage;

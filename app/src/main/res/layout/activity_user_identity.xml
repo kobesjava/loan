@@ -37,6 +37,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -52,6 +53,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:layout_marginTop="0dp">
@@ -69,6 +71,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -84,6 +87,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -99,6 +103,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -114,6 +119,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -129,6 +135,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -144,6 +151,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -159,6 +167,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -176,6 +185,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -193,6 +203,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -208,6 +219,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -223,6 +235,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -238,6 +251,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView
@@ -253,6 +267,7 @@
                 android:layout_height="1dp" />
 
             <LinearLayout style="@style/financing_needs_more_item"
+                android:background="@color/transparent"
                 android:layout_marginTop="0dp">
 
                 <TextView

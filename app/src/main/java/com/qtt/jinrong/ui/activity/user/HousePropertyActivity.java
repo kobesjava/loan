@@ -1,15 +1,16 @@
 package com.qtt.jinrong.ui.activity.user;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.HousePropertyModel;
 import com.qtt.jinrong.bean.account.HousePropertySaveRequest;
-import com.qtt.jinrong.enums.HosuePropertyAssessedEnum;
-import com.qtt.jinrong.enums.HosuePropertySpaceEnum;
-import com.qtt.jinrong.enums.HosueSpareEnum;
+import com.qtt.jinrong.enums.HousePropertyAssessedEnum;
+import com.qtt.jinrong.enums.HousePropertySpaceEnum;
+import com.qtt.jinrong.enums.HouseSpareEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
 import com.qtt.jinrong.enums.HousePropertyPositionEnum;
 import com.qtt.jinrong.enums.HousePropertySituationEnum;
@@ -112,6 +113,7 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
             @Override
             public void onItemSelect(int position, String val) {
                 HousePropertyPositionEnum mEnum = HousePropertyPositionEnum.values()[position];
+                request.setDistrict(mEnum.getCode());
                 hpPositionText.setText(val);
             }
         });
@@ -120,11 +122,12 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
 
     @Click(R.id.hpSpare)
     void clickHpPosition() {
-        mSelectView.setData(HosueSpareEnum.getValues());
+        mSelectView.setData(HouseSpareEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                HosueSpareEnum mEnum = HosueSpareEnum.values()[position];
+                HouseSpareEnum mEnum = HouseSpareEnum.values()[position];
+                request.setSpare(mEnum.getCode());
                 hpSpareText.setText(val);
             }
         });
@@ -133,11 +136,12 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
 
     @Click(R.id.hpSpace)
     void clickHpSpace() {
-        mSelectView.setData(HosuePropertySpaceEnum.getValues());
+        mSelectView.setData(HousePropertySpaceEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                HosuePropertySpaceEnum mEnum = HosuePropertySpaceEnum.values()[position];
+                HousePropertySpaceEnum mEnum = HousePropertySpaceEnum.values()[position];
+                request.setArea(mEnum.getCode());
                 hpSpaceText.setText(val);
             }
         });
@@ -146,11 +150,12 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
 
     @Click(R.id.hpPriceAssessed)
     void clickHpPriceAssessed() {
-        mSelectView.setData(HosuePropertyAssessedEnum.getValues());
+        mSelectView.setData(HousePropertyAssessedEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                HosuePropertyAssessedEnum mEnum = HosuePropertyAssessedEnum.values()[position];
+                HousePropertyAssessedEnum mEnum = HousePropertyAssessedEnum.values()[position];
+                request.setEvaluation(mEnum.getCode());
                 hpPriceAssessedText.setText(val);
             }
         });
@@ -164,6 +169,7 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
             @Override
             public void onItemSelect(int position, String val) {
                 HousePropertySituationEnum mEnum = HousePropertySituationEnum.values()[position];
+                request.setMortgage(mEnum.getCode());
                 hpSituationText.setText(val);
             }
         });
@@ -175,15 +181,38 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
     @Override
     public void onRequest(HousePropertyModel model) {
         if(model.getHouse() != null) {
-            HousePropertyEnum mEnum = HousePropertyEnum.find(model.getHouse());
-            if(mEnum == null) return;
-            request.setHouse(mEnum.getCode());
-            mHousePropertyText.setText(mEnum.getTitle());
-            if (mEnum.equals(HousePropertyEnum.无房产)) {
+            HousePropertyEnum hpEnum = HousePropertyEnum.find(model.getHouse());
+            if(hpEnum == null) return;
+            request.setHouse(hpEnum.getCode());
+            mHousePropertyText.setText(hpEnum.getTitle());
+            if (hpEnum.equals(HousePropertyEnum.无房产)) {
                 hpMore.setVisibility(View.GONE);
                 return;
             }
             hpMore.setVisibility(View.VISIBLE);
+            if(model.getDistrict() != null) {
+                HousePropertyPositionEnum mEnum = HousePropertyPositionEnum.find(model.getDistrict());
+                if(mEnum != null) hpPositionText.setText(mEnum.name());
+            }
+            if(!TextUtils.isEmpty(model.getAddr())) hpaddressEdit.setText(model.getAddr());
+            if(model.getSpare() != null) {
+                HouseSpareEnum mEnum = HouseSpareEnum.find(model.getSpare());
+                if(mEnum != null) hpSpareText.setText(mEnum.name());
+            }
+            if(model.getArea() != null) {
+                HousePropertySpaceEnum mEnum = HousePropertySpaceEnum.find(model.getArea());
+                if(mEnum != null) hpSpaceText.setText(mEnum.name());
+            }
+            if(model.getTotalPrice() != null) hpTotalPriceBuyEdit.setText(String.valueOf(model.getTotalPrice()));
+            if(model.getCurrPrice() != null) hpPriceNowEdit.setText(String.valueOf(model.getCurrPrice()));
+            if(model.getEvaluation() != null) {
+                HousePropertyAssessedEnum mEnum = HousePropertyAssessedEnum.find(model.getEvaluation());
+                if(mEnum != null) hpPriceAssessedText.setText(mEnum.getTitle());
+            }
+            if(model.getMortgage() != null) {
+                HousePropertySituationEnum mEnum = HousePropertySituationEnum.find(model.getMortgage());
+                if(mEnum != null) hpSituationText.setText(mEnum.getTitle());
+            }
         }
     }
 
@@ -194,6 +223,18 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
 
     @Override
     public HousePropertySaveRequest getSaveRequest() {
+        String addr = hpaddressEdit.getString();
+        if(!TextUtils.isEmpty(addr)) {
+            request.setAddr(addr);
+        }
+        String priceBuy = hpTotalPriceBuyEdit.getString();
+        if(!TextUtils.isEmpty(priceBuy)) {
+            request.setTotalPrice(Float.valueOf(priceBuy));
+        }
+        String priceNow = hpPriceNowEdit.getString();
+        if(!TextUtils.isEmpty(priceNow)) {
+            request.setCurrPrice(Integer.valueOf(priceNow));
+        }
         return request;
     }
     /***  IHousePropertyView  ***/

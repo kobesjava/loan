@@ -67,4 +67,8 @@ public class Api {
     public final static String ACCOUNT_REQUEST_DEMANDS = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/queryDemand.do";
     //保存需求信息
     public final static String ACCOUNT_SAVE_DEMANDS = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/saveDemand.do";
+    //获取身份信息
+    public final static String ACCOUNT_REQUEST_IDENTITY = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/queryIdentity.do";
+    //保存身份信息
+    public final static String ACCOUNT_SAVE_IDENTITY = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/saveIdentity.do";
 }

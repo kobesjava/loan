@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 房产地段
  * Created by yanxin on 16/3/4.
  */
 public enum HousePropertyPositionEnum {
@@ -28,6 +29,14 @@ public enum HousePropertyPositionEnum {
             vals.add(enums[i].name());
         }
         return vals;
+    }
+
+    public static HousePropertyPositionEnum find(int code) {
+        HousePropertyPositionEnum[] enums = HousePropertyPositionEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 
 }

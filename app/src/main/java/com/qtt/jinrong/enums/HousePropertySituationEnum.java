@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 房产抵押情况
  * Created by yanxin on 16/3/4.
  */
 public enum HousePropertySituationEnum {
@@ -35,5 +36,13 @@ public enum HousePropertySituationEnum {
             titles.add(enums[i].getTitle());
         }
         return titles;
+    }
+
+    public static HousePropertySituationEnum find(int code) {
+        HousePropertySituationEnum[] enums = HousePropertySituationEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 }

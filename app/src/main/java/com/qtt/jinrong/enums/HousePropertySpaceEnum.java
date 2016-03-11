@@ -7,7 +7,7 @@ import java.util.List;
  * 房产面积
  * Created by yanxin on 16/3/7.
  */
-public enum HosuePropertySpaceEnum {
+public enum HousePropertySpaceEnum {
 
     SPACE_50(1,"0-50平米"),
     SPACE_75(2,"51-75平米"),
@@ -20,7 +20,7 @@ public enum HosuePropertySpaceEnum {
     private int code;
     private String title;
 
-    HosuePropertySpaceEnum(int code, String title) {
+    HousePropertySpaceEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -35,10 +35,18 @@ public enum HosuePropertySpaceEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        HosuePropertySpaceEnum[] enums = HosuePropertySpaceEnum.values();
+        HousePropertySpaceEnum[] enums = HousePropertySpaceEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
+    }
+
+    public static HousePropertySpaceEnum find(int code) {
+        HousePropertySpaceEnum[] enums = HousePropertySpaceEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 }

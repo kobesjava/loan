@@ -7,7 +7,7 @@ import java.util.List;
  * 房产估值
  * Created by yanxin on 16/3/7.
  */
-public enum HosuePropertyAssessedEnum {
+public enum HousePropertyAssessedEnum {
 
     ASSESSED_30(1,"0-30万"),
     ASSESSED_50(2,"31-50万"),
@@ -22,7 +22,7 @@ public enum HosuePropertyAssessedEnum {
     private int code;
     private String title;
 
-    HosuePropertyAssessedEnum(int code, String title) {
+    HousePropertyAssessedEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -37,10 +37,18 @@ public enum HosuePropertyAssessedEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        HosuePropertyAssessedEnum[] enums = HosuePropertyAssessedEnum.values();
+        HousePropertyAssessedEnum[] enums = HousePropertyAssessedEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
+    }
+
+    public static HousePropertyAssessedEnum find(int code) {
+        HousePropertyAssessedEnum[] enums = HousePropertyAssessedEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 }

@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 房产备用房
  * Created by yanxin on 16/3/7.
  */
-public enum HosueSpareEnum {
+public enum HouseSpareEnum {
 
     有(1),
     无(2);
 
     private int code;
-    HosueSpareEnum(int code) {
+    HouseSpareEnum(int code) {
         this.code = code;
     }
 
@@ -21,11 +22,20 @@ public enum HosueSpareEnum {
     }
 
     public static List<String> getValues() {
-        HosueSpareEnum[] enums = HosueSpareEnum.values();
+        HouseSpareEnum[] enums = HouseSpareEnum.values();
         List<String> vals = new ArrayList<>();
         for(int i=0;i<enums.length;i++) {
             vals.add(enums[i].name());
         }
         return vals;
     }
+
+    public static HouseSpareEnum find(int code) {
+        HouseSpareEnum[] enums = HouseSpareEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
+
 }

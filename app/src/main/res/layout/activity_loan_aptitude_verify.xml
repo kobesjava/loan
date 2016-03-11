@@ -47,13 +47,13 @@
             <include
                 android:id="@+id/enterprisePersonalMore"
                 android:visibility="gone"
-                layout="@layout/include_enterprise_personal_more"
+                layout="@layout/include_enterprise_personal_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <include
                 android:id="@+id/workerOtherMore"
                 android:visibility="gone"
-                layout="@layout/include_worker_other_more"
+                layout="@layout/include_worker_other_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -91,7 +91,7 @@
             <include
                 android:id="@+id/creditOverdueMore"
                 android:visibility="gone"
-                layout="@layout/include_credit_overdue_more"
+                layout="@layout/include_credit_overdue_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -111,7 +111,7 @@
             <include
                 android:id="@+id/creditMore"
                 android:visibility="gone"
-                layout="@layout/include_credit_limit_more"
+                layout="@layout/include_credit_limit_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
