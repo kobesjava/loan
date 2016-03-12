@@ -12,10 +12,10 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="法人或股东" />
+            android:text="@string/user_identity_company_type" />
 
         <TextView
-            android:id="@+id/epLegalPerson"
+            android:id="@+id/workCompanyType"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
@@ -32,10 +32,10 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="企业名称" />
+            android:text="@string/user_identity_company_name" />
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/epName"
+            android:id="@+id/workCompanyName"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
@@ -50,28 +50,10 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="企业地址" />
-
-        <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/epAddress"
-            style="@style/financing_needs_more_right_edittext" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
+            android:text="@string/user_identity_position" />
 
         <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="所属行业" />
-
-        <TextView
-            android:id="@+id/epIndustry"
+            android:id="@+id/workJobTitle"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
@@ -86,10 +68,127 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="企业规模 (人)" />
+            android:text="@string/user_identity_company_worktime" />
+
+        <TextView
+            android:id="@+id/workCompanyAge"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_identity_work_province" />
+
+        <TextView
+            android:id="@+id/workProvince"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_identity_work_city" />
+
+        <TextView
+            android:id="@+id/workCity"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_identity_work_address" />
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/epStaffNum"
+            android:id="@+id/workAddress"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_identity_income_payment" />
+
+        <TextView
+            android:id="@+id/workIncomePayWay"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/workMonthCardSalaryView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            style="@style/financing_needs_more_item"
+            android:layout_marginTop="0dp"
+            android:background="@color/transparent">
+
+            <TextView
+                style="@style/financing_needs_more_left_text"
+                android:text="@string/user_identity_salary_month_card" />
+
+            <com.qtt.jinrong.ui.widget.text.InputEditText
+                android:id="@+id/workMonthCardSalary"
+                style="@style/financing_needs_more_right_edittext"
+                input:input_number="true" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.LineView
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_identity_salary_month_total" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/workMonthSalaryTotal"
             style="@style/financing_needs_more_right_edittext"
             input:input_number="true" />
     </LinearLayout>
@@ -105,10 +204,10 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="企业经营地" />
+            android:text="@string/user_identity_income_proof" />
 
         <TextView
-            android:id="@+id/epCompanyPosition"
+            android:id="@+id/workIncomeProof"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
@@ -123,10 +222,10 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="经营年限" />
+            android:text="@string/user_identity_social_fund" />
 
         <TextView
-            android:id="@+id/epOperationPeriod"
+            android:id="@+id/workSocialFund"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
@@ -135,188 +234,7 @@
         android:layout_height="1dp" />
 
     <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="注册资金" />
-
-        <TextView
-            android:id="@+id/epRegistCapital"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="主营业务" />
-
-        <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/epBusiness"
-            style="@style/financing_needs_more_right_edittext" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="年营业额 (万元)" />
-
-        <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/epTurnover"
-            style="@style/financing_needs_more_right_edittext"
-            input:input_numberDecimal="true" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="年开票额" />
-
-        <TextView
-            android:id="@+id/epBilling"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="年营业收入" />
-
-        <TextView
-            android:id="@+id/epIncomeYear"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="月对公流水" />
-
-        <TextView
-            android:id="@+id/epMonthPublicWater"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="月对公流水" />
-
-        <TextView
-            android:id="@+id/epMonthPrivateWater"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="资产负债率" />
-
-        <TextView
-            android:id="@+id/epDebtRate"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="年净利润" />
-
-        <TextView
-            android:id="@+id/epProfit"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        style="@style/financing_needs_more_item"
-        android:layout_marginTop="0dp"
-        android:background="@color/transparent">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="企业欠款情况" />
-
-        <TextView
-            android:id="@+id/epDebtSituation"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
-
-    <com.qtt.jinrong.ui.widget.LineView
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <LinearLayout
-        android:id="@+id/epDebtSituationView"
+        android:id="@+id/workFundYearsView"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -329,10 +247,80 @@
 
             <TextView
                 style="@style/financing_needs_more_left_text"
-                android:text="欠款机构名称" />
+                android:text="公积金连续缴纳年限" />
+
+            <TextView
+                android:id="@+id/workFundYears"
+                style="@style/financing_needs_more_right_arrow_text" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.LineView
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/workSocialYearsView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/financing_needs_more_item"
+            android:layout_marginTop="0dp"
+            android:background="@color/transparent">
+
+            <TextView
+                style="@style/financing_needs_more_left_text"
+                android:text="社保连续缴纳年限" />
+
+            <TextView
+                android:id="@+id/workSocialYears"
+                style="@style/financing_needs_more_right_arrow_text" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.LineView
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="有无副业" />
+
+        <TextView
+            android:id="@+id/workHasAvocation"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/workAvoactionView"
+        android:visibility="gone"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/financing_needs_more_item"
+            android:layout_marginTop="0dp"
+            android:background="@color/transparent">
+
+            <TextView
+                style="@style/financing_needs_more_left_text"
+                android:text="副业内容" />
 
             <com.qtt.jinrong.ui.widget.text.InputEditText
-                android:id="@+id/epDebtInstitutionName"
+                android:id="@+id/workAvocation"
                 style="@style/financing_needs_more_right_edittext" />
         </LinearLayout>
 
@@ -347,29 +335,11 @@
 
             <TextView
                 style="@style/financing_needs_more_left_text"
-                android:text="欠款余额" />
-
-            <TextView
-                android:id="@+id/epDebtBalance"
-                style="@style/financing_needs_more_right_arrow_text" />
-        </LinearLayout>
-
-        <com.qtt.jinrong.ui.widget.LineView
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-
-        <LinearLayout
-            style="@style/financing_needs_more_item"
-            android:layout_marginTop="0dp"
-            android:background="@color/transparent">
-
-            <TextView
-                style="@style/financing_needs_more_left_text"
-                android:text="月还款金额 (万元)" />
+                android:text="副业月收入 (元)" />
 
             <com.qtt.jinrong.ui.widget.text.InputEditText
-                android:id="@+id/epMonthRepayment"
-                input:input_numberDecimal="true"
+                android:id="@+id/workAvocationMonthSalary"
+                input:input_number="true"
                 style="@style/financing_needs_more_right_edittext" />
         </LinearLayout>
 
@@ -377,4 +347,5 @@
             android:layout_width="match_parent"
             android:layout_height="1dp" />
     </LinearLayout>
+
 </LinearLayout>

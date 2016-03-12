@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yanxin on 16/3/4.
+ * 注册资金
+ * Created by yanxin on 16/3/7.
  */
-public enum  MarriageEnum {
+public enum RegistCaptialEnum {
 
-    已婚(1,"已婚"),
-    未婚离异(2,"未婚/离异");
+    _10万(1,"0-10万"),
+    _30万(2,"11-30万"),
+    _50万(3,"31-50万"),
+    _100万(4,"51-100万"),
+    _300万(5,"101-300万"),
+    _500万(6,"301-500万"),
+    _1000(7,"501-1000万"),
+    _1000万以上(8,"1000万以上");
 
     private int code;
     private String title;
 
-    MarriageEnum(int code,String title) {
+    RegistCaptialEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -29,15 +36,15 @@ public enum  MarriageEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        MarriageEnum[] enums = MarriageEnum.values();
+        RegistCaptialEnum[] enums = RegistCaptialEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
     }
 
-    public static MarriageEnum find(int code) {
-        MarriageEnum[] enums = MarriageEnum.values();
+    public static RegistCaptialEnum find(int code) {
+        RegistCaptialEnum[] enums = RegistCaptialEnum.values();
         for(int i=0;i<enums.length;i++) {
             if(enums[i].getCode() == code) return enums[i];
         }

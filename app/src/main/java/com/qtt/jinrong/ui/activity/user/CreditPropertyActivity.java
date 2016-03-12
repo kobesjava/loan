@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.CreditPropertyModel;
 import com.qtt.jinrong.bean.account.CreditPropertySaveRequest;
-import com.qtt.jinrong.enums.CreditDebtEnum;
+import com.qtt.jinrong.enums.CreditDebtSituationEnum;
 import com.qtt.jinrong.enums.CreditLimitEnum;
 import com.qtt.jinrong.enums.CreditUseStationEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
@@ -119,11 +119,11 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
 
     @Click(R.id.debt)
     void clickDebt() {
-        mSelectView.setData(CreditDebtEnum.getValues());
+        mSelectView.setData(CreditDebtSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setCreDebt(CreditDebtEnum.values()[position].getCode());
+                request.setCreDebt(CreditDebtSituationEnum.values()[position].getCode());
                 mDebtText.setText(val);
             }
         });
@@ -148,7 +148,7 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
             if(mEnum != null) mUsedLimitText.setText(mEnum.getTitle());
         }
         if(model.getCreDebt() != null) {
-            CreditDebtEnum mEnum = CreditDebtEnum.find(model.getCreDebt());
+            CreditDebtSituationEnum mEnum = CreditDebtSituationEnum.find(model.getCreDebt());
             if(mEnum != null) mDebtText.setText(mEnum.name());
         }
     }

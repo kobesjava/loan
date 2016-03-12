@@ -4,27 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 信用卡使用额度
+ * 资产负债率
  * Created by yanxin on 16/3/4.
  */
-public enum CreditUsedLimitEnum {
+public enum DebtRateEnum {
 
-    LIMIT_500(1,"0-500元"),
-    LIMIT_3000(2,"501-3000元"),
-    LIMIT_5000(3,"3001-5000元"),
-    LIMIT_10000(4,"5001-10000元"),
-    LIMIT_15000(5,"10001-15000元"),
-    LIMIT_20000(6,"15001-20000元"),
-    LIMIT_30000(7,"20001-30000元"),
-    LIMIT_50000(8,"30001-50000元"),
-    LIMIT_80000(9,"50001-80000元"),
-    LIMIT_100000(10,"80001-100000元"),
-    LIMIT_100000以上(11,"100000元以上");
+    _30P(1,"0-30%"),
+    _50P(2,"31-50%"),
+    _70P(1,"51-70%"),
+    _70P以上(1,"70%以上");
 
     private int code;
     private String title;
 
-    CreditUsedLimitEnum(int code, String title) {
+    DebtRateEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -39,15 +32,15 @@ public enum CreditUsedLimitEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        CreditUsedLimitEnum[] enums = CreditUsedLimitEnum.values();
+        DebtRateEnum[] enums = DebtRateEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
     }
 
-    public static CreditUsedLimitEnum find(int code) {
-        CreditUsedLimitEnum[] enums = CreditUsedLimitEnum.values();
+    public static DebtRateEnum find(int code) {
+        DebtRateEnum[] enums = DebtRateEnum.values();
         for(int i=0;i<enums.length;i++) {
             if(enums[i].getCode() == code) return enums[i];
         }

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by yanxin on 16/3/4.
  */
-public enum CreditDebtEnum {
+public enum CreditDebtSituationEnum {
 
     无欠款(1),
     有银行欠款(2),
@@ -15,7 +15,7 @@ public enum CreditDebtEnum {
     有其它类型欠款(5);
 
     private int code;
-    CreditDebtEnum(int code) {
+    CreditDebtSituationEnum(int code) {
         this.code = code;
     }
 
@@ -24,7 +24,7 @@ public enum CreditDebtEnum {
     }
 
     public static List<String> getValues() {
-        CreditDebtEnum[] enums = CreditDebtEnum.values();
+        CreditDebtSituationEnum[] enums = CreditDebtSituationEnum.values();
         List<String> vals = new ArrayList<>();
         for(int i=0;i<enums.length;i++) {
             vals.add(enums[i].name());
@@ -32,8 +32,8 @@ public enum CreditDebtEnum {
         return vals;
     }
 
-    public static CreditDebtEnum find(int code) {
-        CreditDebtEnum[] enums = CreditDebtEnum.values();
+    public static CreditDebtSituationEnum find(int code) {
+        CreditDebtSituationEnum[] enums = CreditDebtSituationEnum.values();
         for(int i=0;i<enums.length;i++) {
             if(enums[i].getCode() == code) return enums[i];
         }
