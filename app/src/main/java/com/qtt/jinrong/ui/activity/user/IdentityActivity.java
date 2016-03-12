@@ -33,6 +33,7 @@ import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
+import com.qtt.jinrong.util.DistrictUtil;
 import com.qtt.jinrong.util.ToastUtil;
 
 import org.androidannotations.annotations.AfterViews;
@@ -147,6 +148,7 @@ public class IdentityActivity extends BaseSelectActivity {
     @ViewById(R.id.workAvocationMonthSalary)
     InputEditText workAvocationMonthSalaryEdit;
 
+    private ProvinceEnum provinceEnum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -398,6 +400,7 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 ProvinceEnum mEnum = ProvinceEnum.values()[position];
+                provinceEnum = mEnum;
                 workProvinceText.setText(val);
             }
         });
@@ -405,7 +408,16 @@ public class IdentityActivity extends BaseSelectActivity {
     }
     @Click(R.id.workCity)
     void clickCity() {
-
+        mSelectView.setData(DistrictUtil.getCities(getApplicationContext(),provinceEnum));
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                //ProvinceEnum mEnum = ProvinceEnum.values()[position];
+                //provinceEnum = mEnum;
+                workProvinceText.setText(val);
+            }
+        });
+        show();
     }
     @Click(R.id.workIncomePayWay)
     void clickIncomepayway() {
