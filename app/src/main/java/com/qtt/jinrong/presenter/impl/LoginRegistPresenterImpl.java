@@ -15,6 +15,7 @@ import com.qtt.jinrong.presenter.ILoginRegistPresenter;
 import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.IForgetPwdView;
 import com.qtt.jinrong.view.ILoginView;
+import com.qtt.jinrong.view.IRegist1View;
 import com.qtt.jinrong.view.IRegistView;
 
 /**
@@ -23,6 +24,7 @@ import com.qtt.jinrong.view.IRegistView;
 public class LoginRegistPresenterImpl implements ILoginRegistPresenter {
 
     ILoginView mView;
+    IRegist1View mReg1View;
     IRegistView mRegView;
     IForgetPwdView mForgetView;
     ILoginRegBS mBs;
@@ -32,13 +34,18 @@ public class LoginRegistPresenterImpl implements ILoginRegistPresenter {
         this.mBs = new LoginRegBSImpl();
     }
 
-    public LoginRegistPresenterImpl(IRegistView mView) {
-        this.mRegView = mView;
+    public LoginRegistPresenterImpl(IRegist1View mView) {
+        this.mReg1View = mView;
         this.mBs = new LoginRegBSImpl();
     }
 
     public LoginRegistPresenterImpl(IForgetPwdView mView) {
         this.mForgetView = mView;
+        this.mBs = new LoginRegBSImpl();
+    }
+
+    public LoginRegistPresenterImpl(IRegistView mView) {
+        this.mRegView = mView;
         this.mBs = new LoginRegBSImpl();
     }
 
@@ -101,12 +108,30 @@ public class LoginRegistPresenterImpl implements ILoginRegistPresenter {
                     if(!response.isSuccess()) {
                         mRegView.onRequestCode(false);
                         ToastUtil.showShortToast(response.getMessage());
+                    } else {
+                        mRegView.onRequestCode(true);
                     }
                 }
 
                 @Override
                 public void onFail(Exception exception, String url) {
                     mRegView.onRequestCode(false);
+                }
+            });
+        } else if(mReg1View != null) {
+            request.setCell(mReg1View.getPhone());
+            mBs.requestCode(mReg1View.getContext(), request, new MCListenerObj.IObjResListener<Response>() {
+                @Override
+                public void onSuccess(Response response, String url) {
+                    if(!response.isSuccess()) {
+                        mReg1View.onRequestCode(false);
+                        ToastUtil.showShortToast(response.getMessage());
+                    }
+                }
+
+                @Override
+                public void onFail(Exception exception, String url) {
+                    mReg1View.onRequestCode(false);
                 }
             });
         } else if(mView != null) {
@@ -172,17 +197,17 @@ public class LoginRegistPresenterImpl implements ILoginRegistPresenter {
     @Override
     public void regist() {
         final UserRegistRequest request = new UserRegistRequest();
-        request.setCell(mRegView.getPhone());
-        request.setPwd(mRegView.getPwd());
-        request.setVerifyCode(mRegView.getCode());
-        request.setGender(mRegView.getGender());
-        request.setNickName(mRegView.getNickname());
-        UserReqsAction.regist(mRegView.getContext(), request, new MCListenerObj.IObjResListener<Response>() {
+        request.setCell(mReg1View.getPhone());
+        request.setPwd(mReg1View.getPwd());
+        request.setVerifyCode(mReg1View.getCode());
+        request.setGender(mReg1View.getGender());
+        request.setNickName(mReg1View.getNickname());
+        UserReqsAction.regist(mReg1View.getContext(), request, new MCListenerObj.IObjResListener<Response>() {
             @Override
             public void onSuccess(Response response, String url) {
-                mRegView.hideLoading();
+                mReg1View.hideLoading();
                 if(response.isSuccess()) {
-                    mRegView.onRegist();
+                    mReg1View.onRegist();
                 } else {
                     ToastUtil.showShortToast(response.getMessage());
                 }
@@ -190,7 +215,7 @@ public class LoginRegistPresenterImpl implements ILoginRegistPresenter {
 
             @Override
             public void onFail(Exception exception, String url) {
-                mRegView.hideLoading();
+                mReg1View.hideLoading();
             }
         });
     }

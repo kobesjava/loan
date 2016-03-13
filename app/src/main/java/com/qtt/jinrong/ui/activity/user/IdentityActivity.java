@@ -414,7 +414,7 @@ public class IdentityActivity extends BaseSelectActivity {
             public void onItemSelect(int position, String val) {
                 //ProvinceEnum mEnum = ProvinceEnum.values()[position];
                 //provinceEnum = mEnum;
-                workProvinceText.setText(val);
+                workCityText.setText(val);
             }
         });
         show();

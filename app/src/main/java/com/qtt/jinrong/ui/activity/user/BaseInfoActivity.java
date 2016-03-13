@@ -8,7 +8,6 @@ import android.widget.ToggleButton;
 
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.BaseInfoModel;
-import com.qtt.jinrong.bean.account.BaseInfoRequest;
 import com.qtt.jinrong.bean.account.BaseInfoSaveRequest;
 import com.qtt.jinrong.enums.GenderEnum;
 import com.qtt.jinrong.enums.MarriageEnum;
@@ -19,6 +18,7 @@ import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
+import com.qtt.jinrong.util.DistrictUtil;
 import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.IBaseInfoView;
 
@@ -27,9 +27,8 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.List;
-
 /**
+ * 基本信息(我的融资需求书)
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_base_info)
@@ -66,6 +65,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         request = new BaseInfoSaveRequest();
+        request.setUserId(getUserId());
         mPresenter = new BaseInfoPresenterImpl(this);
     }
 
@@ -111,7 +111,15 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             ToastUtil.showShortToast("请先选择户籍!");
             return;
         }
-        mSelectView.setData(ProvinceEnum.getValues());
+        mSelectView.setData(DistrictUtil.getCities(getApplicationContext(), provinceEnum));
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                request.setRegisterCity(position + 1);
+                mCityText.setText(val);
+            }
+        });
+        show();
     }
 
     @Click(R.id.marriage)
@@ -147,6 +155,9 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             this.provinceEnum = provinceEnum;
             mProvinceText.setText(provinceEnum.name());
         }
+        Integer cityId = model.getRegisterCity();
+        String city = DistrictUtil.getCity(getApplication(),this.provinceEnum,cityId);
+        if(!TextUtils.isEmpty(city)) mCityText.setText(city);
         if(!TextUtils.isEmpty(model.getRegisterAddr())) addressText.setText(model.getRegisterAddr());
         if(model.getMarriage() == MarriageEnum.已婚.getCode()) {
             mMarriageText.setText(MarriageEnum.已婚.name());

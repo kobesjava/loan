@@ -30,6 +30,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.Date;
 
 /**
+ * 需求信息(我的融资需求书)
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_demands)
@@ -58,6 +59,7 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         request = new DemandSaveRequest();
+        request.setUserId(getUserId());
         mPresenter = new DemandInfoPresenterImpl(this);
     }
 
@@ -153,7 +155,7 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
         }
         if(model.getLoPaymentWay() != null) {
             RepayWayEnum repayWayEnum = RepayWayEnum.find(model.getLoPaymentWay());
-            if(repayWayEnum != null) mRepaymentSource.setText(repayWayEnum.name());
+            if(repayWayEnum != null) mRepayWayText.setText(repayWayEnum.name());
         }
     }
 

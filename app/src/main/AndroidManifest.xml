@@ -73,7 +73,7 @@
         <activity android:name=".ui.activity.user.RegistActivity_"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.user.Regist1Activity_"
+        <activity android:name=".ui.activity.user.Regist11Activity_"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.activity.user.ForgetPwdActivity_"

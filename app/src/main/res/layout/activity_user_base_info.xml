@@ -29,7 +29,6 @@
 
                 <com.qtt.jinrong.ui.widget.text.InputEditText
                     android:id="@+id/name"
-                    input:input_limit="5"
                     style="@style/financing_needs_more_right_edittext" />
             </LinearLayout>
 

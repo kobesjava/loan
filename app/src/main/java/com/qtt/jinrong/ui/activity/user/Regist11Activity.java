@@ -2,6 +2,7 @@ package com.qtt.jinrong.ui.activity.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,7 +18,8 @@ import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
 import com.qtt.jinrong.ui.widget.text.InputPwdEdit;
-import com.qtt.jinrong.view.IRegistView;
+import com.qtt.jinrong.util.ToastUtil;
+import com.qtt.jinrong.view.IRegist1View;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -28,7 +30,7 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/2/24.
  */
 @EActivity(R.layout.activity_regist1)
-public class Regist1Activity extends BaseActivity implements IRegistView {
+public class Regist11Activity extends BaseActivity implements IRegist1View {
 
     public static final String INTENT_PHONE = "INTENT_PHONE";
     public static final String INTENT_NICKNAME = "INTENT_NICKNAME";
@@ -85,7 +87,7 @@ public class Regist1Activity extends BaseActivity implements IRegistView {
 
             @Override
             public void rightOnClick() {
-                Intent intent = new Intent(Regist1Activity.this, GeneratedClassUtils.get(LoginActivity.class));
+                Intent intent = new Intent(Regist11Activity.this, GeneratedClassUtils.get(LoginActivity.class));
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -121,31 +123,40 @@ public class Regist1Activity extends BaseActivity implements IRegistView {
         mCountDownTimer = new MyCountDownTimer(Constants.REQUEST_CODE_TIME,1000,this);
         mCountDownTimer.start();
 
+        mPresenter.requestCode();
     }
 
     @Click(R.id.btnSubmit)
     void clickBtnSubmit() {
+        if(TextUtils.isEmpty(mCodeEdit.getString())) {
+            ToastUtil.showShortToast("请输入验证码");
+            return;
+        }
+        if(TextUtils.isEmpty(mPwdEdit.getString())) {
+            ToastUtil.showShortToast("请输入密码");
+            return;
+        }
         mPresenter.regist();
     }
 
-    static class MyCountDownTimer extends WrapCountDownTimer<Regist1Activity> {
+    static class MyCountDownTimer extends WrapCountDownTimer<Regist11Activity> {
 
-        public MyCountDownTimer(long millisInFuture, long countDownInterval,Regist1Activity t) {
+        public MyCountDownTimer(long millisInFuture, long countDownInterval,Regist11Activity t) {
             super(millisInFuture,countDownInterval,t);
         }
 
         @Override
-        protected void onFinish(Regist1Activity activity) {
+        protected void onFinish(Regist11Activity activity) {
             activity.resetCodeBtn();
         }
 
         @Override
-        protected void onTick(Regist1Activity activity, long millisUntilFinished) {
+        protected void onTick(Regist11Activity activity, long millisUntilFinished) {
             activity.mBtnRequestCode.setText("("+(millisUntilFinished/1000)+"秒后)重新获取");
         }
     }
 
-    /***  IRegistView  ***/
+    /***  IRegist1View  ***/
     @Override
     public void onRequestCode(boolean success) {
         if(!success) resetCodeBtn();
@@ -180,5 +191,5 @@ public class Regist1Activity extends BaseActivity implements IRegistView {
     public void onRegist() {
         finish();
     }
-    /***  IRegistView  ***/
+    /***  IRegist1View  ***/
 }
