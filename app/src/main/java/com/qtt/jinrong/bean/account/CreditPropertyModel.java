@@ -5,17 +5,21 @@ package com.qtt.jinrong.bean.account;
  */
 public class CreditPropertyModel {
 
+    /** 信用情况*/
     private Integer creInfo;
 
+    /** 信用卡总额度*/
     private Integer creMoney;
-
+    /** 信用卡张数*/
     private Integer creNum;
-
+    /** 发卡银行*/
     private String creBank;
-
+    /** 已使用额度*/
     private Integer creUsed;
 
+    /** 欠款情况*/
     private Integer creDebt;
+
 
     public Integer getCreInfo() {
         return creInfo;

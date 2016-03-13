@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 有无副业
  * Created by yanxin on 16/3/4.
  */
 public enum AvocationEnum {
@@ -27,6 +28,14 @@ public enum AvocationEnum {
             vals.add(enums[i].name());
         }
         return vals;
+    }
+
+    public static AvocationEnum find(int code) {
+        AvocationEnum[] enums = AvocationEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 
 }

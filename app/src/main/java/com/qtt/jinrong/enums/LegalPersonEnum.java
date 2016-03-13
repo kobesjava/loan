@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 法人股东
  * Created by yanxin on 16/3/4.
  */
 public enum LegalPersonEnum {

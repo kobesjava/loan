@@ -35,6 +35,8 @@ public class Constants {
 
     public static final int PAGE_SIZE = 10;
 
+    public static final int RECOMMEND_SIZE = 3;
+
     /** 短信验证码发送间隔时间*/
     public static final int REQUEST_CODE_TIME = 60000;
 }

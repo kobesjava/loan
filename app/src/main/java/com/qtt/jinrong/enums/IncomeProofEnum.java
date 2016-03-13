@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 能否提供收入证明
  * Created by yanxin on 16/3/4.
  */
 public enum IncomeProofEnum {

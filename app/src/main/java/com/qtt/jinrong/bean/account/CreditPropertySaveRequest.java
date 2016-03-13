@@ -8,21 +8,22 @@ import java.util.Map;
 /**
  * Created by yanxin on 16/3/8.
  */
-public class CreditPropertySaveRequest implements IRequest {
+public class CreditPropertySaveRequest implements IRequest,Cloneable {
 
     private String userId;
 
-    private int creInfo;
+    private Integer creInfo;
 
-    private int creMoney;
+    private Integer creMoney;
 
-    private int creNum;
+    private Integer creNum;
 
     private String creBank;
 
-    private int creUsed;
+    private Integer creUsed;
 
-    private int creDebt;
+    private Integer creDebt;
+
 
     public String getUserId() {
         return userId;
@@ -32,27 +33,27 @@ public class CreditPropertySaveRequest implements IRequest {
         this.userId = userId;
     }
 
-    public int getCreInfo() {
+    public Integer getCreInfo() {
         return creInfo;
     }
 
-    public void setCreInfo(int creInfo) {
+    public void setCreInfo(Integer creInfo) {
         this.creInfo = creInfo;
     }
 
-    public int getCreMoney() {
+    public Integer getCreMoney() {
         return creMoney;
     }
 
-    public void setCreMoney(int creMoney) {
+    public void setCreMoney(Integer creMoney) {
         this.creMoney = creMoney;
     }
 
-    public int getCreNum() {
+    public Integer getCreNum() {
         return creNum;
     }
 
-    public void setCreNum(int creNum) {
+    public void setCreNum(Integer creNum) {
         this.creNum = creNum;
     }
 
@@ -64,20 +65,30 @@ public class CreditPropertySaveRequest implements IRequest {
         this.creBank = creBank;
     }
 
-    public int getCreUsed() {
+    public Integer getCreUsed() {
         return creUsed;
     }
 
-    public void setCreUsed(int creUsed) {
+    public void setCreUsed(Integer creUsed) {
         this.creUsed = creUsed;
     }
 
-    public int getCreDebt() {
+    public Integer getCreDebt() {
         return creDebt;
     }
 
-    public void setCreDebt(int creDebt) {
+    public void setCreDebt(Integer creDebt) {
         this.creDebt = creDebt;
+    }
+
+    @Override
+    public CreditPropertySaveRequest clone() {
+        try {
+            return (CreditPropertySaveRequest) super.clone();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

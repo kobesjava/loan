@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 信用卡使用额度
+ * 信用卡已使用额度
  * Created by yanxin on 16/3/4.
  */
 public enum CreditUsedLimitEnum {

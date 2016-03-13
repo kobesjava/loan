@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 企业所在地
  * Created by yanxin on 16/2/24.
  */
 public enum CompanyPositionEnum {

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_credit_count" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/creditCardCount"
+            input:input_number="true"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_credit_bank" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/creditCardbank"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="@string/user_credit_used_limit" />
+
+        <TextView
+            android:id="@+id/creditCardHasUsed"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.qtt.jinrong.enums;
 
 /**
+ * 贷款类型
  * Created by yanxin on 16/2/24.
  */
 public enum LoanTypeEnum {

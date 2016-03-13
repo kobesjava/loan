@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="10dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img"
+        android:scaleType="centerInside"
+        android:layout_gravity="center_vertical"
+        android:layout_width="80dp"
+        android:layout_height="60dp" />
+
+    <RelativeLayout
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/color_333"
+            android:textSize="12sp"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/monthPay"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/color_333"
+            android:textSize="12sp"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/interest"
+            android:layout_above="@id/monthPay"
+            android:layout_marginBottom="3dp"
+            android:textColor="@color/color_333"
+            android:textSize="12sp"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_gravity="bottom"
+        android:id="@+id/btnApply"
+        android:text="快速申请"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:background="@drawable/bg_orange_corner_selecter"
+        android:layout_width="90dp"
+        android:layout_height="30dp" />
+
+</LinearLayout>

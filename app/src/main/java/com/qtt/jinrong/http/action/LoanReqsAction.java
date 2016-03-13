@@ -18,15 +18,33 @@ import static com.qtt.jinrong.http.action.IWBaseReqsAction.getPostReq7HeardInfo;
  */
 public class LoanReqsAction {
 
+    /**
+     * 获取贷款产品列表
+     * @param context
+     * @param request
+     * @param listener
+     */
     public static void requestList(Context context,IRequest request,MCListenerObj.IObjResListener<LoanListResponse> listener) {
         getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_LIST,request.getParams(),listener,LoanListResponse.class);
     }
 
+    /**
+     * 获取贷款产品详情
+     * @param context
+     * @param request
+     * @param listener
+     */
     public static void requestLoanProductDetil(Context context,IRequest request,MCListenerObj.IObjResListener<LoanProductDetailResponse> listener) {
         getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_DETAIL,request.getParams(),listener,LoanProductDetailResponse.class);
     }
 
-    public static void requestLoanProductApply(Context context,MCListenerObj.IObjResListener<Response> listener) {
+    /**
+     * 申请贷款产品
+     * @param context
+     * @param iRequest
+     * @param listener
+     */
+    public static void requestLoanProductApply(Context context,IRequest iRequest,MCListenerObj.IObjResListener<Response> listener) {
         getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY,new HashMap<String, Object>(),listener,Response.class);
     }
 

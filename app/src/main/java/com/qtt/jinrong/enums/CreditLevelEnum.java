@@ -1,6 +1,7 @@
 package com.qtt.jinrong.enums;
 
 /**
+ * 信用卡等级
  * Created by yanxin on 16/2/29.
  */
 public enum CreditLevelEnum {

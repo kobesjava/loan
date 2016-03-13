@@ -9,9 +9,12 @@ import android.widget.ToggleButton;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.BaseInfoModel;
 import com.qtt.jinrong.bean.account.BaseInfoSaveRequest;
+import com.qtt.jinrong.enums.CreditOverdueEnum;
+import com.qtt.jinrong.enums.CreditSituationEnum;
 import com.qtt.jinrong.enums.GenderEnum;
 import com.qtt.jinrong.enums.MarriageEnum;
 import com.qtt.jinrong.enums.ProvinceEnum;
+import com.qtt.jinrong.enums.SpouseGuaranteeEnum;
 import com.qtt.jinrong.presenter.IBaseInfoPresenter;
 import com.qtt.jinrong.presenter.impl.BaseInfoPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
@@ -53,8 +56,23 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
     TextView mCityText;
     @ViewById(R.id.address)
     InputEditText addressText;
+
+    //婚姻状况
     @ViewById(R.id.marriage)
     TextView mMarriageText;
+    @ViewById(R.id.baseMarriageMore)
+    View marriageMore;
+    @ViewById(R.id.baseSpouseMonthIncome)
+    InputEditText baseSpouseMonthIncomeEdit;
+    @ViewById(R.id.baseSpouseGuarantee)
+    TextView baseSpouseGuaranteeText;
+    @ViewById(R.id.baseSpouseCreditSituation)
+    TextView baseSpouseCreditSituationText;
+    @ViewById(R.id.baseSpouseOverdueSituationView)
+    View baseSpouseOverdueSituationView;
+    @ViewById(R.id.baseSpouseOverdueSituation)
+    TextView baseSpouseOverdueSituationText;
+
 
     IBaseInfoPresenter mPresenter;
     ProvinceEnum provinceEnum;
@@ -128,13 +146,55 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                if(position == 0) request.setMarriage(MarriageEnum.已婚.getCode());
-                else request.setMarriage(MarriageEnum.未婚离异.getCode());
                 mMarriageText.setText(val);
+                MarriageEnum mEnum = MarriageEnum.values()[position];
+                if(mEnum.equals(MarriageEnum.已婚)) {
+                    marriageMore.setVisibility(View.VISIBLE);
+                } else {
+                    marriageMore.setVisibility(View.GONE);
+                }
             }
         });
         show();
     }
+    @Click(R.id.baseSpouseGuarantee)
+    void clickbaseSpouseGuarantee() {
+        mSelectView.setData(SpouseGuaranteeEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                baseSpouseGuaranteeText.setText(val);
+            }
+        });
+        show();
+    }
+    @Click(R.id.baseSpouseCreditSituation)
+    void clickbaseSpouseCreditSituation() {
+        mSelectView.setData(CreditSituationEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                baseSpouseCreditSituationText.setText(val);
+                CreditSituationEnum mEnum = CreditSituationEnum.values()[position];
+                if(mEnum.equals(CreditSituationEnum.有逾期)) baseSpouseOverdueSituationView.setVisibility(View.VISIBLE);
+                else baseSpouseOverdueSituationView.setVisibility(View.GONE);
+            }
+        });
+        show();
+    }
+    @Click(R.id.baseSpouseOverdueSituation)
+    void clickbaseSpouseOverdueSituation() {
+        mSelectView.setData(CreditOverdueEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                baseSpouseOverdueSituationText.setText(val);
+            }
+        });
+        show();
+    }
+
+
 
     /*** IBaseInfoView ***/
     @Override
@@ -143,14 +203,23 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
         this.model = model;
 
         if(!TextUtils.isEmpty(model.getUsername())) nameText.setText(model.getUsername());
-        if(model.getGender() == GenderEnum.男.getCode()) {
-            sexToggleBtn.setChecked(true);
-        } else if(model.getGender() == GenderEnum.女.getCode()) {
-            sexToggleBtn.setChecked(false);
+
+        GenderEnum gEnum = null;
+        if(model.getGender() != null) gEnum = GenderEnum.find(model.getGender());
+        if(gEnum != null) {
+            if(gEnum.equals(GenderEnum.男)) {
+                sexToggleBtn.setChecked(true);
+            } else {
+                sexToggleBtn.setChecked(false);
+            }
         }
-        if(model.getAge() > 0) ageText.setText(String.valueOf(model.getAge()));
+
+        if(model.getAge() != null) ageText.setText(String.valueOf(model.getAge()));
+
         if(!TextUtils.isEmpty(model.getIdNumber())) idsText.setText(model.getIdNumber());
-        ProvinceEnum provinceEnum = ProvinceEnum.find(model.getRegisterProvince());
+
+        ProvinceEnum provinceEnum = null;
+        if(model.getRegisterProvince() != null) provinceEnum = ProvinceEnum.find(model.getRegisterProvince());
         if(provinceEnum != null) {
             this.provinceEnum = provinceEnum;
             mProvinceText.setText(provinceEnum.name());
@@ -159,10 +228,16 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
         String city = DistrictUtil.getCity(getApplication(),this.provinceEnum,cityId);
         if(!TextUtils.isEmpty(city)) mCityText.setText(city);
         if(!TextUtils.isEmpty(model.getRegisterAddr())) addressText.setText(model.getRegisterAddr());
-        if(model.getMarriage() == MarriageEnum.已婚.getCode()) {
-            mMarriageText.setText(MarriageEnum.已婚.name());
-        } else if(model.getMarriage() == MarriageEnum.未婚离异.getCode()) {
-            mMarriageText.setText(MarriageEnum.未婚离异.name());
+
+        MarriageEnum mEnum = null;
+        if(model.getMarriage() != null) mEnum = MarriageEnum.find(model.getMarriage());
+        if(mEnum != null) {
+            mMarriageText.setText(mEnum.getTitle());
+            if (mEnum.equals(MarriageEnum.已婚)) {
+                marriageMore.setVisibility(View.VISIBLE);
+            } else {
+                marriageMore.setVisibility(View.GONE);
+            }
         }
     }
 

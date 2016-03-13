@@ -14,6 +14,8 @@ import com.qtt.jinrong.enums.HouseSpareEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
 import com.qtt.jinrong.enums.HousePropertyPositionEnum;
 import com.qtt.jinrong.enums.HousePropertySituationEnum;
+import com.qtt.jinrong.enums.MonthRepayEnum;
+import com.qtt.jinrong.enums.MonthsRepayedEnum;
 import com.qtt.jinrong.presenter.IHousePropertyPresenter;
 import com.qtt.jinrong.presenter.impl.HousePropertyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
@@ -57,7 +59,16 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
     TextView hpPriceAssessedText;
     @ViewById(R.id.hpSituation)
     TextView hpSituationText;
-
+    @ViewById(R.id.hpSituationMore)
+    View hpSituationMore;
+    @ViewById(R.id.hpMortgageLoanBalance)
+    InputEditText hpMortgageLoanBalanceEdit;
+    @ViewById(R.id.hpMortgageDiscountSpace)
+    InputEditText hpMortgageDiscountSpaceEdit;
+    @ViewById(R.id.hpMortgageMonthRePay)
+    TextView hpMortgageMonthRePayText;
+    @ViewById(R.id.hpMortgageHasRePayMonths)
+    TextView hpMortgageHasRePayMonthsText;
 
     HousePropertySaveRequest request;
     IHousePropertyPresenter mPresenter;
@@ -161,7 +172,6 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
         });
         show();
     }
-
     @Click(R.id.hpSituation)
     void clickHousePropertySituaion() {
         mSelectView.setData(HousePropertySituationEnum.getValues());
@@ -171,11 +181,39 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
                 HousePropertySituationEnum mEnum = HousePropertySituationEnum.values()[position];
                 request.setMortgage(mEnum.getCode());
                 hpSituationText.setText(val);
+                if (mEnum.equals(HousePropertySituationEnum.未被抵押无按揭)) hpSituationMore.setVisibility(View.GONE);
+                else hpSituationMore.setVisibility(View.VISIBLE);
             }
         });
         show();
     }
 
+    //月还款额
+    @Click(R.id.hpMortgageMonthRePay)
+    void clickhpMortgageMonthRePay() {
+        mSelectView.setData(MonthRepayEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                MonthRepayEnum mEnum = MonthRepayEnum.values()[position];
+                hpMortgageMonthRePayText.setText(val);
+            }
+        });
+        show();
+    }
+    //已还款月数
+    @Click(R.id.hpMortgageHasRePayMonths)
+    void clickhpMortgageHasRePayMonths() {
+        mSelectView.setData(MonthsRepayedEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                MonthsRepayedEnum mEnum = MonthsRepayedEnum.values()[position];
+                hpMortgageHasRePayMonthsText.setText(val);
+            }
+        });
+        show();
+    }
 
     /***  IHousePropertyView  ***/
     @Override

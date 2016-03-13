@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:input="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,9 +16,18 @@
             android:text="@string/user_credit_station" />
 
         <TextView
-            android:id="@+id/useStation"
+            android:id="@+id/creditSituation"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <include
+        android:visibility="gone"
+        android:id="@+id/creditSitutationMore"
+        layout="@layout/include_credit_overdue_situation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout style="@style/financing_needs_more_item">
 
@@ -28,44 +36,18 @@
             android:text="@string/user_credit_amount" />
 
         <TextView
-            android:id="@+id/totalLimit"
+            android:id="@+id/creditCardTotalLimit"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
-
-    <LinearLayout style="@style/financing_needs_more_item">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="@string/user_credit_count" />
-
-        <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/count"
-            input:input_limit="3"
-            input:input_number="true"
-            style="@style/financing_needs_more_right_edittext" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/financing_needs_more_item">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="@string/user_credit_bank" />
-
-        <com.qtt.jinrong.ui.widget.text.InputEditText
-            android:id="@+id/bank"
-            style="@style/financing_needs_more_right_edittext" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/financing_needs_more_item">
-
-        <TextView
-            style="@style/financing_needs_more_left_text"
-            android:text="@string/user_credit_used_limit" />
-
-        <TextView
-            android:id="@+id/usedLimit"
-            style="@style/financing_needs_more_right_arrow_text" />
-    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <include
+        android:visibility="gone"
+        android:id="@+id/creditCardMore"
+        layout="@layout/include_creditcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout style="@style/financing_needs_more_item">
 
@@ -74,74 +56,18 @@
             android:text="@string/user_credit_debt" />
 
         <TextView
-            android:id="@+id/debt"
+            android:id="@+id/creditDebtSituation"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
-    <LinearLayout
-        android:id="@+id/creditDebtSituationView"
+    <include
         android:visibility="gone"
+        android:id="@+id/creditDebtMore"
+        layout="@layout/include_credit_debt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            style="@style/financing_needs_more_item"
-            android:layout_marginTop="0dp"
-            android:background="@color/transparent">
-
-            <TextView
-                style="@style/financing_needs_more_left_text"
-                android:text="欠款机构名称" />
-
-            <com.qtt.jinrong.ui.widget.text.InputEditText
-                android:id="@+id/epDebtInstitutionName"
-                style="@style/financing_needs_more_right_edittext" />
-        </LinearLayout>
-
-        <com.qtt.jinrong.ui.widget.LineView
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-
-        <LinearLayout
-            style="@style/financing_needs_more_item"
-            android:layout_marginTop="0dp"
-            android:background="@color/transparent">
-
-            <TextView
-                style="@style/financing_needs_more_left_text"
-                android:text="欠款余额" />
-
-            <TextView
-                android:id="@+id/epDebtBalance"
-                style="@style/financing_needs_more_right_arrow_text" />
-        </LinearLayout>
-
-        <com.qtt.jinrong.ui.widget.LineView
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-
-        <LinearLayout
-            style="@style/financing_needs_more_item"
-            android:layout_marginTop="0dp"
-            android:background="@color/transparent">
-
-            <TextView
-                style="@style/financing_needs_more_left_text"
-                android:text="月还款金额 (万元)" />
-
-            <com.qtt.jinrong.ui.widget.text.InputEditText
-                android:id="@+id/epMonthRepayment"
-                input:input_numberDecimal="true"
-                style="@style/financing_needs_more_right_edittext" />
-        </LinearLayout>
-
-        <com.qtt.jinrong.ui.widget.LineView
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

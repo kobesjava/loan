@@ -3,8 +3,7 @@ package com.qtt.jinrong.model;
 import android.content.Context;
 
 import com.qtt.framework.http.MCListenerObj;
-import com.qtt.jinrong.bean.loan.LoanListRequest;
-import com.qtt.jinrong.bean.loan.LoanProductDetailRequest;
+import com.qtt.jinrong.bean.IRequest;
 
 /**
  * Created by yanxin on 16/3/7.
@@ -17,7 +16,7 @@ public interface ILoanBS extends IBS {
      * @param request
      * @param listenerObj
      */
-    void requestList(Context context, LoanListRequest request, MCListenerObj.IObjResListener listenerObj);
+    void requestList(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
 
     /**
      * 请求贷款产品详情
@@ -25,6 +24,6 @@ public interface ILoanBS extends IBS {
      * @param request
      * @param listenerObj
      */
-    void requestLoanProductDetail(Context context, LoanProductDetailRequest request, MCListenerObj.IObjResListener listenerObj);
+    void requestLoanProductDetail(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
 
 }

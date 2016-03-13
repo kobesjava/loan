@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 收入发放方式
  * Created by yanxin on 16/3/4.
  */
 public enum IncomePayMethodEnum {

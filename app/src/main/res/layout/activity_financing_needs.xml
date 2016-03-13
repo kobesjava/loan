@@ -93,6 +93,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/needsView"
@@ -107,6 +110,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/idsView"
@@ -121,6 +127,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/creditView"
@@ -135,6 +144,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/houseView"
@@ -149,6 +161,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/carView"
@@ -163,6 +178,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/otherView"
@@ -177,6 +195,9 @@
                     android:text="待完善"
                     style="@style/financing_needs_book_right_text"/>
             </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
         </LinearLayout>
     </ScrollView>

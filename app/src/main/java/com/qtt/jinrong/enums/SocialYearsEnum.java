@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 社保连续缴纳年限
  * Created by yanxin on 16/3/4.
  */
 public enum SocialYearsEnum {
@@ -39,6 +40,14 @@ public enum SocialYearsEnum {
             vals.add(enums[i].getTitle());
         }
         return vals;
+    }
+
+    public static SocialYearsEnum find(int code) {
+        SocialYearsEnum[] enums = SocialYearsEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 
 }

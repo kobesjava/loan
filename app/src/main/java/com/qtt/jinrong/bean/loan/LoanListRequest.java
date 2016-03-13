@@ -12,80 +12,80 @@ import java.util.Map;
 public class LoanListRequest implements IRequest {
 
     /** 贷款金额*/
-    private int quota;
+    private Integer quota;
     /** 贷款期限*/
-    private int limi;
+    private Integer limi;
     /** 职业身份*/
-    private int identity;
+    private Integer identity;
     /** 担保方式*/
-    private int guaranteeWay;
+    private Integer guaranteeWay;
     /** 还款方式*/
-    private int repay;
-    private int orderNo;
-    private int pageSize = Constants.PAGE_SIZE;
-    private int pageNo;
+    private Integer repay;
+    private Integer orderNo;
+    private Integer pageSize = Constants.PAGE_SIZE;
+    private Integer pageNo;
 
-    public int getQuota() {
+    public Integer getQuota() {
         return quota;
     }
 
-    public void setQuota(int quota) {
+    public void setQuota(Integer quota) {
         this.quota = quota;
     }
 
-    public int getLimi() {
+    public Integer getLimi() {
         return limi;
     }
 
-    public void setLimi(int limi) {
+    public void setLimi(Integer limi) {
         this.limi = limi;
     }
 
-    public int getIdentity() {
+    public Integer getIdentity() {
         return identity;
     }
 
-    public void setIdentity(int identity) {
+    public void setIdentity(Integer identity) {
         this.identity = identity;
     }
 
-    public int getGuaranteeWay() {
+    public Integer getGuaranteeWay() {
         return guaranteeWay;
     }
 
-    public void setGuaranteeWay(int guaranteeWay) {
+    public void setGuaranteeWay(Integer guaranteeWay) {
         this.guaranteeWay = guaranteeWay;
     }
 
-    public int getRepay() {
+    public Integer getRepay() {
         return repay;
     }
 
-    public void setRepay(int repay) {
+    public void setRepay(Integer repay) {
         this.repay = repay;
     }
 
-    public int getOrderNo() {
+    public Integer getOrderNo() {
         return orderNo;
     }
 
-    public void setOrderNo(int orderNo) {
+    public void setOrderNo(Integer orderNo) {
         this.orderNo = orderNo;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public int getPageNo() {
+    public Integer getPageNo() {
         return pageNo;
     }
 
-    public void setPageNo(int pageNo) {
+    public void setPageNo(Integer pageNo) {
         this.pageNo = pageNo;
     }
 

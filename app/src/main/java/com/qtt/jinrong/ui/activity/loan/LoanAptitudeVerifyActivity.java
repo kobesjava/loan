@@ -1,19 +1,20 @@
 package com.qtt.jinrong.ui.activity.loan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.qtt.framework.http.MCListenerObj;
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.Response;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
 import com.qtt.jinrong.enums.CompanyTypeEnum;
-import com.qtt.jinrong.enums.CreditLimitEnum;
 import com.qtt.jinrong.enums.CreditOverdueEnum;
-import com.qtt.jinrong.enums.CreditUseStationEnum;
+import com.qtt.jinrong.enums.CreditSituationEnum;
+import com.qtt.jinrong.enums.CreditTotalLimitEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
 import com.qtt.jinrong.enums.HousePropertyPositionEnum;
@@ -26,12 +27,13 @@ import com.qtt.jinrong.enums.OperatorYearsEnum;
 import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
-import com.qtt.jinrong.http.action.LoanReqsAction;
+import com.qtt.jinrong.presenter.IApplyLoanPresenter;
+import com.qtt.jinrong.presenter.impl.ApplyLoanPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
-import com.qtt.jinrong.util.ToastUtil;
+import com.qtt.jinrong.view.ILoanApplyLoanView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -43,7 +45,11 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/3/9.
  */
 @EActivity(R.layout.activity_loan_aptitude_verify)
-public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
+public class LoanAptitudeVerifyActivity extends BaseSelectActivity implements ILoanApplyLoanView {
+
+    public static final String INTENT_PRODUCT_ID = "INTENT_PRODUCT_ID";
+    public static final String INTENT_RESPONSE_TERM = "INTENT_RESPONSE_TERM";
+    public static final String INTENT_RESPONSE_AMOUNT = "INTENT_RESPONSE_AMOUNT";
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -86,7 +92,7 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
     TextView mCreditText;
     @ViewById(R.id.creditOverdueMore)
     View creditOverdueMore;
-    @ViewById(R.id.overdue)
+    @ViewById(R.id.creditOverdueSituation)
     TextView overdueText;
 
     @ViewById(R.id.creditLimit)
@@ -112,9 +118,13 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
     @ViewById(R.id.carLicense)
     TextView carLicenseText;
 
+    int term,amount;
+    IApplyLoanPresenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter = new ApplyLoanPresenterImpl(this);
     }
 
     @AfterViews
@@ -270,20 +280,20 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
 
     @Click(R.id.creditStation)
     void clickCreditStation() {
-        mSelectView.setData(CreditUseStationEnum.getValues());
+        mSelectView.setData(CreditSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                CreditUseStationEnum mEnum = CreditUseStationEnum.values()[position];
-                if(mEnum.equals(CreditUseStationEnum.有逾期)) creditOverdueMore.setVisibility(View.VISIBLE);
+                CreditSituationEnum mEnum = CreditSituationEnum.values()[position];
+                if(mEnum.equals(CreditSituationEnum.有逾期)) creditOverdueMore.setVisibility(View.VISIBLE);
                 else creditOverdueMore.setVisibility(View.GONE);
-                //request.setCreInfo(CreditUseStationEnum.values()[position].getCode());
+                //request.setCreInfo(CreditSituationEnum.values()[position].getCode());
                 mCreditText.setText(val);
             }
         });
         show();
     }
-    @Click(R.id.overdue)
+    @Click(R.id.creditOverdueSituation)
     void clickOverdue() {
         mSelectView.setData(CreditOverdueEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
@@ -298,14 +308,14 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
 
     @Click(R.id.creditLimit)
     void clickCreditLimit() {
-        mSelectView.setData(CreditLimitEnum.getValues());
+        mSelectView.setData(CreditTotalLimitEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                CreditLimitEnum mEnum = CreditLimitEnum.values()[position];
-                if (mEnum.equals(CreditLimitEnum.无信用卡)) creditMore.setVisibility(View.GONE);
+                CreditTotalLimitEnum mEnum = CreditTotalLimitEnum.values()[position];
+                if (mEnum.equals(CreditTotalLimitEnum.无信用卡)) creditMore.setVisibility(View.GONE);
                 else creditMore.setVisibility(View.VISIBLE);
-                //request.setCreMoney(CreditLimitEnum.values()[position].getCode());
+                //request.setCreMoney(CreditTotalLimitEnum.values()[position].getCode());
                 mCreditLimitText.setText(val);
             }
         });
@@ -393,17 +403,20 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
 
     @Click(R.id.btnNext)
     void clickBtnNext() {
-        LoanReqsAction.requestLoanProductApply(this, new MCListenerObj.IObjResListener<Response>() {
-            @Override
-            public void onSuccess(Response response, String url) {
-                ToastUtil.showShortToast("成功");
-            }
-
-            @Override
-            public void onFail(Exception exception, String url) {
-
-            }
-        });
+        mPresenter.apply();
     }
 
+
+    /*** ILoanApplyLoanView ***/
+    @Override
+    public void onApply(Response response) {
+        Intent intent = new Intent(this, GeneratedClassUtils.get(LoanApplyResultActivity.class));
+        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_SUCCESS,response.isSuccess());
+        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_MESSAGE,response.getMessage());
+        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_AMOUNT,amount);
+        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_TERM,term);
+        startActivity(intent);
+        finish();
+    }
+    /*** ILoanApplyLoanView ***/
 }

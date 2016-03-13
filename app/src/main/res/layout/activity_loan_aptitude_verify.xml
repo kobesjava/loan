@@ -91,7 +91,7 @@
             <include
                 android:id="@+id/creditOverdueMore"
                 android:visibility="gone"
-                layout="@layout/include_credit_overdue_apply"
+                layout="@layout/include_credit_overdue_situation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 有无社保公积金
  * Created by yanxin on 16/3/4.
  */
 public enum SocialFundEnum {
@@ -29,6 +30,14 @@ public enum SocialFundEnum {
             vals.add(enums[i].name());
         }
         return vals;
+    }
+
+    public static SocialFundEnum find(int code) {
+        SocialFundEnum[] enums = SocialFundEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
     }
 
 }

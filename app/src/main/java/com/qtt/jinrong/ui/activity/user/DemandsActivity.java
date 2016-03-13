@@ -147,7 +147,7 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
         if(!TextUtils.isEmpty(model.getLoDate())) mTimeText.setText(model.getLoDate());
         if(model.getLoPurpose() != null) {
             LoanPurposeEnum loanPurposeEnum = LoanPurposeEnum.find(model.getLoPurpose());
-            if(loanPurposeEnum != null) mPurposeText.setText(loanPurposeEnum.name());
+            if(loanPurposeEnum != null) mPurposeText.setText(loanPurposeEnum.getTitle());
         }
         if(model.getLoPaymentSrc() != null) {
             RepaymentSourceEnum repaymentSourceEnum = RepaymentSourceEnum.find(model.getLoPaymentSrc());

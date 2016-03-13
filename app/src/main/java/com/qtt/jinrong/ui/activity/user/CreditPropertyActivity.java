@@ -9,9 +9,11 @@ import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.CreditPropertyModel;
 import com.qtt.jinrong.bean.account.CreditPropertySaveRequest;
 import com.qtt.jinrong.enums.CreditDebtSituationEnum;
-import com.qtt.jinrong.enums.CreditLimitEnum;
-import com.qtt.jinrong.enums.CreditUseStationEnum;
+import com.qtt.jinrong.enums.CreditOverdueEnum;
+import com.qtt.jinrong.enums.CreditSituationEnum;
+import com.qtt.jinrong.enums.CreditTotalLimitEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
+import com.qtt.jinrong.enums.MonthAverageRepayEnum;
 import com.qtt.jinrong.presenter.ICreditPropertyPresenter;
 import com.qtt.jinrong.presenter.impl.CreditPropertyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
@@ -26,6 +28,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * 信用信息(我的融资需求书)
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_credit)
@@ -34,18 +37,34 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
 
-    @ViewById(R.id.useStation)
-    TextView mUseStationText;
-    @ViewById(R.id.totalLimit)
-    TextView mTotalLimitText;
-    @ViewById(R.id.count)
-    InputEditText mCountText;
-    @ViewById(R.id.bank)
-    InputEditText mBankText;
-    @ViewById(R.id.usedLimit)
-    TextView mUsedLimitText;
-    @ViewById(R.id.debt)
-    TextView mDebtText;
+    @ViewById(R.id.creditSituation)
+    TextView creditSituationText;
+    @ViewById(R.id.creditSitutationMore)
+    View creditSitutationMore;
+    @ViewById(R.id.creditOverdueSituation)
+    TextView creditOverdueSituationText;
+
+    @ViewById(R.id.creditCardTotalLimit)
+    TextView creditCardTotalLimitText;
+    @ViewById(R.id.creditCardMore)
+    View creditCardMore;
+    @ViewById(R.id.creditCardCount)
+    InputEditText creditCardCountEdit;
+    @ViewById(R.id.creditCardbank)
+    InputEditText creditCardbankEdit;
+    @ViewById(R.id.creditCardHasUsed)
+    TextView creditCardHasUsedText;
+
+    @ViewById(R.id.creditDebtSituation)
+    TextView creditDebtSituationText;
+    @ViewById(R.id.creditDebtMore)
+    View creditDebtMore;
+    @ViewById(R.id.creditDebtInstitutionName)
+    InputEditText creditDebtInstitutionNameEdit;
+    @ViewById(R.id.creditDebtBalance)
+    InputEditText creditDebtBalanceEdit;
+    @ViewById(R.id.creditMonthAverageRepayment)
+    TextView creditMonthAverageRepaymentText;
 
     CreditPropertySaveRequest request;
     ICreditPropertyPresenter mPresenter;
@@ -78,53 +97,95 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
         mPresenter.request();
     }
 
-    @Click(R.id.useStation)
-    void clickUseStation() {
-        mSelectView.setData(CreditUseStationEnum.getValues());
+    //信用情况
+    @Click(R.id.creditSituation)
+    void clickcreditSituation() {
+        mSelectView.setData(CreditSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setCreInfo(CreditUseStationEnum.values()[position].getCode());
-                mUseStationText.setText(val);
+                CreditSituationEnum mEnum = CreditSituationEnum.values()[position];
+                request.setCreInfo(mEnum.getCode());
+                creditSituationText.setText(val);
+                if (mEnum.equals(CreditSituationEnum.有逾期))
+                    creditSitutationMore.setVisibility(View.VISIBLE);
+                else creditSitutationMore.setVisibility(View.GONE);
+            }
+        });
+        show();
+    }
+    //逾期情况
+    @Click(R.id.creditOverdueSituation)
+    void clickcreditOverdueSituation() {
+        mSelectView.setData(CreditOverdueEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                CreditOverdueEnum mEnum = CreditOverdueEnum.values()[position];
+                request.setCreUsed(mEnum.getCode());
+                creditOverdueSituationText.setText(val);
             }
         });
         show();
     }
 
-    @Click(R.id.totalLimit)
-    void clickTotalLimit() {
-        mSelectView.setData(CreditLimitEnum.getValues());
+    //信用卡总额度
+    @Click(R.id.creditCardTotalLimit)
+    void clickcreditCardTotalLimit() {
+        mSelectView.setData(CreditTotalLimitEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setCreMoney(CreditLimitEnum.values()[position].getCode());
-                mTotalLimitText.setText(val);
+                CreditTotalLimitEnum mEnum = CreditTotalLimitEnum.values()[position];
+                request.setCreMoney(mEnum.getCode());
+                creditCardTotalLimitText.setText(val);
+                if(mEnum.equals(CreditTotalLimitEnum.无信用卡)) creditCardMore.setVisibility(View.GONE);
+                else creditCardMore.setVisibility(View.VISIBLE);
             }
         });
         show();
     }
-
-    @Click(R.id.usedLimit)
-    void clickUsedLimit() {
+    //已使用额度
+    @Click(R.id.creditCardHasUsed)
+    void clickcreditCardHasUsed() {
         mSelectView.setData(CreditUsedLimitEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setCreUsed(CreditUsedLimitEnum.values()[position].getCode());
-                mUsedLimitText.setText(val);
+                CreditUsedLimitEnum mEnum = CreditUsedLimitEnum.values()[position];
+                request.setCreUsed(mEnum.getCode());
+                creditCardHasUsedText.setText(val);
             }
         });
         show();
     }
 
-    @Click(R.id.debt)
+    //欠款情况
+    @Click(R.id.creditDebtSituation)
     void clickDebt() {
         mSelectView.setData(CreditDebtSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setCreDebt(CreditDebtSituationEnum.values()[position].getCode());
-                mDebtText.setText(val);
+                CreditDebtSituationEnum mEnum = CreditDebtSituationEnum.values()[position];
+                request.setCreDebt(mEnum.getCode());
+                creditDebtSituationText.setText(val);
+                if(mEnum.equals(CreditDebtSituationEnum.无欠款)) creditDebtMore.setVisibility(View.GONE);
+                else creditDebtMore.setVisibility(View.VISIBLE);
+            }
+        });
+        show();
+    }
+    //月均还款额
+    @Click(R.id.creditMonthAverageRepayment)
+    void clickcreditMonthAverageRepayment() {
+        mSelectView.setData(MonthAverageRepayEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                MonthAverageRepayEnum mEnum = MonthAverageRepayEnum.values()[position];
+                request.setCreUsed(mEnum.getCode());
+                creditMonthAverageRepaymentText.setText(val);
             }
         });
         show();
@@ -134,22 +195,35 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
     @Override
     public void onRequest(CreditPropertyModel model) {
         if(model.getCreInfo() != null) {
-            CreditUseStationEnum mEnum = CreditUseStationEnum.find(model.getCreInfo());
-            if(mEnum != null) mUseStationText.setText(mEnum.getTitle());
+            CreditSituationEnum mEnum = CreditSituationEnum.find(model.getCreInfo());
+            if(mEnum != null) {
+                creditSituationText.setText(mEnum.getTitle());
+                if(mEnum.equals(CreditSituationEnum.有逾期)) creditSitutationMore.setVisibility(View.VISIBLE);
+                else creditSitutationMore.setVisibility(View.GONE);
+            }
         }
         if(model.getCreMoney() != null) {
-            CreditLimitEnum mEnum = CreditLimitEnum.find(model.getCreMoney());
-            if(mEnum != null) mTotalLimitText.setText(mEnum.getTitle());
+            CreditTotalLimitEnum mEnum = CreditTotalLimitEnum.find(model.getCreMoney());
+            if(mEnum != null) {
+                creditCardTotalLimitText.setText(mEnum.getTitle());
+                if(mEnum.equals(CreditTotalLimitEnum.无信用卡)) creditCardMore.setVisibility(View.GONE);
+                else creditCardMore.setVisibility(View.VISIBLE);
+                request.setCreMoney(mEnum.getCode());
+            }
         }
-        if(model.getCreNum() != null) mCountText.setText(String.valueOf(model.getCreNum()));
-        if(!TextUtils.isEmpty(model.getCreBank())) mBankText.setText(model.getCreBank());
+        if(model.getCreNum() != null) creditCardCountEdit.setText(String.valueOf(model.getCreNum()));
+        if(!TextUtils.isEmpty(model.getCreBank())) creditCardbankEdit.setText(model.getCreBank());
         if(model.getCreUsed() != null) {
             CreditUsedLimitEnum mEnum = CreditUsedLimitEnum.find(model.getCreUsed());
-            if(mEnum != null) mUsedLimitText.setText(mEnum.getTitle());
+            if(mEnum != null) creditCardHasUsedText.setText(mEnum.getTitle());
         }
         if(model.getCreDebt() != null) {
             CreditDebtSituationEnum mEnum = CreditDebtSituationEnum.find(model.getCreDebt());
-            if(mEnum != null) mDebtText.setText(mEnum.name());
+            if(mEnum != null) {
+                creditDebtSituationText.setText(mEnum.name());
+                if(mEnum.equals(CreditDebtSituationEnum.无欠款)) creditDebtMore.setVisibility(View.GONE);
+                else creditDebtMore.setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -160,13 +234,38 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
 
     @Override
     public CreditPropertySaveRequest getSaveRequest() {
-        if(!TextUtils.isEmpty(mBankText.getString())) {
-            request.setCreBank(mBankText.getString());
+        CreditPropertySaveRequest mRequest = request.clone();
+
+        //信用情况
+        CreditSituationEnum csEnum = null;
+        if(request.getCreInfo() != null) csEnum = CreditSituationEnum.find(request.getCreInfo());
+        if(csEnum == null || csEnum.equals(CreditSituationEnum.无贷款或信用卡) || csEnum.equals(CreditSituationEnum.记录良好无逾期)) {
+
         }
-        if(!TextUtils.isEmpty(mCountText.getString())) {
-            request.setCreNum(Integer.parseInt(mCountText.getString()));
+
+        //信用卡总额度
+        CreditTotalLimitEnum ctlEnum = null;
+        if(request.getCreMoney() != null) ctlEnum = CreditTotalLimitEnum.find(request.getCreMoney());
+        if(ctlEnum != null && !ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
+            if(!TextUtils.isEmpty(creditCardCountEdit.getString())) mRequest.setCreNum(Integer.valueOf(creditCardCountEdit.getString()));
+            if(!TextUtils.isEmpty(creditCardbankEdit.getString())) mRequest.setCreBank(creditCardbankEdit.getString());
+        } else {
+            mRequest.setCreNum(null);
+            mRequest.setCreBank(null);
+            mRequest.setCreUsed(null);
         }
-        return request;
+
+        //欠款情况
+        CreditDebtSituationEnum cdsEnum = null;
+        if(request.getCreDebt() != null) cdsEnum = CreditDebtSituationEnum.find(request.getCreDebt());
+        if(cdsEnum != null && !cdsEnum.equals(CreditDebtSituationEnum.无欠款)) {
+            //if(!TextUtils.isEmpty(creditDebtInstitutionNameEdit.getString())) mRequest.setCreNum(Integer.valueOf(creditCardCountEdit.getString()));
+            //if(!TextUtils.isEmpty(creditDebtBalanceEdit.getString())) mRequest.setCreBank(creditCardbankEdit.getString());
+        } else {
+
+        }
+
+        return mRequest;
     }
     /***  ICreditPropertyView  ***/
 }

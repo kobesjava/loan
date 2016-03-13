@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -11,13 +12,13 @@
 
         <TextView
             style="@style/financing_needs_more_left_text"
-            android:text="逾期情况" />
+            android:text="贷款余额 (万元)" />
 
-        <TextView
-            android:id="@+id/overdue"
-            style="@style/financing_needs_more_right_arrow_text" />
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/cpMortgageLoanBalance"
+            input:input_numberDecimal="true"
+            style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
-
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />

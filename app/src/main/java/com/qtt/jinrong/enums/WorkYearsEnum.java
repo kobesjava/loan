@@ -42,4 +42,12 @@ public enum WorkYearsEnum {
         return vals;
     }
 
+    public static WorkYearsEnum find(int code) {
+        WorkYearsEnum[] enums = WorkYearsEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code) return enums[i];
+        }
+        return null;
+    }
+
 }

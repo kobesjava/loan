@@ -142,4 +142,11 @@
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
+    <include
+        android:id="@+id/hpSituationMore"
+        layout="@layout/include_houseproperty_mortgage"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

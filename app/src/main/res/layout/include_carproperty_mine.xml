@@ -141,4 +141,10 @@
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
+    <include
+        android:visibility="gone"
+        android:id="@+id/cpSituationMore"
+        layout="@layout/include_carproperty_mortgage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

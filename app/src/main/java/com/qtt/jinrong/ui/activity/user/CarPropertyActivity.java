@@ -57,6 +57,10 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
     TextView cpTravelKMText;
     @ViewById(R.id.cpSituation)
     TextView cpSituationText;
+    @ViewById(R.id.cpSituationMore)
+    View cpSituationMore;
+    @ViewById(R.id.cpMortgageLoanBalance)
+    InputEditText cpMortgageLoanBalanceEdit;
 
     CarPropertySaveRequest request;
     ICarPropertyPresenter mPresenter;
@@ -169,6 +173,8 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
                 CarPropertySituationEnum mEnum = CarPropertySituationEnum.values()[position];
                 request.setCarMortgage(mEnum.getCode());
                 cpSituationText.setText(val);
+                if(mEnum.equals(CarPropertySituationEnum.未被抵押无按揭)) cpSituationMore.setVisibility(View.GONE);
+                else cpSituationMore.setVisibility(View.VISIBLE);
             }
         });
         show();
