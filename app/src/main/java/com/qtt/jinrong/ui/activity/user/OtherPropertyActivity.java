@@ -19,6 +19,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * 其他资产(我的融资需求书)
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_other_property)
@@ -72,9 +73,9 @@ public class OtherPropertyActivity extends BaseActivity implements IOtherInfoVie
     @Override
     public void onRequest(OtherPropertyModel model) {
         if(!TextUtils.isEmpty(model.getAssetName())) mName.setText(model.getAssetName());
-        if(model.getAssetAge() > 0) mYears.setText(String.valueOf(model.getAssetAge()));
+        if(model.getAssetAge() != null && model.getAssetAge() > 0) mYears.setText(String.valueOf(model.getAssetAge()));
         if(!TextUtils.isEmpty(model.getAssetDetail())) mDetail.setText(model.getAssetDetail());
-        if(model.getAssetPrice() > 0) mWorth.setText(String.valueOf(model.getAssetPrice()));
+        if(model.getAssetPrice() != null && model.getAssetPrice() > 0) mWorth.setText(String.valueOf(model.getAssetPrice()));
     }
 
     @Override

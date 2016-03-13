@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.R;
+import com.qtt.jinrong.bean.Response;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
@@ -24,10 +26,12 @@ import com.qtt.jinrong.enums.OperatorYearsEnum;
 import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
+import com.qtt.jinrong.http.action.LoanReqsAction;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
+import com.qtt.jinrong.util.ToastUtil;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -389,7 +393,17 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity {
 
     @Click(R.id.btnNext)
     void clickBtnNext() {
+        LoanReqsAction.requestLoanProductApply(this, new MCListenerObj.IObjResListener<Response>() {
+            @Override
+            public void onSuccess(Response response, String url) {
+                ToastUtil.showShortToast("成功");
+            }
 
+            @Override
+            public void onFail(Exception exception, String url) {
+
+            }
+        });
     }
 
 }

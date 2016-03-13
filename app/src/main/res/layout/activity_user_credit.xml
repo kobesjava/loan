@@ -77,5 +77,71 @@
             android:id="@+id/debt"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/creditDebtSituationView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/financing_needs_more_item"
+            android:layout_marginTop="0dp"
+            android:background="@color/transparent">
+
+            <TextView
+                style="@style/financing_needs_more_left_text"
+                android:text="欠款机构名称" />
+
+            <com.qtt.jinrong.ui.widget.text.InputEditText
+                android:id="@+id/epDebtInstitutionName"
+                style="@style/financing_needs_more_right_edittext" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.LineView
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            style="@style/financing_needs_more_item"
+            android:layout_marginTop="0dp"
+            android:background="@color/transparent">
+
+            <TextView
+                style="@style/financing_needs_more_left_text"
+                android:text="欠款余额" />
+
+            <TextView
+                android:id="@+id/epDebtBalance"
+                style="@style/financing_needs_more_right_arrow_text" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.LineView
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            style="@style/financing_needs_more_item"
+            android:layout_marginTop="0dp"
+            android:background="@color/transparent">
+
+            <TextView
+                style="@style/financing_needs_more_left_text"
+                android:text="月还款金额 (万元)" />
+
+            <com.qtt.jinrong.ui.widget.text.InputEditText
+                android:id="@+id/epMonthRepayment"
+                input:input_numberDecimal="true"
+                style="@style/financing_needs_more_right_edittext" />
+        </LinearLayout>
+
+        <com.qtt.jinrong.ui.widget.LineView
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
 
 </LinearLayout>

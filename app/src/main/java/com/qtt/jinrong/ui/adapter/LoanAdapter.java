@@ -73,8 +73,8 @@ public class LoanAdapter extends BaseAdapter {
 
         viewHolder.title.setText(mLoanModel.getTitle());
         viewHolder.company.setText(mLoanModel.getOwnedCompany());
-        viewHolder.interestTotal.setText("总利息 ："+mLoanModel.getRate()+"元");
-        viewHolder.monthPay.setText("月供 ：" + mLoanModel.getMoney() + "元");
+        viewHolder.interestTotal.setText("总利息 ："+mLoanModel.getRate());
+        viewHolder.monthPay.setText("月供 ：" + mLoanModel.getMoney());
         viewHolder.rb.setRating(mLoanModel.getScore());
 
         try {

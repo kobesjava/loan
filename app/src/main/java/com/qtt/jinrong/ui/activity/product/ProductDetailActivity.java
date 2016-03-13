@@ -109,7 +109,7 @@ public class ProductDetailActivity extends BaseActivity implements ILoanProductD
     @Click(R.id.interestTotalView)
     void clickInsterestTotal() {
         if(mDetail == null) return;
-        String s = "总利息=利息+服务费\n参考月利率 : "+mDetail.getRate()+"\n参考服务费率 : "+mDetail.getRateDetail();
+        String s = "总利息=利息+服务费\n参考月利率 : "+mDetail.getRateLow()+"%\n参考服务费率 : "+mDetail.getRateDetail()+"%";
         if(mDialog == null) {
             mDialog = AlertDialogUtils.showPrompt(this, "总利息说明", s);
         }
@@ -133,13 +133,26 @@ public class ProductDetailActivity extends BaseActivity implements ILoanProductD
     @Override
     public void onRequest(LoanProductDetail detail) {
         this.mDetail = detail;
-        mInterestRate.setText("月利率 : " + mDetail.getRate());
+
+        StringBuilder monthRate = new StringBuilder("月利率 : ");
+        if(mDetail.getRateLow() != null) monthRate.append(mDetail.getRateLow()).append("%-");
+        if(mDetail.getRateHigh() != null) monthRate.append(mDetail.getRateHigh()).append("%");
+        mInterestRate.setText(monthRate.toString());
+
         String exp = mDetail.getExp();
         mImgText.setConts(exp.split(","));
+
         mLoanTip.setText("额度范围 : " + mDetail.getAmountLow() + "万-" + mDetail.getAmountHigh() + "万"
                 + "  期限范围 : " + mDetail.getExpiresLow() + "个月-" + mDetail.getExpiresHigh() + "个月");
-        mTabIndictor.check();
+
+        //计算总利息
+
+
+        //计算月供
+
         mTime.setText(mDetail.getComplete());
+
+        mTabIndictor.check();
     }
     /***  ILoanProductDetailView  ***/
 }

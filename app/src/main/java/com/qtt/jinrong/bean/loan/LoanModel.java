@@ -9,22 +9,16 @@ import android.os.Parcelable;
 public class LoanModel implements Parcelable {
 
     private String id;
-
     private String productId;
-
     private String thumpImg;
-
     /** 名称*/
     private String title;
-
+    /** 所属公司*/
     private String ownedCompany;
-
     /** 总利息*/
     private String rate;
-
     /** 月供*/
-    private int money;
-
+    private String money;
     private float score;
 
     public String getId() {
@@ -83,11 +77,11 @@ public class LoanModel implements Parcelable {
         this.rate = rate;
     }
 
-    public int getMoney() {
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(String money) {
         this.money = money;
     }
 
@@ -105,7 +99,7 @@ public class LoanModel implements Parcelable {
         dest.writeString(this.title);
         dest.writeString(this.ownedCompany);
         dest.writeString(this.rate);
-        dest.writeInt(this.money);
+        dest.writeString(this.money);
         dest.writeFloat(this.score);
     }
 
@@ -119,7 +113,7 @@ public class LoanModel implements Parcelable {
         this.title = in.readString();
         this.ownedCompany = in.readString();
         this.rate = in.readString();
-        this.money = in.readInt();
+        this.money = in.readString();
         this.score = in.readFloat();
     }
 

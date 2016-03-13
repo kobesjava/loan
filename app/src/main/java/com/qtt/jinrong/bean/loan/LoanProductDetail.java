@@ -5,38 +5,45 @@ package com.qtt.jinrong.bean.loan;
  */
 public class LoanProductDetail {
 
-    private String rate;
-
+    /** 优点*/
     private String exp;
-
-    private int amount = 10;
-
-    private int expires = 12;
-
-    private int amountLow;
-
-    private int amountHigh;
-
-    private int expiresLow;
-
-    private int expiresHigh;
-
+    /** 金额*/
+    private Integer amount;
+    /** 期限*/
+    private Integer expires;
+    /** 最低月利率*/
+    private Float rateLow;
+    /** 最高月利率*/
+    private Float rateHigh;
+    private Integer amountLow;
+    private Integer amountHigh;
+    private Integer expiresLow;
+    private Integer expiresHigh;
+    /** 放款时间*/
     private String complete;
-
-    private String rateDetail;
-
+    /** 参考服务费率*/
+    private Float rateDetail;
+    /** 申请条件*/
     private String apply;
-
+    /** 所需资料*/
     private String mater;
-
+    /** 还款方式*/
     private String repay;
 
-    public String getRate() {
-        return rate;
+    public Float getRateLow() {
+        return rateLow;
     }
 
-    public void setRate(String rate) {
-        this.rate = rate;
+    public void setRateLow(Float rateLow) {
+        this.rateLow = rateLow;
+    }
+
+    public Float getRateHigh() {
+        return rateHigh;
+    }
+
+    public void setRateHigh(Float rateHigh) {
+        this.rateHigh = rateHigh;
     }
 
     public String getExp() {
@@ -47,51 +54,51 @@ public class LoanProductDetail {
         this.exp = exp;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public int getExpires() {
+    public Integer getExpires() {
         return expires;
     }
 
-    public void setExpires(int expires) {
+    public void setExpires(Integer expires) {
         this.expires = expires;
     }
 
-    public int getAmountLow() {
+    public Integer getAmountLow() {
         return amountLow;
     }
 
-    public void setAmountLow(int amountLow) {
+    public void setAmountLow(Integer amountLow) {
         this.amountLow = amountLow;
     }
 
-    public int getAmountHigh() {
+    public Integer getAmountHigh() {
         return amountHigh;
     }
 
-    public void setAmountHigh(int amountHigh) {
+    public void setAmountHigh(Integer amountHigh) {
         this.amountHigh = amountHigh;
     }
 
-    public int getExpiresLow() {
+    public Integer getExpiresLow() {
         return expiresLow;
     }
 
-    public void setExpiresLow(int expiresLow) {
+    public void setExpiresLow(Integer expiresLow) {
         this.expiresLow = expiresLow;
     }
 
-    public int getExpiresHigh() {
+    public Integer getExpiresHigh() {
         return expiresHigh;
     }
 
-    public void setExpiresHigh(int expiresHigh) {
+    public void setExpiresHigh(Integer expiresHigh) {
         this.expiresHigh = expiresHigh;
     }
 
@@ -103,11 +110,11 @@ public class LoanProductDetail {
         this.complete = complete;
     }
 
-    public String getRateDetail() {
+    public Float getRateDetail() {
         return rateDetail;
     }
 
-    public void setRateDetail(String rateDetail) {
+    public void setRateDetail(Float rateDetail) {
         this.rateDetail = rateDetail;
     }
 
