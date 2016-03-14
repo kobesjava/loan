@@ -18,12 +18,15 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/amount"
-            input:input_number="true"
-            style="@style/financing_needs_more_right_edittext" />
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/financing_needs_more_item">
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout style="@style/financing_needs_more_item">
 
         <TextView
             style="@style/financing_needs_more_left_text"
@@ -31,10 +34,14 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/term"
-            input:input_number="true"
+            style="@style/financing_needs_more_right_edittext"
             input:input_limit="4"
-            style="@style/financing_needs_more_right_edittext" />
+            input:input_number="true" />
     </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <LinearLayout style="@style/financing_needs_more_item">
 
@@ -47,6 +54,10 @@
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <LinearLayout style="@style/financing_needs_more_item">
 
         <TextView
@@ -57,6 +68,10 @@
             android:id="@+id/purpose"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <LinearLayout style="@style/financing_needs_more_item">
 
@@ -69,6 +84,10 @@
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <LinearLayout style="@style/financing_needs_more_item">
 
         <TextView
@@ -79,4 +98,8 @@
             android:id="@+id/repayway"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 </LinearLayout>

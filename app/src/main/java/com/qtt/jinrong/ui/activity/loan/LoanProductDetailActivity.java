@@ -19,6 +19,7 @@ import com.qtt.jinrong.bean.loan.LoanProductDetail;
 import com.qtt.jinrong.presenter.ILoanProductPresenter;
 import com.qtt.jinrong.presenter.impl.LoanProductPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
+import com.qtt.jinrong.ui.activity.user.LoginActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.ImgText;
 import com.qtt.jinrong.ui.widget.TabIndictor;
@@ -121,6 +122,12 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
     @Click(R.id.btnSubmit)
     void clickBtnSubmit() {
         if(mDetail == null) return;
+
+        if(mUserInfo == null) {
+            Intent intent = new Intent(this, GeneratedClassUtils.get(LoginActivity.class));
+            startActivity(intent);
+            return;
+        }
 
         int amount = 0;
         try {

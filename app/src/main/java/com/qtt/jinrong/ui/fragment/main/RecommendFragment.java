@@ -120,7 +120,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     @Click(R.id.btnMoreCredit)
     void clickBtnMoreCredit() {
-        goToCreditTab(null);
+        goToCreditTab(CreditLevelEnum.不限);
     }
 
     /**

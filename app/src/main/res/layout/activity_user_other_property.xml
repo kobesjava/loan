@@ -21,6 +21,10 @@
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <LinearLayout style="@style/financing_needs_more_item">
 
         <TextView
@@ -29,9 +33,13 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/years"
-            input:input_number="true"
-            style="@style/financing_needs_more_right_edittext" />
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
     </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <LinearLayout style="@style/financing_needs_more_item">
 
@@ -44,6 +52,10 @@
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <LinearLayout style="@style/financing_needs_more_item">
 
         <TextView
@@ -52,8 +64,12 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/worth"
-            input:input_number="true"
-            style="@style/financing_needs_more_right_edittext" />
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
     </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
 </LinearLayout>

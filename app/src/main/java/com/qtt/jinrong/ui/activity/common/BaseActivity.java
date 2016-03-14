@@ -47,8 +47,16 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         mTopActivity = this;
+        initUserInfo();
         CommonAnalysis.onPageStart(this.getClass().getSimpleName());
         CommonAnalysis.onResume(this);
+    }
+
+    /**
+     * 获取用户登录信息
+     */
+    private void initUserInfo() {
+        mUserInfo = UserInfoUtil.getUserInfo();
     }
 
     @Override

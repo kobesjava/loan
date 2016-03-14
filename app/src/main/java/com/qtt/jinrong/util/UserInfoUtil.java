@@ -45,10 +45,6 @@ public class UserInfoUtil {
 
     public static UserInfo getUserInfo() {
         UserInfo agentLoginResponse = getLocalLoginResponse(MyApplication.getInstance());
-
-        if (agentLoginResponse == null) {
-            agentLoginResponse = new UserInfo();
-        }
         return agentLoginResponse;
     }
 

@@ -84,8 +84,12 @@ public class MineFragment extends BaseFragment {
 
     @Click(R.id.btnLogin)
     void clickLogin() {
-        if(mUserInfo != null) return;
-        login();
+        if(mUserInfo != null) {
+            Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(FinancingNeedsActivity.class));
+            startActivity(intent);
+        } else {
+            login();
+        }
     }
 
     @Click(R.id.btnSetUp)

@@ -190,7 +190,7 @@ public class CreditFragment extends BaseFragment {
     }
 
     private void doLevelSelect(CreditLevelEnum levelEnum) {
-        if(levelEnum == null) levelEnum = CreditLevelEnum.不限;
+        if(levelEnum == null) return;
         mFilterManager.setSelect(3, levelEnum.getCode(), "");
     }
 
