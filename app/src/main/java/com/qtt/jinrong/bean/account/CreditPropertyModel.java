@@ -7,7 +7,6 @@ public class CreditPropertyModel {
 
     /** 信用情况*/
     private Integer creInfo;
-
     /** 信用卡总额度*/
     private Integer creMoney;
     /** 信用卡张数*/
@@ -16,7 +15,6 @@ public class CreditPropertyModel {
     private String creBank;
     /** 已使用额度*/
     private Integer creUsed;
-
     /** 欠款情况*/
     private Integer creDebt;
 

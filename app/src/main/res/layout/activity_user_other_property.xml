@@ -29,7 +29,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/years"
-            input:input_numberDecimal="true"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
@@ -52,7 +52,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/worth"
-            input:input_numberDecimal="true"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 

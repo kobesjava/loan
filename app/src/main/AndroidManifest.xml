@@ -128,7 +128,7 @@
         <activity android:name=".ui.activity.loan.LoanApplyResultActivity_"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.product.ProductDetailActivity_"
+        <activity android:name=".ui.activity.loan.LoanProductDetailActivity_"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.activity.credit.CreditDetailActivity_"

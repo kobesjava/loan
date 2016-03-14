@@ -229,7 +229,7 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
     public CarPropertySaveRequest getSaveRequest() {
         if(!TextUtils.isEmpty(cpBrandEdit.getString())) request.setCarBrand(cpBrandEdit.getString());
         if(!TextUtils.isEmpty(cpLicenseNumEdit.getString())) request.setCarNo(cpLicenseNumEdit.getString());
-        if(!TextUtils.isEmpty(cpPriceBuyEdit.getString())) request.setCarPrice(Float.valueOf(cpPriceBuyEdit.getString()));
+        if(!TextUtils.isEmpty(cpPriceBuyEdit.getString())) request.setCarPrice(Integer.valueOf(cpPriceBuyEdit.getString()));
         return request;
     }
     /***  ICarPropertyView  ***/

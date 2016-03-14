@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanApplyModel;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
-import com.qtt.jinrong.ui.activity.product.ProductDetailActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.framework.util.DateUtil;
 import com.qtt.framework.util.GeneratedClassUtils;
@@ -96,7 +95,7 @@ public class LoanApplyDetailActivity extends BaseActivity {
 
     @Click(R.id.product)
     void clickProductDetail() {
-        Intent intent = new Intent(this, GeneratedClassUtils.get(ProductDetailActivity.class));
+        Intent intent = new Intent(this, GeneratedClassUtils.get(LoanProductDetailActivity.class));
         startActivity(intent);
     }
 

@@ -12,7 +12,7 @@ public class DemandSaveRequest implements IRequest {
 
     private String userId;
 
-    private Float loMoney;
+    private Integer loMoney;
 
     private Integer loExpires;
 
@@ -32,11 +32,11 @@ public class DemandSaveRequest implements IRequest {
         this.userId = userId;
     }
 
-    public Float getLoMoney() {
+    public Integer getLoMoney() {
         return loMoney;
     }
 
-    public void setLoMoney(Float loMoney) {
+    public void setLoMoney(Integer loMoney) {
         this.loMoney = loMoney;
     }
 

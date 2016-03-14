@@ -73,7 +73,7 @@
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/interestRate"
+                        android:id="@+id/monthRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -308,7 +308,6 @@
             <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
-
 
             <com.qtt.jinrong.ui.widget.TabIndictor
                 android:id="@+id/material"

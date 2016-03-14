@@ -118,12 +118,16 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity implements IL
     @ViewById(R.id.carLicense)
     TextView carLicenseText;
 
+    String productId;
     int term,amount;
     IApplyLoanPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        productId = mIntent.getStringExtra(INTENT_PRODUCT_ID);
+        term = mIntent.getIntExtra(INTENT_RESPONSE_TERM, 0);
+        amount = mIntent.getIntExtra(INTENT_RESPONSE_AMOUNT,0);
         mPresenter = new ApplyLoanPresenterImpl(this);
     }
 

@@ -86,9 +86,9 @@ public class OtherPropertyActivity extends BaseActivity implements IOtherInfoVie
     @Override
     public OtherPropertySaveRequest getSaveRequest() {
         if(!TextUtils.isEmpty(mName.getString())) request.setAssetName(mName.getString());
-        if(!TextUtils.isEmpty(mYears.getString())) request.setAssetAge(Float.valueOf(mYears.getString()));
+        if(!TextUtils.isEmpty(mYears.getString())) request.setAssetAge(Integer.valueOf(mYears.getString()));
         if(!TextUtils.isEmpty(mDetail.getString())) request.setAssetDetail(mDetail.getString());
-        if(!TextUtils.isEmpty(mWorth.getString())) request.setAssetPrice(Float.valueOf(mWorth.getString()));
+        if(!TextUtils.isEmpty(mWorth.getString())) request.setAssetPrice(Integer.valueOf(mWorth.getString()));
         return request;
     }
     /***  IOtherInfoView  ***/

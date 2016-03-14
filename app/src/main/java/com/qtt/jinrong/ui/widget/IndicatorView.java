@@ -53,7 +53,7 @@ public class IndicatorView extends LinearLayout implements OnClickListener {
 	private void init() {
 		guide_default = getResources().getDrawable(R.drawable.point_white);
 		guide_focus = getResources().getDrawable(R.drawable.point_focus);
-		
+
 		pager.setOnPageChangeListener(new OnPageChangeListener() {
 
 			@Override

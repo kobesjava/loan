@@ -16,7 +16,7 @@ import com.qtt.jinrong.bean.loan.LoanModel;
 import com.qtt.jinrong.enums.LoanTypeEnum;
 import com.qtt.jinrong.presenter.ILoanListPresenter;
 import com.qtt.jinrong.presenter.impl.LoanListPresenterImpl;
-import com.qtt.jinrong.ui.activity.product.ProductDetailActivity;
+import com.qtt.jinrong.ui.activity.loan.LoanProductDetailActivity;
 import com.qtt.jinrong.ui.adapter.LoanAdapter;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
@@ -125,8 +125,8 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         mBottomRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(ProductDetailActivity.class));
-                intent.putExtra(ProductDetailActivity.INTENT_LOAN,mLoanAdapter.getItem(position-1));
+                Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanProductDetailActivity.class));
+                intent.putExtra(LoanProductDetailActivity.INTENT_LOAN,mLoanAdapter.getItem(position-1));
                 startActivity(intent);
             }
         });

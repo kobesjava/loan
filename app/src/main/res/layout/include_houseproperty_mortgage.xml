@@ -16,7 +16,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/hpMortgageLoanBalance"
-            input:input_numberDecimal="true"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
     <com.qtt.jinrong.ui.widget.LineView
@@ -34,7 +34,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/hpMortgageDiscountSpace"
-            input:input_numberDecimal="true"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
     <com.qtt.jinrong.ui.widget.LineView

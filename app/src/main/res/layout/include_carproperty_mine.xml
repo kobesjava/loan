@@ -67,7 +67,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/cpPriceBuy"
-            input:input_numberDecimal="true"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
     <com.qtt.jinrong.ui.widget.LineView

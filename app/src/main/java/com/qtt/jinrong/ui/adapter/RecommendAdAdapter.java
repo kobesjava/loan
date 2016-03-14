@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.recommend.AdModel;
+import com.qtt.jinrong.config.ConfigH5;
 import com.qtt.jinrong.ui.activity.web.WebViewActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.qtt.framework.util.GeneratedClassUtils;
@@ -77,7 +78,7 @@ public class RecommendAdAdapter extends BasePagerAdapter {
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		SimpleDraweeView draweeView = (SimpleDraweeView) getView();
-		final AdModel adModel = mFocusImageInfoList.get(position % mFocusImageInfoList.size());
+		AdModel adModel = mFocusImageInfoList.get(position % mFocusImageInfoList.size());
 		draweeView.setTag(adModel);
 		try {
 			Uri uri = Uri.parse(adModel.getImgUrl());
@@ -86,6 +87,19 @@ public class RecommendAdAdapter extends BasePagerAdapter {
 			LogUtil.d("加载图片出错","url="+adModel.getImgUrl()+" Exception="+e.getMessage());
 		}
 		container.addView(draweeView);
+
+		draweeView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AdModel adModel = (AdModel)v.getTag();
+				if(adModel == null) return;
+				Intent intent = new Intent(mContext, GeneratedClassUtils.get(WebViewActivity.class));
+				intent.putExtra(WebViewActivity.PARAM_TITLE,"产品");
+				intent.putExtra(WebViewActivity.PARAM_URL, adModel.getUrl());
+				mContext.startActivity(intent);
+			}
+		});
+
 		return draweeView;
 	}
 

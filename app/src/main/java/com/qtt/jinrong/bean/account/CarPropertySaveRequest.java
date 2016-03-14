@@ -20,7 +20,7 @@ public class CarPropertySaveRequest implements IRequest {
 
     private Integer carBelong;
 
-    private Float carPrice;
+    private Integer carPrice;
 
     private Integer carValuation;
 
@@ -70,11 +70,11 @@ public class CarPropertySaveRequest implements IRequest {
         this.carBelong = carBelong;
     }
 
-    public Float getCarPrice() {
+    public Integer getCarPrice() {
         return carPrice;
     }
 
-    public void setCarPrice(Float carPrice) {
+    public void setCarPrice(Integer carPrice) {
         this.carPrice = carPrice;
     }
 

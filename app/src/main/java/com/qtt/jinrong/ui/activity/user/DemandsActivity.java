@@ -166,7 +166,7 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
 
     @Override
     public DemandSaveRequest getSaveRequest() {
-        if(!TextUtils.isEmpty(amountEdit.getString())) request.setLoMoney(Float.valueOf(amountEdit.getString()));
+        if(!TextUtils.isEmpty(amountEdit.getString())) request.setLoMoney(Integer.valueOf(amountEdit.getString()));
         if(!TextUtils.isEmpty(termEdit.getString())) request.setLoExpires(Integer.parseInt(termEdit.getString()));
         return request;
     }

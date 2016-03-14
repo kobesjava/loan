@@ -14,11 +14,11 @@ public class OtherPropertySaveRequest implements IRequest {
 
     private String assetName;
 
-    private float assetAge;
+    private Integer assetAge;
 
     private String assetDetail;
 
-    private float assetPrice;
+    private Integer assetPrice;
 
     public String getUserId() {
         return userId;
@@ -36,11 +36,11 @@ public class OtherPropertySaveRequest implements IRequest {
         this.assetName = assetName;
     }
 
-    public float getAssetAge() {
+    public Integer getAssetAge() {
         return assetAge;
     }
 
-    public void setAssetAge(float assetAge) {
+    public void setAssetAge(Integer assetAge) {
         this.assetAge = assetAge;
     }
 
@@ -52,11 +52,11 @@ public class OtherPropertySaveRequest implements IRequest {
         this.assetDetail = assetDetail;
     }
 
-    public float getAssetPrice() {
+    public Integer getAssetPrice() {
         return assetPrice;
     }
 
-    public void setAssetPrice(float assetPrice) {
+    public void setAssetPrice(Integer assetPrice) {
         this.assetPrice = assetPrice;
     }
 

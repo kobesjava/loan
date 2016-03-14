@@ -16,7 +16,7 @@ public class CarPropertyModel {
     private Integer carBelong;
 
     /** 购买价格*/
-    private Float carPrice;
+    private Integer carPrice;
 
     private Integer carValuation;
 
@@ -60,11 +60,11 @@ public class CarPropertyModel {
         this.carBelong = carBelong;
     }
 
-    public Float getCarPrice() {
+    public Integer getCarPrice() {
         return carPrice;
     }
 
-    public void setCarPrice(Float carPrice) {
+    public void setCarPrice(Integer carPrice) {
         this.carPrice = carPrice;
     }
 

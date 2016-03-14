@@ -6,7 +6,7 @@ package com.qtt.jinrong.bean.account;
 public class DemandModel {
 
     /** 贷款金额*/
-    private Float loMoney;
+    private Integer loMoney;
     /** 贷款期限*/
     private Integer loExpires;
     /** 用款时间*/
@@ -18,11 +18,11 @@ public class DemandModel {
     /** 还款方式*/
     private Integer loPaymentWay;
 
-    public Float getLoMoney() {
+    public Integer getLoMoney() {
         return loMoney;
     }
 
-    public void setLoMoney(Float loMoney) {
+    public void setLoMoney(Integer loMoney) {
         this.loMoney = loMoney;
     }
 

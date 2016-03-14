@@ -182,7 +182,7 @@
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/epTurnover"
             style="@style/financing_needs_more_right_edittext"
-            input:input_numberDecimal="true" />
+            input:input_number="true" />
     </LinearLayout>
 
     <com.qtt.jinrong.ui.widget.LineView
@@ -369,7 +369,7 @@
 
             <com.qtt.jinrong.ui.widget.text.InputEditText
                 android:id="@+id/epMonthRepayment"
-                input:input_numberDecimal="true"
+                input:input_number="true"
                 style="@style/financing_needs_more_right_edittext" />
         </LinearLayout>
 

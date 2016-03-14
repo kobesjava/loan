@@ -267,7 +267,7 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
         }
         String priceBuy = hpTotalPriceBuyEdit.getString();
         if(!TextUtils.isEmpty(priceBuy)) {
-            request.setTotalPrice(Float.valueOf(priceBuy));
+            request.setTotalPrice(Integer.valueOf(priceBuy));
         }
         String priceNow = hpPriceNowEdit.getString();
         if(!TextUtils.isEmpty(priceNow)) {

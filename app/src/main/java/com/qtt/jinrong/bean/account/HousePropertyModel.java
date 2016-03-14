@@ -7,7 +7,6 @@ public class HousePropertyModel {
 
     /** 有无车产*/
     private Integer house;
-
     /** 房产地段*/
     private Integer district;
     /** 地址*/
@@ -17,7 +16,7 @@ public class HousePropertyModel {
     /** 面积*/
     private Integer area;
     /** 购买总价(万元)*/
-    private Float totalPrice;
+    private Integer totalPrice;
     /** 房产现价(元/平方米)*/
     private Integer currPrice;
     /** 房产估值*/
@@ -65,11 +64,11 @@ public class HousePropertyModel {
         this.area = area;
     }
 
-    public Float getTotalPrice() {
+    public Integer getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Float totalPrice) {
+    public void setTotalPrice(Integer totalPrice) {
         this.totalPrice = totalPrice;
     }
 

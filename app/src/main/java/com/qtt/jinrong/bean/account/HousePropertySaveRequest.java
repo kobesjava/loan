@@ -21,7 +21,7 @@ public class HousePropertySaveRequest implements IRequest {
     /** 面积*/
     private Integer area;
     /** 购买总价(万元)*/
-    private Float totalPrice;
+    private Integer totalPrice;
     /** 房产现价(元/平方米)*/
     private Integer currPrice;
     /** 房产估值*/
@@ -77,11 +77,11 @@ public class HousePropertySaveRequest implements IRequest {
         this.area = area;
     }
 
-    public Float getTotalPrice() {
+    public Integer getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Float totalPrice) {
+    public void setTotalPrice(Integer totalPrice) {
         this.totalPrice = totalPrice;
     }
 
