@@ -136,10 +136,10 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
             e.printStackTrace();
         }
 
-        Intent intent = new Intent(this, GeneratedClassUtils.get(LoanAptitudeVerifyActivity.class));
-        intent.putExtra(LoanAptitudeVerifyActivity.INTENT_PRODUCT_ID,mLoanModel.getProductId());
-        intent.putExtra(LoanAptitudeVerifyActivity.INTENT_RESPONSE_AMOUNT,amount);
-        intent.putExtra(LoanAptitudeVerifyActivity.INTENT_RESPONSE_TERM,term);
+        Intent intent = new Intent(this, GeneratedClassUtils.get(LoanApplyAptitudeVerifyActivity.class));
+        intent.putExtra(LoanApplyAptitudeVerifyActivity.INTENT_PRODUCT_ID,mLoanModel.getProductId());
+        intent.putExtra(LoanApplyAptitudeVerifyActivity.INTENT_RESPONSE_AMOUNT,amount);
+        intent.putExtra(LoanApplyAptitudeVerifyActivity.INTENT_RESPONSE_TERM,term);
         startActivity(intent);
     }
 

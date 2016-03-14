@@ -3,7 +3,7 @@ package com.qtt.jinrong.presenter;
 /**
  * Created by yanxin on 16/3/14.
  */
-public interface IApplyLoanPresenter extends IPresenter {
+public interface ILoanApplyPresenter extends IPresenter {
 
     /**
      * 申请贷款

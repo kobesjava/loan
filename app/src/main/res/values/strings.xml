@@ -101,6 +101,9 @@
     <string name="credit_title">信用卡</string>
     <string name="credit_detail_title">信用卡详情</string>
 
+    <!-- credit apply verify -->
+    <string name="credit_vertify_title">信用卡资质审核</string>
+
     <!-- financing -->
     <string name="financing_need_title">我的融资需求书</string>
 

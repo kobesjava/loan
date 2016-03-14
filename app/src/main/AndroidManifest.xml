@@ -122,7 +122,7 @@
         <activity android:name=".ui.activity.loan.LoanApplyDetailActivity_"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activity.loan.LoanAptitudeVerifyActivity_"
+        <activity android:name=".ui.activity.loan.LoanApplyAptitudeVerifyActivity_"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.activity.loan.LoanApplyResultActivity_"
@@ -132,6 +132,12 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.activity.credit.CreditDetailActivity_"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.credit.CreditAptitudeVerifyActivity_"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.activity.credit.CreditApplyResultActivity_"
             android:screenOrientation="portrait"/>
     </application>
 

@@ -7,17 +7,17 @@ public class CreditModel {
 
     private String id;
 
-    private String url;
+    private String thumpImg;
 
     private String name;
 
     private String desc;
 
-    private int level;
+    private Integer level;
 
     private String cashPerscent;
 
-    private int applys;
+    private Integer applys;
 
     public String getId() {
         return id;
@@ -27,12 +27,12 @@ public class CreditModel {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getThumpImg() {
+        return thumpImg;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setThumpImg(String thumpImg) {
+        this.thumpImg = thumpImg;
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class CreditModel {
         this.desc = desc;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
@@ -67,11 +67,11 @@ public class CreditModel {
         this.cashPerscent = cashPerscent;
     }
 
-    public int getApplys() {
+    public Integer getApplys() {
         return applys;
     }
 
-    public void setApplys(int applys) {
+    public void setApplys(Integer applys) {
         this.applys = applys;
     }
 }

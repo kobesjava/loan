@@ -12,6 +12,7 @@ public class Api {
 
     private static final String MOUDLE_AD_PATH = "/advert";
     private static final String MOUDLE_LOAN_PATH = "/sloan";
+    private static final String MOUDLE_CREDIT_PATH = "/credit";
     private static final String MOUDLE_USER_PATH = "/user";
     private static final String MOUDLE_ACCOUNT_PATH = "/account";
 
@@ -27,6 +28,15 @@ public class Api {
     public final static String LOAN_PRODUCT_DETAIL  = ROOT_URL + MOUDLE_LOAN_PATH + "/querySloanDetail.do";
     //贷款产品申请
     public final static String LOAN_PRODUCT_APPLY  = ROOT_URL + MOUDLE_LOAN_PATH + "/nowApply.do";
+
+
+    /**  credit模块  **/
+    //信用卡产品列表
+    public final static String CREDIT_PRODUCT_LIST = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditList.do";
+    //信用卡产品详情
+    public final static String CREDIT_PRODUCT_DETAIL  = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditDetail.do";
+    //信用卡产品申请
+    public final static String CREDIT_PRODUCT_APPLY  = ROOT_URL + MOUDLE_CREDIT_PATH + "/nowApplyCredit.do";
 
 
     /**  user模块  **/
@@ -73,4 +83,5 @@ public class Api {
     public final static String ACCOUNT_REQUEST_IDENTITY = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/queryIdentity.do";
     //保存身份信息
     public final static String ACCOUNT_SAVE_IDENTITY = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/saveIdentity.do";
+
 }

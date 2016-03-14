@@ -1,4 +1,4 @@
-package com.qtt.jinrong.ui.activity.loan;
+package com.qtt.jinrong.ui.activity.credit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,13 +27,14 @@ import com.qtt.jinrong.enums.OperatorYearsEnum;
 import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
-import com.qtt.jinrong.presenter.IApplyLoanPresenter;
-import com.qtt.jinrong.presenter.impl.ApplyLoanPresenterImpl;
+import com.qtt.jinrong.presenter.ICreditApplyPresenter;
+import com.qtt.jinrong.presenter.impl.CreditApplyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
+import com.qtt.jinrong.ui.activity.loan.LoanApplyResultActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
-import com.qtt.jinrong.view.ILoanApplyLoanView;
+import com.qtt.jinrong.view.ICreditApplyView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -41,15 +42,13 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 /**
- * 贷款资质审核
+ * 申请信用卡资质审核
  * Created by yanxin on 16/3/9.
  */
-@EActivity(R.layout.activity_loan_aptitude_verify)
-public class LoanAptitudeVerifyActivity extends BaseSelectActivity implements ILoanApplyLoanView {
+@EActivity(R.layout.activity_credit_aptitude_verify)
+public class CreditAptitudeVerifyActivity extends BaseSelectActivity implements ICreditApplyView {
 
     public static final String INTENT_PRODUCT_ID = "INTENT_PRODUCT_ID";
-    public static final String INTENT_RESPONSE_TERM = "INTENT_RESPONSE_TERM";
-    public static final String INTENT_RESPONSE_AMOUNT = "INTENT_RESPONSE_AMOUNT";
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -119,21 +118,18 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity implements IL
     TextView carLicenseText;
 
     String productId;
-    int term,amount;
-    IApplyLoanPresenter mPresenter;
+    ICreditApplyPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         productId = mIntent.getStringExtra(INTENT_PRODUCT_ID);
-        term = mIntent.getIntExtra(INTENT_RESPONSE_TERM, 0);
-        amount = mIntent.getIntExtra(INTENT_RESPONSE_AMOUNT,0);
-        mPresenter = new ApplyLoanPresenterImpl(this);
+        mPresenter = new CreditApplyPresenterImpl(this);
     }
 
     @AfterViews
     void initViews() {
-        mTitleBar.setTitle(getString(R.string.loan_vertify_title));
+        mTitleBar.setTitle(getString(R.string.credit_vertify_title));
         mTitleBar.setActivity(this);
     }
 
@@ -411,16 +407,19 @@ public class LoanAptitudeVerifyActivity extends BaseSelectActivity implements IL
     }
 
 
-    /*** ILoanApplyLoanView ***/
+    /*** ICreditApplyView ***/
+    @Override
+    public String getCreditId() {
+        return null;
+    }
+
     @Override
     public void onApply(Response response) {
-        Intent intent = new Intent(this, GeneratedClassUtils.get(LoanApplyResultActivity.class));
+        Intent intent = new Intent(this, GeneratedClassUtils.get(CreditApplyResultActivity.class));
         intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_SUCCESS,response.isSuccess());
         intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_MESSAGE,response.getMessage());
-        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_AMOUNT,amount);
-        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_TERM,term);
         startActivity(intent);
         finish();
     }
-    /*** ILoanApplyLoanView ***/
+    /*** ICreditApplyView ***/
 }

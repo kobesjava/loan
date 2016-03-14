@@ -5,7 +5,13 @@ import com.qtt.jinrong.bean.Response;
 /**
  * Created by yanxin on 16/3/14.
  */
-public interface ILoanApplyLoanView extends IView {
+public interface ICreditApplyView extends IView {
+
+    /**
+     * 获取信用卡产品ID
+     * @return
+     */
+    String getCreditId();
 
     /**
      * 申请返回出来

@@ -2,22 +2,22 @@ package com.qtt.jinrong.presenter.impl;
 
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.Response;
-import com.qtt.jinrong.model.IApplyLoanBS;
-import com.qtt.jinrong.model.impl.ApplyLoanBS;
-import com.qtt.jinrong.presenter.IApplyLoanPresenter;
-import com.qtt.jinrong.view.ILoanApplyLoanView;
+import com.qtt.jinrong.model.ILoanBS;
+import com.qtt.jinrong.model.impl.LoanBSImpl;
+import com.qtt.jinrong.presenter.ILoanApplyPresenter;
+import com.qtt.jinrong.view.ILoanApplyView;
 
 /**
  * Created by yanxin on 16/3/14.
  */
-public class ApplyLoanPresenterImpl implements IApplyLoanPresenter {
+public class LoanApplyPresenterImpl implements ILoanApplyPresenter {
 
-    ILoanApplyLoanView mView;
-    IApplyLoanBS mBs;
+    ILoanApplyView mView;
+    ILoanBS mBs;
 
-    public ApplyLoanPresenterImpl(ILoanApplyLoanView mView) {
+    public LoanApplyPresenterImpl(ILoanApplyView mView) {
         this.mView = mView;
-        this.mBs = new ApplyLoanBS();
+        this.mBs = new LoanBSImpl();
     }
 
     @Override

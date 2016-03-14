@@ -19,6 +19,11 @@ public class LoanBSImpl implements ILoanBS {
 
     @Override
     public void requestLoanProductDetail(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj) {
-        LoanReqsAction.requestLoanProductDetil(context,request,listenerObj);
+        LoanReqsAction.requestLoanProductDetil(context, request, listenerObj);
+    }
+
+    @Override
+    public void apply(Context context, IRequest iRequest, MCListenerObj.IObjResListener listener) {
+        LoanReqsAction.requestLoanProductApply(context, iRequest, listener);
     }
 }

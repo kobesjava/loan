@@ -1,4 +1,4 @@
-package com.qtt.jinrong.ui.activity.loan;
+package com.qtt.jinrong.ui.activity.credit;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,13 +11,13 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
-import com.qtt.jinrong.bean.loan.LoanModel;
-import com.qtt.jinrong.bean.loan.LoanProductRecommendRequest;
-import com.qtt.jinrong.presenter.ILoanApplyResultPresenter;
-import com.qtt.jinrong.presenter.impl.LoanApplyResultPresenterImpl;
+import com.qtt.jinrong.bean.credit.CreditModel;
+import com.qtt.jinrong.bean.credit.CreditProductRecommendRequest;
+import com.qtt.jinrong.presenter.ICreditApplyResultPresenter;
+import com.qtt.jinrong.presenter.impl.CreditApplyResultPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
-import com.qtt.jinrong.view.ILoanApplyResultView;
+import com.qtt.jinrong.view.ICreditApplyResultView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -26,15 +26,14 @@ import org.androidannotations.annotations.ViewById;
 import java.util.List;
 
 /**
+ * 信用卡申请结果
  * Created by yanxin on 16/3/14.
  */
 @EActivity(R.layout.activity_loan_apply_result)
-public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyResultView{
+public class CreditApplyResultActivity extends BaseActivity implements ICreditApplyResultView{
 
     public static final String INTENT_RESPONSE_MESSAGE = "INTENT_RESPONSE_MESSAGE";
     public static final String INTENT_RESPONSE_SUCCESS = "INTENT_RESPONSE_SUCCESS";
-    public static final String INTENT_RESPONSE_AMOUNT = "INTENT_RESPONSE_AMOUNT";
-    public static final String INTENT_RESPONSE_TERM = "INTENT_RESPONSE_TERM";
 
     @ViewById(R.id.titleBar)
     CommonTitleBar titleBar;
@@ -47,24 +46,21 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
 
     String message;
     boolean success;
-    int term,amount;
 
-    ILoanApplyResultPresenter mPresenter;
+    ICreditApplyResultPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         message = mIntent.getStringExtra(INTENT_RESPONSE_MESSAGE);
         success = mIntent.getBooleanExtra(INTENT_RESPONSE_SUCCESS, true);
-        term = mIntent.getIntExtra(INTENT_RESPONSE_TERM, 0);
-        amount = mIntent.getIntExtra(INTENT_RESPONSE_AMOUNT,0);
 
-        mPresenter = new LoanApplyResultPresenterImpl(this);
+        mPresenter = new CreditApplyResultPresenterImpl(this);
     }
 
     @AfterViews
     void initViews() {
-        titleBar.setTitle("申请贷款");
+        titleBar.setTitle("申请信用卡");
         titleBar.setRightViewVisible(View.VISIBLE, "关闭");
         titleBar.setActivity(this);
         titleBar.setTitleBarListener(new CommonTitleBar.TitleBarListener() {
@@ -85,29 +81,27 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
         } else {
             resultText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.apply_result_failure),null,null,null);
         }
-        recommedText.setText("根据您的资质,为您推荐以下产品 ("+amount+"万/"+term+"个月)");
+        recommedText.setText("根据您的资质,为您推荐以下产品");
 
         mPresenter.requestRecommend();
     }
 
 
-    /***  ILoanApplyResultView  ***/
+    /***  ICreditApplyResultView  ***/
     @Override
-    public LoanProductRecommendRequest getRequest() {
-        LoanProductRecommendRequest request = new LoanProductRecommendRequest();
-        request.setQuota(amount);
-        request.setLimi(term);
+    public CreditProductRecommendRequest getRequest() {
+        CreditProductRecommendRequest request = new CreditProductRecommendRequest();
         return request;
     }
 
     @Override
-    public void onRequestRecommend(List<LoanModel> loans) {
+    public void onRequestRecommend(List<CreditModel> loans) {
         if(loans == null || loans.size() == 0) return;
 
-        LoanModel mLoanModel;
+        CreditModel mLoanModel;
         for(int i=0;i<loans.size();i++) {
             mLoanModel = loans.get(i);
-            View view = LayoutInflater.from(this).inflate(R.layout.loan_recommend_item,null);
+            View view = LayoutInflater.from(this).inflate(R.layout.credit_recommend_item,null);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.bottomMargin = getResources().getDimensionPixelOffset(R.dimen.margin_step_5);
             recomedView.addView(view,params);
@@ -115,10 +109,6 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
             TextView title = (TextView) view.findViewById(R.id.title);
             TextView interestTotal = (TextView) view.findViewById(R.id.interest);
             TextView monthPay = (TextView) view.findViewById(R.id.monthPay);
-
-            title.setText(mLoanModel.getTitle());
-            interestTotal.setText("总利息: "+mLoanModel.getRate());
-            monthPay.setText("月供: " + mLoanModel.getMoney());
 
             try {
                 Uri uri = Uri.parse(mLoanModel.getThumpImg());
@@ -129,5 +119,5 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
         }
 
     }
-    /***  ILoanApplyResultView  ***/
+    /***  ICreditApplyResultView  ***/
 }
