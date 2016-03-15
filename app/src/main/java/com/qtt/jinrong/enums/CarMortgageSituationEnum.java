@@ -7,7 +7,7 @@ import java.util.List;
  * 车辆抵押情况
  * Created by yanxin on 16/3/4.
  */
-public enum CarPropertySituationEnum {
+public enum CarMortgageSituationEnum {
 
     未被抵押无按揭(1,"未被抵押/无按揭"),
     已被抵押按揭给银行机构(2,"已被抵押/按揭给银行机构"),
@@ -16,7 +16,7 @@ public enum CarPropertySituationEnum {
     private int code;
     private String title;
 
-    CarPropertySituationEnum(int code, String title) {
+    CarMortgageSituationEnum(int code, String title) {
         this.code = code;
         this.title = title;
     }
@@ -31,15 +31,15 @@ public enum CarPropertySituationEnum {
 
     public static List<String> getValues() {
         List<String> titles = new ArrayList<>(5);
-        CarPropertySituationEnum[] enums = CarPropertySituationEnum.values();
+        CarMortgageSituationEnum[] enums = CarMortgageSituationEnum.values();
         for(int i=0;i<enums.length;i++) {
             titles.add(enums[i].getTitle());
         }
         return titles;
     }
 
-    public static CarPropertySituationEnum find(int code) {
-        CarPropertySituationEnum[] enums = CarPropertySituationEnum.values();
+    public static CarMortgageSituationEnum find(int code) {
+        CarMortgageSituationEnum[] enums = CarMortgageSituationEnum.values();
         for(int i=0;i<enums.length;i++) {
             if(enums[i].getCode() == code) return enums[i];
         }
