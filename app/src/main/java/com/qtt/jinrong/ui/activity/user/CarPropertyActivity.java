@@ -13,7 +13,7 @@ import com.qtt.jinrong.enums.CarDriveKmEnum;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyAssessedEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
-import com.qtt.jinrong.enums.CarPropertySituationEnum;
+import com.qtt.jinrong.enums.CarMortgageSituationEnum;
 import com.qtt.jinrong.presenter.ICarPropertyPresenter;
 import com.qtt.jinrong.presenter.impl.CarPropertyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
@@ -55,15 +55,15 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
     TextView cpYearsText;
     @ViewById(R.id.cpTravelKM)
     TextView cpTravelKMText;
-    @ViewById(R.id.cpSituation)
-    TextView cpSituationText;
-    @ViewById(R.id.cpSituationMore)
-    View cpSituationMore;
+    @ViewById(R.id.cpMortgageSituation)
+    TextView cpMortgageSituationText;
+    @ViewById(R.id.cpMortgageSituationMore)
+    View cpMortgageSituationMore;
     @ViewById(R.id.cpMortgageLoanBalance)
-    InputEditText cpMortgageLoanBalanceEdit;
+    InputEditText cpLoanBalanceEdit;
 
-    CarPropertySaveRequest request;
     ICarPropertyPresenter mPresenter;
+    CarPropertySaveRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,15 +166,15 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
 
     @Click(R.id.cpSituation)
     void clickCpSituation() {
-        mSelectView.setData(CarPropertySituationEnum.getValues());
+        mSelectView.setData(CarMortgageSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                CarPropertySituationEnum mEnum = CarPropertySituationEnum.values()[position];
+                CarMortgageSituationEnum mEnum = CarMortgageSituationEnum.values()[position];
                 request.setCarMortgage(mEnum.getCode());
-                cpSituationText.setText(val);
-                if(mEnum.equals(CarPropertySituationEnum.未被抵押无按揭)) cpSituationMore.setVisibility(View.GONE);
-                else cpSituationMore.setVisibility(View.VISIBLE);
+                cpMortgageSituationText.setText(val);
+                if(mEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) cpMortgageSituationMore.setVisibility(View.GONE);
+                else cpMortgageSituationMore.setVisibility(View.VISIBLE);
             }
         });
         show();
@@ -214,9 +214,18 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
                 if(mEnum != null) cpTravelKMText.setText(mEnum.name());
             }
             if(model.getCarMortgage() != null) {
-                CarPropertySituationEnum mEnum = CarPropertySituationEnum.find(model.getCarMortgage());
-                if(mEnum != null) cpSituationText.setText(mEnum.name());
+                CarMortgageSituationEnum mEnum = CarMortgageSituationEnum.find(model.getCarMortgage());
+                if(mEnum != null) {
+                    cpMortgageSituationText.setText(mEnum.getTitle());
+                    if(mEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) {
+                        cpMortgageSituationMore.setVisibility(View.GONE);
+                    } else {
+                        cpMortgageSituationMore.setVisibility(View.VISIBLE);
+                    }
+                }
             }
+            if(model.getCarLoanBalance() != null) cpLoanBalanceEdit.setText(String.valueOf(model.getCarLoanBalance()));
+
         }
     }
 
@@ -230,6 +239,7 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
         if(!TextUtils.isEmpty(cpBrandEdit.getString())) request.setCarBrand(cpBrandEdit.getString());
         if(!TextUtils.isEmpty(cpLicenseNumEdit.getString())) request.setCarNo(cpLicenseNumEdit.getString());
         if(!TextUtils.isEmpty(cpPriceBuyEdit.getString())) request.setCarPrice(Integer.valueOf(cpPriceBuyEdit.getString()));
+        if(!TextUtils.isEmpty(cpLoanBalanceEdit.getString())) request.setCarLoanBalance(Integer.valueOf(cpLoanBalanceEdit.getString()));
         return request;
     }
     /***  ICarPropertyView  ***/
