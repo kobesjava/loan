@@ -117,13 +117,4 @@ public class LoanModel implements Parcelable {
         this.score = in.readFloat();
     }
 
-    public static final Parcelable.Creator<LoanModel> CREATOR = new Parcelable.Creator<LoanModel>() {
-        public LoanModel createFromParcel(Parcel source) {
-            return new LoanModel(source);
-        }
-
-        public LoanModel[] newArray(int size) {
-            return new LoanModel[size];
-        }
-    };
 }

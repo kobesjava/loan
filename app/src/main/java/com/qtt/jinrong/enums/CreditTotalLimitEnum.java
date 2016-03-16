@@ -44,10 +44,11 @@ public enum CreditTotalLimitEnum {
         return titles;
     }
 
-    public static CreditTotalLimitEnum find(int code) {
+    public static CreditTotalLimitEnum find(Integer code) {
+        if(code == null) return null;
         CreditTotalLimitEnum[] enums = CreditTotalLimitEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

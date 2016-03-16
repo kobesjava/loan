@@ -32,4 +32,8 @@ public enum CreditOverdueEnum {
         return vals;
     }
 
+    public static CreditOverdueEnum getDefault() {
+        return CreditOverdueEnum.当出现逾期两次未偿还的记录;
+    }
+
 }

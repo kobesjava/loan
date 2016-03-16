@@ -1,5 +1,7 @@
 package com.qtt.jinrong.bean.loan;
 
+import android.os.Parcel;
+
 /**
  * Created by yanxin on 16/2/24.
  */
@@ -74,4 +76,47 @@ public class LoanApplyModel extends LoanModel {
     public void setTerm(String term) {
         this.term = term;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeString(this.applyId);
+        dest.writeInt(this.aomount);
+        dest.writeString(this.term);
+        dest.writeString(this.status);
+        dest.writeString(this.reason);
+        dest.writeString(this.source);
+        dest.writeLong(this.time);
+    }
+
+    public LoanApplyModel() {
+    }
+
+    protected LoanApplyModel(Parcel in) {
+        super(in);
+        this.applyId = in.readString();
+        this.aomount = in.readInt();
+        this.term = in.readString();
+        this.status = in.readString();
+        this.reason = in.readString();
+        this.source = in.readString();
+        this.time = in.readLong();
+    }
+
+    public static final Creator<LoanApplyModel> CREATOR = new Creator<LoanApplyModel>() {
+        @Override
+        public LoanApplyModel createFromParcel(Parcel source) {
+            return new LoanApplyModel(source);
+        }
+
+        @Override
+        public LoanApplyModel[] newArray(int size) {
+            return new LoanApplyModel[size];
+        }
+    };
 }

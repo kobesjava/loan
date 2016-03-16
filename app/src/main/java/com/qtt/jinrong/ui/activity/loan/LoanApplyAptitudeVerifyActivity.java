@@ -2,12 +2,14 @@ package com.qtt.jinrong.ui.activity.loan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.loan.LoanApplyRequest;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
@@ -33,6 +35,7 @@ import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
+import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.ILoanApplyView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -68,40 +71,29 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     @ViewById(R.id.workerOtherMore)
     View workerOtherMore;
-    @ViewById(R.id.companyType)
-    TextView companyTypeText;
     @ViewById(R.id.companyWorkYears)
     TextView companyWorkYearsText;
-    @ViewById(R.id.jobTitle)
-    TextView jobTitleText;
     @ViewById(R.id.incomePayWay)
     TextView incomePayWayText;
     @ViewById(R.id.monthSalary)
     InputEditText monthSalaryEdit;
     @ViewById(R.id.socialFund)
     TextView socialFundText;
-    @ViewById(R.id.workProvince)
-    TextView workProvinceText;
-    @ViewById(R.id.workCity)
-    TextView workCityText;
 
     @ViewById(R.id.age)
     InputEditText mAgeEdit;
-
     @ViewById(R.id.creditStation)
     TextView mCreditText;
     @ViewById(R.id.creditOverdueMore)
     View creditOverdueMore;
     @ViewById(R.id.creditOverdueSituation)
     TextView overdueText;
-
     @ViewById(R.id.creditLimit)
     TextView mCreditLimitText;
     @ViewById(R.id.creditMore)
     View creditMore;
     @ViewById(R.id.creditUsed)
     TextView creditUsedText;
-
     @ViewById(R.id.houseproperty)
     TextView mHousePropertyText;
     @ViewById(R.id.housePropertyMore)
@@ -110,7 +102,6 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     TextView housePropertyPositionText;
     @ViewById(R.id.housePropertySituaion)
     TextView housePropertySituaionText;
-
     @ViewById(R.id.carproperty)
     TextView mCarPropertyText;
     @ViewById(R.id.carPropertyMore)
@@ -121,6 +112,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     String productId;
     int term,amount;
     ILoanApplyPresenter mPresenter;
+    LoanApplyRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +121,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         term = mIntent.getIntExtra(INTENT_RESPONSE_TERM, 0);
         amount = mIntent.getIntExtra(INTENT_RESPONSE_AMOUNT,0);
         mPresenter = new LoanApplyPresenterImpl(this);
+        request = new LoanApplyRequest();
     }
 
     @AfterViews
@@ -144,6 +137,8 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 IdentityEnum mEnums = IdentityEnum.values()[position];
+                mIdentifyText.setText(val);
+                request.setCapacity(mEnums.getCode());
                 if (mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
                     enterprisePersonalMore.setVisibility(View.VISIBLE);
                     workerOtherMore.setVisibility(View.GONE);
@@ -151,7 +146,6 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                     enterprisePersonalMore.setVisibility(View.GONE);
                     workerOtherMore.setVisibility(View.VISIBLE);
                 }
-                mIdentifyText.setText(val);
             }
         });
         show();
@@ -164,7 +158,8 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                LegalPersonEnum mEnums = LegalPersonEnum.values()[position];
+                LegalPersonEnum mEnum = LegalPersonEnum.values()[position];
+                request.setLegal(mEnum.getCode());
                 legalPersonText.setText(val);
             }
         });
@@ -177,6 +172,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CompanyPositionEnum mEnums = CompanyPositionEnum.values()[position];
+                request.setCompanyPosition(mEnums.getCode());
                 companyPositionText.setText(val);
             }
         });
@@ -189,6 +185,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 OperatorYearsEnum mEnums = OperatorYearsEnum.values()[position];
+                request.setOperatorYear(mEnums.getCode());
                 operationPeriodText.setText(val);
             }
         });
@@ -196,18 +193,6 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     }
 
     //工薪族 其他
-    @Click(R.id.companyType)
-    void clickCompanyType() {
-        mSelectView.setData(CompanyTypeEnum.getValues());
-        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
-            @Override
-            public void onItemSelect(int position, String val) {
-                CompanyTypeEnum mEnums = CompanyTypeEnum.values()[position];
-                companyTypeText.setText(val);
-            }
-        });
-        show();
-    }
     @Click(R.id.companyWorkYears)
     void clickCompanyWorkYears() {
         mSelectView.setData(WorkYearsEnum.getValues());
@@ -215,19 +200,8 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 WorkYearsEnum mEnums = WorkYearsEnum.values()[position];
+                request.setCurrSeniority(mEnums.getCode());
                 companyWorkYearsText.setText(val);
-            }
-        });
-        show();
-    }
-    @Click(R.id.jobTitle)
-    void clickJobTitle() {
-        mSelectView.setData(JobTitleEnum.getValues());
-        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
-            @Override
-            public void onItemSelect(int position, String val) {
-                JobTitleEnum mEnums = JobTitleEnum.values()[position];
-                jobTitleText.setText(val);
             }
         });
         show();
@@ -239,6 +213,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 IncomePayMethodEnum mEnums = IncomePayMethodEnum.values()[position];
+                request.setPayWay(mEnums.getCode());
                 incomePayWayText.setText(val);
             }
         });
@@ -251,37 +226,13 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 SocialFundEnum mEnums = SocialFundEnum.values()[position];
+                request.setSocialSecurity(mEnums.getCode());
                 socialFundText.setText(val);
             }
         });
         show();
     }
-    @Click(R.id.workProvince)
-    void clickWorkProvince() {
-        mSelectView.setData(ProvinceEnum.getValues());
-        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
-            @Override
-            public void onItemSelect(int position, String val) {
-                ProvinceEnum mEnums = ProvinceEnum.values()[position];
-                workProvinceText.setText(val);
-            }
-        });
-        show();
-    }
-    @Click(R.id.workCity)
-    void clickWorkCity() {
-        /*mSelectView.setData(.getValues());
-        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
-            @Override
-            public void onItemSelect(int position, String val) {
-                ProvinceEnum mEnums = ProvinceEnum.values()[position];
-                workProvinceText.setText(val);
-            }
-        });
-        show();*/
-    }
-
-
+    //公共属性
     @Click(R.id.creditStation)
     void clickCreditStation() {
         mSelectView.setData(CreditSituationEnum.getValues());
@@ -289,9 +240,12 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CreditSituationEnum mEnum = CreditSituationEnum.values()[position];
-                if(mEnum.equals(CreditSituationEnum.有逾期)) creditOverdueMore.setVisibility(View.VISIBLE);
-                else creditOverdueMore.setVisibility(View.GONE);
-                //request.setCreInfo(CreditSituationEnum.values()[position].getCode());
+                if(mEnum.equals(CreditSituationEnum.有逾期)) {
+                    creditOverdueMore.setVisibility(View.VISIBLE);
+                } else {
+                    creditOverdueMore.setVisibility(View.GONE);
+                }
+                request.setCredit(mEnum.getCode());
                 mCreditText.setText(val);
             }
         });
@@ -304,12 +258,12 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CreditOverdueEnum mEnum = CreditOverdueEnum.values()[position];
+                request.setOverdue(mEnum.getCode());
                 overdueText.setText(val);
             }
         });
         show();
     }
-
     @Click(R.id.creditLimit)
     void clickCreditLimit() {
         mSelectView.setData(CreditTotalLimitEnum.getValues());
@@ -319,7 +273,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 CreditTotalLimitEnum mEnum = CreditTotalLimitEnum.values()[position];
                 if (mEnum.equals(CreditTotalLimitEnum.无信用卡)) creditMore.setVisibility(View.GONE);
                 else creditMore.setVisibility(View.VISIBLE);
-                //request.setCreMoney(CreditTotalLimitEnum.values()[position].getCode());
+                request.setCreMoney(mEnum.getCode());
                 mCreditLimitText.setText(val);
             }
         });
@@ -332,6 +286,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CreditUsedLimitEnum mEnum = CreditUsedLimitEnum.values()[position];
+                request.setCreUsed(mEnum.getCode());
                 creditUsedText.setText(val);
             }
         });
@@ -347,7 +302,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 HousePropertyEnum mEnum = HousePropertyEnum.values()[position];
                 if (mEnum.equals(HousePropertyEnum.无房产)) housePropertyMore.setVisibility(View.GONE);
                 else housePropertyMore.setVisibility(View.VISIBLE);
-                //request.setHouse(HousePropertyEnum.values()[position].getCode());
+                request.setHouse(mEnum.getCode());
                 mHousePropertyText.setText(val);
             }
         });
@@ -360,6 +315,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 HousePropertyPositionEnum mEnum = HousePropertyPositionEnum.values()[position];
+                request.setDistrict(mEnum.getCode());
                 housePropertyPositionText.setText(val);
             }
         });
@@ -372,14 +328,14 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 HousePropertySituationEnum mEnum = HousePropertySituationEnum.values()[position];
+                request.setMortgage(mEnum.getCode());
                 housePropertySituaionText.setText(val);
             }
         });
         show();
     }
-
     @Click(R.id.carproperty)
-    void clickProperty() {
+    void clickCarProperty() {
         mSelectView.setData(CarPropertyEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
@@ -387,6 +343,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 CarPropertyEnum mEnum = CarPropertyEnum.values()[position];
                 if (mEnum.equals(CarPropertyEnum.无车产)) carPropertyMore.setVisibility(View.GONE);
                 else carPropertyMore.setVisibility(View.VISIBLE);
+                request.setCar(mEnum.getCode());
                 mCarPropertyText.setText(val);
             }
         });
@@ -399,6 +356,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CarLinscePositionEnum mEnum = CarLinscePositionEnum.values()[position];
+                request.setLinscebelong(mEnum.getCode());
                 carLicenseText.setText(val);
             }
         });
@@ -407,11 +365,60 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     @Click(R.id.btnNext)
     void clickBtnNext() {
+        if(request.getCapacity() == null) {
+            ToastUtil.showShortToast("请选择身份");
+            return;
+        }
+        IdentityEnum mEnums = IdentityEnum.find(request.getCapacity());
+        if(mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
+            if(request.getLegal() == null) {
+                ToastUtil.showShortToast("请选择法人或股东");
+                return;
+            }
+            if(request.getCompanyPosition() == null) {
+                ToastUtil.showShortToast("请选择法人或股东");
+                return;
+            }
+            if(request.getOperatorYear() == null) {
+                ToastUtil.showShortToast("请选择法人或股东");
+                return;
+            }
+        } else {
+
+        }
+
+        Integer age = 0;
+        try {
+            age = Integer.valueOf(mAgeEdit.getString());
+        }catch (Exception e) {
+
+        }
+        if(age == null || age.intValue() == 0) {
+            ToastUtil.showShortToast("请选择法人或股东");
+            return;
+        } else {
+            request.setAge(age);
+        }
+
+        if(request.getOperatorYear() == null) {
+            ToastUtil.showShortToast("请选择法人或股东");
+            return;
+        }
+
         mPresenter.apply();
     }
 
 
     /*** ILoanApplyView ***/
+    @Override
+    public LoanApplyRequest getReauest() {
+        if(!TextUtils.isEmpty(mAgeEdit.getString()))
+            request.setAge(Integer.valueOf(mAgeEdit.getString()));
+        if(!TextUtils.isEmpty(monthSalaryEdit.getString()))
+            request.setSalary(Integer.valueOf(monthSalaryEdit.getString()));
+        return request;
+    }
+
     @Override
     public void onApply(Response response) {
         Intent intent = new Intent(this, GeneratedClassUtils.get(LoanApplyResultActivity.class));
