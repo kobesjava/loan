@@ -32,8 +32,13 @@ public enum CreditOverdueEnum {
         return vals;
     }
 
-    public static CreditOverdueEnum getDefault() {
-        return CreditOverdueEnum.当出现逾期两次未偿还的记录;
+    public static CreditOverdueEnum find(Integer code) {
+        if(code == null) return null;
+        CreditOverdueEnum[] enums = CreditOverdueEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code.intValue()) return enums[i];
+        }
+        return null;
     }
 
 }

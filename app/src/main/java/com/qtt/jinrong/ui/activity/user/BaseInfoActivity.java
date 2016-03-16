@@ -118,6 +118,8 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
                 provinceEnum = ProvinceEnum.values()[position];
                 request.setRegisterProvince(provinceEnum.getCode());
                 mProvinceText.setText(val);
+                mCityText.setText("");
+                request.setRegisterCity(null);
             }
         });
         show();

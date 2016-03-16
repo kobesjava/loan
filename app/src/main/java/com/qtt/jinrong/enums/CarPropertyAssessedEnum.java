@@ -42,10 +42,11 @@ public enum CarPropertyAssessedEnum {
         return vals;
     }
 
-    public static CarPropertyAssessedEnum find(int code) {
+    public static CarPropertyAssessedEnum find(Integer code) {
+        if(code == null) return null;
         CarPropertyAssessedEnum[] enums = CarPropertyAssessedEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

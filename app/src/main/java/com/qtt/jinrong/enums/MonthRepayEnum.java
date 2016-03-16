@@ -43,10 +43,11 @@ public enum MonthRepayEnum {
         return titles;
     }
 
-    public static MonthRepayEnum find(int code) {
+    public static MonthRepayEnum find(Integer code) {
+        if(code == null) return null;
         MonthRepayEnum[] enums = MonthRepayEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

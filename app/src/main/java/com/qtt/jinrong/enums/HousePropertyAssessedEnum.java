@@ -44,10 +44,11 @@ public enum HousePropertyAssessedEnum {
         return titles;
     }
 
-    public static HousePropertyAssessedEnum find(int code) {
+    public static HousePropertyAssessedEnum find(Integer code) {
+        if(code == null) return null;
         HousePropertyAssessedEnum[] enums = HousePropertyAssessedEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

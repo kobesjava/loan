@@ -136,14 +136,14 @@
             android:text="房产抵押/按揭情况" />
 
         <TextView
-            android:id="@+id/hpSituation"
+            android:id="@+id/hpMortgageSituation"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
         android:layout_height="1dp" />
     <include
-        android:id="@+id/hpSituationMore"
+        android:id="@+id/hpMortgageSituationMore"
         layout="@layout/include_houseproperty_mortgage"
         android:visibility="gone"
         android:layout_width="match_parent"

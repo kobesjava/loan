@@ -72,9 +72,9 @@ public class LoanApplyAdapter extends BaseAdapter {
         viewHolder.nameTxt.setText(model.getTitle());
         viewHolder.amountTxt.setText("金额: "+model.getAomount());
         viewHolder.statusTxt.setText(model.getStatus());
-        viewHolder.sourceTxt.setText(model.getSource());
-        viewHolder.termTxt.setText("期限: "+model.getTerm());
-        viewHolder.timeTxt.setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getTime(),"yyyy/MM/dd HH:mm:ss"));
+        viewHolder.sourceTxt.setText(model.getApplySrc());
+        viewHolder.termTxt.setText("期限: "+model.getApplyLimi());
+        viewHolder.timeTxt.setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getApplyDate(),"yyyy/MM/dd HH:mm:ss"));
 
         return convertView;
     }

@@ -64,13 +64,13 @@ public class LoanApplyDetailActivity extends BaseActivity {
             View statusView = view.findViewById(R.id.statusView);
             TextView reasonView = (TextView)view.findViewById(R.id.reason);
             ((TextView)view.findViewById(R.id.status)).setText(model.getStatus());
-            ((TextView)view.findViewById(R.id.time)).setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getTime(), "yyyy/MM/dd HH:mm:ss"));
-            reasonView.setText(model.getReason());
+            ((TextView)view.findViewById(R.id.time)).setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getApplyDate(), "yyyy/MM/dd HH:mm:ss"));
+            reasonView.setText(model.getHandleReason());
 
-            if(i==0 && !TextUtils.isEmpty(model.getReason())) {
+            if(i==0 && !TextUtils.isEmpty(model.getHandleReason())) {
                 TextView timeView = ((TextView) view.findViewById(R.id.time));
                 timeView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.user_center_loan_status_down), null);
-                reasonView.setText(model.getReason());
+                reasonView.setText(model.getHandleReason());
                 statusView.setTag(reasonView);
                 statusView.setTag(R.id.time,timeView);
                 statusView.setOnClickListener(new View.OnClickListener() {
@@ -105,33 +105,33 @@ public class LoanApplyDetailActivity extends BaseActivity {
         LoanApplyModel model;
 
         model = new LoanApplyModel();
-        model.setTime(System.currentTimeMillis());
+        model.setApplyDate(System.currentTimeMillis());
         model.setStatus("拒绝接单");
-        model.setReason("订单已过期");
+        model.setHandleReason("订单已过期");
         list.add(model);
 
         model = new LoanApplyModel();
-        model.setTime(System.currentTimeMillis());
+        model.setApplyDate(System.currentTimeMillis());
         model.setStatus("信贷经理反馈");
-        model.setReason("订单已过期");
+        model.setHandleReason("订单已过期");
         list.add(model);
 
         model = new LoanApplyModel();
-        model.setTime(System.currentTimeMillis());
+        model.setApplyDate(System.currentTimeMillis());
         model.setStatus("拒绝接单");
-        model.setReason("订单已过期");
+        model.setHandleReason("订单已过期");
         list.add(model);
 
         model = new LoanApplyModel();
-        model.setTime(System.currentTimeMillis());
+        model.setApplyDate(System.currentTimeMillis());
         model.setStatus("拒绝接单");
-        model.setReason("订单已过期");
+        model.setHandleReason("订单已过期");
         list.add(model);
 
         model = new LoanApplyModel();
-        model.setTime(System.currentTimeMillis());
+        model.setApplyDate(System.currentTimeMillis());
         model.setStatus("拒绝接单");
-        model.setReason("订单已过期");
+        model.setHandleReason("订单已过期");
         list.add(model);
 
         setUp(list);
