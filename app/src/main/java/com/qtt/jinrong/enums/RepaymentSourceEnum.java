@@ -32,10 +32,11 @@ public enum RepaymentSourceEnum {
         return vals;
     }
 
-    public static RepaymentSourceEnum find(int code) {
+    public static RepaymentSourceEnum find(Integer code) {
+        if(code == null) return null;
         RepaymentSourceEnum[] enums = RepaymentSourceEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

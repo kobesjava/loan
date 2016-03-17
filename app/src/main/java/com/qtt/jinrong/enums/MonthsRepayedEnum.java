@@ -44,7 +44,6 @@ public enum MonthsRepayedEnum {
     public static MonthsRepayedEnum find(Integer code) {
         if(code == null) return null;
         MonthsRepayedEnum[] enums = MonthsRepayedEnum.values();
-        List<String> vals = new ArrayList<>();
         for(int i=0;i<enums.length;i++) {
             if(enums[i].getCode() == code.intValue()) return enums[i];
         }

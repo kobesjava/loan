@@ -1,7 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentPanel"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/transparent">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_gravity="center"
+    android:background="@drawable/alert_dialog_full_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_950000"
+        android:textSize="14sp" />
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:overScrollMode="never"
+        android:paddingBottom="12dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="12dp"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/desc"
+            android:maxHeight="180dp"
+            android:minHeight="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:textColor="@color/color_950000"
+            android:textSize="16sp" />
+    </ScrollView>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/update_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_dialog"
+            android:text="@string/cancel"
+            android:textColor="@color/color_950000"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <com.qtt.jinrong.ui.widget.LineVerticalView
+            android:id="@+id/line"
+            android:visibility="gone"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/update_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_dialog"
+            android:text="@string/upgrade"
+            android:textColor="@color/color_950000"
+            android:textSize="14sp" />
+    </LinearLayout>
 
 </LinearLayout>

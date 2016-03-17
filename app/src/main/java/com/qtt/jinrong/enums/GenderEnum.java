@@ -30,10 +30,11 @@ public enum GenderEnum {
         return titles;
     }
 
-    public static GenderEnum find(int code) {
+    public static GenderEnum find(Integer code) {
+        if(code == null) return null;
         GenderEnum[] enums = GenderEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

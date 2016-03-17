@@ -15,6 +15,12 @@
     <string name="save">保存</string>
     <string name="age">年龄</string>
     <string name="next">下一步</string>
+    <string name="upgrade">立即更新</string>
+
+    <!-- download -->
+    <string name="storage_unable">手机外部存储不可用</string>
+    <string name="download_text">%sAPP下载中...</string>
+    <string name="download_over">%s下载完成，点击安装</string>
 
     <!-- main -->
     <string name="main_recommend">推荐</string>

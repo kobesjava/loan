@@ -6,20 +6,21 @@ package com.qtt.jinrong.bean.account;
 public class BaseInfoModel {
 
     private String username;
-
     private Integer gender;
-
     private Integer age;
-
     private String idNumber;
-
     private Integer registerProvince;
-
     private Integer registerCity;
-
     private String registerAddr;
-
     private Integer marriage;
+    //配偶月收入
+    private Integer spouseMonthIncome;
+    //配偶能否出面担保/签字
+    private Integer spouseGuarantee;
+    //配偶信用情况
+    private Integer spouseCreditSituation;
+    //配偶逾期情况
+    private Integer spouseOverdueSituation;
 
     public String getUsername() {
         return username;
@@ -83,5 +84,37 @@ public class BaseInfoModel {
 
     public void setMarriage(Integer marriage) {
         this.marriage = marriage;
+    }
+
+    public Integer getSpouseMonthIncome() {
+        return spouseMonthIncome;
+    }
+
+    public void setSpouseMonthIncome(Integer spouseMonthIncome) {
+        this.spouseMonthIncome = spouseMonthIncome;
+    }
+
+    public Integer getSpouseGuarantee() {
+        return spouseGuarantee;
+    }
+
+    public void setSpouseGuarantee(Integer spouseGuarantee) {
+        this.spouseGuarantee = spouseGuarantee;
+    }
+
+    public Integer getSpouseCreditSituation() {
+        return spouseCreditSituation;
+    }
+
+    public void setSpouseCreditSituation(Integer spouseCreditSituation) {
+        this.spouseCreditSituation = spouseCreditSituation;
+    }
+
+    public Integer getSpouseOverdueSituation() {
+        return spouseOverdueSituation;
+    }
+
+    public void setSpouseOverdueSituation(Integer spouseOverdueSituation) {
+        this.spouseOverdueSituation = spouseOverdueSituation;
     }
 }

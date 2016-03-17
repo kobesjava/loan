@@ -67,6 +67,10 @@
         <activity android:name=".ui.activity.web.WebViewActivity_"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.user.UpgradeActivity_"
+            android:theme="@style/TransparentTheme"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.user.LoginActivity_"
             android:screenOrientation="portrait"/>
 

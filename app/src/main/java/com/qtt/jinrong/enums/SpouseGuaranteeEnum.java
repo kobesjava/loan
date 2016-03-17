@@ -30,10 +30,11 @@ public enum SpouseGuaranteeEnum {
         return vals;
     }
 
-    public static SpouseGuaranteeEnum find(int code) {
+    public static SpouseGuaranteeEnum find(Integer code) {
+        if(code == null) return null;
         SpouseGuaranteeEnum[] enums = SpouseGuaranteeEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

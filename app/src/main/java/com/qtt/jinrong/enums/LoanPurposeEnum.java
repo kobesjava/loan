@@ -51,10 +51,11 @@ public enum LoanPurposeEnum {
         return vals;
     }
 
-    public static LoanPurposeEnum find(int code) {
+    public static LoanPurposeEnum find(Integer code) {
+        if(code == null) return null;
         LoanPurposeEnum[] enums = LoanPurposeEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

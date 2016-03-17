@@ -158,8 +158,8 @@ public class HousePropertySaveRequest implements IRequest {
         map.put("userId",userId);
         map.put("houseInfo",houseInfo);
 
-        HousePropertyEnum hpEnum = HousePropertyEnum.find(houseInfo);
-        if(hpEnum == null || hpEnum.equals(HousePropertyEnum.无房产)) return map;
+        //HousePropertyEnum hpEnum = HousePropertyEnum.find(houseInfo);
+        //if(hpEnum == null || hpEnum.equals(HousePropertyEnum.无房产)) return map;
 
         map.put("district",district);
         map.put("addr", addr);
@@ -170,10 +170,10 @@ public class HousePropertySaveRequest implements IRequest {
         map.put("evaluation",evaluation);
         map.put("mortgage",mortgage);
 
-        HousePropertyMortgageSituationEnum hpmsEnum = HousePropertyMortgageSituationEnum.find(mortgage);
-        if(hpmsEnum == null || hpmsEnum.equals(HousePropertyMortgageSituationEnum.未被抵押无按揭)) {
-            return map;
-        }
+        //HousePropertyMortgageSituationEnum hpmsEnum = HousePropertyMortgageSituationEnum.find(mortgage);
+        //if(hpmsEnum == null || hpmsEnum.equals(HousePropertyMortgageSituationEnum.未被抵押无按揭)) {
+        //    return map;
+        //}
 
         map.put("loanBalance",loanBalance);
         map.put("sale",sale);

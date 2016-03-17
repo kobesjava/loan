@@ -145,18 +145,15 @@ public class DemandsActivity extends BaseSelectActivity implements IDemandsInfoV
         if(model.getLoMoney() != null) amountEdit.setText(String.valueOf(model.getLoMoney()));
         if(model.getLoExpires() != null) termEdit.setText(String.valueOf(model.getLoExpires()));
         if(!TextUtils.isEmpty(model.getLoDate())) mTimeText.setText(model.getLoDate());
-        if(model.getLoPurpose() != null) {
-            LoanPurposeEnum loanPurposeEnum = LoanPurposeEnum.find(model.getLoPurpose());
-            if(loanPurposeEnum != null) mPurposeText.setText(loanPurposeEnum.getTitle());
-        }
-        if(model.getLoPaymentSrc() != null) {
-            RepaymentSourceEnum repaymentSourceEnum = RepaymentSourceEnum.find(model.getLoPaymentSrc());
-            if(repaymentSourceEnum != null) mRepaymentSource.setText(repaymentSourceEnum.name());
-        }
-        if(model.getLoPaymentWay() != null) {
-            RepayWayEnum repayWayEnum = RepayWayEnum.find(model.getLoPaymentWay());
-            if(repayWayEnum != null) mRepayWayText.setText(repayWayEnum.name());
-        }
+
+        LoanPurposeEnum loanPurposeEnum = LoanPurposeEnum.find(model.getLoPurpose());
+        if(loanPurposeEnum != null) mPurposeText.setText(loanPurposeEnum.getTitle());
+
+        RepaymentSourceEnum repaymentSourceEnum = RepaymentSourceEnum.find(model.getLoPaymentSrc());
+        if(repaymentSourceEnum != null) mRepaymentSource.setText(repaymentSourceEnum.name());
+
+        RepayWayEnum repayWayEnum = RepayWayEnum.find(model.getLoPaymentWay());
+        if(repayWayEnum != null) mRepayWayText.setText(repayWayEnum.name());
     }
 
     @Override

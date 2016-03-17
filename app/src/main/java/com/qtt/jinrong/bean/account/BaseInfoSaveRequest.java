@@ -11,22 +11,23 @@ import java.util.Map;
 public class BaseInfoSaveRequest implements IRequest {
 
     private String userId;
-
     private String username;
-
     private Integer gender;
-
     private Integer age;
-
     private String idNumber;
-
     private Integer registerProvince;
-
     private Integer registerCity;
-
     private String registerAddr;
-
+    //婚姻情况
     private Integer marriage;
+    //配偶月收入
+    private Integer spouseMonthIncome;
+    //配偶能否出面担保/签字
+    private Integer spouseGuarantee;
+    //配偶信用情况
+    private Integer spouseCreditSituation;
+    //配偶逾期情况
+    private Integer spouseOverdueSituation;
 
     public String getUserId() {
         return userId;
@@ -100,6 +101,38 @@ public class BaseInfoSaveRequest implements IRequest {
         this.marriage = marriage;
     }
 
+    public Integer getSpouseMonthIncome() {
+        return spouseMonthIncome;
+    }
+
+    public void setSpouseMonthIncome(Integer spouseMonthIncome) {
+        this.spouseMonthIncome = spouseMonthIncome;
+    }
+
+    public Integer getSpouseGuarantee() {
+        return spouseGuarantee;
+    }
+
+    public void setSpouseGuarantee(Integer spouseGuarantee) {
+        this.spouseGuarantee = spouseGuarantee;
+    }
+
+    public Integer getSpouseCreditSituation() {
+        return spouseCreditSituation;
+    }
+
+    public void setSpouseCreditSituation(Integer spouseCreditSituation) {
+        this.spouseCreditSituation = spouseCreditSituation;
+    }
+
+    public Integer getSpouseOverdueSituation() {
+        return spouseOverdueSituation;
+    }
+
+    public void setSpouseOverdueSituation(Integer spouseOverdueSituation) {
+        this.spouseOverdueSituation = spouseOverdueSituation;
+    }
+
     @Override
     public Map<String, Object> getParams() {
         Map<String, Object> map = new HashMap<>();
@@ -112,6 +145,10 @@ public class BaseInfoSaveRequest implements IRequest {
         map.put("registerCity",registerCity);
         map.put("registerAddr",registerAddr);
         map.put("marriage",marriage);
+        map.put("spouseMonthIncome",spouseMonthIncome);
+        map.put("spouseGuarantee",spouseGuarantee);
+        map.put("spouseCreditSituation",spouseCreditSituation);
+        map.put("spouseOverdueSituation",spouseOverdueSituation);
         return map;
     }
 }

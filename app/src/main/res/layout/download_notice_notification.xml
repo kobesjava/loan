@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="@dimen/margin_step_30"
+        android:layout_height="@dimen/margin_step_30"
+        android:layout_margin="@dimen/margin_step_10"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/text_14_333333"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/margin_step_0"
+            android:layout_weight="1.0"
+            android:gravity="left|bottom" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/margin_step_0"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvSize"
+                style="@style/text_14_666666"
+                android:layout_width="@dimen/margin_step_40"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_step_5" />
+
+            <ProgressBar
+                android:id="@+id/pbDownLoad"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/margin_step_16"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tvSize"
+                android:max="100"
+                android:progressDrawable="@drawable/download_progress_drawable" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

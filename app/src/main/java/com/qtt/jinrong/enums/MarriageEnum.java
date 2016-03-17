@@ -37,10 +37,11 @@ public enum  MarriageEnum {
         return titles;
     }
 
-    public static MarriageEnum find(int code) {
+    public static MarriageEnum find(Integer code) {
+        if(code == null) return null;
         MarriageEnum[] enums = MarriageEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

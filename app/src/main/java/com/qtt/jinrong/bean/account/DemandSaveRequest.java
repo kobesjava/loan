@@ -11,17 +11,17 @@ import java.util.Map;
 public class DemandSaveRequest implements IRequest {
 
     private String userId;
-
+    //贷款金额
     private Integer loMoney;
-
+    //贷款期限
     private Integer loExpires;
-
+    //用款时间
     private String loDate;
-
+    //贷款用途
     private Integer loPurpose;
-
+    //还款来源
     private Integer loPaymentSrc;
-
+    //还款方式
     private Integer loPaymentWay;
 
     public String getUserId() {

@@ -10,11 +10,15 @@ public class Api {
 
     private static String ROOT_URL = AppConfig.getRootUrl();
 
+    private static final String MOUDLE_APP_PATH = "/app";
     private static final String MOUDLE_AD_PATH = "/advert";
     private static final String MOUDLE_LOAN_PATH = "/sloan";
     private static final String MOUDLE_CREDIT_PATH = "/credit";
     private static final String MOUDLE_USER_PATH = "/user";
     private static final String MOUDLE_ACCOUNT_PATH = "/account";
+
+    /** 检查更新 **/
+    public final static String URL_APP_UPGRADE = ROOT_URL + MOUDLE_APP_PATH + "/upgrade.do";
 
 
     /**  滚动栏  **/

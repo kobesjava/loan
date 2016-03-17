@@ -66,11 +66,11 @@ public enum ProvinceEnum {
         return vals;
     }
 
-    public static ProvinceEnum find(int code) {
+    public static ProvinceEnum find(Integer code) {
+        if(code == null) return null;
         ProvinceEnum[] enums = ProvinceEnum.values();
-        List<String> vals = new ArrayList<>();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

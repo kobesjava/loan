@@ -11,13 +11,13 @@ import java.util.Map;
 public class OtherPropertySaveRequest implements IRequest {
 
     private String userId;
-
+    //其他资产名称
     private String assetName;
-
+    //持有年限
     private Integer assetAge;
-
+    //资产详情
     private String assetDetail;
-
+    //市场价值
     private Integer assetPrice;
 
     public String getUserId() {

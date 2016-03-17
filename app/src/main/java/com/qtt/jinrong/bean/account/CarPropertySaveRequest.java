@@ -139,7 +139,7 @@ public class CarPropertySaveRequest implements IRequest,Cloneable {
         map.put("userId",userId);
         map.put("car",car);
 
-        if(car == null || car.intValue() == CarPropertyEnum.无车产.getCode()) return map;
+        //if(car == null || car.intValue() == CarPropertyEnum.无车产.getCode()) return map;
 
         map.put("carBrand",carBrand);
         map.put("carNo",carNo);
@@ -150,10 +150,10 @@ public class CarPropertySaveRequest implements IRequest,Cloneable {
         map.put("carRange",carRange);
         map.put("carMortgage",carMortgage);
 
-        CarMortgageSituationEnum mEnum = CarMortgageSituationEnum.find(carMortgage);
-        if(mEnum != null && !mEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) {
+        //CarMortgageSituationEnum mEnum = CarMortgageSituationEnum.find(carMortgage);
+        //if(mEnum != null && !mEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) {
             map.put("carLoanBalance",carLoanBalance);
-        }
+        //}
 
         return map;
     }

@@ -73,11 +73,9 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
     @ViewById(R.id.baseSpouseOverdueSituation)
     TextView baseSpouseOverdueSituationText;
 
-
     IBaseInfoPresenter mPresenter;
     ProvinceEnum provinceEnum;
     BaseInfoSaveRequest request;
-    BaseInfoModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +148,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             public void onItemSelect(int position, String val) {
                 mMarriageText.setText(val);
                 MarriageEnum mEnum = MarriageEnum.values()[position];
+                request.setMarriage(mEnum.getCode());
                 if(mEnum.equals(MarriageEnum.已婚)) {
                     marriageMore.setVisibility(View.VISIBLE);
                 } else {
@@ -166,6 +165,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             @Override
             public void onItemSelect(int position, String val) {
                 baseSpouseGuaranteeText.setText(val);
+                request.setSpouseGuarantee(SpouseGuaranteeEnum.values()[position].getCode());
             }
         });
         show();
@@ -178,6 +178,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             public void onItemSelect(int position, String val) {
                 baseSpouseCreditSituationText.setText(val);
                 CreditSituationEnum mEnum = CreditSituationEnum.values()[position];
+                request.setSpouseCreditSituation(mEnum.getCode());
                 if(mEnum.equals(CreditSituationEnum.有逾期)) baseSpouseOverdueSituationView.setVisibility(View.VISIBLE);
                 else baseSpouseOverdueSituationView.setVisibility(View.GONE);
             }
@@ -191,23 +192,21 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             @Override
             public void onItemSelect(int position, String val) {
                 baseSpouseOverdueSituationText.setText(val);
+                request.setSpouseOverdueSituation(CreditOverdueEnum.values()[position].getCode());
             }
         });
         show();
     }
 
 
-
     /*** IBaseInfoView ***/
     @Override
     public void onRequest(BaseInfoModel model) {
         if(model == null) return;
-        this.model = model;
 
         if(!TextUtils.isEmpty(model.getUsername())) nameText.setText(model.getUsername());
 
-        GenderEnum gEnum = null;
-        if(model.getGender() != null) gEnum = GenderEnum.find(model.getGender());
+        GenderEnum gEnum = GenderEnum.find(model.getGender());
         if(gEnum != null) {
             if(gEnum.equals(GenderEnum.男)) {
                 sexToggleBtn.setChecked(true);
@@ -220,19 +219,16 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
 
         if(!TextUtils.isEmpty(model.getIdNumber())) idsText.setText(model.getIdNumber());
 
-        ProvinceEnum provinceEnum = null;
-        if(model.getRegisterProvince() != null) provinceEnum = ProvinceEnum.find(model.getRegisterProvince());
+        ProvinceEnum provinceEnum = ProvinceEnum.find(model.getRegisterProvince());
         if(provinceEnum != null) {
             this.provinceEnum = provinceEnum;
             mProvinceText.setText(provinceEnum.name());
         }
-        Integer cityId = model.getRegisterCity();
-        String city = DistrictUtil.getCity(getApplication(),this.provinceEnum,cityId);
+        String city = DistrictUtil.getCity(getApplication(),this.provinceEnum,model.getRegisterCity());
         if(!TextUtils.isEmpty(city)) mCityText.setText(city);
         if(!TextUtils.isEmpty(model.getRegisterAddr())) addressText.setText(model.getRegisterAddr());
 
-        MarriageEnum mEnum = null;
-        if(model.getMarriage() != null) mEnum = MarriageEnum.find(model.getMarriage());
+        MarriageEnum mEnum = MarriageEnum.find(model.getMarriage());
         if(mEnum != null) {
             mMarriageText.setText(mEnum.getTitle());
             if (mEnum.equals(MarriageEnum.已婚)) {
@@ -241,6 +237,24 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
                 marriageMore.setVisibility(View.GONE);
             }
         }
+
+        if(model.getSpouseMonthIncome() != null) baseSpouseMonthIncomeEdit.setText(String.valueOf(model.getSpouseMonthIncome()));
+        SpouseGuaranteeEnum sgEnum = SpouseGuaranteeEnum.find(model.getSpouseGuarantee());
+        if(sgEnum != null) {
+            baseSpouseGuaranteeText.setText(sgEnum.name());
+        }
+        CreditSituationEnum csEnum = CreditSituationEnum.find(model.getSpouseCreditSituation());
+        if(csEnum != null) {
+            baseSpouseCreditSituationText.setText(csEnum.getTitle());
+            if(csEnum.equals(CreditSituationEnum.有逾期)) {
+                baseSpouseOverdueSituationView.setVisibility(View.VISIBLE);
+            }
+        }
+        CreditOverdueEnum coEnum = CreditOverdueEnum.find(model.getSpouseOverdueSituation());
+        if(coEnum != null) {
+            baseSpouseOverdueSituationText.setText(coEnum.name());
+        }
+
     }
 
     @Override
@@ -253,8 +267,9 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
         if(!TextUtils.isEmpty(nameText.getString())) request.setUsername(nameText.getString());
         request.setGender(sexToggleBtn.isChecked()?GenderEnum.男.getCode():GenderEnum.女.getCode());
         if(!TextUtils.isEmpty(ageText.getString())) request.setAge(Integer.valueOf(ageText.getString()));
-        if(!TextUtils.isEmpty(idsText.getString())) request.setIdNumber(idsText.getString().replaceAll(" ",""));
+        if(!TextUtils.isEmpty(idsText.getString())) request.setIdNumber(idsText.getString().replaceAll(" ", ""));
         if(!TextUtils.isEmpty(addressText.getString())) request.setRegisterAddr(addressText.getString());
+        if(!TextUtils.isEmpty(baseSpouseMonthIncomeEdit.getString())) request.setSpouseMonthIncome(Integer.valueOf(baseSpouseMonthIncomeEdit.getString()));
         return request;
     }
     /*** IBaseInfoView ***/

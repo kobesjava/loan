@@ -13,11 +13,13 @@ import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.app.MyApplication;
+import com.qtt.jinrong.bean.app.UpgradeModel;
 import com.qtt.jinrong.bean.event.LoginExpired;
 import com.qtt.jinrong.bean.event.TabEvent;
 import com.qtt.jinrong.config.Constants;
 import com.qtt.jinrong.presenter.IMainPresenter;
 import com.qtt.jinrong.presenter.impl.MainPresenterImpl;
+import com.qtt.jinrong.ui.activity.user.UpgradeActivity;
 import com.qtt.jinrong.ui.fragment.main.CreditFragment;
 import com.qtt.jinrong.ui.fragment.main.LoanFragment;
 import com.qtt.jinrong.ui.fragment.main.MineFragment;
@@ -58,6 +60,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         iMainPresenter = new MainPresenterImpl(this);
+        iMainPresenter.checkUpgrade();
     }
 
     @Override
@@ -187,6 +190,12 @@ public class MainActivity extends BaseActivity implements IMainView {
 
 
     /************* IMainView **********/
+    @Override
+    public void upgrade(UpgradeModel model) {
+        Intent intent = new Intent(MyApplication.getInstance(), GeneratedClassUtils.get(UpgradeActivity.class));
+        intent.putExtra(UpgradeActivity.INTENT_UPGRADE,model);
+        startActivity(intent);
+    }
     /************* IMainView **********/
 
 }

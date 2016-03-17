@@ -30,10 +30,11 @@ public enum RepayWayEnum {
         return vals;
     }
 
-    public static RepayWayEnum find(int code) {
+    public static RepayWayEnum find(Integer code) {
+        if(code == null) return null;
         RepayWayEnum[] enums = RepayWayEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

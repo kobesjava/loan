@@ -131,28 +131,28 @@ public class CreditPropertySaveRequest implements IRequest {
         map.put("userId",userId);
         map.put("creInfo",creInfo);
 
-        CreditSituationEnum csEnum = CreditSituationEnum.find(creInfo);
-        if(csEnum != null && csEnum.equals(CreditSituationEnum.有逾期)) {
+        //CreditSituationEnum csEnum = CreditSituationEnum.find(creInfo);
+        //if(csEnum != null && csEnum.equals(CreditSituationEnum.有逾期)) {
             map.put("overdue",overdue);
-        }
+        //}
 
         map.put("creMoney",creMoney);
 
-        CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(creMoney);
-        if(ctlEnum != null && !ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
+        //CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(creMoney);
+        //if(ctlEnum != null && !ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
             map.put("creNum",creNum);
             map.put("creBank",creBank);
             map.put("creUsed",creUsed);
-        }
+        //}
 
         map.put("creDebt",creDebt);
 
-        CreditDebtSituationEnum cdsEnum = CreditDebtSituationEnum.find(creDebt);
-        if(cdsEnum != null && !cdsEnum.equals(CreditDebtSituationEnum.无欠款)) {
+        //CreditDebtSituationEnum cdsEnum = CreditDebtSituationEnum.find(creDebt);
+        //if(cdsEnum != null && !cdsEnum.equals(CreditDebtSituationEnum.无欠款)) {
             map.put("creDebtName",creDebtName);
             map.put("creDebtAmt",creDebtAmt);
             map.put("creMonthRepay",creMonthRepay);
-        }
+        //}
 
         return map;
     }

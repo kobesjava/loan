@@ -225,13 +225,12 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
         HousePropertyEnum hpEnum = HousePropertyEnum.find(model.getHouseInfo());
         if(hpEnum == null) return;
 
-        request.setHouseInfo(hpEnum.getCode());
         mHousePropertyText.setText(hpEnum.getTitle());
         if (hpEnum.equals(HousePropertyEnum.无房产)) {
             hpMore.setVisibility(View.GONE);
-            return;
+        }else {
+            hpMore.setVisibility(View.VISIBLE);
         }
-        hpMore.setVisibility(View.VISIBLE);
 
         HousePropertyPositionEnum hppEnum = HousePropertyPositionEnum.find(model.getDistrict());
         if(hppEnum != null) hpPositionText.setText(hppEnum.name());
@@ -255,14 +254,15 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
             hpMortgageSituationText.setText(hpmsEnum.getTitle());
             if(!hpmsEnum.equals(HousePropertyMortgageSituationEnum.未被抵押无按揭)) {
                 hpMortgageSituationMore.setVisibility(View.VISIBLE);
-                if(model.getLoanBalance() != null) hpMortgageLoanBalanceEdit.setText(String.valueOf(model.getLoanBalance()));
-                if(model.getSale() != null) hpMortgageDiscountSpaceEdit.setText(String.valueOf(model.getSale()));
-                MonthRepayEnum mpEnum = MonthRepayEnum.find(model.getMonthRepay());
-                if(mpEnum != null) hpMortgageMonthRePayText.setText(mpEnum.getTitle());
-                MonthsRepayedEnum mrEnum = MonthsRepayedEnum.find(model.getRepayMonths());
-                if(mrEnum != null) hpMortgageHasRePayMonthsText.setText(mrEnum.getTitle());
             }
         }
+
+        if(model.getLoanBalance() != null) hpMortgageLoanBalanceEdit.setText(String.valueOf(model.getLoanBalance()));
+        if(model.getSale() != null) hpMortgageDiscountSpaceEdit.setText(String.valueOf(model.getSale()));
+        MonthRepayEnum mpEnum = MonthRepayEnum.find(model.getMonthRepay());
+        if(mpEnum != null) hpMortgageMonthRePayText.setText(mpEnum.getTitle());
+        MonthsRepayedEnum mrEnum = MonthsRepayedEnum.find(model.getRepayMonths());
+        if(mrEnum != null) hpMortgageHasRePayMonthsText.setText(mrEnum.getTitle());
     }
 
     @Override

@@ -188,13 +188,12 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
         CarPropertyEnum cpEnum = CarPropertyEnum.find(model.getCar());
         if(cpEnum == null) return;
 
-        request.setCar(cpEnum.getCode());
         mCarPropertyText.setText(cpEnum.name());
         if(cpEnum.equals(CarPropertyEnum.无车产)) {
             cpMore.setVisibility(View.GONE);
-            return;
+        } else {
+            cpMore.setVisibility(View.VISIBLE);
         }
-        cpMore.setVisibility(View.VISIBLE);
 
         if(!TextUtils.isEmpty(model.getCarBrand())) cpBrandEdit.setText(model.getCarBrand());
         if(!TextUtils.isEmpty(model.getCarNo())) cpLicenseNumEdit.setText(model.getCarNo());
@@ -218,9 +217,9 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
             cpMortgageSituationText.setText(cmsEnum.getTitle());
             if(!cmsEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) {
                 cpMortgageSituationMore.setVisibility(View.VISIBLE);
-                if(model.getCarLoanBalance() != null) cpLoanBalanceEdit.setText(String.valueOf(model.getCarLoanBalance()));
             }
         }
+        if(model.getCarLoanBalance() != null) cpLoanBalanceEdit.setText(String.valueOf(model.getCarLoanBalance()));
     }
 
     @Override
