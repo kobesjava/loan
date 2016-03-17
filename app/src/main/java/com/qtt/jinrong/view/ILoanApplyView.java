@@ -19,4 +19,8 @@ public interface ILoanApplyView extends IView {
      */
     void onApply(Response response);
 
+    /**
+     * 获取资质审核信息返回处理
+     */
+    void onRequestVerify();
 }

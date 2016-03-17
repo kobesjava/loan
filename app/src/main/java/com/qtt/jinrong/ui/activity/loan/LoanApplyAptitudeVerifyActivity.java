@@ -362,57 +362,122 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     @Click(R.id.btnNext)
     void clickBtnNext() {
-        if(request.getCapacity() == null) {
+        IdentityEnum mEnums = IdentityEnum.find(request.getCapacity());
+        if(mEnums == null) {
             ToastUtil.showShortToast("请选择身份");
             return;
         }
-        IdentityEnum mEnums = IdentityEnum.find(request.getCapacity());
         if(mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
             if(request.getLegal() == null) {
                 ToastUtil.showShortToast("请选择法人或股东");
                 return;
             }
             if(request.getCompanyPosition() == null) {
-                ToastUtil.showShortToast("请选择法人或股东");
+                ToastUtil.showShortToast("请选择企业经营地");
                 return;
             }
             if(request.getOperatorYear() == null) {
-                ToastUtil.showShortToast("请选择法人或股东");
+                ToastUtil.showShortToast("请选择经营年限");
                 return;
             }
         } else {
-
+            if(request.getCurrSeniority() == null) {
+                ToastUtil.showShortToast("请选择现单位工龄");
+                return;
+            }
+            if(request.getPayWay() == null) {
+                ToastUtil.showShortToast("请选择收入发放方式");
+                return;
+            }
+            if(TextUtils.isEmpty(monthSalaryEdit.getString())) {
+                ToastUtil.showShortToast("请填写月均总收入");
+                return;
+            }
+            if(request.getSocialSecurity() == null) {
+                ToastUtil.showShortToast("请选择社保和公积金");
+                return;
+            }
         }
 
         Integer age = 0;
-        try {
+        if(!TextUtils.isEmpty(mAgeEdit.getString())) {
             age = Integer.valueOf(mAgeEdit.getString());
-        }catch (Exception e) {
-
         }
-        if(age == null || age.intValue() == 0) {
-            ToastUtil.showShortToast("请选择法人或股东");
+        if(age.intValue() == 0) {
+            ToastUtil.showShortToast("请填写年龄");
             return;
         } else {
             request.setAge(age);
         }
 
-        if(request.getOperatorYear() == null) {
-            ToastUtil.showShortToast("请选择法人或股东");
+        CreditSituationEnum scEnum = CreditSituationEnum.find(request.getCredit());
+        if(scEnum == null) {
+            ToastUtil.showShortToast("请选择信用情况");
             return;
+        }
+        if(scEnum.equals(CreditSituationEnum.有逾期)) {
+            if(request.getOverdue() == null) {
+                ToastUtil.showShortToast("请选择逾期情况");
+                return;
+            }
+        }
+
+        CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(request.getCreMoney());
+        if(ctlEnum == null) {
+            ToastUtil.showShortToast("请选择信用卡总额度");
+            return;
+        }
+        if(!ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
+            if(request.getCreUsed() == null) {
+                ToastUtil.showShortToast("请选择已使用额度");
+                return;
+            }
+        }
+
+        HousePropertyEnum hpEnum = HousePropertyEnum.find(request.getHouse());
+        if(hpEnum == null) {
+            ToastUtil.showShortToast("请选择房产信息");
+            return;
+        }
+        if(!hpEnum.equals(HousePropertyEnum.无房产)) {
+            if(request.getDistrict() == null) {
+                ToastUtil.showShortToast("请选择房产位置");
+                return;
+            }
+            if(request.getMortgage() == null) {
+                ToastUtil.showShortToast("请选择房产抵押/按揭情况");
+                return;
+            }
+        }
+
+        CarPropertyEnum cpEnum = CarPropertyEnum.find(request.getCar());
+        if(cpEnum == null) {
+            ToastUtil.showShortToast("请选择车产信息");
+            return;
+        }
+        if(cpEnum.equals(CarPropertyEnum.有车产)) {
+            if(request.getLinscebelong() == null) {
+                ToastUtil.showShortToast("请选择牌照归属地");
+                return;
+            }
         }
 
         mPresenter.apply();
     }
 
-
     /*** ILoanApplyView ***/
     @Override
+    public void onRequestVerify() {
+
+    }
+
+    @Override
     public LoanApplyRequest getReauest() {
-        if(!TextUtils.isEmpty(mAgeEdit.getString()))
-            request.setAge(Integer.valueOf(mAgeEdit.getString()));
         if(!TextUtils.isEmpty(monthSalaryEdit.getString()))
             request.setSalary(Integer.valueOf(monthSalaryEdit.getString()));
+        if(!TextUtils.isEmpty(mAgeEdit.getString()))
+            request.setAge(Integer.valueOf(mAgeEdit.getString()));
+
         return request;
     }
 

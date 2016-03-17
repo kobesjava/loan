@@ -6,6 +6,11 @@ package com.qtt.jinrong.presenter;
 public interface ILoanApplyPresenter extends IPresenter {
 
     /**
+     * 获取资质审核信息
+     */
+    void requestVerify();
+
+    /**
      * 申请贷款
      */
     void apply();

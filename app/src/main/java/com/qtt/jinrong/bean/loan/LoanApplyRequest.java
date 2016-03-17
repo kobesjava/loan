@@ -25,6 +25,7 @@ public class LoanApplyRequest implements IRequest{
 
     /** 身份*/
     private Integer capacity;
+
     /** 法人或股东*/
     private Integer legal;
     /** 企业经营地*/
@@ -238,44 +239,44 @@ public class LoanApplyRequest implements IRequest{
         map.put("applyLimi",applyLimi);
 
         map.put("capacity",capacity);
-        IdentityEnum mEnums = IdentityEnum.find(capacity);
-        if(mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
+        //IdentityEnum mEnums = IdentityEnum.find(capacity);
+        //if(mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
             map.put("legal",legal);
             map.put("companyPosition",companyPosition);
             map.put("operatorYear",operatorYear);
-        } else {
+        //} else {
             map.put("currSeniority",currSeniority);
             map.put("payWay",payWay);
             map.put("salary",salary);
             map.put("socialSecurity",socialSecurity);
-        }
+        //}
 
         map.put("age",age);
 
         map.put("credit",credit);
-        CreditSituationEnum mEnum = CreditSituationEnum.find(credit);
-        if(mEnum != null && mEnum.equals(CreditSituationEnum.有逾期)) {
+        //CreditSituationEnum mEnum = CreditSituationEnum.find(credit);
+        //if(mEnum != null && mEnum.equals(CreditSituationEnum.有逾期)) {
             map.put("overdue",overdue);
-        }
+        //}
 
         map.put("creMoney",creMoney);
-        CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(creMoney);
-        if(ctlEnum != null && !ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
+        //CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(creMoney);
+        //if(ctlEnum != null && !ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
             map.put("creUsed",creUsed);
-        }
+        //}
 
         map.put("house",house);
-        HousePropertyEnum hpEnum = HousePropertyEnum.find(house);
-        if(hpEnum != null && !hpEnum.equals(HousePropertyEnum.无房产)) {
+        //HousePropertyEnum hpEnum = HousePropertyEnum.find(house);
+        //if(hpEnum != null && !hpEnum.equals(HousePropertyEnum.无房产)) {
             map.put("district",district);
             map.put("mortgage",mortgage);
-        }
+        //}
 
         map.put("car",car);
-        CarPropertyEnum cpEnum = CarPropertyEnum.find(car);
-        if(cpEnum != null && cpEnum.equals(CarPropertyEnum.有车产)) {
+        //CarPropertyEnum cpEnum = CarPropertyEnum.find(car);
+        //if(cpEnum != null && cpEnum.equals(CarPropertyEnum.有车产)) {
             map.put("linscebelong",linscebelong);
-        }
+        //}
 
         return map;
     }

@@ -21,6 +21,11 @@ public class LoanApplyPresenterImpl implements ILoanApplyPresenter {
     }
 
     @Override
+    public void requestVerify() {
+
+    }
+
+    @Override
     public void apply() {
         mView.showLoading();
         mBs.apply(mView.getContext(), null, new MCListenerObj.IObjResListener<Response>() {
