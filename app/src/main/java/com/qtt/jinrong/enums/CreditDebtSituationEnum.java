@@ -33,10 +33,11 @@ public enum CreditDebtSituationEnum {
         return vals;
     }
 
-    public static CreditDebtSituationEnum find(int code) {
+    public static CreditDebtSituationEnum find(Integer code) {
+        if(code == null) return null;
         CreditDebtSituationEnum[] enums = CreditDebtSituationEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

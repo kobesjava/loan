@@ -48,4 +48,14 @@ public class LoanReqsAction {
         getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY,new HashMap<String, Object>(),listener,Response.class);
     }
 
+    /**
+     * 获取贷款产品申请列表
+     * @param context
+     * @param request
+     * @param listener
+     */
+    public static void requestApplyList(Context context,IRequest request,MCListenerObj.IObjResListener<LoanListResponse> listener) {
+        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_LIST,request.getParams(),listener,LoanListResponse.class);
+    }
+
 }

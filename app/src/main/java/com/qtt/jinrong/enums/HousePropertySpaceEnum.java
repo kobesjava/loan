@@ -42,10 +42,11 @@ public enum HousePropertySpaceEnum {
         return titles;
     }
 
-    public static HousePropertySpaceEnum find(int code) {
+    public static HousePropertySpaceEnum find(Integer code) {
+        if(code == null) return null;
         HousePropertySpaceEnum[] enums = HousePropertySpaceEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

@@ -7,27 +7,18 @@ import android.os.Parcel;
  */
 public class LoanApplyModel extends LoanModel {
 
-    private String applyId;
-
+    //金额
     private int aomount;
-
-    private String term;
-
+    //期限
+    private String applyLimi;
+    //状态
     private String status;
-
-    private String reason;
-
-    private String source;
-
-    private long time;
-
-    public String getApplyId() {
-        return applyId;
-    }
-
-    public void setApplyId(String applyId) {
-        this.applyId = applyId;
-    }
+    //申请来源
+    private String applySrc;
+    //时间
+    private long applyDate;
+    //原因
+    private String handleReason;
 
     public String getStatus() {
         return status;
@@ -35,30 +26,6 @@ public class LoanApplyModel extends LoanModel {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
     }
 
     public int getAomount() {
@@ -69,12 +36,36 @@ public class LoanApplyModel extends LoanModel {
         this.aomount = aomount;
     }
 
-    public String getTerm() {
-        return term;
+    public String getApplyLimi() {
+        return applyLimi;
     }
 
-    public void setTerm(String term) {
-        this.term = term;
+    public void setApplyLimi(String applyLimi) {
+        this.applyLimi = applyLimi;
+    }
+
+    public String getApplySrc() {
+        return applySrc;
+    }
+
+    public void setApplySrc(String applySrc) {
+        this.applySrc = applySrc;
+    }
+
+    public long getApplyDate() {
+        return applyDate;
+    }
+
+    public void setApplyDate(long applyDate) {
+        this.applyDate = applyDate;
+    }
+
+    public String getHandleReason() {
+        return handleReason;
+    }
+
+    public void setHandleReason(String handleReason) {
+        this.handleReason = handleReason;
     }
 
     @Override
@@ -85,13 +76,12 @@ public class LoanApplyModel extends LoanModel {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
-        dest.writeString(this.applyId);
         dest.writeInt(this.aomount);
-        dest.writeString(this.term);
+        dest.writeString(this.applyLimi);
         dest.writeString(this.status);
-        dest.writeString(this.reason);
-        dest.writeString(this.source);
-        dest.writeLong(this.time);
+        dest.writeString(this.applySrc);
+        dest.writeLong(this.applyDate);
+        dest.writeString(this.handleReason);
     }
 
     public LoanApplyModel() {
@@ -99,22 +89,19 @@ public class LoanApplyModel extends LoanModel {
 
     protected LoanApplyModel(Parcel in) {
         super(in);
-        this.applyId = in.readString();
         this.aomount = in.readInt();
-        this.term = in.readString();
+        this.applyLimi = in.readString();
         this.status = in.readString();
-        this.reason = in.readString();
-        this.source = in.readString();
-        this.time = in.readLong();
+        this.applySrc = in.readString();
+        this.applyDate = in.readLong();
+        this.handleReason = in.readString();
     }
 
     public static final Creator<LoanApplyModel> CREATOR = new Creator<LoanApplyModel>() {
-        @Override
         public LoanApplyModel createFromParcel(Parcel source) {
             return new LoanApplyModel(source);
         }
 
-        @Override
         public LoanApplyModel[] newArray(int size) {
             return new LoanApplyModel[size];
         }

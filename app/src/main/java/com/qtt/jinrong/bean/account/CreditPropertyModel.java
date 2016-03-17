@@ -7,6 +7,8 @@ public class CreditPropertyModel {
 
     /** 信用情况*/
     private Integer creInfo;
+    /** 逾期情况*/
+    private Integer overdue;
     /** 信用卡总额度*/
     private Integer creMoney;
     /** 信用卡张数*/
@@ -17,6 +19,12 @@ public class CreditPropertyModel {
     private Integer creUsed;
     /** 欠款情况*/
     private Integer creDebt;
+    /** 欠款机构名称*/
+    private String creDebtName;
+    /** 欠款余额*/
+    private Integer creDebtAmt;
+    /** 月均还款额*/
+    private Integer creMonthRepay;
 
 
     public Integer getCreInfo() {
@@ -65,5 +73,37 @@ public class CreditPropertyModel {
 
     public void setCreDebt(Integer creDebt) {
         this.creDebt = creDebt;
+    }
+
+    public Integer getOverdue() {
+        return overdue;
+    }
+
+    public void setOverdue(Integer overdue) {
+        this.overdue = overdue;
+    }
+
+    public String getCreDebtName() {
+        return creDebtName;
+    }
+
+    public void setCreDebtName(String creDebtName) {
+        this.creDebtName = creDebtName;
+    }
+
+    public Integer getCreDebtAmt() {
+        return creDebtAmt;
+    }
+
+    public void setCreDebtAmt(Integer creDebtAmt) {
+        this.creDebtAmt = creDebtAmt;
+    }
+
+    public Integer getCreMonthRepay() {
+        return creMonthRepay;
+    }
+
+    public void setCreMonthRepay(Integer creMonthRepay) {
+        this.creMonthRepay = creMonthRepay;
     }
 }

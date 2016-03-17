@@ -30,10 +30,11 @@ public enum CarLinscePositionEnum {
         return vals;
     }
 
-    public static CarLinscePositionEnum find(int code) {
+    public static CarLinscePositionEnum find(Integer code) {
+        if(code == null) return null;
         CarLinscePositionEnum[] enums = CarLinscePositionEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

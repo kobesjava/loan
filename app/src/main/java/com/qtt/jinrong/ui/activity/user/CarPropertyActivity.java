@@ -55,6 +55,7 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
     TextView cpYearsText;
     @ViewById(R.id.cpTravelKM)
     TextView cpTravelKMText;
+
     @ViewById(R.id.cpMortgageSituation)
     TextView cpMortgageSituationText;
     @ViewById(R.id.cpMortgageSituationMore)
@@ -184,48 +185,41 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
     /***  ICarPropertyView  ***/
     @Override
     public void onRequest(CarPropertyModel model) {
-        if(model.getCar() != null) {
-            CarPropertyEnum cpEnum = CarPropertyEnum.find(model.getCar());
-            if(cpEnum == null) return;
-            request.setCar(cpEnum.getCode());
-            mCarPropertyText.setText(cpEnum.name());
-            if(cpEnum.equals(CarPropertyEnum.无车产)) {
-                cpMore.setVisibility(View.GONE);
-                return;
-            }
-            cpMore.setVisibility(View.VISIBLE);
-            if(!TextUtils.isEmpty(model.getCarBrand())) cpBrandEdit.setText(model.getCarBrand());
-            if(!TextUtils.isEmpty(model.getCarNo())) cpLicenseNumEdit.setText(model.getCarNo());
-            if(model.getCarBelong() != null) {
-                CarLinscePositionEnum mEnum = CarLinscePositionEnum.find(model.getCarBelong());
-                if(mEnum != null) cpLicensePositionText.setText(mEnum.name());
-            }
-            if(model.getCarPrice() != null) cpPriceBuyEdit.setText(String.valueOf(model.getCarPrice()));
-            if(model.getCarValuation() != null) {
-                CarPropertyAssessedEnum mEnum = CarPropertyAssessedEnum.find(model.getCarBelong());
-                if(mEnum != null) cpAssessedText.setText(mEnum.name());
-            }
-            if(model.getCarAge() != null) {
-                CarAgeEnum mEnum = CarAgeEnum.find(model.getCarAge());
-                if(mEnum != null) cpYearsText.setText(mEnum.name());
-            }
-            if(model.getCarRange() != null) {
-                CarDriveKmEnum mEnum = CarDriveKmEnum.find(model.getCarRange());
-                if(mEnum != null) cpTravelKMText.setText(mEnum.name());
-            }
-            if(model.getCarMortgage() != null) {
-                CarMortgageSituationEnum mEnum = CarMortgageSituationEnum.find(model.getCarMortgage());
-                if(mEnum != null) {
-                    cpMortgageSituationText.setText(mEnum.getTitle());
-                    if(mEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) {
-                        cpMortgageSituationMore.setVisibility(View.GONE);
-                    } else {
-                        cpMortgageSituationMore.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-            if(model.getCarLoanBalance() != null) cpLoanBalanceEdit.setText(String.valueOf(model.getCarLoanBalance()));
+        CarPropertyEnum cpEnum = CarPropertyEnum.find(model.getCar());
+        if(cpEnum == null) return;
 
+        request.setCar(cpEnum.getCode());
+        mCarPropertyText.setText(cpEnum.name());
+        if(cpEnum.equals(CarPropertyEnum.无车产)) {
+            cpMore.setVisibility(View.GONE);
+            return;
+        }
+        cpMore.setVisibility(View.VISIBLE);
+
+        if(!TextUtils.isEmpty(model.getCarBrand())) cpBrandEdit.setText(model.getCarBrand());
+        if(!TextUtils.isEmpty(model.getCarNo())) cpLicenseNumEdit.setText(model.getCarNo());
+
+        CarLinscePositionEnum clpEnum = CarLinscePositionEnum.find(model.getCarBelong());
+        if(clpEnum != null) cpLicensePositionText.setText(clpEnum.name());
+
+        if(model.getCarPrice() != null) cpPriceBuyEdit.setText(String.valueOf(model.getCarPrice()));
+
+        CarPropertyAssessedEnum cpaEnum = CarPropertyAssessedEnum.find(model.getCarBelong());
+        if(cpaEnum != null) cpAssessedText.setText(cpaEnum.name());
+
+        CarAgeEnum caEnum = CarAgeEnum.find(model.getCarAge());
+        if(caEnum != null) cpYearsText.setText(caEnum.name());
+
+        CarDriveKmEnum cdkEnum = CarDriveKmEnum.find(model.getCarRange());
+        if(cdkEnum != null) cpTravelKMText.setText(cdkEnum.name());
+
+        CarMortgageSituationEnum cmsEnum = CarMortgageSituationEnum.find(model.getCarMortgage());
+        if(cmsEnum != null) {
+            cpMortgageSituationText.setText(cmsEnum.getTitle());
+            if(!cmsEnum.equals(CarMortgageSituationEnum.未被抵押无按揭)) {
+                cpMortgageSituationMore.setVisibility(View.VISIBLE);
+                if(model.getCarLoanBalance() != null) cpLoanBalanceEdit.setText(String.valueOf(model.getCarLoanBalance()));
+            }
         }
     }
 

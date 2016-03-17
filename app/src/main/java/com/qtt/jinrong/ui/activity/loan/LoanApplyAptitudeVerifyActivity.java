@@ -13,20 +13,17 @@ import com.qtt.jinrong.bean.loan.LoanApplyRequest;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
-import com.qtt.jinrong.enums.CompanyTypeEnum;
 import com.qtt.jinrong.enums.CreditOverdueEnum;
 import com.qtt.jinrong.enums.CreditSituationEnum;
 import com.qtt.jinrong.enums.CreditTotalLimitEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
 import com.qtt.jinrong.enums.HousePropertyPositionEnum;
-import com.qtt.jinrong.enums.HousePropertySituationEnum;
+import com.qtt.jinrong.enums.HousePropertyMortgageSituationEnum;
 import com.qtt.jinrong.enums.IdentityEnum;
 import com.qtt.jinrong.enums.IncomePayMethodEnum;
-import com.qtt.jinrong.enums.JobTitleEnum;
 import com.qtt.jinrong.enums.LegalPersonEnum;
 import com.qtt.jinrong.enums.OperatorYearsEnum;
-import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
 import com.qtt.jinrong.presenter.ILoanApplyPresenter;
@@ -323,11 +320,11 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     }
     @Click(R.id.housePropertySituaion)
     void clickHousePropertySituaion() {
-        mSelectView.setData(HousePropertySituationEnum.getValues());
+        mSelectView.setData(HousePropertyMortgageSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                HousePropertySituationEnum mEnum = HousePropertySituationEnum.values()[position];
+                HousePropertyMortgageSituationEnum mEnum = HousePropertyMortgageSituationEnum.values()[position];
                 request.setMortgage(mEnum.getCode());
                 housePropertySituaionText.setText(val);
             }

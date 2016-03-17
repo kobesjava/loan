@@ -5,8 +5,8 @@ package com.qtt.jinrong.bean.account;
  */
 public class HousePropertyModel {
 
-    /** 有无车产*/
-    private Integer house;
+    /** 房产情况*/
+    private Integer houseInfo;
     /** 房产地段*/
     private Integer district;
     /** 地址*/
@@ -23,13 +23,53 @@ public class HousePropertyModel {
     private Integer evaluation;
     /** 房产抵押/按揭情况*/
     private Integer mortgage;
+    /** 贷款余额*/
+    private Integer loanBalance;
+    /** 折后空间*/
+    private Integer sale;
+    /** 月还款额*/
+    private Integer monthRepay;
+    /** 已还款月数*/
+    private Integer repayMonths;
 
-    public Integer getHouse() {
-        return house;
+    public Integer getHouseInfo() {
+        return houseInfo;
     }
 
-    public void setHouse(Integer house) {
-        this.house = house;
+    public void setHouseInfo(Integer houseInfo) {
+        this.houseInfo = houseInfo;
+    }
+
+    public Integer getSale() {
+        return sale;
+    }
+
+    public void setSale(Integer sale) {
+        this.sale = sale;
+    }
+
+    public Integer getLoanBalance() {
+        return loanBalance;
+    }
+
+    public void setLoanBalance(Integer loanBalance) {
+        this.loanBalance = loanBalance;
+    }
+
+    public Integer getMonthRepay() {
+        return monthRepay;
+    }
+
+    public void setMonthRepay(Integer monthRepay) {
+        this.monthRepay = monthRepay;
+    }
+
+    public Integer getRepayMonths() {
+        return repayMonths;
+    }
+
+    public void setRepayMonths(Integer repayMonths) {
+        this.repayMonths = repayMonths;
     }
 
     public Integer getDistrict() {

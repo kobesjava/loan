@@ -26,4 +26,10 @@ public class LoanBSImpl implements ILoanBS {
     public void apply(Context context, IRequest iRequest, MCListenerObj.IObjResListener listener) {
         LoanReqsAction.requestLoanProductApply(context, iRequest, listener);
     }
+
+    @Override
+    public void requestApplyList(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj) {
+        LoanReqsAction.requestApplyList(context,request,listenerObj);
+    }
+
 }

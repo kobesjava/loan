@@ -11,17 +11,15 @@ import com.qtt.jinrong.bean.Response;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
-import com.qtt.jinrong.enums.CompanyTypeEnum;
 import com.qtt.jinrong.enums.CreditOverdueEnum;
 import com.qtt.jinrong.enums.CreditSituationEnum;
 import com.qtt.jinrong.enums.CreditTotalLimitEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
+import com.qtt.jinrong.enums.HousePropertyMortgageSituationEnum;
 import com.qtt.jinrong.enums.HousePropertyPositionEnum;
-import com.qtt.jinrong.enums.HousePropertySituationEnum;
 import com.qtt.jinrong.enums.IdentityEnum;
 import com.qtt.jinrong.enums.IncomePayMethodEnum;
-import com.qtt.jinrong.enums.JobTitleEnum;
 import com.qtt.jinrong.enums.LegalPersonEnum;
 import com.qtt.jinrong.enums.OperatorYearsEnum;
 import com.qtt.jinrong.enums.ProvinceEnum;
@@ -67,12 +65,8 @@ public class CreditAptitudeVerifyActivity extends BaseSelectActivity implements 
 
     @ViewById(R.id.workerOtherMore)
     View workerOtherMore;
-    @ViewById(R.id.companyType)
-    TextView companyTypeText;
     @ViewById(R.id.companyWorkYears)
     TextView companyWorkYearsText;
-    @ViewById(R.id.jobTitle)
-    TextView jobTitleText;
     @ViewById(R.id.incomePayWay)
     TextView incomePayWayText;
     @ViewById(R.id.monthSalary)
@@ -191,19 +185,6 @@ public class CreditAptitudeVerifyActivity extends BaseSelectActivity implements 
         show();
     }
 
-    //工薪族 其他
-    @Click(R.id.companyType)
-    void clickCompanyType() {
-        mSelectView.setData(CompanyTypeEnum.getValues());
-        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
-            @Override
-            public void onItemSelect(int position, String val) {
-                CompanyTypeEnum mEnums = CompanyTypeEnum.values()[position];
-                companyTypeText.setText(val);
-            }
-        });
-        show();
-    }
     @Click(R.id.companyWorkYears)
     void clickCompanyWorkYears() {
         mSelectView.setData(WorkYearsEnum.getValues());
@@ -212,18 +193,6 @@ public class CreditAptitudeVerifyActivity extends BaseSelectActivity implements 
             public void onItemSelect(int position, String val) {
                 WorkYearsEnum mEnums = WorkYearsEnum.values()[position];
                 companyWorkYearsText.setText(val);
-            }
-        });
-        show();
-    }
-    @Click(R.id.jobTitle)
-    void clickJobTitle() {
-        mSelectView.setData(JobTitleEnum.getValues());
-        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
-            @Override
-            public void onItemSelect(int position, String val) {
-                JobTitleEnum mEnums = JobTitleEnum.values()[position];
-                jobTitleText.setText(val);
             }
         });
         show();
@@ -363,11 +332,11 @@ public class CreditAptitudeVerifyActivity extends BaseSelectActivity implements 
     }
     @Click(R.id.housePropertySituaion)
     void clickHousePropertySituaion() {
-        mSelectView.setData(HousePropertySituationEnum.getValues());
+        mSelectView.setData(HousePropertyMortgageSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                HousePropertySituationEnum mEnum = HousePropertySituationEnum.values()[position];
+                HousePropertyMortgageSituationEnum mEnum = HousePropertyMortgageSituationEnum.values()[position];
                 housePropertySituaionText.setText(val);
             }
         });

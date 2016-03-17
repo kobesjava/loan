@@ -30,10 +30,11 @@ public enum HouseSpareEnum {
         return vals;
     }
 
-    public static HouseSpareEnum find(int code) {
+    public static HouseSpareEnum find(Integer code) {
+        if(code == null) return null;
         HouseSpareEnum[] enums = HouseSpareEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

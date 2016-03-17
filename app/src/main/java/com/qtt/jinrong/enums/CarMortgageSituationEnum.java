@@ -38,10 +38,11 @@ public enum CarMortgageSituationEnum {
         return titles;
     }
 
-    public static CarMortgageSituationEnum find(int code) {
+    public static CarMortgageSituationEnum find(Integer code) {
+        if(code == null) return null;
         CarMortgageSituationEnum[] enums = CarMortgageSituationEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

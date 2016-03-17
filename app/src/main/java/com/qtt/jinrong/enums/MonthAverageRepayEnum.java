@@ -44,10 +44,11 @@ public enum MonthAverageRepayEnum {
         return titles;
     }
 
-    public static MonthAverageRepayEnum find(int code) {
+    public static MonthAverageRepayEnum find(Integer code) {
+        if(code == null) return null;
         MonthAverageRepayEnum[] enums = MonthAverageRepayEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

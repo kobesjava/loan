@@ -28,6 +28,8 @@ public class Api {
     public final static String LOAN_PRODUCT_DETAIL  = ROOT_URL + MOUDLE_LOAN_PATH + "/querySloanDetail.do";
     //贷款产品申请
     public final static String LOAN_PRODUCT_APPLY  = ROOT_URL + MOUDLE_LOAN_PATH + "/nowApply.do";
+    //贷款产品申请列表
+    public final static String LOAN_PRODUCT_APPLY_LIST = ROOT_URL + MOUDLE_LOAN_PATH + "/queryApplyList.do";
 
 
     /**  credit模块  **/

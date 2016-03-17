@@ -31,10 +31,11 @@ public enum HousePropertyPositionEnum {
         return vals;
     }
 
-    public static HousePropertyPositionEnum find(int code) {
+    public static HousePropertyPositionEnum find(Integer code) {
+        if(code == null) return null;
         HousePropertyPositionEnum[] enums = HousePropertyPositionEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }
