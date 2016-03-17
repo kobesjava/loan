@@ -164,7 +164,7 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
         show();
     }
 
-    @Click(R.id.cpSituation)
+    @Click(R.id.cpMortgageSituation)
     void clickCpSituation() {
         mSelectView.setData(CarMortgageSituationEnum.getValues());
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {

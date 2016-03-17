@@ -10,6 +10,7 @@ public class LoanModel implements Parcelable {
 
     private String id;
     private String productId;
+    /** 图片地址*/
     private String thumpImg;
     /** 名称*/
     private String title;
@@ -19,6 +20,7 @@ public class LoanModel implements Parcelable {
     private String rate;
     /** 月供*/
     private String money;
+    /** 评分*/
     private float score;
 
     public String getId() {
@@ -85,7 +87,6 @@ public class LoanModel implements Parcelable {
         this.money = money;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -117,4 +118,15 @@ public class LoanModel implements Parcelable {
         this.score = in.readFloat();
     }
 
+    public static final Creator<LoanModel> CREATOR = new Creator<LoanModel>() {
+        @Override
+        public LoanModel createFromParcel(Parcel source) {
+            return new LoanModel(source);
+        }
+
+        @Override
+        public LoanModel[] newArray(int size) {
+            return new LoanModel[size];
+        }
+    };
 }
