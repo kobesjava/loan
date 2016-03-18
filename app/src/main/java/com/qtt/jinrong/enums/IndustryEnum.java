@@ -46,7 +46,8 @@ public enum IndustryEnum {
         return vals;
     }
 
-    public static IndustryEnum find(int code) {
+    public static IndustryEnum find(Integer code) {
+        if(code == null) return null;
         IndustryEnum[] enums = IndustryEnum.values();
         for(int i=0;i<enums.length;i++) {
             if(enums[i].getCode() == code) return enums[i];

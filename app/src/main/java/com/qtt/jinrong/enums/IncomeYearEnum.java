@@ -43,10 +43,11 @@ public enum IncomeYearEnum {
         return titles;
     }
 
-    public static IncomeYearEnum find(int code) {
+    public static IncomeYearEnum find(Integer code) {
+        if(code == null) return null;
         IncomeYearEnum[] enums = IncomeYearEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

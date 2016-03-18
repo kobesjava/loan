@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.qtt.jinrong.R;
+import com.qtt.jinrong.bean.account.IdentityModel;
+import com.qtt.jinrong.bean.account.IdentitySaveRequest;
 import com.qtt.jinrong.enums.AvocationEnum;
 import com.qtt.jinrong.enums.BillingYearEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
@@ -29,12 +31,15 @@ import com.qtt.jinrong.enums.RegistCaptialEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.SocialYearsEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
+import com.qtt.jinrong.presenter.IIdentityPresenter;
+import com.qtt.jinrong.presenter.impl.IdentityPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
 import com.qtt.jinrong.util.DistrictUtil;
 import com.qtt.jinrong.util.ToastUtil;
+import com.qtt.jinrong.view.IIdentityView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -46,7 +51,7 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/3/3.
  */
 @EActivity(R.layout.activity_user_identity)
-public class IdentityActivity extends BaseSelectActivity {
+public class IdentityActivity extends BaseSelectActivity implements IIdentityView{
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -60,7 +65,7 @@ public class IdentityActivity extends BaseSelectActivity {
     @ViewById(R.id.woView)
     View woView;
 
-    //enterprise persional item
+    //企业主 个体户 item
     @ViewById(R.id.epLegalPerson)
     TextView epLegalPersonText;
     @ViewById(R.id.epName)
@@ -104,7 +109,7 @@ public class IdentityActivity extends BaseSelectActivity {
     @ViewById(R.id.epMonthRepayment)
     InputEditText epMonthRepaymentEdit;
 
-    //woker other item
+    //工薪族 其他 item
     @ViewById(R.id.workCompanyType)
     TextView workCompanyTypeText;
     @ViewById(R.id.workCompanyName)
@@ -149,10 +154,14 @@ public class IdentityActivity extends BaseSelectActivity {
     InputEditText workAvocationMonthSalaryEdit;
 
     private ProvinceEnum provinceEnum;
+    IIdentityPresenter mPresenter;
+    IdentitySaveRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter = new IdentityPresenterImpl(this);
+        request = new IdentitySaveRequest();
     }
 
     @AfterViews
@@ -168,10 +177,10 @@ public class IdentityActivity extends BaseSelectActivity {
 
             @Override
             public void rightOnClick() {
-                ToastUtil.showShortToast("保存");
+                mPresenter.save();
             }
         });
-
+        mPresenter.request();
     }
 
     @Click(R.id.identity)
@@ -189,13 +198,14 @@ public class IdentityActivity extends BaseSelectActivity {
                     woView.setVisibility(View.VISIBLE);
                 }
                 mIdentityText.setText(val);
+                request.setCapacity(mEnum.getCode());
             }
         });
         show();
     }
 
-
-    //enterprise personal item click
+    //企业主 个体户 item click
+    //法人股东
     @Click(R.id.epLegalPerson)
     void clickepLegalPerson() {
         mSelectView.setData(LegalPersonEnum.getValues());
@@ -204,10 +214,12 @@ public class IdentityActivity extends BaseSelectActivity {
             public void onItemSelect(int position, String val) {
                 LegalPersonEnum mEnum = LegalPersonEnum.values()[position];
                 epLegalPersonText.setText(val);
+                request.setCorporation(mEnum.getCode());
             }
         });
         show();
     }
+    //所属行业
     @Click(R.id.epIndustry)
     void clickepIndustry() {
         mSelectView.setData(IndustryEnum.getValues());
@@ -215,11 +227,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 IndustryEnum mEnum = IndustryEnum.values()[position];
+                request.setEpIndustry(mEnum.getCode());
                 epIndustryText.setText(val);
             }
         });
         show();
     }
+    //企业经营地
     @Click(R.id.epCompanyPosition)
     void clickepCompanyPosition() {
         mSelectView.setData(CompanyPositionEnum.getValues());
@@ -227,11 +241,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 CompanyPositionEnum mEnum = CompanyPositionEnum.values()[position];
+                request.setEpBuss(mEnum.getCode());
                 epCompanyPositionText.setText(val);
             }
         });
         show();
     }
+    //经营年限
     @Click(R.id.epOperationPeriod)
     void clickepOperationPeriod() {
         mSelectView.setData(OperatorYearsEnum.getValues());
@@ -239,11 +255,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 OperatorYearsEnum mEnum = OperatorYearsEnum.values()[position];
+                request.setEpPeriod(mEnum.getCode());
                 epOperationPeriodText.setText(val);
             }
         });
         show();
     }
+    //注册资金
     @Click(R.id.epRegistCapital)
     void clickepRegistCapital() {
         mSelectView.setData(RegistCaptialEnum.getValues());
@@ -251,11 +269,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 RegistCaptialEnum mEnum = RegistCaptialEnum.values()[position];
+                request.setEpCapital(mEnum.getCode());
                 epRegistCapitalText.setText(val);
             }
         });
         show();
     }
+    //年开票额
     @Click(R.id.epBilling)
     void clickepBilling() {
         mSelectView.setData(BillingYearEnum.getValues());
@@ -263,11 +283,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 BillingYearEnum mEnum = BillingYearEnum.values()[position];
+                request.setEpTicket(mEnum.getCode());
                 epBillingText.setText(val);
             }
         });
         show();
     }
+    //年营业收入
     @Click(R.id.epIncomeYear)
     void clickepIncomeYear() {
         mSelectView.setData(IncomeYearEnum.getValues());
@@ -275,11 +297,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 IncomeYearEnum mEnum = IncomeYearEnum.values()[position];
+                request.setEpAnnualRevenue(mEnum.getCode());
                 epIncomeYearText.setText(val);
             }
         });
         show();
     }
+    //月对公流水
     @Click(R.id.epMonthPublicWater)
     void clickepMonthPublicWater() {
         mSelectView.setData(MonthPublicWaterEnum.getValues());
@@ -287,11 +311,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 MonthPublicWaterEnum mEnum = MonthPublicWaterEnum.values()[position];
+                request.setEpContraryWater(mEnum.getCode());
                 epMonthPublicWaterText.setText(val);
             }
         });
         show();
     }
+    //月对私流水
     @Click(R.id.epMonthPrivateWater)
     void clickepMonthPrivateWater() {
         mSelectView.setData(MonthPrivateWaterEnum.getValues());
@@ -300,10 +326,12 @@ public class IdentityActivity extends BaseSelectActivity {
             public void onItemSelect(int position, String val) {
                 MonthPrivateWaterEnum mEnum = MonthPrivateWaterEnum.values()[position];
                 epMonthPrivateWaterText.setText(val);
+                request.setEpPrivateWater(mEnum.getCode());
             }
         });
         show();
     }
+    //资产负债率
     @Click(R.id.epDebtRate)
     void clickepDebtRate() {
         mSelectView.setData(DebtRateEnum.getValues());
@@ -311,11 +339,13 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 DebtRateEnum mEnum = DebtRateEnum.values()[position];
+                request.setEpLeverage(mEnum.getCode());
                 epDebtRateText.setText(val);
             }
         });
         show();
     }
+    //年净利润
     @Click(R.id.epProfit)
     void clickepProfit() {
         mSelectView.setData(NetProfitEnum.getValues());
@@ -324,10 +354,12 @@ public class IdentityActivity extends BaseSelectActivity {
             public void onItemSelect(int position, String val) {
                 NetProfitEnum mEnum = NetProfitEnum.values()[position];
                 epProfitText.setText(val);
+                request.setEpNetProfit(mEnum.getCode());
             }
         });
         show();
     }
+    //企业欠款情况
     @Click(R.id.epDebtSituation)
     void clickDebt() {
         mSelectView.setData(DebtSituationEnterpriseEnum.getValues());
@@ -335,6 +367,7 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 DebtSituationEnterpriseEnum mEnum = DebtSituationEnterpriseEnum.values()[position];
+                request.setEpDebt(mEnum.getCode());
                 if (mEnum.equals(DebtSituationEnterpriseEnum.无欠款)) epDebtSituationView.setVisibility(View.GONE);
                 else epDebtSituationView.setVisibility(View.VISIBLE);
                 epDebtSituationText.setText(val);
@@ -342,6 +375,7 @@ public class IdentityActivity extends BaseSelectActivity {
         });
         show();
     }
+    //欠款余额
     @Click(R.id.epDebtBalance)
     void clickDebtBalance() {
         mSelectView.setData(DebtBalanceEnum.getValues());
@@ -349,6 +383,7 @@ public class IdentityActivity extends BaseSelectActivity {
             @Override
             public void onItemSelect(int position, String val) {
                 DebtBalanceEnum mEnum = DebtBalanceEnum.values()[position];
+                request.setEpDebtAmt(mEnum.getCode());
                 epDebtBalanceText.setText(val);
             }
         });
@@ -512,4 +547,21 @@ public class IdentityActivity extends BaseSelectActivity {
         show();
     }
 
+
+    /** IIdentityView **/
+    @Override
+    public void onRequest(IdentityModel model) {
+
+    }
+
+    @Override
+    public IdentitySaveRequest getSaveRequest() {
+        return request;
+    }
+
+    @Override
+    public void onSaveSuccess() {
+        finish();
+    }
+    /** IIdentityView **/
 }

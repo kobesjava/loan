@@ -44,10 +44,11 @@ public enum BillingYearEnum {
         return titles;
     }
 
-    public static BillingYearEnum find(int code) {
+    public static BillingYearEnum find(Integer code) {
+        if(code == null) return null;
         BillingYearEnum[] enums = BillingYearEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

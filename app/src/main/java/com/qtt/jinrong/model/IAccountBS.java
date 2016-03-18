@@ -11,6 +11,7 @@ import com.qtt.jinrong.bean.account.CreditPropertyResponse;
 import com.qtt.jinrong.bean.account.DemandsResponse;
 import com.qtt.jinrong.bean.account.FinancingDemandsRequest;
 import com.qtt.jinrong.bean.account.HousePropertyResponse;
+import com.qtt.jinrong.bean.account.IdentityResponse;
 import com.qtt.jinrong.bean.account.OtherPropertyRequest;
 import com.qtt.jinrong.bean.account.OtherPropertyResponse;
 import com.qtt.jinrong.bean.account.OtherPropertySaveRequest;
@@ -124,5 +125,22 @@ public interface IAccountBS extends IBS {
      * @param listener
      */
     void saveDemands(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener);
+
+    /**
+     * 获取身份信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    void requestIdentity(Context context,IRequest request,MCListenerObj.IObjResListener<IdentityResponse> listener);
+
+    /**
+     * 保存身份信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    void saveIdentity(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener);
+
 
 }

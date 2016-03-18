@@ -30,4 +30,13 @@ public enum CompanyPositionEnum {
         }
         return titles;
     }
+
+    public static CompanyPositionEnum find(Integer code) {
+        if(code == null) return null;
+        CompanyPositionEnum[] enums = CompanyPositionEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code.intValue()) return enums[i];
+        }
+        return null;
+    }
 }

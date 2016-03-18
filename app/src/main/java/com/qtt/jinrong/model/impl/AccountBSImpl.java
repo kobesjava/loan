@@ -11,6 +11,7 @@ import com.qtt.jinrong.bean.account.CreditPropertyResponse;
 import com.qtt.jinrong.bean.account.DemandsResponse;
 import com.qtt.jinrong.bean.account.FinancingDemandsRequest;
 import com.qtt.jinrong.bean.account.HousePropertyResponse;
+import com.qtt.jinrong.bean.account.IdentityResponse;
 import com.qtt.jinrong.bean.account.OtherPropertyRequest;
 import com.qtt.jinrong.bean.account.OtherPropertyResponse;
 import com.qtt.jinrong.bean.account.OtherPropertySaveRequest;
@@ -85,5 +86,15 @@ public class AccountBSImpl implements IAccountBS {
     @Override
     public void saveDemands(Context context, IRequest request, MCListenerObj.IObjResListener<Response> listener) {
         AccountReqsAction.saveDemands(context,request,listener);
+    }
+
+    @Override
+    public void requestIdentity(Context context, IRequest request, MCListenerObj.IObjResListener<IdentityResponse> listener) {
+        AccountReqsAction.requestIdentity(context,request,listener);
+    }
+
+    @Override
+    public void saveIdentity(Context context, IRequest request, MCListenerObj.IObjResListener<Response> listener) {
+        AccountReqsAction.saveIdentity(context,request,listener);
     }
 }

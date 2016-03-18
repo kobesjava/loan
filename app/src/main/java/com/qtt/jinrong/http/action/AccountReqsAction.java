@@ -11,6 +11,7 @@ import com.qtt.jinrong.bean.account.CreditPropertyResponse;
 import com.qtt.jinrong.bean.account.DemandsResponse;
 import com.qtt.jinrong.bean.account.FinancingDemandsResponse;
 import com.qtt.jinrong.bean.account.HousePropertyResponse;
+import com.qtt.jinrong.bean.account.IdentityResponse;
 import com.qtt.jinrong.bean.account.OtherPropertyResponse;
 import com.qtt.jinrong.http.Api;
 
@@ -149,6 +150,26 @@ public class AccountReqsAction {
      */
     public static void saveDemands(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener) {
         getPostReq7HeardInfo(context, Api.ACCOUNT_SAVE_DEMANDS,request.getParams(),listener,Response.class);
+    }
+
+    /**
+     * 获取身份信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    public static void requestIdentity(Context context,IRequest request,MCListenerObj.IObjResListener<IdentityResponse> listener) {
+        getPostReq7HeardInfo(context, Api.ACCOUNT_REQUEST_IDENTITY,request.getParams(),listener,IdentityResponse.class);
+    }
+
+    /**
+     * 保存身份信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    public static void saveIdentity(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener) {
+        getPostReq7HeardInfo(context, Api.ACCOUNT_SAVE_IDENTITY,request.getParams(),listener,Response.class);
     }
 
 }

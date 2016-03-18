@@ -39,10 +39,11 @@ public enum DebtRateEnum {
         return titles;
     }
 
-    public static DebtRateEnum find(int code) {
+    public static DebtRateEnum find(Integer code) {
+        if(code == null) return null;
         DebtRateEnum[] enums = DebtRateEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

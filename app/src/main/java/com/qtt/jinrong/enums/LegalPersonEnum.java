@@ -40,4 +40,13 @@ public enum LegalPersonEnum {
         }
         return titles;
     }
+
+    public static LegalPersonEnum find(Integer code) {
+        if(code == null) return null;
+        LegalPersonEnum[] enums = LegalPersonEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code.intValue()) return enums[i];
+        }
+        return null;
+    }
 }

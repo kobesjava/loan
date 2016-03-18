@@ -1,9 +1,9 @@
 package com.qtt.jinrong.presenter;
 
 /**
- * Created by yanxin on 16/3/8.
+ * Created by yanxin on 16/3/18.
  */
-public interface IIdentiPresenter extends IPresenter {
+public interface IIdentityPresenter extends IPresenter{
 
     /**
      * 获取身份信息

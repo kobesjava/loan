@@ -45,10 +45,11 @@ public enum MonthPrivateWaterEnum {
         return titles;
     }
 
-    public static MonthPrivateWaterEnum find(int code) {
+    public static MonthPrivateWaterEnum find(Integer code) {
+        if(code == null) return  null;
         MonthPrivateWaterEnum[] enums = MonthPrivateWaterEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

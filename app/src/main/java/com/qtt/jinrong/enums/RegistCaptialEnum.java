@@ -43,10 +43,11 @@ public enum RegistCaptialEnum {
         return titles;
     }
 
-    public static RegistCaptialEnum find(int code) {
+    public static RegistCaptialEnum find(Integer code) {
+        if(code == null) return null;
         RegistCaptialEnum[] enums = RegistCaptialEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }
