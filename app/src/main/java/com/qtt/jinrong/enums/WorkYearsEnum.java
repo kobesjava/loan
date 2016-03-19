@@ -42,10 +42,11 @@ public enum WorkYearsEnum {
         return vals;
     }
 
-    public static WorkYearsEnum find(int code) {
+    public static WorkYearsEnum find(Integer code) {
+        if(code == null) return null;
         WorkYearsEnum[] enums = WorkYearsEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

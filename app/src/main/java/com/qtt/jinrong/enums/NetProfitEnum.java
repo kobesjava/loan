@@ -47,10 +47,11 @@ public enum NetProfitEnum {
         return titles;
     }
 
-    public static NetProfitEnum find(int code) {
+    public static NetProfitEnum find(Integer code) {
+        if(code == null) return null;
         NetProfitEnum[] enums = NetProfitEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

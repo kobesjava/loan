@@ -42,10 +42,11 @@ public enum SocialYearsEnum {
         return vals;
     }
 
-    public static SocialYearsEnum find(int code) {
+    public static SocialYearsEnum find(Integer code) {
+        if(code == null) return null;
         SocialYearsEnum[] enums = SocialYearsEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

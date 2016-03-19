@@ -32,10 +32,11 @@ public enum SocialFundEnum {
         return vals;
     }
 
-    public static SocialFundEnum find(int code) {
+    public static SocialFundEnum find(Integer code) {
+        if(code == null) return null;
         SocialFundEnum[] enums = SocialFundEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

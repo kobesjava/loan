@@ -1,6 +1,7 @@
 package com.qtt.jinrong.ui.activity.user;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -391,7 +392,8 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
     }
 
 
-    //worker other item click
+    //工薪族 其他 item click
+    //就职公司类型
     @Click(R.id.workCompanyType)
     void clickType() {
         mSelectView.setData(CompanyTypeEnum.getValues());
@@ -399,11 +401,13 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             @Override
             public void onItemSelect(int position, String val) {
                 CompanyTypeEnum mEnum = CompanyTypeEnum.values()[position];
+                request.setCompanyType(mEnum.getCode());
                 workCompanyTypeText.setText(val);
             }
         });
         show();
     }
+    //职位
     @Click(R.id.workJobTitle)
     void clickPosition() {
         mSelectView.setData(JobTitleEnum.getValues());
@@ -411,11 +415,13 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             @Override
             public void onItemSelect(int position, String val) {
                 JobTitleEnum mEnum = JobTitleEnum.values()[position];
+                request.setJob(mEnum.getCode());
                 workJobTitleText.setText(val);
             }
         });
         show();
     }
+    //现单位工龄
     @Click(R.id.workCompanyAge)
     void clickIWorktime() {
         mSelectView.setData(WorkYearsEnum.getValues());
@@ -423,11 +429,13 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             @Override
             public void onItemSelect(int position, String val) {
                 WorkYearsEnum mEnum = WorkYearsEnum.values()[position];
+                request.setCurrSeniority(mEnum.getCode());
                 workCompanyAgeText.setText(val);
             }
         });
         show();
     }
+    //工作地(省)
     @Click(R.id.workProvince)
     void clickProvince() {
         mSelectView.setData(ProvinceEnum.getValues());
@@ -437,23 +445,29 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                 ProvinceEnum mEnum = ProvinceEnum.values()[position];
                 provinceEnum = mEnum;
                 workProvinceText.setText(val);
+                request.setWorkProvince(mEnum.getCode());
             }
         });
         show();
     }
+    //工作地(市)
     @Click(R.id.workCity)
     void clickCity() {
+        if(provinceEnum == null) {
+            ToastUtil.showShortToast("请先选择工作地(省)");
+            return;
+        }
         mSelectView.setData(DistrictUtil.getCities(getApplicationContext(),provinceEnum));
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                //ProvinceEnum mEnum = ProvinceEnum.values()[position];
-                //provinceEnum = mEnum;
+                request.setWorkCity(position+1);
                 workCityText.setText(val);
             }
         });
         show();
     }
+    //收入发放方式
     @Click(R.id.workIncomePayWay)
     void clickIncomepayway() {
         mSelectView.setData(IncomePayMethodEnum.getValues());
@@ -462,6 +476,7 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             public void onItemSelect(int position, String val) {
                 IncomePayMethodEnum mEnum = IncomePayMethodEnum.values()[position];
                 workIncomePayWayText.setText(val);
+                request.setPayWay(mEnum.getCode());
                 if(mEnum.equals(IncomePayMethodEnum.银行打卡) || mEnum.equals(IncomePayMethodEnum.部分打卡部分现金)) {
                     workMonthCardSalaryView.setVisibility(View.VISIBLE);
                 } else if(mEnum.equals(IncomePayMethodEnum.现金发放)) {
@@ -471,6 +486,7 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
         });
         show();
     }
+    //能否提供收入证明
     @Click(R.id.workIncomeProof)
     void clickworkIncomeProof() {
         mSelectView.setData(IncomeProofEnum.getValues());
@@ -479,10 +495,12 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             public void onItemSelect(int position, String val) {
                 IncomeProofEnum mEnum = IncomeProofEnum.values()[position];
                 workIncomeProofText.setText(val);
+                request.setVerifiableIncome(mEnum.getCode());
             }
         });
         show();
     }
+    //社保和公积金
     @Click(R.id.workSocialFund)
     void clickSocialFund() {
         mSelectView.setData(SocialFundEnum.getValues());
@@ -504,10 +522,12 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                     workSocialYearsView.setVisibility(View.VISIBLE);
                 }
                 workSocialFundText.setText(val);
+                request.setSocialSecurity(mEnum.getCode());
             }
         });
         show();
     }
+    //公积金连续缴纳年限
     @Click(R.id.workFundYears)
     void clickFundYears() {
         mSelectView.setData(FundYearsEnum.getValues());
@@ -516,10 +536,12 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             public void onItemSelect(int position, String val) {
                 FundYearsEnum mEnum = FundYearsEnum.values()[position];
                 workFundYearsText.setText(val);
+                request.setAccuFundAge(mEnum.getCode());
             }
         });
         show();
     }
+    //社保连续缴纳年限
     @Click(R.id.workSocialYears)
     void clickSocialYears() {
         mSelectView.setData(SocialYearsEnum.getValues());
@@ -528,10 +550,12 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             public void onItemSelect(int position, String val) {
                 SocialYearsEnum mEnum = SocialYearsEnum.values()[position];
                 workSocialYearsText.setText(val);
+                request.setSocialSecurityAge(mEnum.getCode());
             }
         });
         show();
     }
+    //有无副业
     @Click(R.id.workHasAvocation)
     void clickAvocation() {
         mSelectView.setData(AvocationEnum.getValues());
@@ -542,6 +566,7 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                 if(mEnum.equals(AvocationEnum.无副业)) workAvoactionView.setVisibility(View.GONE);
                 else workAvoactionView.setVisibility(View.VISIBLE);
                 workHasAvocationText.setText(val);
+                request.setAvocation(mEnum.getCode());
             }
         });
         show();
@@ -551,11 +576,144 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
     /** IIdentityView **/
     @Override
     public void onRequest(IdentityModel model) {
+        IdentityEnum iEnum = IdentityEnum.find(model.getCapacity());
+        if(iEnum != null) mIdentityText.setText(iEnum.name());
 
+        //企业主 个体户
+        LegalPersonEnum lpEnum = LegalPersonEnum.find(model.getCorporation());
+        if(lpEnum != null) epLegalPersonText.setText(lpEnum.getTitle());
+        if(!TextUtils.isEmpty(model.getCompanyName())) epNameEdit.setText(model.getCompanyName());
+        if(!TextUtils.isEmpty(model.getEpAddr())) epAddressEdit.setText(model.getEpAddr());
+        IndustryEnum industryEnum = IndustryEnum.find(model.getEpIndustry());
+        if(industryEnum != null) epIndustryText.setText(industryEnum.name());
+        if(model.getEpScale() != null && model.getEpScale() != 0) epStaffNumEdit.setText(String.valueOf(model.getEpScale()));
+        CompanyPositionEnum cpEnum = CompanyPositionEnum.find(model.getEpBuss());
+        if(cpEnum != null) epCompanyPositionText.setText(cpEnum.name());
+        OperatorYearsEnum oyEnum = OperatorYearsEnum.find(model.getEpPeriod());
+        if(oyEnum != null) epOperationPeriodText.setText(oyEnum.getTitle());
+        //注册资金
+        RegistCaptialEnum rcEnum = RegistCaptialEnum.find(model.getEpCapital());
+        if(rcEnum != null) epRegistCapitalText.setText(rcEnum.getTitle());
+        //主营业务
+        if(!TextUtils.isEmpty(model.getEpMain())) epBusinessEdit.setText(model.getEpMain());
+        //年营业额
+        if(model.getEpAnnualTurnover() != null && model.getEpAnnualTurnover() != 0) epTurnoverEdit.setText(String.valueOf(model.getEpAnnualTurnover()));
+        //年开票额
+        BillingYearEnum byEnum = BillingYearEnum.find(model.getEpTicket());
+        if(byEnum != null) epBillingText.setText(byEnum.getTitle());
+        //年营业收入
+        IncomeYearEnum iyEnum = IncomeYearEnum.find(model.getEpAnnualRevenue());
+        if(iyEnum != null) epIncomeYearText.setText(iyEnum.getTitle());
+        //月对公流水
+        MonthPublicWaterEnum mpwEnum = MonthPublicWaterEnum.find(model.getEpContraryWater());
+        if(mpwEnum != null) epMonthPublicWaterText.setText(mpwEnum.getTitle());
+        //月对私流水
+        MonthPrivateWaterEnum mpriwEnum = MonthPrivateWaterEnum.find(model.getEpPrivateWater());
+        if(mpriwEnum != null) epMonthPrivateWaterText.setText(mpriwEnum.getTitle());
+        //资产负债率
+        DebtRateEnum drEnum = DebtRateEnum.find(model.getEpLeverage());
+        if(drEnum != null) epDebtRateText.setText(drEnum.getTitle());
+        //年净利润
+        NetProfitEnum npEnum = NetProfitEnum.find(model.getEpNetProfit());
+        if(npEnum != null) epProfitText.setText(npEnum.getTitle());
+        //企业欠款情况
+        DebtSituationEnterpriseEnum dseEnum = DebtSituationEnterpriseEnum.find(model.getEpDebt());
+        if(dseEnum != null) epDebtSituationText.setText(dseEnum.name());
+        //欠款机构名称
+        if(!TextUtils.isEmpty(model.getEpDebtName())) epDebtInstitutionNameEdit.setText(model.getEpDebtName());
+        //欠款余额
+        DebtBalanceEnum dbEnum = DebtBalanceEnum.find(model.getEpDebtAmt());
+        if(dbEnum != null) epDebtBalanceText.setText(dbEnum.getTitle());
+        //月还款额
+        if(model.getEpMonthRepay() != null && model.getEpMonthRepay() != 0) epMonthRepaymentEdit.setText(String.valueOf(model.getEpMonthRepay()));
+
+
+        //工薪族 其他
+        //就职公司类型
+        CompanyTypeEnum ctEnum = CompanyTypeEnum.find(model.getCompanyType());
+        if(ctEnum != null) workCompanyTypeText.setText(ctEnum.getTitle());
+        //就职公司名称
+        if(!TextUtils.isEmpty(model.getCompanyName())) workCompanyNameEdit.setText(model.getCompanyName());
+        //职位
+        JobTitleEnum jtEnum = JobTitleEnum.find(model.getJob());
+        if(jtEnum != null) workJobTitleText.setText(jtEnum.name());
+        //现单位工龄
+        WorkYearsEnum wyEnum = WorkYearsEnum.find(model.getCurrSeniority());
+        if(wyEnum != null) workCompanyAgeText.setText(wyEnum.getTitle());
+        //工作地(省)
+        provinceEnum = ProvinceEnum.find(model.getWorkProvince());
+        if(provinceEnum != null) workProvinceText.setText(provinceEnum.name());
+        //工作地(市)
+        String city = DistrictUtil.getCity(this,provinceEnum,model.getWorkCity());
+        if(!TextUtils.isEmpty(city)) workCityText.setText(city);
+        //工作详细地址
+        if(!TextUtils.isEmpty(model.getWorkAddr())) workAddressEdit.setText(model.getWorkAddr());
+        //收入发放方式
+        IncomePayMethodEnum ipmEnum = IncomePayMethodEnum.find(model.getPayWay());
+        if(ipmEnum != null) workIncomePayWayText.setText(ipmEnum.getTitle());
+        //月打卡工资
+        if(model.getWages() != null && model.getWages() != 0) workMonthCardSalaryEdit.setText(String.valueOf(model.getWages()));
+        //月均总收入
+        if(model.getMonthlyIncome() != null && model.getMonthlyIncome() != 0) workMonthSalaryTotalEdit.setText(String.valueOf(model.getMonthlyIncome()));
+        //能否提供收入证明
+        IncomeProofEnum ipEnum = IncomeProofEnum.find(model.getVerifiableIncome());
+        if(ipEnum != null) workIncomeProofText.setText(ipEnum.name());
+        //社保和公积金
+        SocialFundEnum sfEnum = SocialFundEnum.find(model.getSocialSecurity());
+        if(sfEnum != null) workSocialFundText.setText(sfEnum.name());
+        //公积金连续缴纳年限
+        FundYearsEnum fyEnum = FundYearsEnum.find(model.getAccuFundAge());
+        if(fyEnum != null) workFundYearsText.setText(fyEnum.getTitle());
+        //社保连续缴纳年限
+        SocialYearsEnum syEnum = SocialYearsEnum.find(model.getSocialSecurityAge());
+        if(syEnum != null) workSocialYearsText.setText(syEnum.getTitle());
+        //有无副业
+        AvocationEnum aEnum = AvocationEnum.find(model.getAvocation());
+        if(aEnum != null) workHasAvocationText.setText(aEnum.name());
+        //副业内容
+        if(!TextUtils.isEmpty(model.getAvocationInfo())) workAvocationEdit.setText(model.getAvocationInfo());
+        //副业月收入
+        if(model.getAvocationAmt() != null && model.getAvocationAmt() != 0) workAvocationMonthSalaryEdit.setText(String.valueOf(model.getAvocationAmt()));
     }
 
     @Override
     public IdentitySaveRequest getSaveRequest() {
+        //企业主 个体户
+        //企业名称
+        request.setEpName(epNameEdit.getString());
+        //企业地址
+        request.setEpAddr(epAddressEdit.getString());
+        //企业规模(人)
+        if(TextUtils.isEmpty(epStaffNumEdit.getString())) request.setEpScale(0);
+        else request.setEpScale(Integer.valueOf(epStaffNumEdit.getString()));
+        //主营业务
+        request.setEpMain(epBusinessEdit.getString());
+        //年营业额(万元)
+        if(TextUtils.isEmpty(epTurnoverEdit.getString())) request.setEpAnnualTurnover(0);
+        else request.setEpAnnualTurnover(Integer.valueOf(epTurnoverEdit.getString()));
+        //欠款机构名称
+        request.setEpDebtName(epDebtInstitutionNameEdit.getString());
+        //月还款额
+        if(TextUtils.isEmpty(epMonthRepaymentEdit.getString())) request.setEpMonthRepay(0);
+        else request.setEpMonthRepay(Integer.valueOf(epMonthRepaymentEdit.getString()));
+
+        //工薪族 其他
+        //就职公司名称
+        request.setCompanyName(workCompanyNameEdit.getString());
+        //工作详细地址
+        request.setWorkAddr(workAddressEdit.getString());
+        //月打卡工资
+        if(TextUtils.isEmpty(workMonthCardSalaryEdit.getString())) request.setWages(0);
+        else request.setWages(Integer.valueOf(workMonthCardSalaryEdit.getString()));
+        //月均总收入
+        if(TextUtils.isEmpty(workMonthSalaryTotalEdit.getString())) request.setMonthlyIncome(0);
+        else request.setMonthlyIncome(Integer.valueOf(workMonthSalaryTotalEdit.getString()));
+        //副业内容
+        request.setAvocationInfo(workAvocationEdit.getString());
+        //副业月收入
+        if(TextUtils.isEmpty(workAvocationMonthSalaryEdit.getString())) request.setAvocationAmt(0);
+        else request.setAvocationAmt(Integer.valueOf(workAvocationMonthSalaryEdit.getString()));
+
         return request;
     }
 

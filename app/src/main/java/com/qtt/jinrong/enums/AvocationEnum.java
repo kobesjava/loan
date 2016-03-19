@@ -30,10 +30,11 @@ public enum AvocationEnum {
         return vals;
     }
 
-    public static AvocationEnum find(int code) {
+    public static AvocationEnum find(Integer code) {
+        if(code == null) return null;
         AvocationEnum[] enums = AvocationEnum.values();
         for(int i=0;i<enums.length;i++) {
-            if(enums[i].getCode() == code) return enums[i];
+            if(enums[i].getCode() == code.intValue()) return enums[i];
         }
         return null;
     }

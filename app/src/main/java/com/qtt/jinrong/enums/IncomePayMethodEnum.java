@@ -37,4 +37,13 @@ public enum IncomePayMethodEnum {
         }
         return titles;
     }
+
+    public static IncomePayMethodEnum find(Integer code) {
+        if(code == null) return null;
+        IncomePayMethodEnum[] enums = IncomePayMethodEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code.intValue()) return enums[i];
+        }
+        return null;
+    }
 }

@@ -42,4 +42,13 @@ public enum FundYearsEnum {
         return vals;
     }
 
+    public static FundYearsEnum find(Integer code) {
+        if(code == null) return null;
+        FundYearsEnum[] enums = FundYearsEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].getCode() == code.intValue()) return enums[i];
+        }
+        return null;
+    }
+
 }
