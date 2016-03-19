@@ -11,7 +11,7 @@
         android:textColorHint="@color/color_999999"
         android:layout_centerVertical="true"
         android:textColor="@color/color_950000"
-        android:background="@drawable/contact_edit_edittext_focused"
+        android:background="@drawable/input_bg_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
