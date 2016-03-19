@@ -22,7 +22,7 @@ public class Api {
 
 
     /**  滚动栏  **/
-    public final static String URL_AD = ROOT_URL + MOUDLE_AD_PATH + "/queryAdvertList.do";
+    public final static String ADVERT = ROOT_URL + MOUDLE_AD_PATH + "/queryAdvertList.do";
 
 
     /**  loan模块  **/

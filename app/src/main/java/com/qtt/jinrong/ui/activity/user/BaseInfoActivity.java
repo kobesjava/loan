@@ -165,7 +165,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             @Override
             public void onItemSelect(int position, String val) {
                 baseSpouseGuaranteeText.setText(val);
-                request.setSpouseGuarantee(SpouseGuaranteeEnum.values()[position].getCode());
+                request.setSpouseSign(SpouseGuaranteeEnum.values()[position].getCode());
             }
         });
         show();
@@ -178,7 +178,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             public void onItemSelect(int position, String val) {
                 baseSpouseCreditSituationText.setText(val);
                 CreditSituationEnum mEnum = CreditSituationEnum.values()[position];
-                request.setSpouseCreditSituation(mEnum.getCode());
+                request.setSpouseCredit(mEnum.getCode());
                 if(mEnum.equals(CreditSituationEnum.有逾期)) baseSpouseOverdueSituationView.setVisibility(View.VISIBLE);
                 else baseSpouseOverdueSituationView.setVisibility(View.GONE);
             }
@@ -192,7 +192,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             @Override
             public void onItemSelect(int position, String val) {
                 baseSpouseOverdueSituationText.setText(val);
-                request.setSpouseOverdueSituation(CreditOverdueEnum.values()[position].getCode());
+                request.setSpouseOverdue(CreditOverdueEnum.values()[position].getCode());
             }
         });
         show();
@@ -238,19 +238,18 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             }
         }
 
-        if(model.getSpouseMonthIncome() != null) baseSpouseMonthIncomeEdit.setText(String.valueOf(model.getSpouseMonthIncome()));
-        SpouseGuaranteeEnum sgEnum = SpouseGuaranteeEnum.find(model.getSpouseGuarantee());
-        if(sgEnum != null) {
-            baseSpouseGuaranteeText.setText(sgEnum.name());
-        }
-        CreditSituationEnum csEnum = CreditSituationEnum.find(model.getSpouseCreditSituation());
+        if(model.getSpouseIncome() != null) baseSpouseMonthIncomeEdit.setText(String.valueOf(model.getSpouseIncome()));
+        SpouseGuaranteeEnum sgEnum = SpouseGuaranteeEnum.find(model.getSpouseSign());
+        if(sgEnum != null) baseSpouseGuaranteeText.setText(sgEnum.name());
+
+        CreditSituationEnum csEnum = CreditSituationEnum.find(model.getSpouseCredit());
         if(csEnum != null) {
             baseSpouseCreditSituationText.setText(csEnum.getTitle());
             if(csEnum.equals(CreditSituationEnum.有逾期)) {
                 baseSpouseOverdueSituationView.setVisibility(View.VISIBLE);
             }
         }
-        CreditOverdueEnum coEnum = CreditOverdueEnum.find(model.getSpouseOverdueSituation());
+        CreditOverdueEnum coEnum = CreditOverdueEnum.find(model.getSpouseOverdue());
         if(coEnum != null) {
             baseSpouseOverdueSituationText.setText(coEnum.name());
         }
@@ -269,7 +268,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
         if(!TextUtils.isEmpty(ageText.getString())) request.setAge(Integer.valueOf(ageText.getString()));
         if(!TextUtils.isEmpty(idsText.getString())) request.setIdNumber(idsText.getString().replaceAll(" ", ""));
         if(!TextUtils.isEmpty(addressText.getString())) request.setRegisterAddr(addressText.getString());
-        if(!TextUtils.isEmpty(baseSpouseMonthIncomeEdit.getString())) request.setSpouseMonthIncome(Integer.valueOf(baseSpouseMonthIncomeEdit.getString()));
+        if(!TextUtils.isEmpty(baseSpouseMonthIncomeEdit.getString())) request.setSpouseIncome(Integer.valueOf(baseSpouseMonthIncomeEdit.getString()));
         return request;
     }
     /*** IBaseInfoView ***/

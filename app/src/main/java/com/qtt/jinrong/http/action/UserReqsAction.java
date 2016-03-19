@@ -55,6 +55,12 @@ public class UserReqsAction {
         getPostReq7HeardInfo(context, Api.USER_CODE,request.getParams(),listener,Response.class);
     }
 
+    /**
+     * 重新设置密码
+     * @param context
+     * @param request
+     * @param listener
+     */
     public static void resetPwd(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener) {
         getPostReq7HeardInfo(context, Api.USER_RESET_PWD,request.getParams(),listener,Response.class);
     }

@@ -198,36 +198,36 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
         CreditSituationEnum csEnum = CreditSituationEnum.find(model.getCreInfo());
         if(csEnum != null) {
             creditSituationText.setText(csEnum.getTitle());
-            if(csEnum.equals(CreditSituationEnum.有逾期)) {
+            if (csEnum.equals(CreditSituationEnum.有逾期)) {
                 creditSitutationMore.setVisibility(View.VISIBLE);
             }
-            CreditOverdueEnum coEnum = CreditOverdueEnum.find(model.getOverdue());
-            if(coEnum != null) creditOverdueSituationText.setText(coEnum.name());
         }
+        CreditOverdueEnum coEnum = CreditOverdueEnum.find(model.getOverdue());
+        if(coEnum != null) creditOverdueSituationText.setText(coEnum.name());
 
         CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(model.getCreMoney());
         if(ctlEnum != null) {
             creditCardTotalLimitText.setText(ctlEnum.getTitle());
-            if(!ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
+            if (!ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
                 creditCardMore.setVisibility(View.VISIBLE);
             }
-            if(model.getCreNum() != null) creditCardCountEdit.setText(String.valueOf(model.getCreNum()));
-            if(!TextUtils.isEmpty(model.getCreBank())) creditCardbankEdit.setText(model.getCreBank());
-            CreditUsedLimitEnum culEnum = CreditUsedLimitEnum.find(model.getCreUsed());
-            if(culEnum != null) creditCardHasUsedText.setText(culEnum.getTitle());
         }
+        if(model.getCreNum() != null) creditCardCountEdit.setText(String.valueOf(model.getCreNum()));
+        if(!TextUtils.isEmpty(model.getCreBank())) creditCardbankEdit.setText(model.getCreBank());
+        CreditUsedLimitEnum culEnum = CreditUsedLimitEnum.find(model.getCreUsed());
+        if(culEnum != null) creditCardHasUsedText.setText(culEnum.getTitle());
 
         CreditDebtSituationEnum cdsEnum = CreditDebtSituationEnum.find(model.getCreDebt());
         if(cdsEnum != null) {
             creditDebtSituationText.setText(cdsEnum.name());
-            if(!cdsEnum.equals(CreditDebtSituationEnum.无欠款)) {
+            if (!cdsEnum.equals(CreditDebtSituationEnum.无欠款)) {
                 creditDebtMore.setVisibility(View.VISIBLE);
             }
-            if(!TextUtils.isEmpty(model.getCreDebtName())) creditDebtInstitutionNameEdit.setText(model.getCreDebtName());
-            if(model.getCreDebtAmt() != null) creditDebtBalanceEdit.setText(String.valueOf(model.getCreDebtAmt()));
-            MonthAverageRepayEnum marEnum = MonthAverageRepayEnum.find(model.getCreMonthRepay());
-            if(marEnum != null) creditMonthAverageRepaymentText.setText(marEnum.getTitle());
         }
+        if(!TextUtils.isEmpty(model.getCreDebtName())) creditDebtInstitutionNameEdit.setText(model.getCreDebtName());
+        if(model.getCreDebtAmt() != null) creditDebtBalanceEdit.setText(String.valueOf(model.getCreDebtAmt()));
+        MonthAverageRepayEnum marEnum = MonthAverageRepayEnum.find(model.getCreMonthRepay());
+        if(marEnum != null) creditMonthAverageRepaymentText.setText(marEnum.getTitle());
     }
 
     @Override

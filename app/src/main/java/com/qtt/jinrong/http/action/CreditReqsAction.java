@@ -45,7 +45,7 @@ public class CreditReqsAction {
      * @param listener
      */
     public static void requestCreditProductApply(Context context,IRequest iRequest,MCListenerObj.IObjResListener<Response> listener) {
-        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY,new HashMap<String, Object>(),listener,Response.class);
+        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY,new HashMap<String, Object>(),listener,Response.class);
     }
 
 }

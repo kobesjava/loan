@@ -289,8 +289,8 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
             request.setLoanBalance(Integer.valueOf(loanBanlance));
         }
         String discountSpace = hpMortgageDiscountSpaceEdit.getString();
-        if(!TextUtils.isEmpty(discountSpace)) {
-            request.setSale(Integer.valueOf(discountSpace));
+        if(!TextUtils.isEmpty(hpMortgageDiscountSpaceEdit.getString())) {
+            request.setSale(Integer.valueOf(hpMortgageDiscountSpaceEdit.getString()));
         }
         return request;
     }

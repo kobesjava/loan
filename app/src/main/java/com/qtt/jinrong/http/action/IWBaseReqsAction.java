@@ -2,15 +2,14 @@ package com.qtt.jinrong.http.action;
 
 import android.content.Context;
 
-import com.qtt.jinrong.http.request.CommonRequest;
-import com.qtt.jinrong.http.request.CommonStrReq;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
-import com.qtt.framework.config.AppConfig;
 import com.qtt.framework.http.BaseReqAction;
 import com.qtt.framework.http.CommonObjReq;
 import com.qtt.framework.http.CommonReq;
 import com.qtt.framework.http.MCListenerObj;
+import com.qtt.jinrong.http.request.CommonRequest;
+import com.qtt.jinrong.http.request.CommonStrReq;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,10 +18,6 @@ import java.util.Map;
  * @author yanxin
  */
 public class IWBaseReqsAction extends BaseReqAction {
-
-    public static String ROOT_URL = AppConfig.getDomain();
-    public final static String CENTER_URL = "/agentAppServer/agentapp";
-    /*------------------------------------------------------------------------------*/
 
     public static <T> void getGetReq7HeardInfo(Context mContext, String url, Map<String, Object> paramsMap, MCListenerObj.IObjResListener<T> iStrResListener, Class<T> responseClass) {
         CommonObjReq commonObjReq = getCommObjReq(mContext,Request.Method.GET, url, paramsMap, iStrResListener, responseClass, getHeardInfo(paramsMap));

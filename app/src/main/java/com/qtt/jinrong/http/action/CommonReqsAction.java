@@ -26,8 +26,6 @@ import java.util.Map;
 public class CommonReqsAction extends BaseReqAction {
 
     public static String ROOT_URL = AppConfig.getDomain();
-    public final static String CENTER_URL = "/agentAppServer/agentapp";
-    /*------------------------------------------------------------------------------*/
 
     public static <T> void getGetReq7HeardInfo(Context mContext, String url, Map<String, Object> paramsMap, MCListenerObj.IObjResListener<T> iStrResListener, Class<T> responseClass) {
         CommonObjReq commonObjReq = getCommObjReq(mContext,Request.Method.GET, url, paramsMap, iStrResListener, responseClass, getHeardInfo(paramsMap));

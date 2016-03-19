@@ -21,13 +21,13 @@ public class BaseInfoSaveRequest implements IRequest {
     //婚姻情况
     private Integer marriage;
     //配偶月收入
-    private Integer spouseMonthIncome;
+    private Integer spouseIncome;
     //配偶能否出面担保/签字
-    private Integer spouseGuarantee;
+    private Integer spouseSign;
     //配偶信用情况
-    private Integer spouseCreditSituation;
+    private Integer spouseCredit;
     //配偶逾期情况
-    private Integer spouseOverdueSituation;
+    private Integer spouseOverdue;
 
     public String getUserId() {
         return userId;
@@ -101,36 +101,36 @@ public class BaseInfoSaveRequest implements IRequest {
         this.marriage = marriage;
     }
 
-    public Integer getSpouseMonthIncome() {
-        return spouseMonthIncome;
+    public Integer getSpouseIncome() {
+        return spouseIncome;
     }
 
-    public void setSpouseMonthIncome(Integer spouseMonthIncome) {
-        this.spouseMonthIncome = spouseMonthIncome;
+    public void setSpouseIncome(Integer spouseIncome) {
+        this.spouseIncome = spouseIncome;
     }
 
-    public Integer getSpouseGuarantee() {
-        return spouseGuarantee;
+    public Integer getSpouseSign() {
+        return spouseSign;
     }
 
-    public void setSpouseGuarantee(Integer spouseGuarantee) {
-        this.spouseGuarantee = spouseGuarantee;
+    public void setSpouseSign(Integer spouseSign) {
+        this.spouseSign = spouseSign;
     }
 
-    public Integer getSpouseCreditSituation() {
-        return spouseCreditSituation;
+    public Integer getSpouseCredit() {
+        return spouseCredit;
     }
 
-    public void setSpouseCreditSituation(Integer spouseCreditSituation) {
-        this.spouseCreditSituation = spouseCreditSituation;
+    public void setSpouseCredit(Integer spouseCredit) {
+        this.spouseCredit = spouseCredit;
     }
 
-    public Integer getSpouseOverdueSituation() {
-        return spouseOverdueSituation;
+    public Integer getSpouseOverdue() {
+        return spouseOverdue;
     }
 
-    public void setSpouseOverdueSituation(Integer spouseOverdueSituation) {
-        this.spouseOverdueSituation = spouseOverdueSituation;
+    public void setSpouseOverdue(Integer spouseOverdue) {
+        this.spouseOverdue = spouseOverdue;
     }
 
     @Override
@@ -145,10 +145,10 @@ public class BaseInfoSaveRequest implements IRequest {
         map.put("registerCity",registerCity);
         map.put("registerAddr",registerAddr);
         map.put("marriage",marriage);
-        map.put("spouseMonthIncome",spouseMonthIncome);
-        map.put("spouseGuarantee",spouseGuarantee);
-        map.put("spouseCreditSituation",spouseCreditSituation);
-        map.put("spouseOverdueSituation",spouseOverdueSituation);
+        map.put("spouseIncome",spouseIncome);
+        map.put("spouseSign",spouseSign);
+        map.put("spouseCredit",spouseCredit);
+        map.put("spouseOverdue",spouseOverdue);
         return map;
     }
 }

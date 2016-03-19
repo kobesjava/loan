@@ -9,14 +9,14 @@ import java.util.List;
  */
 public enum CarPropertyAssessedEnum {
 
-    ASSESSED_5万(1,"0-5万"),
-    ASSESSED_10万(2,"6-10万"),
-    ASSESSED_15万(3,"11-15万"),
-    ASSESSED_20万(4,"16-20万"),
-    ASSESSED_30万(5,"21-30万"),
-    ASSESSED_50万(6,"31-50万"),
-    ASSESSED_100万(7,"51-100万"),
-    ASSESSED_100万以上(8,"100万以上");
+    _5万(1,"0-5万"),
+    _10万(2,"6-10万"),
+    _15万(3,"11-15万"),
+    _20万(4,"16-20万"),
+    _30万(5,"21-30万"),
+    _50万(6,"31-50万"),
+    _100万(7,"51-100万"),
+    _100万以上(8,"100万以上");
 
     private int code;
     private String title;
