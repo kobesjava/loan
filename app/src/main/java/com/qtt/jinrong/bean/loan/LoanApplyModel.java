@@ -1,22 +1,27 @@
 package com.qtt.jinrong.bean.loan;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by yanxin on 16/2/24.
  */
-public class LoanApplyModel extends LoanModel {
+public class LoanApplyModel implements Parcelable{
 
-    //金额
-    private int aomount;
+    private String id;
+    private String productId;
+    private String thumpImg;
+    private String title;
     //期限
-    private String applyLimi;
+    private Integer expires;
+    /** 金额*/
+    private Integer money;
     //状态
     private String status;
     //申请来源
     private String applySrc;
     //时间
-    private long applyDate;
+    private String applyDate;
     //原因
     private String handleReason;
 
@@ -28,22 +33,6 @@ public class LoanApplyModel extends LoanModel {
         this.status = status;
     }
 
-    public int getAomount() {
-        return aomount;
-    }
-
-    public void setAomount(int aomount) {
-        this.aomount = aomount;
-    }
-
-    public String getApplyLimi() {
-        return applyLimi;
-    }
-
-    public void setApplyLimi(String applyLimi) {
-        this.applyLimi = applyLimi;
-    }
-
     public String getApplySrc() {
         return applySrc;
     }
@@ -52,11 +41,11 @@ public class LoanApplyModel extends LoanModel {
         this.applySrc = applySrc;
     }
 
-    public long getApplyDate() {
+    public String getApplyDate() {
         return applyDate;
     }
 
-    public void setApplyDate(long applyDate) {
+    public void setApplyDate(String applyDate) {
         this.applyDate = applyDate;
     }
 
@@ -68,6 +57,57 @@ public class LoanApplyModel extends LoanModel {
         this.handleReason = handleReason;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getThumpImg() {
+        return thumpImg;
+    }
+
+    public void setThumpImg(String thumpImg) {
+        this.thumpImg = thumpImg;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getExpires() {
+        return expires;
+    }
+
+    public void setExpires(Integer expires) {
+        this.expires = expires;
+    }
+
+    public Integer getMoney() {
+        return money;
+    }
+
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public LoanApplyModel() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -75,25 +115,28 @@ public class LoanApplyModel extends LoanModel {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        super.writeToParcel(dest, flags);
-        dest.writeInt(this.aomount);
-        dest.writeString(this.applyLimi);
+        dest.writeString(this.id);
+        dest.writeString(this.productId);
+        dest.writeString(this.thumpImg);
+        dest.writeString(this.title);
+        dest.writeValue(this.expires);
+        dest.writeValue(this.money);
         dest.writeString(this.status);
         dest.writeString(this.applySrc);
-        dest.writeLong(this.applyDate);
+        dest.writeString(this.applyDate);
         dest.writeString(this.handleReason);
     }
 
-    public LoanApplyModel() {
-    }
-
     protected LoanApplyModel(Parcel in) {
-        super(in);
-        this.aomount = in.readInt();
-        this.applyLimi = in.readString();
+        this.id = in.readString();
+        this.productId = in.readString();
+        this.thumpImg = in.readString();
+        this.title = in.readString();
+        this.expires = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.money = (Integer) in.readValue(Integer.class.getClassLoader());
         this.status = in.readString();
         this.applySrc = in.readString();
-        this.applyDate = in.readLong();
+        this.applyDate = in.readString();
         this.handleReason = in.readString();
     }
 

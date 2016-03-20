@@ -50,4 +50,13 @@ public interface ILoanBS extends IBS {
      */
     void requestVerify(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
 
+    /**
+     * 请求贷款详情
+     * @param context
+     * @param request
+     * @param listenerObj
+     */
+    void requestApplyDetail(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
+
+
 }

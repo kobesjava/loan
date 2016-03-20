@@ -369,6 +369,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     @Click(R.id.btnNext)
     void clickBtnNext() {
+
         if(TextUtils.isEmpty(mIdentifyText.getText().toString())) {
             ToastUtil.showShortToast("请选择身份");
             return;

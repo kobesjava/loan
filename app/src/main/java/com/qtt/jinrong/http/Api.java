@@ -33,9 +33,11 @@ public class Api {
     //贷款产品申请
     public final static String LOAN_PRODUCT_APPLY  = ROOT_URL + MOUDLE_LOAN_PATH + "/nowApply.do";
     //贷款产品申请列表
-    public final static String LOAN_PRODUCT_APPLY_LIST = ROOT_URL + MOUDLE_LOAN_PATH + "/queryApplyList.do";
+    public final static String LOAN_PRODUCT_APPLY_LIST = ROOT_URL + MOUDLE_LOAN_PATH + "/queryLoanApplyList.do";
     //贷款审核要填写的个人信息
     public final static String LOAN_PRODUCT_APPLY_VERIFY_INFO = ROOT_URL + MOUDLE_LOAN_PATH + "/queryNowApply.do";
+    //贷款申请详情
+    public final static String LOAN_PRODUCT_APPLY_DETAIL = ROOT_URL + MOUDLE_LOAN_PATH + "/queryLoanApplyDetail.do";
 
 
     /**  credit模块  **/

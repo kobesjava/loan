@@ -1,16 +1,17 @@
 package com.qtt.jinrong.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanApplyModel;
-import com.qtt.framework.util.DateUtil;
 
 import java.util.List;
 
@@ -70,17 +71,24 @@ public class LoanApplyAdapter extends BaseAdapter {
         model = getItem(position);
 
         viewHolder.nameTxt.setText(model.getTitle());
-        viewHolder.amountTxt.setText("金额: "+model.getAomount());
+        viewHolder.amountTxt.setText("金额: "+(model.getMoney()/10000)+"万");
         viewHolder.statusTxt.setText(model.getStatus());
         viewHolder.sourceTxt.setText(model.getApplySrc());
-        viewHolder.termTxt.setText("期限: "+model.getApplyLimi());
-        viewHolder.timeTxt.setText(DateUtil.getCalendarStrBySimpleDateFormat(model.getApplyDate(),"yyyy/MM/dd HH:mm:ss"));
+        viewHolder.termTxt.setText("期限: "+model.getExpires()+"个月");
+        viewHolder.timeTxt.setText(model.getApplyDate());
+
+        try {
+            Uri uri = Uri.parse(model.getThumpImg());
+            viewHolder.img.setImageURI(uri);
+        }catch (Exception e) {
+            LogUtil.d("加载图片出错", "url=" + model.getThumpImg() + " Exception=" + e.getMessage());
+        }
 
         return convertView;
     }
 
     static class ViewHolder {
-        ImageView img;
+        SimpleDraweeView img;
         TextView  nameTxt;
         TextView  amountTxt;
         TextView  statusTxt;
@@ -89,7 +97,7 @@ public class LoanApplyAdapter extends BaseAdapter {
         TextView  timeTxt;
 
         public ViewHolder(View view) {
-            img = (ImageView) view.findViewById(R.id.img);
+            img = (SimpleDraweeView) view.findViewById(R.id.img);
             nameTxt = (TextView) view.findViewById(R.id.name);
             amountTxt = (TextView) view.findViewById(R.id.amount);
             statusTxt = (TextView) view.findViewById(R.id.status);

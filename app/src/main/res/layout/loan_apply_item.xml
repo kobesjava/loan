@@ -7,11 +7,10 @@
     android:background="@color/white"
     android:orientation="horizontal">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/img"
         android:layout_marginLeft="10dp"
         android:scaleType="centerCrop"
-        android:background="@color/red_dark"
         android:layout_gravity="center_vertical"
         android:layout_width="60dp"
         android:layout_height="60dp" />
@@ -26,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:textColor="@color/color_333"
             android:textSize="13sp"
-            android:text="南京银行-和覅回"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -36,7 +35,7 @@
             android:layout_gravity="center_vertical"
             android:textColor="@color/color_333"
             android:textSize="13sp"
-            android:text="金额: 10万"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -45,7 +44,7 @@
             android:layout_alignParentBottom="true"
             android:textColor="@color/color_999"
             android:textSize="13sp"
-            android:text="经理无反应"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -61,7 +60,7 @@
             android:layout_alignParentRight="true"
             android:textColor="@color/color_fd5b0a"
             android:textSize="13sp"
-            android:text="自由请"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -72,7 +71,7 @@
             android:layout_marginTop="3dp"
             android:textColor="@color/color_333"
             android:textSize="12sp"
-            android:text="期限: 12个月"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -83,7 +82,7 @@
             android:layout_marginTop="3dp"
             android:textColor="@color/color_999"
             android:textSize="12sp"
-            android:text="2017/12/12 12:12:12"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

@@ -5,6 +5,8 @@ import android.content.Context;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.loan.LoanApplyDetailResponse;
+import com.qtt.jinrong.bean.loan.LoanApplyListResponse;
 import com.qtt.jinrong.bean.loan.LoanApplyVerifyInfoResponse;
 import com.qtt.jinrong.bean.loan.LoanListResponse;
 import com.qtt.jinrong.bean.loan.LoanProductDetailResponse;
@@ -53,8 +55,8 @@ public class LoanReqsAction {
      * @param request
      * @param listener
      */
-    public static void requestApplyList(Context context,IRequest request,MCListenerObj.IObjResListener<LoanListResponse> listener) {
-        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_LIST,request.getParams(),listener,LoanListResponse.class);
+    public static void requestApplyList(Context context,IRequest request,MCListenerObj.IObjResListener<LoanApplyListResponse> listener) {
+        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_LIST,request.getParams(),listener,LoanApplyListResponse.class);
     }
 
     /**
@@ -65,6 +67,16 @@ public class LoanReqsAction {
      */
     public static void requestVerify(Context context,IRequest request,MCListenerObj.IObjResListener<LoanApplyVerifyInfoResponse> listener) {
         getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_VERIFY_INFO,request.getParams(),listener,LoanApplyVerifyInfoResponse.class);
+    }
+
+    /**
+     * 请求贷款申请详情
+     * @param context
+     * @param request
+     * @param listener
+     */
+    public static void requestApplyDetail(Context context,IRequest request,MCListenerObj.IObjResListener<LoanApplyDetailResponse> listener) {
+        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_DETAIL,request.getParams(),listener,LoanApplyDetailResponse.class);
     }
 
 }

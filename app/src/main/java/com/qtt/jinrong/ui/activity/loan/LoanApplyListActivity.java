@@ -42,7 +42,6 @@ public class LoanApplyListActivity extends BaseActivity implements ILoanApplyLis
     BottomRefreshListView mBottomRefreshListView;
 
     LoanApplyAdapter mAdapter;
-
     LoanApplyListRequest request;
     ILoanApplyListPresenter mPresenter;
 
@@ -87,10 +86,12 @@ public class LoanApplyListActivity extends BaseActivity implements ILoanApplyLis
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(LoanApplyListActivity.this, GeneratedClassUtils.get(LoanApplyDetailActivity.class));
+                intent.putExtra(LoanApplyDetailActivity.INETNT_APPLY_MODEL, mAdapter.getItem(position-1));
                 startActivity(intent);
             }
         });
 
+        showLoading();
         mPresenter.request();
     }
 
@@ -101,6 +102,7 @@ public class LoanApplyListActivity extends BaseActivity implements ILoanApplyLis
 
     @Override
     public void onRequest(List<LoanApplyModel> models) {
+        hideLoading();
         if(request.getPageNo() == 1) {
             mSwipeRefreshLayout.setRefreshing(false);
             if(models != null) mAdapter.update(models);
@@ -119,6 +121,7 @@ public class LoanApplyListActivity extends BaseActivity implements ILoanApplyLis
 
     @Override
     public void onRequestFail() {
+        hideLoading();
         if(request.getPageNo() == 1) {
             mSwipeRefreshLayout.setRefreshing(false);
         } else {
