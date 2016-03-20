@@ -10,6 +10,7 @@ import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.Response;
 import com.qtt.jinrong.bean.loan.LoanApplyRequest;
+import com.qtt.jinrong.bean.loan.LoanApplyVerifyInfoModel;
 import com.qtt.jinrong.enums.CarLinscePositionEnum;
 import com.qtt.jinrong.enums.CarPropertyEnum;
 import com.qtt.jinrong.enums.CompanyPositionEnum;
@@ -18,8 +19,8 @@ import com.qtt.jinrong.enums.CreditSituationEnum;
 import com.qtt.jinrong.enums.CreditTotalLimitEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
-import com.qtt.jinrong.enums.HousePropertyPositionEnum;
 import com.qtt.jinrong.enums.HousePropertyMortgageSituationEnum;
+import com.qtt.jinrong.enums.HousePropertyPositionEnum;
 import com.qtt.jinrong.enums.IdentityEnum;
 import com.qtt.jinrong.enums.IncomePayMethodEnum;
 import com.qtt.jinrong.enums.LegalPersonEnum;
@@ -119,12 +120,17 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         amount = mIntent.getIntExtra(INTENT_RESPONSE_AMOUNT,0);
         mPresenter = new LoanApplyPresenterImpl(this);
         request = new LoanApplyRequest();
+        request.setUserId(getUserId());
+        request.setExpires(term);
+        request.setMoney(amount * 10000);
+        request.setProductId(productId);
     }
 
     @AfterViews
     void initViews() {
         mTitleBar.setTitle(getString(R.string.loan_vertify_title));
         mTitleBar.setActivity(this);
+        mPresenter.requestVerify();
     }
 
     @Click(R.id.identity)
@@ -156,7 +162,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 LegalPersonEnum mEnum = LegalPersonEnum.values()[position];
-                request.setLegal(mEnum.getCode());
+                request.setCorporation(mEnum.getCode());
                 legalPersonText.setText(val);
             }
         });
@@ -169,7 +175,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CompanyPositionEnum mEnums = CompanyPositionEnum.values()[position];
-                request.setCompanyPosition(mEnums.getCode());
+                request.setEpBuss(mEnums.getCode());
                 companyPositionText.setText(val);
             }
         });
@@ -182,7 +188,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 OperatorYearsEnum mEnums = OperatorYearsEnum.values()[position];
-                request.setOperatorYear(mEnums.getCode());
+                request.setEpPeriod(mEnums.getCode());
                 operationPeriodText.setText(val);
             }
         });
@@ -229,6 +235,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         });
         show();
     }
+
     //公共属性
     @Click(R.id.creditStation)
     void clickCreditStation() {
@@ -242,7 +249,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 } else {
                     creditOverdueMore.setVisibility(View.GONE);
                 }
-                request.setCredit(mEnum.getCode());
+                request.setCreInfo(mEnum.getCode());
                 mCreditText.setText(val);
             }
         });
@@ -299,7 +306,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 HousePropertyEnum mEnum = HousePropertyEnum.values()[position];
                 if (mEnum.equals(HousePropertyEnum.无房产)) housePropertyMore.setVisibility(View.GONE);
                 else housePropertyMore.setVisibility(View.VISIBLE);
-                request.setHouse(mEnum.getCode());
+                request.setHouseInfo(mEnum.getCode());
                 mHousePropertyText.setText(val);
             }
         });
@@ -353,7 +360,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             @Override
             public void onItemSelect(int position, String val) {
                 CarLinscePositionEnum mEnum = CarLinscePositionEnum.values()[position];
-                request.setLinscebelong(mEnum.getCode());
+                request.setCarBelong(mEnum.getCode());
                 carLicenseText.setText(val);
             }
         });
@@ -362,30 +369,30 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     @Click(R.id.btnNext)
     void clickBtnNext() {
-        IdentityEnum mEnums = IdentityEnum.find(request.getCapacity());
-        if(mEnums == null) {
+        if(TextUtils.isEmpty(mIdentifyText.getText().toString())) {
             ToastUtil.showShortToast("请选择身份");
             return;
         }
-        if(mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
-            if(request.getLegal() == null) {
+        IdentityEnum identityEnum = IdentityEnum.find(request.getCapacity());
+        if(identityEnum.equals(IdentityEnum.企业户) || identityEnum.equals(IdentityEnum.个体户)) {
+            if(TextUtils.isEmpty(legalPersonText.getText().toString())) {
                 ToastUtil.showShortToast("请选择法人或股东");
                 return;
             }
-            if(request.getCompanyPosition() == null) {
+            if(TextUtils.isEmpty(companyPositionText.getText().toString())) {
                 ToastUtil.showShortToast("请选择企业经营地");
                 return;
             }
-            if(request.getOperatorYear() == null) {
+            if(TextUtils.isEmpty(operationPeriodText.getText().toString())) {
                 ToastUtil.showShortToast("请选择经营年限");
                 return;
             }
         } else {
-            if(request.getCurrSeniority() == null) {
+            if(TextUtils.isEmpty(companyWorkYearsText.getText().toString())) {
                 ToastUtil.showShortToast("请选择现单位工龄");
                 return;
             }
-            if(request.getPayWay() == null) {
+            if(TextUtils.isEmpty(incomePayWayText.getText().toString())) {
                 ToastUtil.showShortToast("请选择收入发放方式");
                 return;
             }
@@ -393,7 +400,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 ToastUtil.showShortToast("请填写月均总收入");
                 return;
             }
-            if(request.getSocialSecurity() == null) {
+            if(TextUtils.isEmpty(socialFundText.getText().toString())) {
                 ToastUtil.showShortToast("请选择社保和公积金");
                 return;
             }
@@ -410,53 +417,55 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             request.setAge(age);
         }
 
-        CreditSituationEnum scEnum = CreditSituationEnum.find(request.getCredit());
-        if(scEnum == null) {
+        if(TextUtils.isEmpty(mCreditText.getText().toString())) {
             ToastUtil.showShortToast("请选择信用情况");
             return;
         }
+
+        CreditSituationEnum scEnum = CreditSituationEnum.find(request.getCreInfo());
         if(scEnum.equals(CreditSituationEnum.有逾期)) {
-            if(request.getOverdue() == null) {
+            if(TextUtils.isEmpty(overdueText.getText().toString())) {
                 ToastUtil.showShortToast("请选择逾期情况");
                 return;
             }
         }
 
-        CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(request.getCreMoney());
-        if(ctlEnum == null) {
+        if(TextUtils.isEmpty(mCreditLimitText.getText().toString())) {
             ToastUtil.showShortToast("请选择信用卡总额度");
             return;
         }
+        CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(request.getCreMoney());
         if(!ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
-            if(request.getCreUsed() == null) {
+            if(TextUtils.isEmpty(creditUsedText.getText().toString())) {
                 ToastUtil.showShortToast("请选择已使用额度");
                 return;
             }
         }
 
-        HousePropertyEnum hpEnum = HousePropertyEnum.find(request.getHouse());
-        if(hpEnum == null) {
+
+        if(TextUtils.isEmpty(mHousePropertyText.getText().toString())) {
             ToastUtil.showShortToast("请选择房产信息");
             return;
         }
+        HousePropertyEnum hpEnum = HousePropertyEnum.find(request.getHouseInfo());
         if(!hpEnum.equals(HousePropertyEnum.无房产)) {
-            if(request.getDistrict() == null) {
+            if(TextUtils.isEmpty(housePropertyPositionText.getText().toString())) {
                 ToastUtil.showShortToast("请选择房产位置");
                 return;
             }
-            if(request.getMortgage() == null) {
+            if(TextUtils.isEmpty(housePropertySituaionText.getText().toString())) {
                 ToastUtil.showShortToast("请选择房产抵押/按揭情况");
                 return;
             }
         }
 
-        CarPropertyEnum cpEnum = CarPropertyEnum.find(request.getCar());
-        if(cpEnum == null) {
+        if(TextUtils.isEmpty(mCarPropertyText.getText().toString())) {
             ToastUtil.showShortToast("请选择车产信息");
             return;
         }
+        CarPropertyEnum cpEnum = CarPropertyEnum.find(request.getCar());
         if(cpEnum.equals(CarPropertyEnum.有车产)) {
-            if(request.getLinscebelong() == null) {
+            if(TextUtils.isEmpty(carLicenseText.getText().toString())) {
                 ToastUtil.showShortToast("请选择牌照归属地");
                 return;
             }
@@ -467,17 +476,85 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     /*** ILoanApplyView ***/
     @Override
-    public void onRequestVerify() {
+    public void onRequestVerify(LoanApplyVerifyInfoModel model) {
+        IdentityEnum identityEnum = IdentityEnum.find(model.getCapacity());
+        if(identityEnum != null) {
+            mIdentifyText.setText(identityEnum.name());
+            request.setCapacity(identityEnum.getCode());
+            if(identityEnum.equals(IdentityEnum.企业户) || identityEnum.equals(IdentityEnum.个体户)) {
+                enterprisePersonalMore.setVisibility(View.VISIBLE);
+                workerOtherMore.setVisibility(View.GONE);
+            } else {
+                enterprisePersonalMore.setVisibility(View.GONE);
+                workerOtherMore.setVisibility(View.VISIBLE);
+            }
+            request.setCapacity(identityEnum.getCode());
+        }
+
+        LegalPersonEnum lpEnum = LegalPersonEnum.find(model.getCorporation());
+        if(lpEnum != null) legalPersonText.setText(lpEnum.getTitle());
+        CompanyPositionEnum cpEnum = CompanyPositionEnum.find(model.getEpBuss());
+        if(cpEnum != null) companyPositionText.setText(cpEnum.name());
+        OperatorYearsEnum oyEnum = OperatorYearsEnum.find(model.getEpPeriod());
+        if(oyEnum != null) operationPeriodText.setText(oyEnum.getTitle());
+
+        WorkYearsEnum wyEnum = WorkYearsEnum.find(model.getCurrSeniority());
+        if(wyEnum != null) companyWorkYearsText.setText(wyEnum.getTitle());
+        IncomePayMethodEnum ipEnum = IncomePayMethodEnum.find(model.getPayWay());
+        if(ipEnum != null) incomePayWayText.setText(ipEnum.getTitle());
+        if(model.getMonthlyIncome() != null) monthSalaryEdit.setText(String.valueOf(model.getMonthlyIncome()));
+        SocialFundEnum sfEnum = SocialFundEnum.find(model.getSocialSecurity());
+        if(sfEnum != null) socialFundText.setText(sfEnum.name());
+
+        if(model.getAge() != null) mAgeEdit.setText(String.valueOf(model.getAge()));
+        CreditSituationEnum csEnum = CreditSituationEnum.find(model.getCreInfo());
+        if(csEnum != null) {
+            mCreditText.setText(csEnum.getTitle());
+            request.setCreInfo(csEnum.getCode());
+            if(csEnum.equals(CreditSituationEnum.有逾期)) creditOverdueMore.setVisibility(View.VISIBLE);
+            else creditOverdueMore.setVisibility(View.GONE);
+        }
+        CreditOverdueEnum coEnum = CreditOverdueEnum.find(model.getOverdue());
+        if(coEnum != null) overdueText.setText(coEnum.name());
+        CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(model.getCreMoney());
+        if(ctlEnum != null) {
+            mCreditLimitText.setText(ctlEnum.getTitle());
+            request.setCreMoney(ctlEnum.getCode());
+            if(ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) creditMore.setVisibility(View.GONE);
+            else creditMore.setVisibility(View.VISIBLE);
+        }
+        CreditUsedLimitEnum culEnum = CreditUsedLimitEnum.find(model.getCreUsed());
+        if(culEnum != null) creditUsedText.setText(culEnum.getTitle());
+        HousePropertyEnum hpEnum = HousePropertyEnum.find(model.getHouseInfo());
+        if(hpEnum != null) {
+            mHousePropertyText.setText(hpEnum.getTitle());
+            request.setHouseInfo(hpEnum.getCode());
+            if(hpEnum.equals(HousePropertyEnum.无房产)) housePropertyMore.setVisibility(View.GONE);
+            else housePropertyMore.setVisibility(View.VISIBLE);
+        }
+        HousePropertyPositionEnum hppEnum = HousePropertyPositionEnum.find(model.getDistrict());
+        if(hppEnum != null) housePropertyPositionText.setText(hppEnum.name());
+        HousePropertyMortgageSituationEnum hpmsEnum = HousePropertyMortgageSituationEnum.find(model.getMortgage());
+        if(hpmsEnum != null) housePropertySituaionText.setText(hpmsEnum.getTitle());
+
+        CarPropertyEnum carPropertyEnumEnum = CarPropertyEnum.find(model.getCar());
+        if(carPropertyEnumEnum != null) {
+            mCarPropertyText.setText(carPropertyEnumEnum.name());
+            request.setCar(carPropertyEnumEnum.getCode());
+            if(carPropertyEnumEnum.equals(CarPropertyEnum.无车产)) carPropertyMore.setVisibility(View.GONE);
+            else carPropertyMore.setVisibility(View.VISIBLE);
+        }
+        CarLinscePositionEnum clpEnum = CarLinscePositionEnum.find(model.getCarBelong());
+        if(clpEnum != null) carLicenseText.setText(clpEnum.name());
 
     }
 
     @Override
-    public LoanApplyRequest getReauest() {
+    public LoanApplyRequest getRequest() {
         if(!TextUtils.isEmpty(monthSalaryEdit.getString()))
-            request.setSalary(Integer.valueOf(monthSalaryEdit.getString()));
+            request.setMonthlyIncome(Integer.valueOf(monthSalaryEdit.getString()));
         if(!TextUtils.isEmpty(mAgeEdit.getString()))
             request.setAge(Integer.valueOf(mAgeEdit.getString()));
-
         return request;
     }
 

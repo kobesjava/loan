@@ -12,6 +12,7 @@ import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.event.LoginEvent;
 import com.qtt.jinrong.bean.event.LoginExpired;
 import com.qtt.jinrong.config.Constants;
+import com.qtt.jinrong.ui.activity.credit.CreditApplyListActivity;
 import com.qtt.jinrong.ui.activity.loan.LoanApplyListActivity;
 import com.qtt.jinrong.ui.activity.user.AboutUsActivity;
 import com.qtt.jinrong.ui.activity.user.FinancingNeedsActivity;
@@ -109,6 +110,16 @@ public class MineFragment extends BaseFragment {
             return;
         }
         Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanApplyListActivity.class));
+        startActivity(intent);
+    }
+
+    @Click(R.id.btnCreditApply)
+    void clickMyCreditApply() {
+        if(mUserInfo == null) {
+            login();
+            return;
+        }
+        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(CreditApplyListActivity.class));
         startActivity(intent);
     }
 

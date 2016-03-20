@@ -77,10 +77,10 @@ public class RegistActivity extends BaseActivity implements IRegistView{
         hideLoading();
         if(!success) return;
 
-        Intent intent = new Intent(this, GeneratedClassUtils.get(Regist11Activity.class));
-        intent.putExtra(Regist11Activity.INTENT_PHONE,mPhoneEdit.getString());
-        intent.putExtra(Regist11Activity.INTENT_NICKNAME,mNickEdit.getString());
-        intent.putExtra(Regist11Activity.INTENT_GENDER,mSexBtn.isChecked()? GenderEnum.男.getCode():GenderEnum.女.getCode());
+        Intent intent = new Intent(this, GeneratedClassUtils.get(Regist1Activity.class));
+        intent.putExtra(Regist1Activity.INTENT_PHONE,mPhoneEdit.getString());
+        intent.putExtra(Regist1Activity.INTENT_NICKNAME,mNickEdit.getString());
+        intent.putExtra(Regist1Activity.INTENT_GENDER,mSexBtn.isChecked()? GenderEnum.男.getCode():GenderEnum.女.getCode());
         startActivity(intent);
         finish();
     }

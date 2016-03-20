@@ -204,13 +204,13 @@ public class CarPropertyActivity extends BaseSelectActivity implements ICarPrope
         if(model.getCarPrice() != null) cpPriceBuyEdit.setText(String.valueOf(model.getCarPrice()));
 
         CarPropertyAssessedEnum cpaEnum = CarPropertyAssessedEnum.find(model.getCarBelong());
-        if(cpaEnum != null) cpAssessedText.setText(cpaEnum.name());
+        if(cpaEnum != null) cpAssessedText.setText(cpaEnum.getTitle());
 
         CarAgeEnum caEnum = CarAgeEnum.find(model.getCarAge());
-        if(caEnum != null) cpYearsText.setText(caEnum.name());
+        if(caEnum != null) cpYearsText.setText(caEnum.getTitle());
 
         CarDriveKmEnum cdkEnum = CarDriveKmEnum.find(model.getCarRange());
-        if(cdkEnum != null) cpTravelKMText.setText(cdkEnum.name());
+        if(cdkEnum != null) cpTravelKMText.setText(cdkEnum.getTitle());
 
         CarMortgageSituationEnum cmsEnum = CarMortgageSituationEnum.find(model.getCarMortgage());
         if(cmsEnum != null) {

@@ -32,4 +32,8 @@ public class LoanBSImpl implements ILoanBS {
         LoanReqsAction.requestApplyList(context,request,listenerObj);
     }
 
+    @Override
+    public void requestVerify(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj) {
+        LoanReqsAction.requestVerify(context,request,listenerObj);
+    }
 }

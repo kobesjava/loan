@@ -42,4 +42,12 @@ public interface ILoanBS extends IBS {
      */
     void requestApplyList(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
 
+    /**
+     * 请求贷款审核要填写的个人信息
+     * @param context
+     * @param request
+     * @param listenerObj
+     */
+    void requestVerify(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
+
 }

@@ -5,11 +5,10 @@ import android.content.Context;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.loan.LoanApplyVerifyInfoResponse;
 import com.qtt.jinrong.bean.loan.LoanListResponse;
 import com.qtt.jinrong.bean.loan.LoanProductDetailResponse;
 import com.qtt.jinrong.http.Api;
-
-import java.util.HashMap;
 
 import static com.qtt.jinrong.http.action.IWBaseReqsAction.getPostReq7HeardInfo;
 
@@ -45,7 +44,7 @@ public class LoanReqsAction {
      * @param listener
      */
     public static void requestLoanProductApply(Context context,IRequest iRequest,MCListenerObj.IObjResListener<Response> listener) {
-        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY,new HashMap<String, Object>(),listener,Response.class);
+        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY,iRequest.getParams(),listener,Response.class);
     }
 
     /**
@@ -56,6 +55,16 @@ public class LoanReqsAction {
      */
     public static void requestApplyList(Context context,IRequest request,MCListenerObj.IObjResListener<LoanListResponse> listener) {
         getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_LIST,request.getParams(),listener,LoanListResponse.class);
+    }
+
+    /**
+     * 请求贷款审核要填写的个人信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    public static void requestVerify(Context context,IRequest request,MCListenerObj.IObjResListener<LoanApplyVerifyInfoResponse> listener) {
+        getPostReq7HeardInfo(context, Api.LOAN_PRODUCT_APPLY_VERIFY_INFO,request.getParams(),listener,LoanApplyVerifyInfoResponse.class);
     }
 
 }

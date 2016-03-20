@@ -30,7 +30,7 @@ import org.androidannotations.annotations.ViewById;
  * Created by yanxin on 16/2/24.
  */
 @EActivity(R.layout.activity_regist1)
-public class Regist11Activity extends BaseActivity implements IRegist1View {
+public class Regist1Activity extends BaseActivity implements IRegist1View {
 
     public static final String INTENT_PHONE = "INTENT_PHONE";
     public static final String INTENT_NICKNAME = "INTENT_NICKNAME";
@@ -87,7 +87,7 @@ public class Regist11Activity extends BaseActivity implements IRegist1View {
 
             @Override
             public void rightOnClick() {
-                Intent intent = new Intent(Regist11Activity.this, GeneratedClassUtils.get(LoginActivity.class));
+                Intent intent = new Intent(Regist1Activity.this, GeneratedClassUtils.get(LoginActivity.class));
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -139,19 +139,19 @@ public class Regist11Activity extends BaseActivity implements IRegist1View {
         mPresenter.regist();
     }
 
-    static class MyCountDownTimer extends WrapCountDownTimer<Regist11Activity> {
+    static class MyCountDownTimer extends WrapCountDownTimer<Regist1Activity> {
 
-        public MyCountDownTimer(long millisInFuture, long countDownInterval,Regist11Activity t) {
+        public MyCountDownTimer(long millisInFuture, long countDownInterval,Regist1Activity t) {
             super(millisInFuture,countDownInterval,t);
         }
 
         @Override
-        protected void onFinish(Regist11Activity activity) {
+        protected void onFinish(Regist1Activity activity) {
             activity.resetCodeBtn();
         }
 
         @Override
-        protected void onTick(Regist11Activity activity, long millisUntilFinished) {
+        protected void onTick(Regist1Activity activity, long millisUntilFinished) {
             activity.mBtnRequestCode.setText("("+(millisUntilFinished/1000)+"秒后)重新获取");
         }
     }

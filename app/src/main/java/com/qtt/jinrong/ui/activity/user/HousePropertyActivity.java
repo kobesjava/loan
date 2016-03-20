@@ -241,7 +241,7 @@ public class HousePropertyActivity extends BaseSelectActivity implements IHouseP
         if(hsEnum != null) hpSpareText.setText(hsEnum.name());
 
         HousePropertySpaceEnum spsEnum = HousePropertySpaceEnum.find(model.getArea());
-        if(spsEnum != null) hpSpaceText.setText(spsEnum.name());
+        if(spsEnum != null) hpSpaceText.setText(spsEnum.getTitle());
 
         if(model.getTotalPrice() != null) hpTotalPriceBuyEdit.setText(String.valueOf(model.getTotalPrice()));
         if(model.getCurrPrice() != null) hpPriceNowEdit.setText(String.valueOf(model.getCurrPrice()));

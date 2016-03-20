@@ -1,5 +1,6 @@
 package com.qtt.jinrong.ui.activity.loan;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanModel;
@@ -104,9 +106,8 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
     public void onRequestRecommend(List<LoanModel> loans) {
         if(loans == null || loans.size() == 0) return;
 
-        LoanModel mLoanModel;
         for(int i=0;i<loans.size();i++) {
-            mLoanModel = loans.get(i);
+            final LoanModel mLoanModel = loans.get(i);
             View view = LayoutInflater.from(this).inflate(R.layout.loan_recommend_item,null);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.bottomMargin = getResources().getDimensionPixelOffset(R.dimen.margin_step_5);
@@ -126,6 +127,17 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
             }catch (Exception e) {
                 LogUtil.d("加载图片", "URL=" + mLoanModel.getThumpImg() + " Exception=" + e.getMessage());
             }
+
+            view.findViewById(R.id.btnApply).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(LoanApplyResultActivity.this, GeneratedClassUtils.get(LoanApplyAptitudeVerifyActivity.class));
+                    intent.putExtra(LoanApplyAptitudeVerifyActivity.INTENT_PRODUCT_ID,mLoanModel.getProductId());
+                    intent.putExtra(LoanApplyAptitudeVerifyActivity.INTENT_RESPONSE_AMOUNT,amount);
+                    intent.putExtra(LoanApplyAptitudeVerifyActivity.INTENT_RESPONSE_TERM,term);
+                    startActivity(intent);
+                }
+            });
         }
 
     }

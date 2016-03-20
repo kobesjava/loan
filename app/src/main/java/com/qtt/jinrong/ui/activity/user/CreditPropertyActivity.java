@@ -184,7 +184,7 @@ public class CreditPropertyActivity extends BaseSelectActivity implements ICredi
             @Override
             public void onItemSelect(int position, String val) {
                 MonthAverageRepayEnum mEnum = MonthAverageRepayEnum.values()[position];
-                request.setCreUsed(mEnum.getCode());
+                request.setCreMonthRepay(mEnum.getCode());
                 creditMonthAverageRepaymentText.setText(val);
             }
         });
