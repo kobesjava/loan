@@ -22,6 +22,7 @@ public class LoanApplyModel implements Parcelable{
     private String applySrc;
     //时间
     private String applyDate;
+    private String handleDate;
     //原因
     private String handleReason;
 
@@ -105,6 +106,14 @@ public class LoanApplyModel implements Parcelable{
         this.productId = productId;
     }
 
+    public String getHandleDate() {
+        return handleDate;
+    }
+
+    public void setHandleDate(String handleDate) {
+        this.handleDate = handleDate;
+    }
+
     public LoanApplyModel() {
     }
 
@@ -124,6 +133,7 @@ public class LoanApplyModel implements Parcelable{
         dest.writeString(this.status);
         dest.writeString(this.applySrc);
         dest.writeString(this.applyDate);
+        dest.writeString(this.handleDate);
         dest.writeString(this.handleReason);
     }
 
@@ -137,6 +147,7 @@ public class LoanApplyModel implements Parcelable{
         this.status = in.readString();
         this.applySrc = in.readString();
         this.applyDate = in.readString();
+        this.handleDate = in.readString();
         this.handleReason = in.readString();
     }
 

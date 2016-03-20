@@ -93,7 +93,7 @@ public class LoanApplyDetailActivity extends BaseActivity implements ILoanApplyD
             View statusView = view.findViewById(R.id.statusView);
             TextView reasonView = (TextView)view.findViewById(R.id.reason);
             ((TextView)view.findViewById(R.id.status)).setText(model.getStatus());
-            ((TextView)view.findViewById(R.id.time)).setText(model.getApplyDate());
+            ((TextView)view.findViewById(R.id.time)).setText(model.getHandleDate());
             reasonView.setText(model.getHandleReason());
 
             if(i==0 && !TextUtils.isEmpty(model.getHandleReason())) {
