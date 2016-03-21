@@ -139,8 +139,8 @@ android {
         }
 
     } else {
-        def profile_aaa = "config/test/test.config.properties"
-        def rename_file = "test.config.properties"
+        def profile_aaa = "config/dev/dev.config.properties"
+        def rename_file = "dev.config.properties"
 
         task myCopy(type: Copy) {
             copy {
