@@ -4,13 +4,18 @@ import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.facebook.cache.disk.DiskCacheConfig;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.qtt.jinrong.config.ConfigManager;
+import com.qtt.jinrong.config.Constants;
 import com.qtt.jinrong.config.NetworkManger;
 import com.qtt.jinrong.task.TaskManager;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.qtt.framework.app.BaseUnCatchExceptionHandler;
 import com.qtt.framework.config.AppConfig;
 import com.qtt.framework.umeng.CommonAnalysis;
+
+import java.io.File;
 
 /**
  * @author yanxin
@@ -35,7 +40,14 @@ public class MyApplication extends Application {
         CommonAnalysis.init(getApplicationContext());
         BaseUnCatchExceptionHandler crashHandler = BaseUnCatchExceptionHandler.getInstance();
         crashHandler.init(this);
-        Fresco.initialize(this);
+
+        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+                .setMainDiskCacheConfig(
+                        DiskCacheConfig.newBuilder(this)
+                        .setBaseDirectoryPath(new File(Constants.CACHE_DIR))
+                        .build())
+                .build();
+        Fresco.initialize(this,config);
     }
 
     /**

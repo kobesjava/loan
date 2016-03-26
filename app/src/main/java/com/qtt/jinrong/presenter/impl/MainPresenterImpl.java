@@ -38,13 +38,6 @@ public class MainPresenterImpl implements IMainPresenter {
 
             @Override
             public void onFail(Exception exception, String url) {
-                UpgradeModel model = new UpgradeModel();
-                model.setVersion("1.1");
-                model.setIfForced(false);
-                model.setUpgrade(true);
-                model.setVersionInfo("1.那你反复带你飞\n2.佛非农佛奥反扒\n3.弄点饭放年假佛啊");
-                model.setUrl("http://house-test-water.oss.aliyuncs.com/apk/rentagent/SaleAgent-release.apk");
-                mView.upgrade(model);
             }
         });
     }
