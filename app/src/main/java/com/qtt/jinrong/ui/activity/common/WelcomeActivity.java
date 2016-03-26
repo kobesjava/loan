@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.presenter.IWelcomePresenter;
-import com.qtt.jinrong.presenter.impl.IWelcomePresenterImpl;
+import com.qtt.jinrong.presenter.impl.WelcomePresenterImpl;
 import com.qtt.jinrong.view.IWelcomeView;
 import com.qtt.framework.util.GeneratedClassUtils;
 
@@ -21,7 +21,7 @@ public class WelcomeActivity extends BaseActivity implements IWelcomeView {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        iWelcomePresenter = new IWelcomePresenterImpl(this);
+        iWelcomePresenter = new WelcomePresenterImpl(this);
 
         iWelcomePresenter.initSystem();
 

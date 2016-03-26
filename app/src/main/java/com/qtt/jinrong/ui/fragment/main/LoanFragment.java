@@ -218,6 +218,5 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         } else {
             mBottomRefreshListView.resetAll();
         }
-
     }
 }

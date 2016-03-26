@@ -27,6 +27,8 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.activity_credit_detail)
 public class CreditDetailActivity extends BaseActivity implements ICreditApplyView{
 
+    public static final String INTENT_MODEL = "INTENT_MODEL";
+
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
 

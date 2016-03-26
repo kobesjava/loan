@@ -138,7 +138,12 @@ public class FileDownloader {
 				RandomAccessFile raf = new RandomAccessFile(file, "rws");
 				raf.setLength(mFileLen);
 				raf.close();
-				asyncTask.execute(path);
+				mHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						asyncTask.execute(path);
+					}
+				});
 
 			} else {
 				throw new IllegalArgumentException("404 path: " + path);

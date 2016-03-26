@@ -1,13 +1,15 @@
 package com.qtt.jinrong.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.credit.CreditModel;
 import com.qtt.jinrong.enums.CreditLevelEnum;
@@ -25,7 +27,6 @@ public class CreditAdapter extends BaseAdapter {
 
     public CreditAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
-
     }
 
     public void add(List<CreditModel> loans) {
@@ -69,17 +70,24 @@ public class CreditAdapter extends BaseAdapter {
 
         model = getItem(position);
 
-        viewHolder.nameTxt.setText(model.getName());
-        viewHolder.descTxt.setText(model.getDesc());
-        viewHolder.levelTxt.setText(CreditLevelEnum.findLevel(model.getLevel()));
-        viewHolder.cashTxt.setText("取现额度: "+model.getCashPerscent());
-        viewHolder.applysTxt.setText("申请人数: "+model.getApplys());
+        viewHolder.nameTxt.setText(model.getCreTitle());
+        viewHolder.descTxt.setText(model.getCreDesc());
+        viewHolder.levelTxt.setText(CreditLevelEnum.findLevel(model.getCreClass()));
+        viewHolder.cashTxt.setText("取现额度: "+model.getCreQuota());
+        viewHolder.applysTxt.setText("申请人数: "+model.getClick());
+
+        try {
+            Uri uri = Uri.parse(model.getThumpImg());
+            viewHolder.img.setImageURI(uri);
+        }catch (Exception e) {
+            LogUtil.d("加载图片", "URL=" + model.getThumpImg() + " Exception=" + e.getMessage());
+        }
 
         return convertView;
     }
 
     static class ViewHolder {
-        ImageView img;
+        SimpleDraweeView img;
         TextView  nameTxt;
         TextView  descTxt;
         TextView levelTxt;
@@ -87,7 +95,7 @@ public class CreditAdapter extends BaseAdapter {
         TextView  applysTxt;
 
         public ViewHolder(View view) {
-            img = (ImageView) view.findViewById(R.id.img);
+            img = (SimpleDraweeView) view.findViewById(R.id.img);
             nameTxt = (TextView) view.findViewById(R.id.name);
             descTxt = (TextView) view.findViewById(R.id.desc);
             levelTxt = (TextView) view.findViewById(R.id.level);

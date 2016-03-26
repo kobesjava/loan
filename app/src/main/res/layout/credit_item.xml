@@ -8,12 +8,11 @@
     android:paddingTop="10dp"
     android:gravity="center_vertical">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/img"
         android:layout_width="110dp"
         android:layout_height="60dp"
         android:layout_marginLeft="10dp"
-        android:background="@color/red_dark"
         android:scaleType="centerCrop" />
 
     <RelativeLayout

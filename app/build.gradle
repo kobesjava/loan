@@ -6,6 +6,44 @@ repositories {
     mavenCentral()
 }
 
+def profile = "dev"
+if (project.hasProperty('profile')) {
+    profile = project['profile']
+}
+def profile_aaa = "config/${profile}/${profile}.config.properties"
+def rename_file = "${profile}.config.properties"
+
+task myCopy(type: Copy) {
+    copy {
+        from(profile_aaa)
+        into('src/main/assets')
+        rename(rename_file, 'config.properties')
+    }
+}
+
+def pFile = file("src/main/assets/config.properties")
+def leng = (Integer) pFile.length()
+
+task fileprocess {
+    pFile.eachByte(leng) { buffer, nReads ->
+        byte[] buffer_new = new byte[leng];
+        for (int i = 0; i < leng; i++) {
+            buffer_new[i] = buffer[i] + 100;
+        }
+        def y = new String(buffer_new, 'GBK');
+        pFile.write(y, 'GBK');
+    }
+}
+
+
+task runmd5checksum {
+    ant.checksum(fileext: ".txt") {
+        fileset(file: 'src/main/assets/config.properties') {
+            //include(name:"**/*.*")
+        }
+    }
+}
+
 dependencies {
     apt "org.androidannotations:androidannotations:3.3.1"
     apt 'org.androidannotations:androidannotations-api:3.3.1'
@@ -35,7 +73,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
 
         // dex突破65535的限制
         multiDexEnabled true
@@ -120,58 +158,6 @@ android {
                 file.deleteOnExit()
                 file = new File(outputFile.parent,"app-release-unaligned.apk")
                 file.deleteOnExit()
-            }
-        }
-    }
-
-    if (project.hasProperty('profile')) {
-
-        def profile = project['profile']
-        def profile_aaa = "config/${profile}/${profile}.config.properties"
-        def rename_file = "${profile}.config.properties"
-
-        task myCopy(type: Copy) {
-            copy {
-                from(profile_aaa)
-                into('src/main/assets')
-                rename(rename_file, 'config.properties')
-            }
-        }
-
-    } else {
-        def profile_aaa = "config/test/test.config.properties"
-        def rename_file = "test.config.properties"
-
-        task myCopy(type: Copy) {
-            copy {
-                from(profile_aaa)
-                into('src/main/assets')
-                rename(rename_file, 'config.properties')
-            }
-        }
-
-    }
-
-    def pFile = file("src/main/assets/config.properties")
-    def leng = (Integer) pFile.length()
-
-    task fileprocess {
-        pFile.eachByte(leng) { buffer, nReads ->
-            byte[] buffer_new = new byte[leng];
-            for (int i = 0; i < leng; i++) {
-                buffer_new[i] = buffer[i] + 100;
-            }
-            def y = new String(buffer_new, 'GBK');
-            pFile.write(y, 'GBK');
-        }
-
-    }
-
-
-    task runmd5checksum {
-        ant.checksum(fileext: ".txt") {
-            fileset(file: 'src/main/assets/config.properties') {
-                //include(name:"**/*.*")
             }
         }
     }

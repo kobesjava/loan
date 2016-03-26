@@ -9,13 +9,13 @@ import java.lang.ref.WeakReference;
 /**
  * Created by yanxin on 2015/12/16.
  */
-public class IWelcomePresenterImpl implements IWelcomePresenter {
+public class WelcomePresenterImpl implements IWelcomePresenter {
 
     private WeakReference<IWelcomeView> welcomeViewWeakReference;
 
     //private IWelcomeService iWelcomeService;
 
-    public IWelcomePresenterImpl(IWelcomeView iWelcomeView) {
+    public WelcomePresenterImpl(IWelcomeView iWelcomeView) {
         this.welcomeViewWeakReference = new WeakReference<IWelcomeView>(iWelcomeView);
         //this.iWelcomeService = new IWelcomeServiceImpl();
     }
