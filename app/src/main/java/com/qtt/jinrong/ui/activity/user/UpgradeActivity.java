@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
 
-import com.qtt.framework.util.TimeUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.app.UpgradeModel;
 import com.qtt.jinrong.common.wrap.WrapHandler;
@@ -93,14 +92,14 @@ public class UpgradeActivity extends BaseActivity implements IUpgradeView{
 
     @AfterViews
     void initViews() {
-        String title = "发现新版本:" + upgradeModel.getVersion();
+        String title = "发现新版本:" + upgradeModel.getVersionName();
         titleText.setText(title);
 
-        String msg = upgradeModel.getVersionInfo();
+        String msg = upgradeModel.getUpdateInfo();
         if (msg != null) msg = msg.replace("\\n", "\n");
         desc.setText(msg);
 
-        if(upgradeModel.isIfForced()) {
+        if(upgradeModel.isMandatoryUpdate()) {
             btnCancel.setVisibility(View.GONE);
             line.setVisibility(View.GONE);
         } else {
@@ -122,7 +121,7 @@ public class UpgradeActivity extends BaseActivity implements IUpgradeView{
 
     @Override
     public boolean isEnableBackKey() {
-        return upgradeModel.isIfForced();
+        return upgradeModel.isMandatoryUpdate();
     }
 
     @Override

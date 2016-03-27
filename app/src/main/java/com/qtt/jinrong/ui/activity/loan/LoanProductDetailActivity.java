@@ -123,7 +123,7 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
     void clickBtnSubmit() {
         if(mDetail == null) return;
 
-        if(mUserInfo == null) {
+        if(TextUtils.isEmpty(getUserId())) {
             Intent intent = new Intent(this, GeneratedClassUtils.get(LoginActivity.class));
             startActivity(intent);
             return;

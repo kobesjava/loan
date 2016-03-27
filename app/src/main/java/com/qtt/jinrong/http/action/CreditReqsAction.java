@@ -5,6 +5,7 @@ import android.content.Context;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.credit.CreditApplyDetailResponse;
 import com.qtt.jinrong.bean.credit.CreditApplyListResponse;
 import com.qtt.jinrong.bean.credit.CreditListResponse;
 import com.qtt.jinrong.bean.credit.CreditProductDetailResponse;
@@ -54,7 +55,17 @@ public class CreditReqsAction {
      * @param listener
      */
     public static void requestApplyList(Context context,IRequest iRequest,MCListenerObj.IObjResListener<CreditApplyListResponse> listener) {
-        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY,iRequest.getParams(),listener,CreditApplyListResponse.class);
+        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY_LIST,iRequest.getParams(),listener,CreditApplyListResponse.class);
+    }
+
+    /**
+     * 信用卡申请详情
+     * @param context
+     * @param iRequest
+     * @param listener
+     */
+    public static void requestApplyDetail(Context context,IRequest iRequest,MCListenerObj.IObjResListener<CreditApplyDetailResponse> listener) {
+        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY_DETAIL,iRequest.getParams(),listener,CreditApplyDetailResponse.class);
     }
 
 }

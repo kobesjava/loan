@@ -29,6 +29,11 @@ public class CreditBSImpl implements ICreditBS {
 
     @Override
     public void requestApplyList(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj) {
-        CreditReqsAction.requestApplyList(context,request,listenerObj);
+        CreditReqsAction.requestApplyList(context, request, listenerObj);
+    }
+
+    @Override
+    public void requestApplyDetail(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj) {
+        CreditReqsAction.requestApplyDetail(context,request,listenerObj);
     }
 }

@@ -42,4 +42,12 @@ public interface ICreditBS extends IBS {
      */
     void requestApplyList(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
 
+    /**
+     * 获取申请详情
+     * @param context
+     * @param request
+     * @param listenerObj
+     */
+    void requestApplyDetail(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
+
 }

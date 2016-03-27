@@ -4,7 +4,6 @@ import com.qtt.framework.config.AppConfig;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.app.CheckUpgradeRequest;
 import com.qtt.jinrong.bean.app.CheckUpgradeResponse;
-import com.qtt.jinrong.bean.app.UpgradeModel;
 import com.qtt.jinrong.model.IAppBs;
 import com.qtt.jinrong.model.impl.AppBSImpl;
 import com.qtt.jinrong.presenter.IMainPresenter;
@@ -26,7 +25,7 @@ public class MainPresenterImpl implements IMainPresenter {
     @Override
     public void checkUpgrade() {
         CheckUpgradeRequest request = new CheckUpgradeRequest();
-        request.setVersion(AppConfig.versionName);
+        request.setVersionNum(AppConfig.versionName);
         mBs.checkUpgrade(mView.getContext(), request, new MCListenerObj.IObjResListener<CheckUpgradeResponse>() {
             @Override
             public void onSuccess(CheckUpgradeResponse response, String url) {

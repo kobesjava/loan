@@ -13,7 +13,6 @@ import com.qtt.jinrong.bean.credit.CreditApplyModel;
 import com.qtt.jinrong.presenter.ICreditApplyListPresenter;
 import com.qtt.jinrong.presenter.impl.CreditApplyListPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
-import com.qtt.jinrong.ui.activity.loan.LoanApplyDetailActivity;
 import com.qtt.jinrong.ui.adapter.CreditApplyAdapter;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.load.BottomRefreshListView;
@@ -30,7 +29,7 @@ import java.util.List;
  * 我的信用卡申请列表
  * Created by yanxin on 16/3/20.
  */
-@EActivity(R.layout.activity_loan_apply_list)
+@EActivity(R.layout.activity_credit_apply_list)
 public class CreditApplyListActivity extends BaseActivity implements ICreditApplyListView {
 
     @ViewById(R.id.titleBar)
@@ -84,7 +83,8 @@ public class CreditApplyListActivity extends BaseActivity implements ICreditAppl
         mBottomRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(CreditApplyListActivity.this, GeneratedClassUtils.get(LoanApplyDetailActivity.class));
+                Intent intent = new Intent(CreditApplyListActivity.this, GeneratedClassUtils.get(CreditApplyDetailActivity.class));
+                intent.putExtra(CreditApplyDetailActivity.INETNT_APPLY_MODEL,mAdapter.getItem(position-1));
                 startActivity(intent);
             }
         });

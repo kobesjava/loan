@@ -9,60 +9,71 @@ import android.os.Parcelable;
 public class UpgradeModel implements Parcelable{
 
     /** 下载地址*/
-    private String url = "";
-    /** 版本信息*/
-    private String versionInfo = "";
+    private String downUrl = "";
+    /** 更新信息*/
+    private String updateInfo = "";
+    private String versionName = "";
     /** 版本号*/
-    private String version = "";
+    private String versionNum = "";
     /** 是否强制执行*/
-    private boolean ifForced;
+    private boolean isMandatoryUpdate;
     /** 是否更新*/
-    private boolean upgrade;
+    private boolean isUpdate;
 
     public boolean needUpgrade() {
-        return ifForced || upgrade;
+        return isMandatoryUpdate || isUpdate;
     }
 
-    public String getUrl() {
-        return url;
+    public String getDownUrl() {
+        return downUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setDownUrl(String downUrl) {
+        this.downUrl = downUrl;
     }
 
-    public String getVersionInfo() {
-        return versionInfo;
+    public String getUpdateInfo() {
+        return updateInfo;
     }
 
-    public void setVersionInfo(String versionInfo) {
-        this.versionInfo = versionInfo;
+    public void setUpdateInfo(String updateInfo) {
+        this.updateInfo = updateInfo;
     }
 
-    public String getVersion() {
-        return version;
+    public String getVersionName() {
+        return versionName;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
     }
 
-    public boolean isIfForced() {
-        return ifForced;
+    public String getVersionNum() {
+        return versionNum;
     }
 
-    public void setIfForced(boolean ifForced) {
-        this.ifForced = ifForced;
+    public void setVersionNum(String versionNum) {
+        this.versionNum = versionNum;
     }
 
-    public boolean isUpgrade() {
-        return upgrade;
+    public boolean isMandatoryUpdate() {
+        return isMandatoryUpdate;
     }
 
-    public void setUpgrade(boolean upgrade) {
-        this.upgrade = upgrade;
+    public void setIsMandatoryUpdate(boolean isMandatoryUpdate) {
+        this.isMandatoryUpdate = isMandatoryUpdate;
     }
 
+    public boolean isUpdate() {
+        return isUpdate;
+    }
+
+    public void setIsUpdate(boolean isUpdate) {
+        this.isUpdate = isUpdate;
+    }
+
+    public UpgradeModel() {
+    }
 
     @Override
     public int describeContents() {
@@ -71,31 +82,28 @@ public class UpgradeModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.url);
-        dest.writeString(this.versionInfo);
-        dest.writeString(this.version);
-        dest.writeByte(ifForced ? (byte) 1 : (byte) 0);
-        dest.writeByte(upgrade ? (byte) 1 : (byte) 0);
-    }
-
-    public UpgradeModel() {
+        dest.writeString(this.downUrl);
+        dest.writeString(this.updateInfo);
+        dest.writeString(this.versionName);
+        dest.writeString(this.versionNum);
+        dest.writeByte(isMandatoryUpdate ? (byte) 1 : (byte) 0);
+        dest.writeByte(isUpdate ? (byte) 1 : (byte) 0);
     }
 
     protected UpgradeModel(Parcel in) {
-        this.url = in.readString();
-        this.versionInfo = in.readString();
-        this.version = in.readString();
-        this.ifForced = in.readByte() != 0;
-        this.upgrade = in.readByte() != 0;
+        this.downUrl = in.readString();
+        this.updateInfo = in.readString();
+        this.versionName = in.readString();
+        this.versionNum = in.readString();
+        this.isMandatoryUpdate = in.readByte() != 0;
+        this.isUpdate = in.readByte() != 0;
     }
 
     public static final Creator<UpgradeModel> CREATOR = new Creator<UpgradeModel>() {
-        @Override
         public UpgradeModel createFromParcel(Parcel source) {
             return new UpgradeModel(source);
         }
 
-        @Override
         public UpgradeModel[] newArray(int size) {
             return new UpgradeModel[size];
         }

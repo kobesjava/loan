@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.credit.CreditApplyModel;
+import com.qtt.jinrong.enums.ApplyStatusEnum;
 
 import java.util.List;
 
@@ -70,11 +71,14 @@ public class CreditApplyAdapter extends BaseAdapter {
 
         model = getItem(position);
 
-        viewHolder.nameTxt.setText(model.getCreTitle());
-        viewHolder.bankTxt.setText(model.getCreClass());
-        viewHolder.levelTxt.setText(model.getCreClass());
-        viewHolder.typeTxt.setText(model.getCreType());
-        viewHolder.timeTxt.setText(model.getTime());
+        viewHolder.nameTxt.setText(model.getCreditName());
+        viewHolder.bankTxt.setText(model.getBank());
+
+        ApplyStatusEnum applyStatusEnum = ApplyStatusEnum.find(model.getState());
+        viewHolder.statusTxt.setText(applyStatusEnum==null?"":applyStatusEnum.name());
+        viewHolder.quotaTxt.setText("取现额度: "+model.getQuota());
+        viewHolder.typeTxt.setText(model.getType());
+        viewHolder.timeTxt.setText(model.getApplyDate());
 
         try {
             Uri uri = Uri.parse(model.getThumpImg());
@@ -90,15 +94,17 @@ public class CreditApplyAdapter extends BaseAdapter {
         SimpleDraweeView img;
         TextView  nameTxt;
         TextView  bankTxt;
-        TextView  levelTxt;
+        TextView  statusTxt;
         TextView  typeTxt;
+        TextView quotaTxt;
         TextView  timeTxt;
 
         public ViewHolder(View view) {
             img = (SimpleDraweeView) view.findViewById(R.id.img);
             nameTxt = (TextView) view.findViewById(R.id.name);
             bankTxt = (TextView) view.findViewById(R.id.bank);
-            levelTxt = (TextView) view.findViewById(R.id.level);
+            statusTxt = (TextView) view.findViewById(R.id.status);
+            quotaTxt = (TextView) view.findViewById(R.id.quota);
             typeTxt = (TextView) view.findViewById(R.id.type);
             timeTxt = (TextView) view.findViewById(R.id.time);
         }

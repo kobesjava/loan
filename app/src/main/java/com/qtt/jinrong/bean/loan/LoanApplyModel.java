@@ -17,7 +17,7 @@ public class LoanApplyModel implements Parcelable{
     /** 金额*/
     private Integer money;
     //状态
-    private String status;
+    private Integer status;
     //申请来源
     private String applySrc;
     //时间
@@ -26,11 +26,11 @@ public class LoanApplyModel implements Parcelable{
     //原因
     private String handleReason;
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -130,7 +130,7 @@ public class LoanApplyModel implements Parcelable{
         dest.writeString(this.title);
         dest.writeValue(this.expires);
         dest.writeValue(this.money);
-        dest.writeString(this.status);
+        dest.writeInt(this.status);
         dest.writeString(this.applySrc);
         dest.writeString(this.applyDate);
         dest.writeString(this.handleDate);
@@ -144,7 +144,7 @@ public class LoanApplyModel implements Parcelable{
         this.title = in.readString();
         this.expires = (Integer) in.readValue(Integer.class.getClassLoader());
         this.money = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.status = in.readString();
+        this.status = in.readInt();
         this.applySrc = in.readString();
         this.applyDate = in.readString();
         this.handleDate = in.readString();

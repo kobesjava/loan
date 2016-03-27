@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanApplyModel;
+import com.qtt.jinrong.enums.ApplyStatusEnum;
 
 import java.util.List;
 
@@ -76,6 +77,8 @@ public class LoanApplyAdapter extends BaseAdapter {
         viewHolder.sourceTxt.setText(model.getApplySrc());
         viewHolder.termTxt.setText("期限: "+model.getExpires()+"个月");
         viewHolder.timeTxt.setText(model.getApplyDate());
+        ApplyStatusEnum applyStatusEnum = ApplyStatusEnum.find(model.getStatus());
+        viewHolder.statusTxt.setText(applyStatusEnum==null?"":applyStatusEnum.name());
 
         try {
             Uri uri = Uri.parse(model.getThumpImg());

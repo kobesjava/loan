@@ -10,20 +10,20 @@ import java.util.Map;
  */
 public class CheckUpgradeRequest implements IRequest {
 
-    private String version;
+    private String versionNum;
 
-    public String getVersion() {
-        return version;
+    public String getVersionNum() {
+        return versionNum;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setVersionNum(String versionNum) {
+        this.versionNum = versionNum;
     }
 
     @Override
     public Map<String, Object> getParams() {
         Map<String, Object> map = new HashMap<>();
-        map.put("version",version);
+        map.put("versionNum",versionNum);
         return map;
     }
 }

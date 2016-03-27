@@ -10,7 +10,7 @@ public class Api {
 
     private static String ROOT_URL = AppConfig.getRootUrl();
 
-    private static final String MOUDLE_APP_PATH = "/app";
+    private static final String MOUDLE_APP_PATH = "/system";
     private static final String MOUDLE_AD_PATH = "/advert";
     private static final String MOUDLE_LOAN_PATH = "/sloan";
     private static final String MOUDLE_CREDIT_PATH = "/credit";
@@ -18,7 +18,7 @@ public class Api {
     private static final String MOUDLE_ACCOUNT_PATH = "/account";
 
     /** 检查更新 **/
-    public final static String URL_APP_UPGRADE = ROOT_URL + MOUDLE_APP_PATH + "/upgrade.do";
+    public final static String URL_APP_UPGRADE = ROOT_URL + MOUDLE_APP_PATH + "/queryUpgrade.do";
 
 
     /**  滚动栏  **/
@@ -46,9 +46,11 @@ public class Api {
     //信用卡产品详情
     public final static String CREDIT_PRODUCT_DETAIL  = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditDetail.do";
     //信用卡产品申请
-    public final static String CREDIT_PRODUCT_APPLY  = ROOT_URL + MOUDLE_CREDIT_PATH + "/nowApplyCredit.do";
+    public final static String CREDIT_PRODUCT_APPLY  = ROOT_URL + MOUDLE_CREDIT_PATH + "/nowApply.do";
     //信用卡产品申请列表
     public final static String CREDIT_PRODUCT_APPLY_LIST = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditApplyList.do";
+    //信用卡申请详情
+    public final static String CREDIT_PRODUCT_APPLY_DETAIL = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditApplyDetail.do";
 
 
     /**  user模块  **/

@@ -54,7 +54,7 @@ public class UpgradePresenterImpl implements IUpgradePresenter {
         };
 
         UpgradeModel model = mView.getUpgradeModel();
-        mBs.download(mView.getContext(), mView.getProgressDialog(), model.getUrl(), callBack);
+        mBs.download(mView.getContext(), mView.getProgressDialog(), model.getDownUrl(), callBack);
     }
 
 }

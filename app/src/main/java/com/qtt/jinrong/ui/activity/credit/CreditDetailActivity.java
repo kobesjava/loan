@@ -3,6 +3,7 @@ package com.qtt.jinrong.ui.activity.credit;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -15,8 +16,9 @@ import com.qtt.jinrong.bean.credit.CreditModel;
 import com.qtt.jinrong.presenter.ICreditApplyPresenter;
 import com.qtt.jinrong.presenter.impl.CreditApplyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
-import com.qtt.jinrong.ui.activity.loan.LoanApplyResultActivity;
+import com.qtt.jinrong.ui.activity.user.LoginActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
+import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.ICreditDetailView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -81,11 +83,23 @@ public class CreditDetailActivity extends BaseActivity implements ICreditDetailV
         mTitleBar.setTitle(getString(R.string.credit_detail_title));
         mTitleBar.setActivity(this);
 
+        try {
+            Uri uri = Uri.parse(creditModel.getThumpImg());
+            mIcon.setImageURI(uri);
+        }catch (Exception e) {
+            LogUtil.d("加载图片", "URL=" + creditModel.getThumpImg() + " Exception=" + e.getMessage());
+        }
+
         mPresenter.request();
     }
 
     @Click(R.id.btnSubmit)
     void clickBtnSubmit() {
+        if(TextUtils.isEmpty(getUserId())) {
+            Intent intent = new Intent(this, GeneratedClassUtils.get(LoginActivity.class));
+            startActivity(intent);
+            return;
+        }
         showLoading();
         mPresenter.apply();
     }
@@ -100,12 +114,6 @@ public class CreditDetailActivity extends BaseActivity implements ICreditDetailV
     public void onRequestDetail(CreditDetailModel model) {
         if(model == null) return;
 
-        try {
-            Uri uri = Uri.parse(model.getCreImg());
-            mIcon.setImageURI(uri);
-        }catch (Exception e) {
-            LogUtil.d("加载图片", "URL=" + model.getCreImg() + " Exception=" + e.getMessage());
-        }
         mCreditName.setText(creditModel.getCreTitle());
         mFreeDays.setText("免息期: "+model.getCreFree());
         mDescText.setText("银行: "+model.getCreBank()+"   卡等级: "+model.getCreClass());
@@ -126,11 +134,15 @@ public class CreditDetailActivity extends BaseActivity implements ICreditDetailV
     @Override
     public void onApply(Response response) {
         hideLoading();
-        Intent intent = new Intent(this, GeneratedClassUtils.get(CreditApplyResultActivity.class));
-        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_SUCCESS,response.isSuccess());
-        intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_MESSAGE,response.getMessage());
-        startActivity(intent);
-        finish();
+        ToastUtil.showShortToast(response.getMessage());
+        if(response.isSuccess()) {
+            finish();
+        }
+        //Intent intent = new Intent(this, GeneratedClassUtils.get(CreditApplyResultActivity.class));
+        //intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_SUCCESS,response.isSuccess());
+        //intent.putExtra(LoanApplyResultActivity.INTENT_RESPONSE_MESSAGE,response.getMessage());
+        //startActivity(intent);
+
     }
     /*** ICreditApplyView ***/
 }

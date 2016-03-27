@@ -146,6 +146,10 @@
 
         <activity android:name=".ui.activity.credit.CreditApplyListActivity_"
             android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".ui.activity.credit.CreditApplyDetailActivity_"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
