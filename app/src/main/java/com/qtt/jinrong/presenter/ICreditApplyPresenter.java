@@ -6,6 +6,11 @@ package com.qtt.jinrong.presenter;
 public interface ICreditApplyPresenter extends IPresenter {
 
     /**
+     * 获取详情
+     */
+    void request();
+
+    /**
      * 申请信用卡
      */
     void apply();

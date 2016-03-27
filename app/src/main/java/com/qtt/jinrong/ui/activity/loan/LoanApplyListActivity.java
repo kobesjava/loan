@@ -11,7 +11,7 @@ import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.loan.LoanApplyListRequest;
 import com.qtt.jinrong.bean.loan.LoanApplyModel;
 import com.qtt.jinrong.presenter.ILoanApplyListPresenter;
-import com.qtt.jinrong.presenter.impl.LoanApplyLIstPresenterImpl;
+import com.qtt.jinrong.presenter.impl.LoanApplyListPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.adapter.LoanApplyAdapter;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
@@ -48,7 +48,7 @@ public class LoanApplyListActivity extends BaseActivity implements ILoanApplyLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new LoanApplyLIstPresenterImpl(this);
+        mPresenter = new LoanApplyListPresenterImpl(this);
         request = new LoanApplyListRequest();
         request.setUserId(getUserId());
     }

@@ -13,7 +13,7 @@ public class CreditModel implements Parcelable {
     private String creTitle;
     private String creDesc;
     //卡等级
-    private Integer creClass;
+    private String creClass;
     //creClass
     private String creQuota;
     //申请人数
@@ -53,11 +53,11 @@ public class CreditModel implements Parcelable {
         this.creDesc = creDesc;
     }
 
-    public Integer getCreClass() {
+    public String getCreClass() {
         return creClass;
     }
 
-    public void setCreClass(Integer creClass) {
+    public void setCreClass(String creClass) {
         this.creClass = creClass;
     }
 
@@ -85,6 +85,9 @@ public class CreditModel implements Parcelable {
         this.creFree = creFree;
     }
 
+    public CreditModel() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -96,13 +99,10 @@ public class CreditModel implements Parcelable {
         dest.writeString(this.thumpImg);
         dest.writeString(this.creTitle);
         dest.writeString(this.creDesc);
-        dest.writeValue(this.creClass);
+        dest.writeString(this.creClass);
         dest.writeString(this.creQuota);
         dest.writeValue(this.click);
         dest.writeString(this.creFree);
-    }
-
-    public CreditModel() {
     }
 
     protected CreditModel(Parcel in) {
@@ -110,13 +110,13 @@ public class CreditModel implements Parcelable {
         this.thumpImg = in.readString();
         this.creTitle = in.readString();
         this.creDesc = in.readString();
-        this.creClass = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.creClass = in.readString();
         this.creQuota = in.readString();
         this.click = (Integer) in.readValue(Integer.class.getClassLoader());
         this.creFree = in.readString();
     }
 
-    public static final Parcelable.Creator<CreditModel> CREATOR = new Parcelable.Creator<CreditModel>() {
+    public static final Creator<CreditModel> CREATOR = new Creator<CreditModel>() {
         public CreditModel createFromParcel(Parcel source) {
             return new CreditModel(source);
         }

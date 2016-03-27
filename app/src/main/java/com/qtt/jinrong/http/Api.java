@@ -47,6 +47,8 @@ public class Api {
     public final static String CREDIT_PRODUCT_DETAIL  = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditDetail.do";
     //信用卡产品申请
     public final static String CREDIT_PRODUCT_APPLY  = ROOT_URL + MOUDLE_CREDIT_PATH + "/nowApplyCredit.do";
+    //信用卡产品申请列表
+    public final static String CREDIT_PRODUCT_APPLY_LIST = ROOT_URL + MOUDLE_CREDIT_PATH + "/queryCreditApplyList.do";
 
 
     /**  user模块  **/

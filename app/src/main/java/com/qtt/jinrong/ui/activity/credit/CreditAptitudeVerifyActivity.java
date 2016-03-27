@@ -26,7 +26,6 @@ import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
 import com.qtt.jinrong.presenter.ICreditApplyPresenter;
-import com.qtt.jinrong.presenter.impl.CreditApplyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.activity.loan.LoanApplyResultActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
@@ -118,7 +117,7 @@ public class CreditAptitudeVerifyActivity extends BaseSelectActivity implements 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         productId = mIntent.getStringExtra(INTENT_PRODUCT_ID);
-        mPresenter = new CreditApplyPresenterImpl(this);
+        //mPresenter = new CreditApplyPresenterImpl(this);
     }
 
     @AfterViews

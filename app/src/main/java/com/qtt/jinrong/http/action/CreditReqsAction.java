@@ -5,11 +5,10 @@ import android.content.Context;
 import com.qtt.framework.http.MCListenerObj;
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.bean.Response;
+import com.qtt.jinrong.bean.credit.CreditApplyListResponse;
 import com.qtt.jinrong.bean.credit.CreditListResponse;
 import com.qtt.jinrong.bean.credit.CreditProductDetailResponse;
 import com.qtt.jinrong.http.Api;
-
-import java.util.HashMap;
 
 import static com.qtt.jinrong.http.action.IWBaseReqsAction.getPostReq7HeardInfo;
 
@@ -45,7 +44,17 @@ public class CreditReqsAction {
      * @param listener
      */
     public static void requestCreditProductApply(Context context,IRequest iRequest,MCListenerObj.IObjResListener<Response> listener) {
-        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY,new HashMap<String, Object>(),listener,Response.class);
+        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY,iRequest.getParams(),listener,Response.class);
+    }
+
+    /**
+     * 信用卡申请列表
+     * @param context
+     * @param iRequest
+     * @param listener
+     */
+    public static void requestApplyList(Context context,IRequest iRequest,MCListenerObj.IObjResListener<CreditApplyListResponse> listener) {
+        getPostReq7HeardInfo(context, Api.CREDIT_PRODUCT_APPLY,iRequest.getParams(),listener,CreditApplyListResponse.class);
     }
 
 }

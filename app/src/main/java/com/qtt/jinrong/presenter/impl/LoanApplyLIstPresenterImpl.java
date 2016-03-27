@@ -11,12 +11,12 @@ import com.qtt.jinrong.view.ILoanApplyListView;
 /**
  * Created by yanxin on 16/3/17.
  */
-public class LoanApplyLIstPresenterImpl implements ILoanApplyListPresenter {
+public class LoanApplyListPresenterImpl implements ILoanApplyListPresenter {
 
     ILoanApplyListView mView;
     ILoanBS mBs;
 
-    public LoanApplyLIstPresenterImpl(ILoanApplyListView mView) {
+    public LoanApplyListPresenterImpl(ILoanApplyListView mView) {
         this.mView = mView;
         this.mBs = new LoanBSImpl();
     }

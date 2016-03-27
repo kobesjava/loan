@@ -11,31 +11,32 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
-import com.qtt.jinrong.bean.credit.CreditModel;
+import com.qtt.jinrong.bean.credit.CreditApplyModel;
 
 import java.util.List;
 
 /**
  * Created by yanxin on 16/2/24.
  */
-public class CreditAdapter extends BaseAdapter {
+public class CreditApplyAdapter extends BaseAdapter {
 
     private LayoutInflater mLayoutInflater;
-    private List<CreditModel> mList;
-    private CreditModel model;
+    private List<CreditApplyModel> mList;
+    private CreditApplyModel model;
 
-    public CreditAdapter(Context context) {
+    public CreditApplyAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
+
     }
 
-    public void add(List<CreditModel> loans) {
+    public void add(List<CreditApplyModel> loans) {
         if(loans == null || loans.size() == 0) return;
         if(mList == null) mList = loans;
         else mList.addAll(loans);
         notifyDataSetChanged();
     }
 
-    public void update(List<CreditModel> loans) {
+    public void update(List<CreditApplyModel> loans) {
         if(mList != null) mList.clear();
         mList = loans;
         notifyDataSetChanged();
@@ -47,7 +48,7 @@ public class CreditAdapter extends BaseAdapter {
     }
 
     @Override
-    public CreditModel getItem(int position) {
+    public CreditApplyModel getItem(int position) {
         return mList.get(position);
     }
 
@@ -60,7 +61,7 @@ public class CreditAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.credit_item, null);
+            convertView = mLayoutInflater.inflate(R.layout.credit_apply_item, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
@@ -70,16 +71,16 @@ public class CreditAdapter extends BaseAdapter {
         model = getItem(position);
 
         viewHolder.nameTxt.setText(model.getCreTitle());
-        viewHolder.descTxt.setText(model.getCreDesc());
+        viewHolder.bankTxt.setText(model.getCreClass());
         viewHolder.levelTxt.setText(model.getCreClass());
-        viewHolder.cashTxt.setText("取现额度: "+model.getCreQuota());
-        viewHolder.applysTxt.setText("申请人数: "+model.getClick());
+        viewHolder.typeTxt.setText(model.getCreType());
+        viewHolder.timeTxt.setText(model.getTime());
 
         try {
             Uri uri = Uri.parse(model.getThumpImg());
             viewHolder.img.setImageURI(uri);
         }catch (Exception e) {
-            LogUtil.d("加载图片", "URL=" + model.getThumpImg() + " Exception=" + e.getMessage());
+            LogUtil.d("加载图片出错", "url=" + model.getThumpImg() + " Exception=" + e.getMessage());
         }
 
         return convertView;
@@ -88,18 +89,18 @@ public class CreditAdapter extends BaseAdapter {
     static class ViewHolder {
         SimpleDraweeView img;
         TextView  nameTxt;
-        TextView  descTxt;
-        TextView levelTxt;
-        TextView  cashTxt;
-        TextView  applysTxt;
+        TextView  bankTxt;
+        TextView  levelTxt;
+        TextView  typeTxt;
+        TextView  timeTxt;
 
         public ViewHolder(View view) {
             img = (SimpleDraweeView) view.findViewById(R.id.img);
             nameTxt = (TextView) view.findViewById(R.id.name);
-            descTxt = (TextView) view.findViewById(R.id.desc);
+            bankTxt = (TextView) view.findViewById(R.id.bank);
             levelTxt = (TextView) view.findViewById(R.id.level);
-            cashTxt = (TextView) view.findViewById(R.id.cash);
-            applysTxt = (TextView) view.findViewById(R.id.applyNum);
+            typeTxt = (TextView) view.findViewById(R.id.type);
+            timeTxt = (TextView) view.findViewById(R.id.time);
         }
     }
 

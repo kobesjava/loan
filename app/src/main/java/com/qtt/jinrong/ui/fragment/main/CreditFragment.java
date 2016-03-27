@@ -116,7 +116,7 @@ public class CreditFragment extends BaseFragment implements ICreditListView{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(CreditDetailActivity.class));
-                intent.putExtra(CreditDetailActivity.INTENT_MODEL,mCreditAdapter.getItem(position-1));
+                intent.putExtra(CreditDetailActivity.INTENT_MODEL, mCreditAdapter.getItem(position - 1));
                 startActivity(intent);
             }
         });
@@ -135,17 +135,23 @@ public class CreditFragment extends BaseFragment implements ICreditListView{
             @Override
             public void onSelect(int position, int index, String val) {
                 if (position == 1) {
-                    request.setCreBank(val);
+                    mSwipeRefreshLayout.setRefreshing(true);
+                    if (index == 0) request.setCreBank(null);
+                    else request.setCreBank(val);
                 } else if (position == 2) {
-                    request.setCreType(val);
+                    mSwipeRefreshLayout.setRefreshing(true);
+                    if (index == 0) request.setCreType(null);
+                    else request.setCreType(val);
                 } else if (position == 3) {
-                    request.setCreClass(val);
+                    mSwipeRefreshLayout.setRefreshing(true);
+                    if (index == 0) request.setCreClass(null);
+                    else request.setCreClass(val);
                 }
                 mPresenter.request();
             }
         });
 
-        doLevelSelect((CreditLevelEnum)mBundle.getSerializable("level"));
+        doLevelSelect((CreditLevelEnum) mBundle.getSerializable("level"));
 
         mPresenter.request();
     }

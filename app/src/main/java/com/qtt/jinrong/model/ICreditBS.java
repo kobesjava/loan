@@ -34,4 +34,12 @@ public interface ICreditBS extends IBS {
      */
     void apply(Context context, IRequest iRequest, MCListenerObj.IObjResListener listener);
 
+    /**
+     * 请求信用卡产品申请列表
+     * @param context
+     * @param request
+     * @param listenerObj
+     */
+    void requestApplyList(Context context, IRequest request, MCListenerObj.IObjResListener listenerObj);
+
 }
