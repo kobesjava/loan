@@ -134,6 +134,7 @@ public class CreditFragment extends BaseFragment implements ICreditListView{
 
             @Override
             public void onSelect(int position, int index, String val) {
+                mCreditAdapter.update(null);
                 if (position == 1) {
                     mSwipeRefreshLayout.setRefreshing(true);
                     if (index == 0) request.setCreBank(null);

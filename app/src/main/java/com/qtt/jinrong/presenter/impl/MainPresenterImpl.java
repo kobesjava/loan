@@ -25,7 +25,7 @@ public class MainPresenterImpl implements IMainPresenter {
     @Override
     public void checkUpgrade() {
         CheckUpgradeRequest request = new CheckUpgradeRequest();
-        request.setVersionNum(AppConfig.versionName);
+        request.setVersionNum(String.valueOf(AppConfig.versionCode));
         mBs.checkUpgrade(mView.getContext(), request, new MCListenerObj.IObjResListener<CheckUpgradeResponse>() {
             @Override
             public void onSuccess(CheckUpgradeResponse response, String url) {
