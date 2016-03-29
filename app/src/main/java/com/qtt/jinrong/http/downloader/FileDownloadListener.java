@@ -61,12 +61,12 @@ public class FileDownloadListener {
 		this.mFILE_DIR = FILE_DIR;
 		this.mAppName = AppName;
 		this.mProgressBar = bar;
-		this.mContext = context;
+		this.mContext = context.getApplicationContext();
 		this.mName = path.substring(path.lastIndexOf("/") + 1);
 		this.mCallBack = callBack;
 		this.mIcLauncher = icLauncher;
 		notificationHandle();
-		mDownloader = new FileDownloader(context, handler, mProgressBar, mFILE_DIR);
+		mDownloader = new FileDownloader(context.getApplicationContext(), handler, mProgressBar, mFILE_DIR);
 		try {
 			mProgressBar.show();
 			Thread thread = new Thread(new Runnable() {
@@ -108,37 +108,31 @@ public class FileDownloadListener {
 		@Override
 		public void handleMessage(Message msg) {
 			int progress = msg.what;
-			if (progress != 1000) {
-				if (progress == 100) {
-					File file = new File(FileUtils.getFilePath(mFILE_DIR, mName));
-					Intent intent = new Intent(Intent.ACTION_VIEW);
-					intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					mNotification.contentIntent = pi;
-					mNotification.contentView.setTextViewText(R.id.tvSize, progress + "%");
-					mNotification.contentView.setTextViewText(R.id.tvTitle,
-							mContext.getResources().getString(R.string.download_over, mAppName));
-					mNotification.tickerText = mContext.getResources().getString(R.string.download_over, mAppName);
-					mNotificationManager.notify(0, mNotification);
-					mCallBack.downloadSuccess(file);
-					return;
-				} else if (progress == DOWN_LOAD_ERROR) {
-					mCallBack.downloadFail();
-				} else {
-					mNotification.contentView.setTextViewText(R.id.tvSize, progress + "%");
-					mNotification.contentView.setTextViewText(R.id.tvTitle,
-							mContext.getResources().getString(R.string.download_text, mAppName));
-					mNotification.contentView.setProgressBar(R.id.pbDownLoad, 100, progress, false);
-					mNotificationManager.notify(0, mNotification);
-				}
-			} else {
-
+			if (progress == 1000) {
 				Toast.makeText(mContext, R.string.storage_unable, Toast.LENGTH_SHORT).show();
-
-				return;
-
+			} else if (progress == -100) {
+				mCallBack.downloadFail();
+			} else if (progress == DOWN_LOAD_ERROR) {
+				mCallBack.downloadFail();
+			} else if (progress == 100) {
+				File file = new File(FileUtils.getFilePath(mFILE_DIR, mName));
+				Intent intent = new Intent(Intent.ACTION_VIEW);
+				intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				mNotification.contentIntent = pi;
+				mNotification.contentView.setTextViewText(R.id.tvSize, progress + "%");
+				mNotification.contentView.setTextViewText(R.id.tvTitle,
+						mContext.getResources().getString(R.string.download_over, mAppName));
+				mNotification.tickerText = mContext.getResources().getString(R.string.download_over, mAppName);
+				mNotificationManager.notify(0, mNotification);
+				mCallBack.downloadSuccess(file);
+			} else {
+				mNotification.contentView.setTextViewText(R.id.tvSize, progress + "%");
+				mNotification.contentView.setTextViewText(R.id.tvTitle,
+						mContext.getResources().getString(R.string.download_text, mAppName));
+				mNotification.contentView.setProgressBar(R.id.pbDownLoad, 100, progress, false);
+				mNotificationManager.notify(0, mNotification);
 			}
-			super.handleMessage(msg);
 
 		}
 

@@ -14,9 +14,14 @@ public abstract class NetworkUtil {
      * @return true, 可用； false， 不可用
      */
     public static boolean isOpenNetwork(Context context) {
+        if(context == null) return false;
         ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connManager != null && connManager.getActiveNetworkInfo() != null) {
-            return connManager.getActiveNetworkInfo().isAvailable();
+            try {
+                return connManager.getActiveNetworkInfo().isAvailable();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return false;

@@ -201,12 +201,12 @@ public class FileDownloader {
 		}
 	}
 
-	private final class MyAsyncTask extends AsyncTask<String, Integer, String> {
+	private final class MyAsyncTask extends AsyncTask<String, Integer, Integer> {
 
 		private OutputStream os;
 
 		@Override
-		protected String doInBackground(String... params) {
+		protected Integer doInBackground(String... params) {
 			try {
 				DownloadFileModel model = mDownloadFileDB.query(mUrl.toString(), mCount);
 				if (model != null) {
@@ -250,12 +250,12 @@ public class FileDownloader {
 							if (progress - times >= 3) {
 								Message msg = new Message();
 								msg.what = progress;
-								mHandler.handleMessage(msg);
+								mHandler.sendMessage(msg);
 								times = progress;
 							} else if (progress == 100) {
 								Message msg = new Message();
 								msg.what = progress;
-								mHandler.handleMessage(msg);
+								mHandler.sendMessage(msg);
 								times = progress;
 							}
 						}
@@ -274,15 +274,16 @@ public class FileDownloader {
 				e.printStackTrace();
 			}
 
-			return progress + "";
+			return progress;
 		}
 
 		@Override
-		protected void onPostExecute(String result) {
+		protected void onPostExecute(Integer result) {
 			Log.i("onPostExecute ", result + "");
-			if (mProgressBar != null && mProgressBar.isShowing()) {
-
-				mProgressBar.dismiss();
+			if(result == null || result.intValue() != 100) {
+				Message msg = new Message();
+				msg.what = -100;
+				mHandler.handleMessage(msg);
 			}
 			super.onPostExecute(result);
 		}
@@ -303,7 +304,7 @@ public class FileDownloader {
 		@Override
 		protected void onPreExecute() {
 
-			mProgressBar.show();
+			if(mProgressBar != null && !mProgressBar.isShowing())mProgressBar.show();
 			super.onPreExecute();
 		}
 

@@ -42,22 +42,27 @@ public class MCListenerObj<T> implements Response.ErrorListener, Response.Listen
     @Override
     public void onErrorResponse(VolleyError volleyError) {
         String error = "";
-        if(volleyError instanceof TimeoutError) {
+        if (volleyError instanceof TimeoutError) {
             error = "请求超时";
-        } else if(volleyError instanceof ServerError) {
+        } else if (volleyError instanceof ServerError) {
             error = "服务器异常,请稍后再试";
-        } else if(volleyError instanceof NoConnectionError) {
-            if(context != null && !NetworkUtil.isOpenNetwork(context)) {
+        } else if (volleyError instanceof NoConnectionError) {
+            if (!NetworkUtil.isOpenNetwork(context)) {
                 error = "网络断开,请联网再试";
             } else {
                 error = "服务器异常,请稍后再试";
             }
-        } else if(volleyError instanceof NetworkError) {
+        } else if (volleyError instanceof NetworkError) {
             error = "网络不好,请稍后再试";
         } else {
             error = "请求异常";
         }
-        Toast.makeText(context,error,Toast.LENGTH_SHORT).show();
+        try{
+            if (context != null && context.getResources() != null)
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         mIObjResListener.onFail(volleyError, urlStr);
     }
 
