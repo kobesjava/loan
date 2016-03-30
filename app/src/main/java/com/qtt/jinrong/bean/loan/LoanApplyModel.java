@@ -19,7 +19,7 @@ public class LoanApplyModel implements Parcelable{
     //状态
     private Integer status;
     //申请来源
-    private String applySrc;
+    private Integer applySrc;
     //时间
     private String applyDate;
     private String handleDate;
@@ -34,11 +34,11 @@ public class LoanApplyModel implements Parcelable{
         this.status = status;
     }
 
-    public String getApplySrc() {
+    public Integer getApplySrc() {
         return applySrc;
     }
 
-    public void setApplySrc(String applySrc) {
+    public void setApplySrc(Integer applySrc) {
         this.applySrc = applySrc;
     }
 
@@ -131,7 +131,7 @@ public class LoanApplyModel implements Parcelable{
         dest.writeValue(this.expires);
         dest.writeValue(this.money);
         dest.writeInt(this.status);
-        dest.writeString(this.applySrc);
+        dest.writeInt(this.applySrc);
         dest.writeString(this.applyDate);
         dest.writeString(this.handleDate);
         dest.writeString(this.handleReason);
@@ -145,7 +145,7 @@ public class LoanApplyModel implements Parcelable{
         this.expires = (Integer) in.readValue(Integer.class.getClassLoader());
         this.money = (Integer) in.readValue(Integer.class.getClassLoader());
         this.status = in.readInt();
-        this.applySrc = in.readString();
+        this.applySrc = in.readInt();
         this.applyDate = in.readString();
         this.handleDate = in.readString();
         this.handleReason = in.readString();
