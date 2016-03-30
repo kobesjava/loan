@@ -111,6 +111,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
+
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <RelativeLayout
+                android:id="@+id/btnMember"
+                style="@style/mine_item">
+                <TextView
+                    android:drawableLeft="@drawable/user_center_material"
+                    android:text="成为会员"
+                    style="@style/mine_item_text" />
+
+                <ImageView
+                    android:src="@drawable/arrow_right_img"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
             <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>

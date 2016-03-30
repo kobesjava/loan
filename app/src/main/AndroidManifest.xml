@@ -120,6 +120,10 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.user.DataUploadActivity_"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.loan.LoanApplyListActivity_"
             android:screenOrientation="portrait"/>
 
@@ -146,7 +150,6 @@
 
         <activity android:name=".ui.activity.credit.CreditApplyListActivity_"
             android:screenOrientation="portrait"/>
-
 
         <activity android:name=".ui.activity.credit.CreditApplyDetailActivity_"
             android:screenOrientation="portrait"/>

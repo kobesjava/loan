@@ -199,6 +199,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
+            <LinearLayout
+                android:id="@+id/dataView"
+                style="@style/financing_needs_book_item">
+                <TextView
+                    android:text="资料信息"
+                    android:layout_weight="1"
+                    style="@style/financing_needs_book_text" />
+
+                <TextView
+                    android:id="@+id/dataStatus"
+                    android:text="待完善"
+                    style="@style/financing_needs_book_right_text"/>
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
         </LinearLayout>
     </ScrollView>
 

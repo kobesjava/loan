@@ -44,6 +44,8 @@ public class FinancingNeedsActivity extends BaseActivity implements IFinancingDe
     TextView carStatus;
     @ViewById(R.id.otherStatus)
     TextView otherStatus;
+    @ViewById(R.id.dataStatus)
+    TextView dataStatus;
 
     IFinancingDemandPresenter mPresenter;
 
@@ -112,7 +114,13 @@ public class FinancingNeedsActivity extends BaseActivity implements IFinancingDe
         startActivity(intent);
     }
 
-    /***  IVIEW  ***/
+    @Click(R.id.dataView)
+    void clickdataView() {
+        Intent intent = new Intent(this, GeneratedClassUtils.get(DataUploadActivity.class));
+        startActivity(intent);
+    }
+
+    /***  IFinancingDemandsView  ***/
     @Override
     public void onRequest(FinancingDemandsModel financingDemandsModel) {
 
@@ -162,5 +170,5 @@ public class FinancingNeedsActivity extends BaseActivity implements IFinancingDe
 
         mOilgaugeProgress.setProgress(finished*100/7);
     }
-    /***  IVIEW  ***/
+    /***  IFinancingDemandsView  ***/
 }
