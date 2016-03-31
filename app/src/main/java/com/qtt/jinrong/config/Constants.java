@@ -16,6 +16,7 @@ public class Constants {
     public static final String ROOT_PATH = SD_CARD_PATH + SEPARATOR + FILE_ROOT_DIR + SEPARATOR;
     public static final String APK_DIR = "apk";
     public static final String CACHE_DIR = ROOT_PATH+"cache";
+    public static final String DATAINFO_DIR = ROOT_PATH+"datainfo";
 
     /** 登录失效码*/
     public static final int LOGIN_EXPIRED = 10001;
