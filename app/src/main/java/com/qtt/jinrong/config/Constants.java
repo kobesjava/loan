@@ -32,4 +32,7 @@ public class Constants {
 
     /** 短信验证码发送间隔时间*/
     public static final int REQUEST_CODE_TIME = 60000;
+
+    public static final int PIC_WIDTH = 2048;
+    public static final int PIC_HEIGHT = 1536;
 }

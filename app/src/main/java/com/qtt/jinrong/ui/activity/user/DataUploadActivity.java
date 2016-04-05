@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,8 +18,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.controller.ControllerListener;
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.image.ImageInfo;
 import com.qtt.framework.util.AdvancedBitmapUtils;
 import com.qtt.framework.util.FileUtils;
 import com.qtt.framework.util.LogUtil;
@@ -27,6 +33,7 @@ import com.qtt.jinrong.bean.user.DataUploadModel;
 import com.qtt.jinrong.config.Constants;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
+import com.qtt.jinrong.util.BitmapUtil;
 import com.qtt.jinrong.util.FileUtil;
 import com.qtt.jinrong.view.IDataUploadVIew;
 
@@ -85,13 +92,13 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
         model = new DataUploadModel();
         models.add(model);
         model = new DataUploadModel();
-        model.setPath("http://img02.tooopen.com/images/20160216/tooopen_sy_156324542564.jpg");
+        //model.setPath("");
+        models.add(model);http://img02.tooopen.com/images/20160216/tooopen_sy_156324542564.jpg
+        model = new DataUploadModel();
+        //model.setPath("http://www.52ij.com/uploads/allimg/160317/003T95164-3.jpg");
         models.add(model);
         model = new DataUploadModel();
-        model.setPath("http://www.52ij.com/uploads/allimg/160317/003T95164-3.jpg");
-        models.add(model);
-        model = new DataUploadModel();
-        model.setPath("http://pic32.nipic.com/20130829/12906030_124355855000_2.png");
+        //model.setPath("http://pic32.nipic.com/20130829/12906030_124355855000_2.png");
         models.add(model);
     }
 
@@ -151,7 +158,8 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
 
         if (!FileUtil.isExist(mCurrentPath)) return;
 
-        FileUtil.writePicOutFile(mCurrentPath,30);
+        //压缩 宽到2048
+        BitmapUtil.scale(mCurrentPath,Constants.PIC_WIDTH,Constants.PIC_HEIGHT,85);
 
         try {
             //Uri uri = Uri.parse("file://" + mCurrentPath);
@@ -239,9 +247,11 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
             });
             try {
                 if(!TextUtils.isEmpty(models.get(position).getPath())) {
-                    //Uri uri = Uri.parse("file://" + models.get(position).getPath());
-                    Uri uri = Uri.parse(models.get(position).getPath());
+                    Uri uri = Uri.parse("file://" + models.get(position).getPath());
+                    //Uri uri = Uri.parse(models.get(position).getPath());
                     holder.img.setImageURI(uri);
+                } else {
+                    holder.img.setImageURI(null);
                 }
             }catch (Exception e) {
                 e.printStackTrace();
@@ -267,6 +277,8 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
                 img = (SimpleDraweeView)view.findViewById(R.id.img);
                 tip = (TextView) view.findViewById(R.id.tip);
                 tv = (TextView) view.findViewById(R.id.tv);
+
+                img.getHierarchy();
             }
         }
     }

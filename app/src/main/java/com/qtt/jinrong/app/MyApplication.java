@@ -5,7 +5,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.facebook.cache.disk.DiskCacheConfig;
+import com.facebook.common.internal.Supplier;
+import com.facebook.imagepipeline.cache.MemoryCacheParams;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.config.ConfigManager;
 import com.qtt.jinrong.config.Constants;
 import com.qtt.jinrong.config.NetworkManger;
@@ -46,8 +49,23 @@ public class MyApplication extends Application {
                         DiskCacheConfig.newBuilder(this)
                         .setBaseDirectoryPath(new File(Constants.CACHE_DIR))
                         .build())
+                /*.setBitmapMemoryCacheParamsSupplier(new Supplier<MemoryCacheParams>() {
+                    @Override
+                    public MemoryCacheParams get() {
+                        MemoryCacheParams params = new MemoryCacheParams(20*1024*1024*8);
+                        return params;
+                    }
+                })*/
                 .build();
         Fresco.initialize(this,config);
+
+        MemoryCacheParams params = config.getBitmapMemoryCacheParamsSupplier().get();
+        LogUtil.e("FRESCO","maxCacheSize="+params.maxCacheSize);
+        LogUtil.e("FRESCO","maxCacheEntrySize="+params.maxCacheEntrySize);
+        LogUtil.e("FRESCO","maxCacheEntries="+params.maxCacheEntries);
+        LogUtil.e("FRESCO","maxEvictionQueueEntries="+params.maxEvictionQueueEntries);
+        LogUtil.e("FRESCO","maxEvictionQueueSize="+params.maxEvictionQueueSize);
+
     }
 
     /**

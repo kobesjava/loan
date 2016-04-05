@@ -1,9 +1,14 @@
 package com.qtt.jinrong.task;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @author yanxin
  */
 public class TaskManager {
+
+    private ExecutorService executors = Executors.newFixedThreadPool(1);
 
     private final String TAG = "TaskManager";
 
@@ -28,8 +33,13 @@ public class TaskManager {
                 LogUtil.d(TAG,"开启任务 "+name+" Exception:"+e.getMessage());
             }
         }*/
-        //AppTask task = new UploadCallRecordTask();
-        //task.start();
+        executors.submit(new Runnable() {
+            @Override
+            public void run() {
+                AppTask task = new CleanTask();
+                task.start();
+            }
+        });
     }
 
 }
