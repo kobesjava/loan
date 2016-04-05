@@ -49,13 +49,6 @@ public class MyApplication extends Application {
                         DiskCacheConfig.newBuilder(this)
                         .setBaseDirectoryPath(new File(Constants.CACHE_DIR))
                         .build())
-                /*.setBitmapMemoryCacheParamsSupplier(new Supplier<MemoryCacheParams>() {
-                    @Override
-                    public MemoryCacheParams get() {
-                        MemoryCacheParams params = new MemoryCacheParams(20*1024*1024*8);
-                        return params;
-                    }
-                })*/
                 .build();
         Fresco.initialize(this,config);
 

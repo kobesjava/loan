@@ -32,6 +32,7 @@ public class OilgaugeProgress extends View {
         if(progress < 0) progress = 0;
         if(progress > 100) progress = 100;
         this.progress = progress;
+        postInvalidate();
     }
 
     @Override

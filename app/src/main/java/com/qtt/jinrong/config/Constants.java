@@ -22,7 +22,7 @@ public class Constants {
     public static final int LOGIN_EXPIRED = 10001;
 
     /** 客服电话*/
-    public static final String CUSTOMER_SERVICE_PHONE = "400-685-9966";
+    public static final String CUSTOMER_SERVICE_PHONE = "400-8217-290";
 
     public static final int EXIT_INTERVAL = 2000;
 

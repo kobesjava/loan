@@ -168,7 +168,7 @@ public class FinancingNeedsActivity extends BaseActivity implements IFinancingDe
         }
         else otherStatus.setText(getString(R.string.beperfect));
 
-        mOilgaugeProgress.setProgress(finished*100/7);
+        mOilgaugeProgress.setProgress(finished*100/8);
     }
     /***  IFinancingDemandsView  ***/
 }
