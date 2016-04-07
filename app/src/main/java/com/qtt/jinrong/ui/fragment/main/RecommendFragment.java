@@ -1,24 +1,37 @@
 package com.qtt.jinrong.ui.fragment.main;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.GeneratedClassUtils;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.event.CreditLevelEvent;
 import com.qtt.jinrong.bean.event.LoanTypeEvent;
 import com.qtt.jinrong.bean.event.TabEvent;
+import com.qtt.jinrong.bean.loan.LoanModel;
 import com.qtt.jinrong.bean.recommend.AdModel;
 import com.qtt.jinrong.enums.CreditLevelEnum;
 import com.qtt.jinrong.enums.LoanTypeEnum;
 import com.qtt.jinrong.presenter.IRecommendPresenter;
 import com.qtt.jinrong.presenter.impl.RecommendPresenterImpl;
+import com.qtt.jinrong.ui.activity.loan.LoanApplyListActivity;
+import com.qtt.jinrong.ui.activity.loan.LoanProductDetailActivity;
+import com.qtt.jinrong.ui.activity.user.FinancingNeedsActivity;
 import com.qtt.jinrong.ui.adapter.RecommendAdAdapter;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.IndicatorView;
+import com.qtt.jinrong.ui.widget.LineView;
 import com.qtt.jinrong.view.IRecommendView;
 
 import org.androidannotations.annotations.Click;
@@ -42,9 +55,11 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     @ViewById(R.id.indicator)
     IndicatorView mIndictor;
-
     @ViewById(R.id.refreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+    @ViewById(R.id.loanListView)
+    LinearLayout loanListView;
+
 
     RecommendAdAdapter mRecommendAdAdapter;
     IRecommendPresenter mIRecommendPresenter;
@@ -81,6 +96,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
         });
 
         mIRecommendPresenter.requestAd();
+        mIRecommendPresenter.requestRecommendLoan();
     }
 
     @Click(R.id.btnLoanEnterprise)
@@ -121,6 +137,31 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
     @Click(R.id.btnMoreCredit)
     void clickBtnMoreCredit() {
         goToCreditTab(CreditLevelEnum.不限);
+    }
+
+    @Click(R.id.moreLoan)
+    void clickMoreLoan() {
+        goToLoanTab(LoanTypeEnum.上班族贷款);
+    }
+
+    @Click(R.id.loanApplyList)
+    void clickloanApplyList() {
+        if(mUserInfo == null) {
+            login();
+            return;
+        }
+        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanApplyListActivity.class));
+        startActivity(intent);
+    }
+
+    @Click(R.id.laonMaterial)
+    void clickLoanMaterial() {
+        if(mUserInfo == null) {
+            login();
+            return;
+        }
+        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(FinancingNeedsActivity.class));
+        startActivity(intent);
     }
 
     /**
@@ -164,6 +205,60 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
         else mRecommendAdAdapter.update(adModels);
 
         mIndictor.setIndicator(adModels.size());
+    }
+
+    @Override
+    public void onRequestLoan(List<LoanModel> loanModels) {
+        if(loanModels == null || loanModels.size() == 0) return;
+        View view;
+        SimpleDraweeView img;
+        TextView title;
+        TextView  company;
+        RatingBar rb;
+        TextView  interestTotal;
+        TextView  monthPay;
+        LoanModel mLoanModel;
+
+        for(int i=0;i<loanModels.size();i++) {
+            view = LayoutInflater.from(getActivity()).inflate(R.layout.loan_item, null);
+            img = (SimpleDraweeView) view.findViewById(R.id.img);
+            title = (TextView) view.findViewById(R.id.title);
+            company = (TextView) view.findViewById(R.id.company);
+            rb = (RatingBar) view.findViewById(R.id.rb);
+            interestTotal = (TextView) view.findViewById(R.id.interest);
+            monthPay = (TextView) view.findViewById(R.id.monthPay);
+
+            mLoanModel = loanModels.get(i);
+            view.setTag(mLoanModel);
+
+            title.setText(mLoanModel.getTitle());
+            company.setText(mLoanModel.getOwnedCompany());
+            interestTotal.setText("总利息 ：" + mLoanModel.getRate());
+            monthPay.setText("月供 ：" + mLoanModel.getMoney());
+            rb.setRating(mLoanModel.getScore());
+
+            try {
+                Uri uri = Uri.parse(mLoanModel.getThumpImg());
+                img.setImageURI(uri);
+            }catch (Exception e) {
+                LogUtil.d("加载图片", "URL=" + mLoanModel.getThumpImg() + " Exception=" + e.getMessage());
+            }
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanProductDetailActivity.class));
+                    intent.putExtra(LoanProductDetailActivity.INTENT_LOAN, (LoanModel)v.getTag());
+                    startActivity(intent);
+                }
+            });
+
+            loanListView.addView(view);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    getResources().getDimensionPixelOffset(R.dimen.margin_step_1));
+            loanListView.addView(new LineView(getActivity()),params);
+        }
+
     }
     /******  IRecommendView  *******/
 

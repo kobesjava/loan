@@ -5,6 +5,14 @@ package com.qtt.jinrong.presenter;
  */
 public interface IRecommendPresenter {
 
+    /**
+     * 请求滚动栏
+     */
     void requestAd();
+
+    /**
+     * 请求推荐贷款
+     */
+    void requestRecommendLoan();
 
 }

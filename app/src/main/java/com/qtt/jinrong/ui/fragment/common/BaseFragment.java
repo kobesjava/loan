@@ -2,11 +2,14 @@ package com.qtt.jinrong.ui.fragment.common;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.bean.user.UserInfo;
+import com.qtt.jinrong.ui.activity.user.LoginActivity;
 import com.qtt.jinrong.ui.widget.dialog.AlertDialogUtils;
 import com.qtt.jinrong.util.UserInfoUtil;
 import com.qtt.framework.umeng.CommonAnalysis;
@@ -46,6 +49,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        mUserInfo = UserInfoUtil.getLocalLoginResponse(getActivity());
         CommonAnalysis.onPageStart(this.getClass().getSimpleName());
     }
 
@@ -64,8 +68,9 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
     }
 
-    public View inflateView(int viewSoureId) {
-        return View.inflate(getActivity(), viewSoureId, null);
+    protected void login() {
+        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoginActivity.class));
+        startActivity(intent);
     }
 
     public void showLoading() {

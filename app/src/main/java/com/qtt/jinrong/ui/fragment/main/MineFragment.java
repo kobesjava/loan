@@ -157,11 +157,6 @@ public class MineFragment extends BaseFragment {
         });
     }
 
-    private void login() {
-        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoginActivity.class));
-        startActivity(intent);
-    }
-
     public void onEventMainThread(LoginEvent event) {
         mUserInfo = UserInfoUtil.getUserInfo();
         setUpView();
