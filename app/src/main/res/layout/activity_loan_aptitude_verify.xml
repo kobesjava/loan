@@ -56,6 +56,12 @@
                 layout="@layout/include_worker_other_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <include
+                android:id="@+id/stores"
+                android:visibility="gone"
+                layout="@layout/include_shoppers_apply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <LinearLayout style="@style/financing_needs_more_item">
 

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:input="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺名称" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeName"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺地址" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeAddress"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺用户名" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeUsername"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺账号" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeAccount"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺月均交易额" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeMonthTurnover"
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺近180天销售总金额" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/store180Sales"
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺近90天成功支付订单" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/store90Orders"
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺月支付金额" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeMonthPays"
+            style="@style/financing_needs_more_right_edittext"
+            input:input_number="true" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺开始经营时间" />
+
+        <TextView
+            android:id="@+id/storOpenTime"
+            style="@style/financing_needs_more_right_arrow_text" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="店铺实际注册人" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/storeRegistUser"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="借款人姓名" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/loanUsername"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="借款人移动电话" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/loanMobile"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="借款人备用电话" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/loanMobile1"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="借款人固话" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/loanTelPhone"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="借款人身份证号码" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/loanIdCard"
+            style="@style/financing_needs_more_right_edittext"
+            input:input_idcard="true" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="借款人单位地址" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/loanAddress"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="联系人姓名" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/contactsUsername"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="联系人关系" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/contactsRelationship"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="联系人公司单位" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/contactsConpany"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        style="@style/financing_needs_more_item"
+        android:layout_marginTop="0dp"
+        android:background="@color/transparent">
+
+        <TextView
+            style="@style/financing_needs_more_left_text"
+            android:text="联系人手机号码" />
+
+        <com.qtt.jinrong.ui.widget.text.InputEditText
+            android:id="@+id/contactsMobile"
+            style="@style/financing_needs_more_right_edittext" />
+    </LinearLayout>
+
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+</LinearLayout>

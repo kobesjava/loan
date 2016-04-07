@@ -12,7 +12,8 @@ public enum IdentityEnum {
     企业户(1),
     个体户(2),
     工薪族(3),
-    其他(4);
+    其他(4),
+    电商(5);
 
     private int code;
     IdentityEnum(int code) {

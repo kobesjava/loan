@@ -58,6 +58,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     @ViewById(R.id.identity)
     TextView mIdentifyText;
 
+    //企业、个人
     @ViewById(R.id.enterprisePersonalMore)
     View enterprisePersonalMore;
     @ViewById(R.id.legalPerson)
@@ -67,6 +68,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     @ViewById(R.id.operationPeriod)
     TextView operationPeriodText;
 
+    //工薪、其他
     @ViewById(R.id.workerOtherMore)
     View workerOtherMore;
     @ViewById(R.id.companyWorkYears)
@@ -78,6 +80,11 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     @ViewById(R.id.socialFund)
     TextView socialFundText;
 
+    //电商
+    @ViewById(R.id.stores)
+    View storesMore;
+
+    //公共
     @ViewById(R.id.age)
     InputEditText mAgeEdit;
     @ViewById(R.id.creditStation)
@@ -142,12 +149,19 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                 IdentityEnum mEnums = IdentityEnum.values()[position];
                 mIdentifyText.setText(val);
                 request.setCapacity(mEnums.getCode());
+
                 if (mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
                     enterprisePersonalMore.setVisibility(View.VISIBLE);
                     workerOtherMore.setVisibility(View.GONE);
+                    storesMore.setVisibility(View.GONE);
                 } else if (mEnums.equals(IdentityEnum.工薪族) || mEnums.equals(IdentityEnum.其他)) {
                     enterprisePersonalMore.setVisibility(View.GONE);
                     workerOtherMore.setVisibility(View.VISIBLE);
+                    storesMore.setVisibility(View.GONE);
+                } else if(mEnums.equals(IdentityEnum.电商)) {
+                    enterprisePersonalMore.setVisibility(View.GONE);
+                    workerOtherMore.setVisibility(View.GONE);
+                    storesMore.setVisibility(View.VISIBLE);
                 }
             }
         });
