@@ -18,6 +18,7 @@ import com.qtt.jinrong.ui.activity.user.AboutUsActivity;
 import com.qtt.jinrong.ui.activity.user.FinancingNeedsActivity;
 import com.qtt.jinrong.ui.activity.user.LoginActivity;
 import com.qtt.jinrong.ui.activity.user.SetupActivity;
+import com.qtt.jinrong.ui.activity.user.VipActivity;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
 import com.qtt.jinrong.ui.widget.dialog.AlertDialogUtils;
 import com.qtt.jinrong.util.SystemUtil;
@@ -139,6 +140,8 @@ public class MineFragment extends BaseFragment {
             login();
             return;
         }
+        Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(VipActivity.class));
+        startActivity(intent);
     }
 
     @Click(R.id.btnAboutUs)

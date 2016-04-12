@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.qtt.jinrong.ui.widget.CommonTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="铜牌会员(享受基本服务)"
+                android:textSize="16sp"
+                android:textColor="@color/color_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:text="年费499"
+                android:textSize="14sp"
+                android:textColor="@color/color_e84a01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnBronze"
+            android:text="开通"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/bg_orange_corner_selecter"
+            android:layout_width="80dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="银牌会员(享受普通服务)"
+                android:textSize="16sp"
+                android:textColor="@color/color_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:text="年费1499"
+                android:textSize="14sp"
+                android:textColor="@color/color_e84a01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSilver"
+            android:text="开通"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/bg_orange_corner_selecter"
+            android:layout_width="80dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="金牌会员(享受vip服务)"
+                android:textSize="16sp"
+                android:textColor="@color/color_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:text="年费4999"
+                android:textSize="14sp"
+                android:textColor="@color/color_e84a01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnGold"
+            android:text="开通"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/bg_orange_corner_selecter"
+            android:layout_width="80dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <com.qtt.jinrong.ui.widget.LineView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+</LinearLayout>
