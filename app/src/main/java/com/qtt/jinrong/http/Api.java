@@ -16,13 +16,18 @@ public class Api {
     private static final String MOUDLE_CREDIT_PATH = "/credit";
     private static final String MOUDLE_USER_PATH = "/user";
     private static final String MOUDLE_ACCOUNT_PATH = "/account";
+    private static final String MOUDLE_PAY_PATH = "/pay";
 
     /** 检查更新 **/
     public final static String URL_APP_UPGRADE = ROOT_URL + MOUDLE_APP_PATH + "/queryUpgrade.do";
 
-
     /**  滚动栏  **/
     public final static String ADVERT = ROOT_URL + MOUDLE_AD_PATH + "/queryAdvertList.do";
+
+    /** 支付签名 **/
+    public final static String PAY_SIGN = ROOT_URL + MOUDLE_PAY_PATH + "/queryUpgrade.do";
+    /** 支付结果 **/
+    public final static String PAY_RESULT = ROOT_URL + MOUDLE_PAY_PATH + "/queryUpgrade.do";
 
 
     /**  loan模块  **/

@@ -132,6 +132,10 @@
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.pay.PayResultActivity_"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.activity.loan.LoanApplyListActivity_"
             android:screenOrientation="portrait"/>
 

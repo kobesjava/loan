@@ -11,13 +11,14 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 public abstract class DialogBuilder {
-    public static void showSimpleDialog(String message, Context context) {
-        showSimpleDialog(message, context, null);
+    public static AlertDialog showSimpleDialog(String message, Context context) {
+        return showSimpleDialog(message, context, null);
     }
 
-    public static void showSimpleDialog(String message, Context context, OnClickListener listener) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).setPositiveButton("我知道了", listener).setMessage(message).setCancelable(false).show();
+    public static AlertDialog showSimpleDialog(String message, Context context, OnClickListener listener) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).setPositiveButton("确定", listener).setMessage(message).setCancelable(false).show();
         alertDialog.setCanceledOnTouchOutside(false);
+        return alertDialog;
     }
 
     public static void customSimpleDialog(String message, Context context, OnClickListener listener, String positive) {
@@ -25,9 +26,10 @@ public abstract class DialogBuilder {
         alertDialog.setCanceledOnTouchOutside(false);
     }
 
-    public static void showSimpleDialog(String message, String posMessage, Context context, OnClickListener listener) {
+    public static AlertDialog showSimpleDialog(String message, String posMessage, Context context, OnClickListener listener) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).setMessage(message).setPositiveButton(posMessage, listener).show();
         alertDialog.setCanceledOnTouchOutside(false);
+        return alertDialog;
     }
 
     public static void showSimpleDialog(String message, String posMessage, String negMessage, Context context, OnClickListener listener) {

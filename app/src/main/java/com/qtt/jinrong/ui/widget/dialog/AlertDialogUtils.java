@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.qtt.jinrong.R;
 
 /**
- * @author yanxin
+ * @author Administrator
  */
 public class AlertDialogUtils {
 
@@ -234,12 +234,25 @@ public class AlertDialogUtils {
                 if (alertPrompt != null && alertPrompt.isShowing()) {
                     alertPrompt.dismiss();
                 }
-                if (onCancelClickListener != null)
-                {
+                if (onCancelClickListener != null) {
                     onCancelClickListener.onCancelClickListner();
                 }
             }
         });
+    }
+
+    public static Dialog showProgressDialog(Context context,boolean cancel,CharSequence title) {
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_progress_wait, null);
+        TextView text_title = (TextView) view.findViewById(R.id.title);
+        text_title.setText(title);
+
+        final AlertDialog prompt = new AlertDialog.Builder(context).setView(view).create();
+        prompt.setCanceledOnTouchOutside(cancel);
+        prompt.setCancelable(cancel);
+        prompt.show();
+        prompt.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        return prompt;
     }
 
     public static Dialog showDialog(Context context, CharSequence title, CharSequence msg, CharSequence clickMsg,DialogInterface.OnClickListener clickListener) {
