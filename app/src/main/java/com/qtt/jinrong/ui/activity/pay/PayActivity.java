@@ -17,9 +17,9 @@ import com.qtt.jinrong.bean.pay.PaySignResponse;
 import com.qtt.jinrong.presenter.IPayPresenter;
 import com.qtt.jinrong.presenter.impl.PayPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
-import com.qtt.jinrong.ui.activity.common.MainActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.dialog.AlertDialogUtils;
+import com.qtt.jinrong.ui.widget.dialog.MyDialog;
 import com.qtt.jinrong.view.IPayView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -47,6 +47,7 @@ public class PayActivity extends BaseActivity implements IPayView{
     private PayResultRequest resultRequest;
 
     private IPayPresenter payPresenter;
+    private MyDialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,14 @@ public class PayActivity extends BaseActivity implements IPayView{
         signRequest = new PaySignRequest();
         signRequest.setUid(getUserId());
 
-        hideDialog();
-        mDialog = AlertDialogUtils.showProgressDialog(this,false,"生成订单...");
+        if (myDialog == null) {
+            myDialog = new MyDialog.Builder(this).setCancelable(false)
+                    .showTitle(false).setShowButton(false,false)
+                    .showMessage(true).showProgress(true).create();
+            mDialog = myDialog.getDialog();
+        }
+        myDialog.setMessage("生成订单...");
+        myDialog.show();
         payPresenter.requestSign();
     }
 
@@ -82,8 +89,7 @@ public class PayActivity extends BaseActivity implements IPayView{
 
     @Override
     public void onRequestSign(PaySignResponse response) {
-        hideDialog();
-        mDialog = AlertDialogUtils.showProgressDialog(this,false,"支付中...");
+        myDialog.setMessage("跳转支付...");
         payPresenter.pay();
     }
 
@@ -118,10 +124,7 @@ public class PayActivity extends BaseActivity implements IPayView{
     @Override
     public void onPaySuccess() {
         //获取服务端支付结果
-
-        hideDialog();
-        mDialog = AlertDialogUtils.showProgressDialog(this,false,"支付结果确认中...");
-
+        myDialog.setMessage("支付结果确认中...");
         payPresenter.requestPayResult();
     }
 

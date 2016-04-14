@@ -36,7 +36,7 @@ public class AliPayPresenter {
                 // 构造PayTask 对象
                 PayTask alipay = new PayTask(payActivity);
                 // 调用支付接口，获取支付结果
-                String result = alipay.pay(aliPayInfo,true);
+                String result = alipay.pay(aliPayInfo,false);
 
                 LogUtil.d("PAY","result--->"+result);
 

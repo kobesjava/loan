@@ -98,7 +98,7 @@ public class PayBillRequest {
              * 仅需对sign 做URL编码
              */
             sign = URLEncoder.encode(sign, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -170,7 +170,19 @@ public class PayBillRequest {
      *            待签名订单信息
      */
     private String sign(String content) {
-        return SignUtils.sign(content, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQWiDVZ7XYxa4CQsZoB3n7bfxLDkeGKjyQPt2FUtm4TWX9OYrd523iw6UUqnQ+Evfw88JgRnhyXadp+vnPKP7unormYQAfsM/CxzrfMoVdtwSiGtIJB4pfyRXjA+KL8nIa2hdQy5nLfgPVGZN4WidfUY/QpkddCVXnZ4bAUaQjXQIDAQAB");
+        return SignUtils.sign(content, "MIICXAIBAAKBgQDAn+OICm1pDLtbeQrogCm4/gQWGYH/bpkDuX89oHkihgsOlY+I" +
+                "1zGU8Sq5GPMXWiG5prjuwT5XZ4xFvxWVNT+Dbt6/xLFBD7ZCeUkGK6MGM/YBkB/F" +
+                "f7bhRcjyUq92Iarz+5He22NDZgREP8Uech5waDDo1f6sc++1LSCCze9O6wIDAQAB" +
+                "AoGAFQnhmhw5cv3XANipnldRN0lXPOqwTivQPp3mDd8XG/Q0BPXE5ZdLbQ8iMXFO" +
+                "K8DGajaRgFJO8tD2ey+xtchJFWtAAY6GKUv4VnzVw8Sx43flE4KsMDqem5jyeM2C" +
+                "wa9Oc1Y+EXHc1x8DoZCozQLmArHcuL0ExkXtwyr4rUhbs+ECQQDwPGOPWUsuVxgR" +
+                "rFnezLZDWQ7EIR2X/jWq98SAOIKF2wqaxLV/NEMSu2FXxVnGP3F/ch8NmskMwKqf" +
+                "xz8sVrdzAkEAzUOzBlwLQzxQoWXcWcvKsLgB5fhmkiS97pMHoGkalt8yGQIajmLl" +
+                "SvXkin+Z6H2WsmeS27hjfDY58v78frn8qQJBAMx0mMcHV9S4iuN/q3zS/MuUn9yL" +
+                "0oPo9gPrmnEFpxAEu6G8iDsaX3sxvkbUzvLKS+4LUiJh+XnA/3W8PSefJcECQFBl" +
+                "dMhH4u1pwVcF84GETZZb6/psCZiyJWY9Vl5g7FYtg4zCAy7D03VBzErm4ZxrHEwy" +
+                "PxYqKWUsRBRGBRWJuUkCQH4Rw6VkFIPSrfN12vbRE2MTL5Owg1xnOFTtjISaal4f" +
+                "fm4I3RyhCF4B1ielnhopLyeFaxceYhV5roN/vpym+bo=");
     }
 
     /**

@@ -1,10 +1,9 @@
 package com.qtt.framework.pay;
 
 import android.app.Activity;
-import android.text.TextUtils;
-import android.util.Base64;
 
 import com.qtt.framework.pay.alipay.AliPayPresenter;
+import com.qtt.framework.pay.alipay.Base64;
 import com.qtt.framework.pay.request.PayBillRequest;
 import com.qtt.framework.util.LogUtil;
 
@@ -20,9 +19,8 @@ public class AliPay extends BasePay {
     @Override
     void toPayForInfo(PayBillRequest payBillResponse) {
         String payInfo = payBillResponse.getPayInfo();
-        LogUtil.d("PAY", "alipay info:" + payInfo.toString());
+        LogUtil.d("PAY", "alipay info:" + payInfo);
         AliPayPresenter aliPayPresenter = new AliPayPresenter(mActivity, this);
-        String decoded = new String(Base64.decode(payInfo, Base64.DEFAULT));
-        aliPayPresenter.pay(decoded);
+        aliPayPresenter.pay(payInfo);
     }
 }
