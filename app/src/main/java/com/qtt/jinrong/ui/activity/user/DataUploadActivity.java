@@ -2,9 +2,6 @@ package com.qtt.jinrong.ui.activity.user;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,20 +14,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
-import com.facebook.drawee.controller.BaseControllerListener;
-import com.facebook.drawee.controller.ControllerListener;
-import com.facebook.drawee.generic.GenericDraweeHierarchy;
-import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.imagepipeline.image.ImageInfo;
-import com.qtt.framework.util.AdvancedBitmapUtils;
-import com.qtt.framework.util.FileUtils;
-import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
-import com.qtt.jinrong.bean.user.DataUploadModel;
+import com.qtt.jinrong.bean.account.DataModel;
+import com.qtt.jinrong.bean.account.DataResponse;
+import com.qtt.jinrong.bean.account.DataUploadRequest;
 import com.qtt.jinrong.config.Constants;
+import com.qtt.jinrong.enums.DataTypeEnum;
+import com.qtt.jinrong.presenter.IDataUploadPresenter;
+import com.qtt.jinrong.presenter.impl.DataUploadPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.util.BitmapUtil;
@@ -38,13 +30,10 @@ import com.qtt.jinrong.util.FileUtil;
 import com.qtt.jinrong.view.IDataUploadVIew;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-import org.w3c.dom.Text;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,11 +44,7 @@ import java.util.List;
 @EActivity(R.layout.activity_data_upload)
 public class DataUploadActivity extends BaseActivity implements IDataUploadVIew {
 
-    private final int REQUEST_FRONT = 0x10;
-    private final int REQUEST_BACK = 0x11;
-    private final int REQUEST_BL = 0x12;
-    private final int REQUEST_CREDIT = 0x13;
-    private final int REQUEST_AVATAR = 0x14;
+    private final int REQUEST_TAKEPHOTO = 0x10;
 
     @ViewById(R.id.titleBar)
     CommonTitleBar mTitleBar;
@@ -80,36 +65,54 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
 
     private String mCurrentPath;
     MyAdapter adapter;
-    private List<DataUploadModel> models;
+    private List<DataModel> models = new ArrayList<>(5);
+    private int mIndex;
+    private IDataUploadPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        models = new ArrayList<>();
-        DataUploadModel model = new DataUploadModel();
-        models.add(model);
-        model = new DataUploadModel();
-        models.add(model);
-        model = new DataUploadModel();
-        //model.setPath("");
-        models.add(model);http://img02.tooopen.com/images/20160216/tooopen_sy_156324542564.jpg
-        model = new DataUploadModel();
-        //model.setPath("http://www.52ij.com/uploads/allimg/160317/003T95164-3.jpg");
-        models.add(model);
-        model = new DataUploadModel();
-        //model.setPath("http://pic32.nipic.com/20130829/12906030_124355855000_2.png");
-        models.add(model);
+        DataModel dataModel = new DataModel();
+        dataModel.setImgType(DataTypeEnum.身份证证明.getCode());
+        models.add(dataModel);
+        dataModel = new DataModel();
+        dataModel.setImgType(DataTypeEnum.身份证反面.getCode());
+        models.add(dataModel);
+        dataModel = new DataModel();
+        dataModel.setImgType(DataTypeEnum.营业执照.getCode());
+        models.add(dataModel);
+        dataModel = new DataModel();
+        dataModel.setImgType(DataTypeEnum.个人征信.getCode());
+        models.add(dataModel);
+        dataModel = new DataModel();
+        dataModel.setImgType(DataTypeEnum.个人头像.getCode());
+        models.add(dataModel);
+        mPresenter = new DataUploadPresenterImpl(this);
     }
 
     @AfterViews
     void initView() {
         mTitleBar.setTitle("资料信息");
         mTitleBar.setActivity(this);
+        mTitleBar.setRightViewVisible(View.VISIBLE, "保存");
+        mTitleBar.setTitleBarListener(new CommonTitleBar.TitleBarListener() {
+            @Override
+            public void leftOnClick() {
+
+            }
+
+            @Override
+            public void rightOnClick() {
+                mPresenter.uploadData();
+            }
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyAdapter();
         recyclerView.setAdapter(adapter);
+
+        mPresenter.request();
     }
 
     /*@Click(R.id.idCardFront)
@@ -137,7 +140,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
         takePhotot(REQUEST_AVATAR);
     }*/
 
-    private void takePhotot(int requestCode) {
+    private void takePhotot() {
         Intent camIntent = new Intent("android.media.action.IMAGE_CAPTURE");
         Intent systemCamIntent = new Intent(camIntent);
         systemCamIntent.setComponent(new ComponentName("com.android.camera", "com.android.camera.Camera"));
@@ -148,7 +151,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
         }
         mCurrentPath = oriPath + File.separator + System.currentTimeMillis() + ".jpg";
         systemCamIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(mCurrentPath)));
-        startActivityForResult(systemCamIntent, requestCode);
+        startActivityForResult(systemCamIntent, REQUEST_TAKEPHOTO);
     }
 
     @Override
@@ -162,36 +165,15 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
         BitmapUtil.scale(mCurrentPath,Constants.PIC_WIDTH,Constants.PIC_HEIGHT,85);
 
         try {
-            //Uri uri = Uri.parse("file://" + mCurrentPath);
-            if (requestCode == REQUEST_FRONT) {
-                models.get(0).setPath(mCurrentPath);
-                //idCardFront.setImageURI(uri);
-            } else if (requestCode == REQUEST_BACK) {
-                models.get(1).setPath(mCurrentPath);
-                //idCardBack.setImageURI(uri);
-            } else if (requestCode == REQUEST_BL) {
-                models.get(2).setPath(mCurrentPath);
-                //businessLinsces.setImageURI(uri);
-            } else if (requestCode == REQUEST_CREDIT) {
-                models.get(3).setPath(mCurrentPath);
-                //credit.setImageURI(uri);
-            } else if (requestCode == REQUEST_AVATAR) {
-                models.get(4).setPath(mCurrentPath);
-                //avatar.setImageURI(uri);
+            if (requestCode == REQUEST_TAKEPHOTO) {
+                models.get(mIndex).setPath(mCurrentPath);
+                models.get(mIndex).setIsUpload(true);
+                adapter.notifyDataSetChanged();
             }
-            adapter.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    /***
-     * IDataUploadVIew
-     ***/
-    @Override
-    public void onRequest() {
-    }
-    /*** IDataUploadVIew ***/
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -216,39 +198,38 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
                 holder.defaultImg.setVisibility(View.GONE);
             }
 
+            holder.img.setTag(R.id.img,position);
             if(position == 0) {
                 if(!hasPic) holder.defaultImg.setBackgroundResource(R.drawable.idcard_demo_1);
-                holder.img.setTag(R.id.img,REQUEST_FRONT);
                 holder.tip.setText("点击扫描身份证正面");
                 holder.tv.setText("身份证正面");
             } else if(position == 1) {
                 if(!hasPic) holder.defaultImg.setBackgroundResource(R.drawable.idcard_demo_2);
-                holder.img.setTag(R.id.img,REQUEST_BACK);
                 holder.tip.setText("点击扫描身份证反面");
                 holder.tv.setText("身份证反面");
             } else if(position == 2) {
-                holder.img.setTag(R.id.img,REQUEST_BL);
                 holder.tip.setText("点击扫描营业执照");
                 holder.tv.setText("营业执照");
             } else if(position == 3) {
-                holder.img.setTag(R.id.img,REQUEST_CREDIT);
                 holder.tip.setText("点击扫描个人征信");
                 holder.tv.setText("个人征信");
             } else if(position == 4) {
-                holder.img.setTag(R.id.img,REQUEST_AVATAR);
                 holder.tip.setText("点击扫描个人头像");
                 holder.tv.setText("个人头像");
             }
             holder.img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    takePhotot((Integer)v.getTag(R.id.img));
+                    mIndex = (Integer)v.getTag(R.id.img);
+                    takePhotot();
                 }
             });
             try {
                 if(!TextUtils.isEmpty(models.get(position).getPath())) {
                     Uri uri = Uri.parse("file://" + models.get(position).getPath());
-                    //Uri uri = Uri.parse(models.get(position).getPath());
+                    holder.img.setImageURI(uri);
+                } else if(!TextUtils.isEmpty(models.get(position).getFilePath())){
+                    Uri uri = Uri.parse(models.get(position).getFilePath());
                     holder.img.setImageURI(uri);
                 } else {
                     holder.img.setImageURI(null);
@@ -260,7 +241,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
 
         @Override
         public int getItemCount() {
-            return 5;
+            return models==null?0:models.size();
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
@@ -282,4 +263,66 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
             }
         }
     }
+
+    /***
+     * IDataUploadVIew
+     ***/
+    @Override
+    public List<DataUploadRequest> getRequest() {
+        List<DataUploadRequest> requests = new ArrayList<>();
+        for(int i=0;i<models.size();i++) {
+            if(!TextUtils.isEmpty(models.get(i).getPath())
+                    && models.get(i).isUpload()) {
+                DataUploadRequest request = new DataUploadRequest();
+                request.setUserId(getUserId());
+                request.setImgType(models.get(i).getImgType());
+                request.setFileByte(FileUtil.getBytesFromFile(models.get(i).getPath()));
+                requests.add(request);
+            }
+        }
+        return requests;
+    }
+
+    @Override
+    public void onRequest(DataResponse response) {
+        List<DataModel> mDatas;
+        if(response == null || !response.isSuccess()
+                || response.getData() == null) {
+            mDatas = new ArrayList<>();
+        } else {
+            mDatas = response.getData();
+        }
+        List<Integer> types = DataTypeEnum.getCodes();
+        for(int i=0;i<mDatas.size();i++) {
+            if(mDatas.get(i).getImgType() == null) {
+                mDatas.remove(i);
+                i--;
+            } else {
+                types.remove(mDatas.get(i).getImgType());
+            }
+
+        }
+
+        for(int i=0;i<mDatas.size();i++) {
+            DataTypeEnum dataTypeEnum = DataTypeEnum.find(mDatas.get(i).getImgType());
+            if(dataTypeEnum != null) {
+                models.get(dataTypeEnum.getIndex()).setFilePath(mDatas.get(i).getFilePath());
+            }
+        }
+
+        adapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onUpload(DataUploadRequest request) {
+        for(int i=0;i<models.size();i++) {
+            if(models.get(i).getImgType().intValue() == request.getImgType().intValue()) {
+                models.get(i).setIsUpload(false);
+                break;
+            }
+        }
+    }
+    /*** IDataUploadVIew ***/
+
 }

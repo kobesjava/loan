@@ -29,7 +29,6 @@ public class Api {
     /** 支付结果 **/
     public final static String PAY_RESULT = ROOT_URL + MOUDLE_PAY_PATH + "/queryUpgrade.do";
 
-
     /**  loan模块  **/
     //贷款产品列表
     public final static String LOAN_PRODUCT_LIST = ROOT_URL + MOUDLE_LOAN_PATH + "/querySloanList.do";
@@ -102,5 +101,10 @@ public class Api {
     public final static String ACCOUNT_REQUEST_IDENTITY = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/queryIdentity.do";
     //保存身份信息
     public final static String ACCOUNT_SAVE_IDENTITY = ROOT_URL + MOUDLE_ACCOUNT_PATH + "/saveIdentity.do";
+
+    //获取资料信息
+    public final static String ACCOUNT_DATA_REQUEST = ROOT_URL + MOUDLE_APP_PATH + "/queryFileUpload.do";
+    //资料上传文件
+    public final static String ACCOUNT_DATA_UPLOAD = ROOT_URL + MOUDLE_APP_PATH + "/fileUpload.do";
 
 }

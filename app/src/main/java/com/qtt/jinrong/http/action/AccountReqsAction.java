@@ -172,4 +172,14 @@ public class AccountReqsAction {
         getPostReq7HeardInfo(context, Api.ACCOUNT_SAVE_IDENTITY,request.getParams(),listener,Response.class);
     }
 
+    /**
+     * 资料上传
+     * @param context
+     * @param request
+     * @param listener
+     */
+    public static void uploadData(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener) {
+        getPostReq7HeardInfo(context, Api.ACCOUNT_DATA_UPLOAD,request.getParams(),listener,Response.class);
+    }
+
 }

@@ -8,14 +8,11 @@ import com.qtt.jinrong.bean.Response;
 import com.qtt.jinrong.bean.account.BaseInfoResponse;
 import com.qtt.jinrong.bean.account.CarPropertyResponse;
 import com.qtt.jinrong.bean.account.CreditPropertyResponse;
+import com.qtt.jinrong.bean.account.DataResponse;
 import com.qtt.jinrong.bean.account.DemandsResponse;
-import com.qtt.jinrong.bean.account.FinancingDemandsRequest;
 import com.qtt.jinrong.bean.account.HousePropertyResponse;
 import com.qtt.jinrong.bean.account.IdentityResponse;
-import com.qtt.jinrong.bean.account.OtherPropertyRequest;
 import com.qtt.jinrong.bean.account.OtherPropertyResponse;
-import com.qtt.jinrong.bean.account.OtherPropertySaveRequest;
-import com.qtt.jinrong.http.Api;
 
 /**
  * Created by yanxin on 16/3/8.
@@ -142,5 +139,20 @@ public interface IAccountBS extends IBS {
      */
     void saveIdentity(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener);
 
+    /**
+     * 资料上传
+     * @param context
+     * @param request
+     * @param listener
+     */
+    void uploadData(Context context,IRequest request,MCListenerObj.IObjResListener<Response> listener);
+
+    /**
+     * 获取资料信息
+     * @param context
+     * @param request
+     * @param listener
+     */
+    void requestData(Context context,IRequest request,MCListenerObj.IObjResListener<DataResponse> listener);
 
 }
