@@ -44,6 +44,7 @@
             <com.qtt.jinrong.ui.widget.LineView
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
+
             <include
                 android:id="@+id/enterprisePersonalMore"
                 android:visibility="gone"

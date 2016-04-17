@@ -10,20 +10,20 @@ import java.util.Map;
  */
 public class PaySignRequest implements IRequest {
 
-    private String uid;
+    private String userId;
 
-    public String getUid() {
-        return uid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
     public Map<String, Object> getParams() {
         Map<String, Object> map = new HashMap<>();
-        map.put("uid",map);
+        map.put("userId",map);
         return map;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public enum DataTypeEnum {
 
-    身份证证明(1,0),
+    身份证正面(1,0),
     身份证反面(2,1),
     营业执照(3,2),
     个人征信(4,3),

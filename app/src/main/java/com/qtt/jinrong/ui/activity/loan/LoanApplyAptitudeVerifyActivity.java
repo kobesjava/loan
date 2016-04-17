@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qtt.framework.util.DateUtil;
 import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.Response;
@@ -32,6 +33,8 @@ import com.qtt.jinrong.presenter.impl.LoanApplyPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
+import com.qtt.jinrong.ui.widget.datepicker.SlideDateTimeListener;
+import com.qtt.jinrong.ui.widget.datepicker.SlideDateTimePicker;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
 import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.ILoanApplyView;
@@ -40,6 +43,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.Date;
 
 /**
  * 贷款资质审核
@@ -83,6 +88,9 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     //电商
     @ViewById(R.id.stores)
     View storesMore;
+    @ViewById(R.id.storOpenTime)
+    TextView storeOpenTimeTxt;
+
 
     //公共
     @ViewById(R.id.age)
@@ -158,7 +166,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
                     enterprisePersonalMore.setVisibility(View.GONE);
                     workerOtherMore.setVisibility(View.VISIBLE);
                     storesMore.setVisibility(View.GONE);
-                } else if(mEnums.equals(IdentityEnum.电商)) {
+                } else if (mEnums.equals(IdentityEnum.电商)) {
                     enterprisePersonalMore.setVisibility(View.GONE);
                     workerOtherMore.setVisibility(View.GONE);
                     storesMore.setVisibility(View.VISIBLE);
@@ -248,6 +256,23 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             }
         });
         show();
+    }
+
+    //电商
+    @Click(R.id.storOpenTime)
+    void clickStoreOpenTime() {
+        new SlideDateTimePicker.Builder(getSupportFragmentManager()).
+                setListener(new SlideDateTimeListener() {
+                    @Override
+                    public void onDateTimeSet(Date date) {
+                        String dateStr = DateUtil.getDate(date);
+                        //request.setLoDate(dateStr);
+                        storeOpenTimeTxt.setText(dateStr);
+                    }
+                }).setInitialDate(new Date())
+                .setTitle("店铺开始经营时间")
+                .build()
+                .show();
     }
 
     //公共属性

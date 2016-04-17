@@ -18,7 +18,6 @@ import com.qtt.jinrong.presenter.IPayPresenter;
 import com.qtt.jinrong.presenter.impl.PayPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
-import com.qtt.jinrong.ui.widget.dialog.AlertDialogUtils;
 import com.qtt.jinrong.ui.widget.dialog.MyDialog;
 import com.qtt.jinrong.view.IPayView;
 
@@ -68,7 +67,7 @@ public class PayActivity extends BaseActivity implements IPayView{
     @Click(R.id.btnPay)
     void clickBtnPay() {
         signRequest = new PaySignRequest();
-        signRequest.setUid(getUserId());
+        signRequest.setUserId(getUserId());
 
         if (myDialog == null) {
             myDialog = new MyDialog.Builder(this).setCancelable(false)

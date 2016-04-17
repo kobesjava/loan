@@ -2,6 +2,7 @@ package com.qtt.jinrong.ui.activity.user;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,7 +15,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.controller.ControllerListener;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.qtt.framework.util.LogUtil;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.account.DataModel;
 import com.qtt.jinrong.bean.account.DataResponse;
@@ -27,6 +33,7 @@ import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.util.BitmapUtil;
 import com.qtt.jinrong.util.FileUtil;
+import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.IDataUploadVIew;
 
 import org.androidannotations.annotations.AfterViews;
@@ -52,17 +59,6 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
     @ViewById(R.id.recyclerview)
     RecyclerView recyclerView;
 
-    /*@ViewById(R.id.idCardFront)
-    SimpleDraweeView idCardFront;
-    @ViewById(R.id.idCardBack)
-    SimpleDraweeView idCardBack;
-    @ViewById(R.id.businessLinsces)
-    SimpleDraweeView businessLinsces;
-    @ViewById(R.id.credit)
-    SimpleDraweeView credit;
-    @ViewById(R.id.avatar)
-    SimpleDraweeView avatar;*/
-
     private String mCurrentPath;
     MyAdapter adapter;
     private List<DataModel> models = new ArrayList<>(5);
@@ -74,7 +70,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
         super.onCreate(savedInstanceState);
 
         DataModel dataModel = new DataModel();
-        dataModel.setImgType(DataTypeEnum.身份证证明.getCode());
+        dataModel.setImgType(DataTypeEnum.身份证正面.getCode());
         models.add(dataModel);
         dataModel = new DataModel();
         dataModel.setImgType(DataTypeEnum.身份证反面.getCode());
@@ -114,31 +110,6 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
 
         mPresenter.request();
     }
-
-    /*@Click(R.id.idCardFront)
-    void clickidCardFront() {
-        takePhotot(REQUEST_FRONT);
-    }
-
-    @Click(R.id.idCardBack)
-    void clickidCardBack() {
-        takePhotot(REQUEST_BACK);
-    }
-
-    @Click(R.id.businessLinsces)
-    void clickbusinessLinsces() {
-        takePhotot(REQUEST_BL);
-    }
-
-    @Click(R.id.credit)
-    void clickcredit() {
-        takePhotot(REQUEST_CREDIT);
-    }
-
-    @Click(R.id.avatar)
-    void clickavatar() {
-        takePhotot(REQUEST_AVATAR);
-    }*/
 
     private void takePhotot() {
         Intent camIntent = new Intent("android.media.action.IMAGE_CAPTURE");
@@ -228,9 +199,31 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
                 if(!TextUtils.isEmpty(models.get(position).getPath())) {
                     Uri uri = Uri.parse("file://" + models.get(position).getPath());
                     holder.img.setImageURI(uri);
-                } else if(!TextUtils.isEmpty(models.get(position).getFilePath())){
+                } else if(!TextUtils.isEmpty(models.get(position).getFilePath())) {
+
+                    ControllerListener listener = new BaseControllerListener(){
+
+                        @Override
+                        public void onFinalImageSet(String id, Object imageInfo, Animatable animatable) {
+                            super.onFinalImageSet(id, imageInfo, animatable);
+                        }
+
+                        @Override
+                        public void onFailure(String id, Throwable throwable) {
+                            super.onFailure(id, throwable);
+                            LogUtil.e("LOADIMAGE","Exception:"+throwable.getMessage());
+                        }
+                    };
+
                     Uri uri = Uri.parse(models.get(position).getFilePath());
-                    holder.img.setImageURI(uri);
+
+                    DraweeController controller = Fresco.newDraweeControllerBuilder()
+                            .setControllerListener(listener)
+                            .setUri(uri)
+                            .setOldController(holder.img.getController())
+                            .build();
+                    holder.img.setController(controller);
+                    //holder.img.setImageURI(uri);
                 } else {
                     holder.img.setImageURI(null);
                 }
@@ -318,6 +311,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
     public void onUpload(DataUploadRequest request) {
         for(int i=0;i<models.size();i++) {
             if(models.get(i).getImgType().intValue() == request.getImgType().intValue()) {
+                ToastUtil.showShortToast(DataTypeEnum.find(request.getImgType()).name()+"上传成功");
                 models.get(i).setIsUpload(false);
                 break;
             }
