@@ -179,7 +179,7 @@
             android:text="店铺开始经营时间" />
 
         <TextView
-            android:id="@+id/storOpenTime"
+            android:id="@+id/storeOpenTime"
             style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 

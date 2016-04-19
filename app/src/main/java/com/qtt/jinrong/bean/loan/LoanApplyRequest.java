@@ -8,280 +8,238 @@ import java.util.Map;
 /**
  * Created by yanxin on 16/3/16.
  */
-public class LoanApplyRequest implements IRequest{
+public class LoanApplyRequest implements IRequest {
 
-    /** 用户ID*/
-    private String userId;
-    /** 产品ID*/
-    private String productId;
-    /** 贷款总额*/
-    private Integer money;
-    /** 贷款期限*/
-    private Integer expires;
+    /**
+     * 用户ID
+     */
+    public String userId;
+    /**
+     * 产品ID
+     */
+    public String productId;
+    /**
+     * 贷款总额
+     */
+    public Integer money;
+    /**
+     * 贷款期限
+     */
+    public Integer expires;
 
-    /** 身份*/
-    private Integer capacity;
+    /**
+     * 身份
+     */
+    public Integer capacity;
 
-    /** 法人或股东*/
-    private Integer corporation;
-    /** 企业经营地*/
-    private Integer epBuss;
-    /** 经营年限*/
-    private Integer epPeriod;
+    /**
+     * 法人或股东
+     */
+    public Integer corporation;
+    /**
+     * 企业经营地
+     */
+    public Integer epBuss;
+    /**
+     * 经营年限
+     */
+    public Integer epPeriod;
 
-    /** 现单位工龄*/
-    private Integer currSeniority;
-    /** 收入发放方式*/
-    private Integer payWay;
-    /** 月均总收入*/
-    private Integer monthlyIncome;
-    /** 社保和公积金*/
-    private Integer socialSecurity;
 
-    /** 年龄*/
-    private Integer age;
-    /** 信用情况*/
-    private Integer creInfo;
-    /** 逾期情况*/
-    private Integer overdue;
-    /** 信用卡总额度*/
-    private Integer creMoney;
-    /** 已使用额度*/
-    private Integer creUsed;
-    /** 房产信息*/
-    private Integer houseInfo;
-    /** 房产位置*/
-    private Integer district;
-    /** 房产抵押*/
-    private Integer mortgage;
-    /** 车产信息*/
-    private Integer car;
-    /** 牌照归属地*/
-    private Integer carBelong;
+    /**
+     * 现单位工龄
+     */
+    public Integer currSeniority;
+    /**
+     * 收入发放方式
+     */
+    public Integer payWay;
+    /**
+     * 月均总收入
+     */
+    public Integer monthlyIncome;
+    /**
+     * 社保和公积金
+     */
+    public Integer socialSecurity;
 
-    public String getUserId() {
-        return userId;
-    }
+    /**
+     * 店铺类型
+     */
+    public Integer shopTpye;
+    /**
+     * 店铺名称
+     */
+    public String shopName;
+    /**
+     * 店铺地址
+     */
+    public String shopAddr;
+    /**
+     * 店铺用户名
+     */
+    public String shopUserName;
+    /**
+     * 店铺账号
+     */
+    public String shopAccount;
+    /**
+     * 店铺月均交易额
+     */
+    public Integer shopAvgMon;
+    /**
+     * 店铺近180天销售总金额
+     */
+    public Integer shop180Sales;
+    /**
+     * 店铺近90天成功支付订单
+     */
+    public Integer shop90Order;
+    /**
+     * 店铺月支付金额
+     */
+    public Integer shopMonPay;
+    /**
+     * 店铺开始经营时间
+     */
+    public String shopStartTime;
+    /**
+     * 店铺实际注册人
+     */
+    public String shopReg;
+    /**
+     * 借款人姓名
+     */
+    public String borrowerName;
+    /**
+     * 借款人移动电话
+     */
+    public String borrowerPhone;
+    /**
+     * 借款人备用电话
+     */
+    public String borrowerSecondPhone;
+    /**
+     * 借款人固话
+     */
+    public String borrowerTel;
+    /**
+     * 借款人身份证号码
+     */
+    public String borrowerIdNum;
+    /**
+     * 借款人单位地址
+     */
+    public String borrowerCompanyAddr;
+    /**
+     * 联系人姓名
+     */
+    public String contactName;
+    /**
+     * 联系人关系
+     */
+    public String contactRelation;
+    /**
+     * 联系人公司单位
+     */
+    public String contactCompany;
+    /**
+     * 联系人手机号码
+     */
+    public String contactPhone;
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public Integer getMoney() {
-        return money;
-    }
-
-    public void setMoney(Integer money) {
-        this.money = money;
-    }
-
-    public Integer getExpires() {
-        return expires;
-    }
-
-    public void setExpires(Integer expires) {
-        this.expires = expires;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getOverdue() {
-        return overdue;
-    }
-
-    public void setOverdue(Integer overdue) {
-        this.overdue = overdue;
-    }
-
-    public Integer getCreMoney() {
-        return creMoney;
-    }
-
-    public void setCreMoney(Integer creMoney) {
-        this.creMoney = creMoney;
-    }
-
-    public Integer getCreUsed() {
-        return creUsed;
-    }
-
-    public void setCreUsed(Integer creUsed) {
-        this.creUsed = creUsed;
-    }
-
-    public Integer getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(Integer district) {
-        this.district = district;
-    }
-
-    public Integer getMortgage() {
-        return mortgage;
-    }
-
-    public void setMortgage(Integer mortgage) {
-        this.mortgage = mortgage;
-    }
-
-    public Integer getCar() {
-        return car;
-    }
-
-    public void setCar(Integer car) {
-        this.car = car;
-    }
-
-    public Integer getCurrSeniority() {
-        return currSeniority;
-    }
-
-    public void setCurrSeniority(Integer currSeniority) {
-        this.currSeniority = currSeniority;
-    }
-
-    public Integer getPayWay() {
-        return payWay;
-    }
-
-    public void setPayWay(Integer payWay) {
-        this.payWay = payWay;
-    }
-
-    public Integer getMonthlyIncome() {
-        return monthlyIncome;
-    }
-
-    public void setMonthlyIncome(Integer monthlyIncome) {
-        this.monthlyIncome = monthlyIncome;
-    }
-
-    public Integer getSocialSecurity() {
-        return socialSecurity;
-    }
-
-    public void setSocialSecurity(Integer socialSecurity) {
-        this.socialSecurity = socialSecurity;
-    }
-
-    public Integer getCorporation() {
-        return corporation;
-    }
-
-    public void setCorporation(Integer corporation) {
-        this.corporation = corporation;
-    }
-
-    public Integer getEpBuss() {
-        return epBuss;
-    }
-
-    public void setEpBuss(Integer epBuss) {
-        this.epBuss = epBuss;
-    }
-
-    public Integer getEpPeriod() {
-        return epPeriod;
-    }
-
-    public void setEpPeriod(Integer epPeriod) {
-        this.epPeriod = epPeriod;
-    }
-
-    public Integer getCreInfo() {
-        return creInfo;
-    }
-
-    public void setCreInfo(Integer creInfo) {
-        this.creInfo = creInfo;
-    }
-
-    public Integer getHouseInfo() {
-        return houseInfo;
-    }
-
-    public void setHouseInfo(Integer houseInfo) {
-        this.houseInfo = houseInfo;
-    }
-
-    public Integer getCarBelong() {
-        return carBelong;
-    }
-
-    public void setCarBelong(Integer carBelong) {
-        this.carBelong = carBelong;
-    }
+    /**
+     * 年龄
+     */
+    public Integer age;
+    /**
+     * 信用情况
+     */
+    public Integer creInfo;
+    /**
+     * 逾期情况
+     */
+    public Integer overdue;
+    /**
+     * 信用卡总额度
+     */
+    public Integer creMoney;
+    /**
+     * 已使用额度
+     */
+    public Integer creUsed;
+    /**
+     * 房产信息
+     */
+    public Integer houseInfo;
+    /**
+     * 房产位置
+     */
+    public Integer district;
+    /**
+     * 房产抵押
+     */
+    public Integer mortgage;
+    /**
+     * 车产信息
+     */
+    public Integer car;
+    /**
+     * 牌照归属地
+     */
+    public Integer carBelong;
 
     @Override
     public Map<String, Object> getParams() {
-        Map<String,Object> map = new HashMap<>();
-        map.put("userId",userId);
-        map.put("productId",productId);
-        map.put("money",money);
-        map.put("expires",expires);
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("productId", productId);
+        map.put("money", money);
+        map.put("expires", expires);
 
-        map.put("capacity",capacity);
-        //IdentityEnum mEnums = IdentityEnum.find(capacity);
-        //if(mEnums.equals(IdentityEnum.企业户) || mEnums.equals(IdentityEnum.个体户)) {
-            map.put("corporation",corporation);
-            map.put("epBuss",epBuss);
-            map.put("epPeriod",epPeriod);
-        //} else {
-            map.put("currSeniority",currSeniority);
-            map.put("payWay",payWay);
-            map.put("monthlyIncome",monthlyIncome);
-            map.put("socialSecurity",socialSecurity);
-        //}
+        map.put("capacity", capacity);
 
-        map.put("age",age);
+        map.put("corporation", corporation);
+        map.put("epBuss", epBuss);
+        map.put("epPeriod", epPeriod);
 
-        map.put("creInfo",creInfo);
-        //CreditSituationEnum mEnum = CreditSituationEnum.find(credit);
-        //if(mEnum != null && mEnum.equals(CreditSituationEnum.有逾期)) {
-            map.put("overdue",overdue);
-        //}
+        map.put("currSeniority", currSeniority);
+        map.put("payWay", payWay);
+        map.put("monthlyIncome", monthlyIncome);
+        map.put("socialSecurity", socialSecurity);
 
-        map.put("creMoney",creMoney);
-        //CreditTotalLimitEnum ctlEnum = CreditTotalLimitEnum.find(creMoney);
-        //if(ctlEnum != null && !ctlEnum.equals(CreditTotalLimitEnum.无信用卡)) {
-            map.put("creUsed",creUsed);
-        //}
+        map.put("shopTpye",shopTpye);
+        map.put("shopName",shopName);
+        map.put("shopAddr",shopAddr);
+        map.put("shopUserName",shopUserName);
+        map.put("shopAccount",shopAccount);
+        map.put("shopAvgMon",shopAvgMon);
+        map.put("shop180Sales",shop180Sales);
+        map.put("shop90Order",shop90Order);
+        map.put("shopMonPay",shopMonPay);
+        map.put("shopStartTime",shopStartTime);
+        map.put("shopReg",shopReg);
+        map.put("borrowerName",borrowerName);
+        map.put("borrowerPhone",borrowerPhone);
+        map.put("borrowerSecondPhone",borrowerSecondPhone);
+        map.put("borrowerTel",borrowerTel);
+        map.put("borrowerIdNum",borrowerIdNum);
+        map.put("borrowerCompanyAddr",borrowerCompanyAddr);
+        map.put("contactName",contactName);
+        map.put("contactRelation",contactRelation);
+        map.put("contactCompany",contactCompany);
+        map.put("contactPhone",contactPhone);
 
-        map.put("houseInfo",houseInfo);
-        //HousePropertyEnum hpEnum = HousePropertyEnum.find(house);
-        //if(hpEnum != null && !hpEnum.equals(HousePropertyEnum.无房产)) {
-            map.put("district",district);
-            map.put("mortgage",mortgage);
-        //}
-
-        map.put("car",car);
-        //CarPropertyEnum cpEnum = CarPropertyEnum.find(car);
-        //if(cpEnum != null && cpEnum.equals(CarPropertyEnum.有车产)) {
-            map.put("carBelong",carBelong);
-        //}
+        map.put("age", age);
+        map.put("creInfo", creInfo);
+        map.put("overdue", overdue);
+        map.put("creMoney", creMoney);
+        map.put("creUsed", creUsed);
+        map.put("houseInfo", houseInfo);
+        map.put("district", district);
+        map.put("mortgage", mortgage);
+        map.put("car", car);
+        map.put("carBelong", carBelong);
 
         return map;
     }
