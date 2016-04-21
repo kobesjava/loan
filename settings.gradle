@@ -1,1 +1,3 @@
-include ':app', ':framework'
+include ':framework'
+include ':UmengSocialSDK'
+include ':app'

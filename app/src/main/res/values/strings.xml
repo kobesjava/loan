@@ -43,7 +43,14 @@
     <string name="mine_loan_apply">我的贷款申请</string>
     <string name="mine_loan_info">我的融资需求书</string>
     <string name="mine_about_us">关于我们</string>
+    <string name="mine_share">分享给好友</string>
     <string name="mine_setup">设置</string>
+    <string name="house_detail_share_wechat">微信</string>
+    <string name="house_detail_share_wechat_circle">朋友圈</string>
+    <string name="house_share_start">开始分享</string>
+    <string name="house_share_sucess">分享成功</string>
+    <string name="house_share_fail">分享失败</string>
+
 
     <!-- login -->
     <string name="login_title">登录</string>

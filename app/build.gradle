@@ -4,6 +4,7 @@ apply plugin: 'android-apt'
 repositories {
     mavenLocal()
     mavenCentral()
+    jcenter()
 }
 
 def profile = "dev"
@@ -71,7 +72,7 @@ android {
 
     defaultConfig {
         applicationId "com.qtt.jinrong"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"

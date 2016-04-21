@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "E:\\Users\\zhangfei\\gittest\\new\\loan\\UmengSocialSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\umeng_socialize_switchimage_unchoose.png",
+        "source": "E:\\Users\\zhangfei\\gittest\\new\\loan\\UmengSocialSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\umeng_socialize_switchimage_unchoose.png"
+    },
+    {
+        "merged": "E:\\person\\code\\qtt\\loan\\UmengSocialSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\umeng_socialize_switchimage_unchoose.png",
+        "source": "E:\\person\\code\\qtt\\loan\\UmengSocialSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\umeng_socialize_switchimage_unchoose.png"
+    },
+    {
+        "merged": "E:\\person\\code\\qtt\\loan\\UmengSocialSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\umeng_socialize_switchimage_choose.png",
+        "source": "E:\\person\\code\\qtt\\loan\\UmengSocialSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\umeng_socialize_switchimage_choose.png"
+    },
+    {
+        "merged": "E:\\Users\\zhangfei\\gittest\\new\\loan\\UmengSocialSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\umeng_socialize_switchimage_choose.png",
+        "source": "E:\\Users\\zhangfei\\gittest\\new\\loan\\UmengSocialSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\umeng_socialize_switchimage_choose.png"
+    }
+]

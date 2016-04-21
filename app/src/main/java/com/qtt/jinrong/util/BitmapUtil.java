@@ -6,6 +6,9 @@ import android.graphics.BitmapFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 
 /**
  * Created by yanxin on 16/4/5.
@@ -90,6 +93,38 @@ public class BitmapUtil {
             }
         }
         return false;
+    }
+
+
+
+    /**
+     * 判断Bitmap对象是否有效
+     *
+     * @param bmp Bitmap对象
+     * @return true if bitmap is not null and not be recycled
+     */
+    public static boolean isBitmapAvailable(Bitmap bmp) {
+        return bmp != null && !bmp.isRecycled();
+    }
+
+    /**
+     * 缩放Bitmap对象
+     *
+     * @param srcBmp Bitmap对象
+     * @param width  缩放后的宽度
+     * @param height 缩放后的高度
+     * @return 缩放后的Bitmap对象
+     */
+    public static Bitmap resizeBitmap(Bitmap srcBmp, int width, int height) {
+        Bitmap dstBmp = null;
+        if (isBitmapAvailable(srcBmp)) {
+            int w = srcBmp.getWidth();
+            int h = srcBmp.getHeight();
+            Matrix matrix = new Matrix();
+            matrix.postScale(((float) width / w), ((float) height / h));
+            dstBmp = Bitmap.createBitmap(srcBmp, 0, 0, w, h, matrix, true);
+        }
+        return dstBmp;
     }
 
 }
