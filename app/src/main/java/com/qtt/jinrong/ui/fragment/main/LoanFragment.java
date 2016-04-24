@@ -152,22 +152,18 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
             public void onSelect(int position, int index, String val) {
                 mLoanAdapter.update(null);
                 if (position == 1) {
-                    mSwipeRefreshLayout.setRefreshing(true);
                     mRequest.setQuota(Integer.parseInt(val.replace("万", "")));
                 } else if (position == 2) {
-                    mSwipeRefreshLayout.setRefreshing(true);
                     mRequest.setLimi(Integer.parseInt(val.replace("个月", "")));
                 } else if (position == 3) {
-                    mSwipeRefreshLayout.setRefreshing(true);
                     mRequest.setOrderNo(index + 1);
                 } else if (position == 4) {
-                    mSwipeRefreshLayout.setRefreshing(true);
                     int mIndex[] = mFilterAdapter.getSelected();
                     mRequest.setIdentity(mIndex[0] + 1);
                     mRequest.setGuaranteeWay(mIndex[1] + 1);
                     mRequest.setRepay(mIndex[2] + 1);
                 }
-
+                mSwipeRefreshLayout.setRefreshing(true);
                 mPresenter.request();
             }
         });

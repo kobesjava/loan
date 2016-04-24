@@ -20,6 +20,7 @@ import com.qtt.jinrong.presenter.ILoanProductPresenter;
 import com.qtt.jinrong.presenter.impl.LoanProductPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
 import com.qtt.jinrong.ui.activity.user.LoginActivity;
+import com.qtt.jinrong.ui.help.UiUtil;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.ImgText;
 import com.qtt.jinrong.ui.widget.TabIndictor;
@@ -154,30 +155,21 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
      * 计算总利息 月供
      */
     private void updateInterestRate() {
-        Float rateMonth = 0f;
+        float rateMonth = 0f;
         if(mDetail.getRateLow() != null && mDetail.getRateLow()>0) rateMonth = mDetail.getRateLow();
         else if(mDetail.getRateHigh() != null && mDetail.getRateHigh()>0) rateMonth = mDetail.getRateHigh();
 
-        int amount = 0;
-        try{
-            amount = Integer.parseInt(mAmount.getText().toString());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+        int amount = UiUtil.getIntVal(mAmount);
+        int term = UiUtil.getIntVal(mTerm);
 
-        int term = 0;
-        try {
-            term = Integer.parseInt(mTerm.getText().toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        int totalInterest = UiUtil.calculateRate(mDetail.compound,rateMonth/100.00f,term,amount*10000);
 
-        int totalInterest = (int)(rateMonth*term*amount*10000/100);
         if(mDetail.getRateDetail() != null) totalInterest += amount*mDetail.getRateDetail();
+
         mInterestTotal.setText(totalInterest+"元");
 
         int monthRepay = term==0?0:(totalInterest+amount*10000)/term;
-        mInterestMonth.setText(monthRepay+"元");
+        mInterestMonth.setText(monthRepay+"元"); //月供
     }
 
 

@@ -6,7 +6,8 @@ package com.qtt.jinrong.enums;
  */
 public enum ApplySourceEnum {
 
-    自申请(0);
+    自申请(0),
+    业务经理申请(1);
 
     private int code;
 

@@ -1,6 +1,5 @@
 package com.qtt.jinrong.ui.help;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.widget.TextView;
 
@@ -49,6 +48,40 @@ public class UiUtil {
             if (!TextUtils.isEmpty(showMsg)) ToastUtil.showShortToast(showMsg);
         }
         return val;
+    }
+
+    public static Integer getIntVal(TextView text) {
+        int term = 0;
+        try {
+            term = Integer.parseInt(text.getText().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return term;
+    }
+
+    /**
+     * 计算利息
+     * @param isCompound 是否是复利
+     * @param rateMonth  月利率
+     * @param term       贷款期限
+     * @param amount     贷款金额
+     * @return
+     */
+    public static int calculateRate(boolean isCompound, float rateMonth,int term,float amount) {
+        if(rateMonth <= 0 || term <= 0 || amount <= 0) {
+            return 0;
+        }
+
+        float totalInterest = 0;
+        if(!isCompound) {
+            totalInterest = rateMonth*amount*term;
+        } else {
+            for(int i=0;i<term;i++) {
+                totalInterest += rateMonth*(amount+totalInterest);
+            }
+        }
+        return (int)totalInterest;
     }
 
 }

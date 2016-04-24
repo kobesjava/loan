@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\person\code\qtt\loan\UmengSocialSDK\src\main\assets"/></dataSet><dataSet config="debug"><source path="E:\person\code\qtt\loan\UmengSocialSDK\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Volumes/yanxin/project/UmengSocialSDK/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Volumes/yanxin/project/UmengSocialSDK/src/debug/assets"/></dataSet></merger>

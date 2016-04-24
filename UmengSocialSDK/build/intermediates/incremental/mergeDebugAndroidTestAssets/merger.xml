@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="debug"><source path="E:\person\code\qtt\loan\UmengSocialSDK\build\intermediates\bundles\debug\assets"/></dataSet><dataSet config="main"><source path="E:\person\code\qtt\loan\UmengSocialSDK\src\androidTest\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="debug"><source path="/Volumes/yanxin/project/UmengSocialSDK/build/intermediates/bundles/debug/assets"/></dataSet><dataSet config="main"><source path="/Volumes/yanxin/project/UmengSocialSDK/src/androidTest/assets"/></dataSet></merger>

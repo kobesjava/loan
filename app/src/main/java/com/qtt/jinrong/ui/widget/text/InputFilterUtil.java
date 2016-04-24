@@ -39,11 +39,11 @@ public class InputFilterUtil {
 
 
     /**
-     * 身份证号码过滤器
+     * 身份证号码 显示格式
      *
      * @return
      */
-    public static InputFilter getIDcardFilter() {
+    public static InputFilter getIdCardFormatFilter() {
         return new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -58,6 +58,27 @@ public class InputFilterUtil {
             }
 
 
+        };
+    }
+
+    /**
+     * 身份证号码 字符过滤
+     * @return
+     */
+    public static InputFilter getIdCardFilter() {
+        return new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                for (int i = 0; i < end; i++) {
+                    char c = source.charAt(i);
+                    if (('0' <= c && c <= '9') || c == 'x' || c == 'X' || c == ' ')
+                        continue;
+
+                    return "";
+                }
+
+                return source;
+            }
         };
     }
 

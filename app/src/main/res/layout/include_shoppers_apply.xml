@@ -234,6 +234,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/loanMobile"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
@@ -252,6 +253,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/loanMobile1"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
@@ -270,6 +272,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/loanTelPhone"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 
@@ -379,6 +382,7 @@
 
         <com.qtt.jinrong.ui.widget.text.InputEditText
             android:id="@+id/contactsMobile"
+            input:input_number="true"
             style="@style/financing_needs_more_right_edittext" />
     </LinearLayout>
 

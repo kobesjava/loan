@@ -29,6 +29,8 @@ public class LoanProductDetail {
     private String mater;
     /** 还款方式*/
     private String repay;
+    /** 是否是复利*/
+    public boolean compound;
 
     public Float getRateLow() {
         return rateLow;

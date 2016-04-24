@@ -7,8 +7,6 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.method.DigitsKeyListener;
-import android.text.method.NumberKeyListener;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -64,18 +62,7 @@ public class InputEditText extends FrameLayout {
 
         boolean isIdCard = a.getBoolean(R.styleable.InputEditText_input_idcard, false);
         if(isIdCard) {
-            mEditText.setFilters(new InputFilter[]{InputFilterUtil.getIDcardFilter()});
-            mEditText.setKeyListener(new NumberKeyListener() {
-                @Override
-                protected char[] getAcceptedChars() {
-                    return new char[]{'1','2','3','4','5','6','7','8','9','0','x','X'};
-                }
-
-                @Override
-                public int getInputType() {
-                    return 0;
-                }
-            });
+            mEditText.setFilters(new InputFilter[]{InputFilterUtil.getIdCardFormatFilter(), InputFilterUtil.getIdCardFilter()});
         }
 
         int grivaty = a.getInt(R.styleable.InputEditText_input_gravity, 0);
