@@ -21,7 +21,7 @@ public class UpgradeBSImpl implements IUpgradeBS {
 
     @Override
     public void download(Context context, ProgressDialog mProgress, String downloadUrl, FileDownloadListener.DownloadCallBack callBack) {
-        new FileDownloadListener(context, mProgress, downloadUrl, callBack, R.drawable.ic_launcher, "出租经纪人", DOWNLOAD_DIR);
+        new FileDownloadListener(context, mProgress, downloadUrl, callBack, R.drawable.ic_launcher, "钱太太金融", DOWNLOAD_DIR);
     }
 
 }

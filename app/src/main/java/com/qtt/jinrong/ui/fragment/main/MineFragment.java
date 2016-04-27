@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.qtt.jinrong.util.DialogBuilder;
 import com.qtt.framework.util.GeneratedClassUtils;
 import com.qtt.jinrong.R;
 import com.qtt.jinrong.bean.event.LoginEvent;
@@ -20,22 +19,13 @@ import com.qtt.jinrong.ui.activity.credit.CreditApplyListActivity;
 import com.qtt.jinrong.ui.activity.loan.LoanApplyListActivity;
 import com.qtt.jinrong.ui.activity.user.AboutUsActivity;
 import com.qtt.jinrong.ui.activity.user.FinancingNeedsActivity;
-import com.qtt.jinrong.ui.activity.user.LoginActivity;
 import com.qtt.jinrong.ui.activity.user.SetupActivity;
-import com.qtt.jinrong.ui.activity.user.VipActivity;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
 import com.qtt.jinrong.ui.widget.dialog.AlertDialogUtils;
+import com.qtt.jinrong.util.DialogBuilder;
 import com.qtt.jinrong.util.SystemUtil;
 import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.util.UserInfoUtil;
-
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
-import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.ViewById;
-
-import de.greenrobot.event.EventBus;
-
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.StatusCode;
@@ -43,6 +33,13 @@ import com.umeng.socialize.controller.listener.SocializeListeners;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.weixin.media.CircleShareContent;
 import com.umeng.socialize.weixin.media.WeiXinShareContent;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by yanxin on 16/2/23.
@@ -149,12 +146,12 @@ public class MineFragment extends BaseFragment {
 
     @Click(R.id.btnMember)
     void clickbtnMember() {
-        if(mUserInfo == null) {
+        /*if(mUserInfo == null) {
             login();
             return;
         }
         Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(VipActivity.class));
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     @Click(R.id.btnAboutUs)

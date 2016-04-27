@@ -226,6 +226,11 @@ public class LoginActivity extends BaseActivity implements ILoginView{
     private void requestCode() {
         if(CheckDoubleClick.isFastDoubleClick()) return;
 
+        if(TextUtils.isEmpty(mPhone2Edit.getString())) {
+            ToastUtil.showShortToast("请输入手机号码");
+            return;
+        }
+
         mBtnRequestCode.setEnabled(false);
         mBtnRequestCode.setBackgroundResource(R.color.color_9e9e0e);
         mBtnRequestCode.setTextColor(getResources().getColor(R.color.color_eee));

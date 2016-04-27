@@ -221,7 +221,7 @@
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/color2"
-                    android:text="客服  400-658-9966"
+                    android:text="客服  400-8217-290"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

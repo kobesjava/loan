@@ -6,7 +6,8 @@ package com.qtt.jinrong.enums;
  */
 public enum ApplyStatusEnum {
 
-    审核中(0);
+    审核中(0),
+    已受理(1);
 
     private int code;
 

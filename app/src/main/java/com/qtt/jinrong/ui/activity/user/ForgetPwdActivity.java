@@ -70,6 +70,11 @@ public class ForgetPwdActivity extends BaseActivity implements IForgetPwdView {
     void clickRequestCode() {
         if(CheckDoubleClick.isFastDoubleClick()) return;
 
+        if(TextUtils.isEmpty(mPhoneEdit.getString())) {
+            ToastUtil.showShortToast("请输入手机号码");
+            return;
+        }
+
         mBtnRequestCode.setEnabled(false);
         mBtnRequestCode.setBackgroundResource(R.color.color_9e9e0e);
         mBtnRequestCode.setTextColor(getResources().getColor(R.color.color_eee));
