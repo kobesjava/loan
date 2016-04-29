@@ -63,11 +63,6 @@ public class MineFragment extends BaseFragment {
         EventBus.getDefault().register(this);
     }
 
-    @AfterViews
-    public void init() {
-        m_btnMember.setVisibility(View.GONE);//暂时隐藏掉支付功能入口
-    }
-
     @Override
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
@@ -88,6 +83,7 @@ public class MineFragment extends BaseFragment {
     public void initView() {
         if(isInit) return;
         super.initView();
+        m_btnMember.setVisibility(View.GONE);//暂时隐藏掉支付功能入口
         setUpView();
     }
 
