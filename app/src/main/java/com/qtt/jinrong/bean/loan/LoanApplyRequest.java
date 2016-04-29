@@ -148,6 +148,11 @@ public class LoanApplyRequest implements IRequest {
      */
     public String contactPhone;
 
+    public String name;
+    public Integer gender;
+    public String cell;
+    public Integer loUse;
+
     /**
      * 年龄
      */
@@ -230,6 +235,10 @@ public class LoanApplyRequest implements IRequest {
         map.put("contactCompany",contactCompany);
         map.put("contactPhone",contactPhone);
 
+        map.put("name", name);
+        map.put("gender", gender);
+        map.put("cell", cell);
+        map.put("loUse", loUse);
         map.put("age", age);
         map.put("creInfo", creInfo);
         map.put("overdue", overdue);
