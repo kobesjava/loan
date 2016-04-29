@@ -716,7 +716,7 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         if(!TextUtils.isEmpty(loanTelPhone.getString()))
             request.borrowerTel = loanTelPhone.getString();
         if(!TextUtils.isEmpty(loanIdCard.getString()))
-            request.borrowerIdNum = loanIdCard.getString();
+            request.borrowerIdNum = loanIdCard.getString().replaceAll(" ","");
         if(!TextUtils.isEmpty(loanAddress.getString()))
             request.borrowerCompanyAddr = loanAddress.getString();
         if(!TextUtils.isEmpty(contactsUsername.getString()))
