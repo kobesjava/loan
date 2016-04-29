@@ -255,7 +255,7 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
         mLoanTip.setText("额度范围 : " + mDetail.getAmountLow() + "万-" + mDetail.getAmountHigh() + "万"
                 + "  期限范围 : " + mDetail.getExpiresLow() + "个月-" + mDetail.getExpiresHigh() + "个月");
 
-        mTime.setText(mDetail.getComplete());
+        mTime.setText(mDetail.getComplete()+"个工作日");
 
         mTabIndictor.check();
     }
