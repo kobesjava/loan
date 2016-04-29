@@ -41,7 +41,6 @@ import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.datepicker.SlideDateTimeListener;
 import com.qtt.jinrong.ui.widget.datepicker.SlideDateTimePicker;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
-import com.qtt.jinrong.util.ToastUtil;
 import com.qtt.jinrong.view.ILoanApplyView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -524,8 +523,8 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         }
 
         if(UiUtil.isEmpty(mNameEdit,"请填写贷款人姓名")) return;
-
         if(UiUtil.isEmpty(mPhoneEdit,"请填写贷款人手机号")) return;
+        if(UiUtil.isEmpty(mLoUseText,"请选择贷款用途")) return;
 
         Integer age = UiUtil.getIntVal(mAgeEdit,"请填写年龄");
         if(age.intValue()==0) return;
