@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.qtt.framework.util.DateUtil;
 import com.qtt.framework.util.GeneratedClassUtils;
@@ -19,12 +20,14 @@ import com.qtt.jinrong.enums.CreditOverdueEnum;
 import com.qtt.jinrong.enums.CreditSituationEnum;
 import com.qtt.jinrong.enums.CreditTotalLimitEnum;
 import com.qtt.jinrong.enums.CreditUsedLimitEnum;
+import com.qtt.jinrong.enums.GenderEnum;
 import com.qtt.jinrong.enums.HousePropertyEnum;
 import com.qtt.jinrong.enums.HousePropertyMortgageSituationEnum;
 import com.qtt.jinrong.enums.HousePropertyPositionEnum;
 import com.qtt.jinrong.enums.IdentityEnum;
 import com.qtt.jinrong.enums.IncomePayMethodEnum;
 import com.qtt.jinrong.enums.LegalPersonEnum;
+import com.qtt.jinrong.enums.LoanPurposeEnum;
 import com.qtt.jinrong.enums.OperatorYearsEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.StoreTypeEnum;
@@ -134,6 +137,14 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     InputEditText contactsMobile;
 
     //公共
+    @ViewById(R.id.name)
+    InputEditText mNameEdit;
+    @ViewById(R.id.gender)
+    ToggleButton mGender;
+    @ViewById(R.id.phone)
+    InputEditText mPhoneEdit;
+    @ViewById(R.id.purpose)
+    TextView mLoUseText;
     @ViewById(R.id.age)
     InputEditText mAgeEdit;
     @ViewById(R.id.creditStation)
@@ -330,6 +341,19 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     }
 
     //公共属性
+    @Click(R.id.purpose)
+    void clickPurpose() {
+        mSelectView.setData(LoanPurposeEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                request.loUse = LoanPurposeEnum.values()[position].getCode();
+                mLoUseText.setText(val);
+            }
+        });
+        show();
+    }
+
     @Click(R.id.creditStation)
     void clickCreditStation() {
         mSelectView.setData(CreditSituationEnum.getValues());
@@ -499,6 +523,10 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             if(UiUtil.isEmpty(contactsMobile,"请填写联系人手机号码")) return;
         }
 
+        if(UiUtil.isEmpty(mNameEdit,"请填写贷款人姓名")) return;
+
+        if(UiUtil.isEmpty(mPhoneEdit,"请填写贷款人手机号")) return;
+
         Integer age = UiUtil.getIntVal(mAgeEdit,"请填写年龄");
         if(age.intValue()==0) return;
 
@@ -551,6 +579,9 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         request.contactCompany = contactsConpany.getString();
         request.contactPhone = contactsMobile.getString();
 
+        request.name = mNameEdit.getString();
+        request.gender = mGender.isChecked()? GenderEnum.男.getCode():GenderEnum.女.getCode();
+        request.cell = mPhoneEdit.getString();
         request.age = age;
 
         mPresenter.apply();
@@ -639,6 +670,15 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         if(!TextUtils.isEmpty(model.contactPhone))
             contactsMobile.setText(model.contactPhone);
 
+
+        GenderEnum gEnum = GenderEnum.find(model.gender);
+        if(gEnum != null) {
+            if(gEnum.equals(GenderEnum.男)) {
+                mGender.setChecked(true);
+            } else {
+                mGender.setChecked(false);
+            }
+        }
         if(model.age != null) mAgeEdit.setText(String.valueOf(model.age));
         CreditSituationEnum csEnum = CreditSituationEnum.find(model.creInfo);
         if(csEnum != null) {
@@ -684,10 +724,6 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
 
     @Override
     public LoanApplyRequest getRequest() {
-        if(!TextUtils.isEmpty(monthSalaryEdit.getString()))
-            request.monthlyIncome = Integer.valueOf(monthSalaryEdit.getString());
-        if(!TextUtils.isEmpty(mAgeEdit.getString()))
-            request.age = Integer.valueOf(mAgeEdit.getString());
 
         if(!TextUtils.isEmpty(storeName.getString()))
             request.shopName = storeName.getString();

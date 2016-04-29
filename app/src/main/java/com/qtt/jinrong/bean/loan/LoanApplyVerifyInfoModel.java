@@ -125,6 +125,10 @@ public class LoanApplyVerifyInfoModel {
      */
     public String contactPhone;
 
+    public String name;
+    public Integer gender;
+    public String cell;
+    public Integer loUse;
     /**
      * 年龄
      */

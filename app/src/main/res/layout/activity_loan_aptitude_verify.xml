@@ -68,6 +68,75 @@
 
                 <TextView
                     style="@style/financing_needs_more_left_text"
+                    android:text="贷款人姓名" />
+
+                <com.qtt.jinrong.ui.widget.text.InputEditText
+                    android:id="@+id/name"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:id="@+id/baseView"
+                style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:layout_weight="1"
+                    android:text="贷款人性别" />
+
+                <ToggleButton
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/sex_btn_selecter"
+                    android:text=""
+                    android:checked="true"
+                    android:textColor="@color/white"
+                    android:textOff=""
+                    android:textOn="" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="贷款人手机号码" />
+
+                <com.qtt.jinrong.ui.widget.text.InputEditText
+                    android:id="@+id/phone"
+                    input:input_number="true"
+                    style="@style/financing_needs_more_right_edittext" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
+                    android:text="@string/user_loan_reason" />
+
+                <TextView
+                    android:id="@+id/purpose"
+                    style="@style/financing_needs_more_right_arrow_text" />
+            </LinearLayout>
+            <com.qtt.jinrong.ui.widget.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/financing_needs_more_item">
+
+                <TextView
+                    style="@style/financing_needs_more_left_text"
                     android:text="@string/age" />
 
                 <com.qtt.jinrong.ui.widget.text.InputEditText
