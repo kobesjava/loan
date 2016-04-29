@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qtt.framework.util.GeneratedClassUtils;
@@ -53,11 +54,18 @@ public class MineFragment extends BaseFragment {
     View notLoginText;
     @ViewById(R.id.nickname)
     TextView nicknameText;
+    @ViewById(R.id.btnMember)
+    RelativeLayout m_btnMember;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+    }
+
+    @AfterViews
+    public void init() {
+        m_btnMember.setVisibility(View.GONE);//暂时隐藏掉支付功能入口
     }
 
     @Override
