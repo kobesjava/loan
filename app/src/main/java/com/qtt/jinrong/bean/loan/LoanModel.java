@@ -26,6 +26,10 @@ public class LoanModel implements Parcelable {
     private float score;
     /** 是否是复利*/
     public boolean compound;
+    /** 月管理费用*/
+    public int monthManageFee;
+    /** 一次性管理费用*/
+    public int onceManageFee;
 
     public String getId() {
         return id;

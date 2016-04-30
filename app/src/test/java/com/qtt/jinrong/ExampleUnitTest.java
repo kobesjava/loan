@@ -55,10 +55,15 @@ public class ExampleUnitTest {
 
     @Test
     public void test2() {
-        String monthRate = "0.1%-0.3%";
+        String monthRate = "1.6%～2.3%";
         String rate = monthRate.substring(0,monthRate.indexOf("%"));
+        if(rate.contains("～")) {
+            rate = rate.substring(0,rate.indexOf("～"));
+        } else if(rate.contains("~")) {
+            rate = rate.substring(0,rate.indexOf("~"));
+        }
         try {
-            float ss =  Float.parseFloat(rate)/100.0000f;
+            float ss =  Float.parseFloat(rate)/100f;
             System.out.print("ss="+ss);
         }catch (Exception e) {
             System.out.print("ss="+e.getMessage());

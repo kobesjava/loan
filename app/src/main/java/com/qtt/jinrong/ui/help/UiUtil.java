@@ -94,13 +94,35 @@ public class UiUtil {
                 || !monthRate.contains("%")) return 0;
 
         String rate = monthRate.substring(0,monthRate.indexOf("%"));
+        if(rate.contains("～")) {
+            rate = rate.substring(0,rate.indexOf("～"));
+        } else if(rate.contains("~")) {
+            rate = rate.substring(0,rate.indexOf("~"));
+        }
         try {
             return Float.parseFloat(rate)/100f;
         }catch (Exception e) {
             e.printStackTrace();
         }
-
         return 0;
+    }
+
+    /**
+     * 获取月利率
+     * @param monthRate
+     * @return
+     */
+    public static String getReferMonthRate(String monthRate) {
+        if(TextUtils.isEmpty(monthRate)
+                || !monthRate.contains("%")) return "";
+
+        String rate = monthRate.substring(0,monthRate.indexOf("%"));
+        if(rate.contains("～")) {
+            rate = rate.substring(0,rate.indexOf("～"));
+        } else if(rate.contains("~")) {
+            rate = rate.substring(0,rate.indexOf("~"));
+        }
+        return rate+"%";
     }
 
 }

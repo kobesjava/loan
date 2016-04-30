@@ -241,6 +241,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
             float monthRate = UiUtil.getMonthRate(mLoanModel.monthRate);
             int totalRate = UiUtil.calculateRate(mLoanModel.compound, monthRate, 12, 100000);
+            totalRate += mLoanModel.monthManageFee*12+mLoanModel.onceManageFee;
             mLoanModel.setRate(totalRate + "元");
             mLoanModel.setMoney((totalRate +  100000 )/ 12 + "元");
 

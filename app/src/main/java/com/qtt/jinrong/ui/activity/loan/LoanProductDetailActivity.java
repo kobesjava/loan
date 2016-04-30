@@ -113,7 +113,7 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
     @Click(R.id.interestTotalView)
     void clickInsterestTotal() {
         if(mDetail == null) return;
-        String s = "总利息=利息+服务费\n参考月利率 : "+mDetail.getRateLow()+"%\n参考服务费率 : "+mDetail.getRateDetail()+"%";
+        String s = "总利息=利息+管理费用\n参考月利率 : "+UiUtil.getReferMonthRate(mDetail.monthRate)+"\n月管理费用 : "+mDetail.monthManageFee+"元\n一次性管理费用 : "+mDetail.onceManageFee+"元";
         if(mDialog == null) {
             mDialog = AlertDialogUtils.showPrompt(this, "总利息说明", s);
         }
@@ -155,18 +155,19 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
      * 计算总利息 月供
      */
     private void updateInterestRate() {
-        float rateMonth = 0f;
-        if(mDetail.getRateLow() != null && mDetail.getRateLow()>0) rateMonth = mDetail.getRateLow();
-        else if(mDetail.getRateHigh() != null && mDetail.getRateHigh()>0) rateMonth = mDetail.getRateHigh();
+        float rateMonth = UiUtil.getMonthRate(mDetail.monthRate);
+        //if(mDetail.getRateLow() != null && mDetail.getRateLow()>0) rateMonth = mDetail.getRateLow();
+        //else if(mDetail.getRateHigh() != null && mDetail.getRateHigh()>0) rateMonth = mDetail.getRateHigh();
 
         int amount = UiUtil.getIntVal(mAmount);
         int term = UiUtil.getIntVal(mTerm);
 
-        int totalInterest = UiUtil.calculateRate(mDetail.compound,rateMonth/100.00f,term,amount*10000);
+        int totalInterest = UiUtil.calculateRate(mDetail.compound,rateMonth,term,amount*10000);
 
-        if(mDetail.getRateDetail() != null) totalInterest += amount*mDetail.getRateDetail();
+        //if(mDetail.getRateDetail() != null) totalInterest += amount*mDetail.getRateDetail();
+        totalInterest += mDetail.monthManageFee*term+mDetail.onceManageFee;
 
-        mInterestTotal.setText(totalInterest+"元");
+        mInterestTotal.setText(totalInterest+"元");//总利息
 
         int monthRepay = term==0?0:(totalInterest+amount*10000)/term;
         mInterestMonth.setText(monthRepay+"元"); //月供
@@ -184,8 +185,9 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
         this.mDetail = detail;
 
         StringBuilder monthRate = new StringBuilder("月利率 : ");
-        if(mDetail.getRateLow() != null) monthRate.append(mDetail.getRateLow()).append("%-");
-        if(mDetail.getRateHigh() != null) monthRate.append(mDetail.getRateHigh()).append("%");
+        //if(mDetail.getRateLow() != null) monthRate.append(mDetail.getRateLow()).append("%-");
+        //if(mDetail.getRateHigh() != null) monthRate.append(mDetail.getRateHigh()).append("%");
+        if(!TextUtils.isEmpty(detail.monthRate)) monthRate.append(detail.monthRate);
         monthRateText.setText(monthRate.toString());
 
         String exp = mDetail.getExp();

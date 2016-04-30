@@ -221,6 +221,7 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
             model = list.get(i);
             float monthRate = UiUtil.getMonthRate(model.monthRate);
             int totalRate = UiUtil.calculateRate(model.compound,monthRate,mRequest.getLimi(),mRequest.getQuota()*10000);
+            totalRate += model.monthManageFee*mRequest.getLimi()+model.onceManageFee;
             model.setRate(totalRate+"元");
             model.setMoney((totalRate+mRequest.getQuota()*10000)/mRequest.getLimi()+"元");
         }

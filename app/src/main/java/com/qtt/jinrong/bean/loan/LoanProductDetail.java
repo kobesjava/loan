@@ -31,6 +31,12 @@ public class LoanProductDetail {
     private String repay;
     /** 是否是复利*/
     public boolean compound;
+    /** 月利率*/
+    public String monthRate;
+    /** 月管理费用*/
+    public int monthManageFee;
+    /** 一次性管理费用*/
+    public int onceManageFee;
 
     public Float getRateLow() {
         return rateLow;
