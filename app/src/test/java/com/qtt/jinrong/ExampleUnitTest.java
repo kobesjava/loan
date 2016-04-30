@@ -36,7 +36,7 @@ public class ExampleUnitTest {
         Map<String,Object> map = new HashMap<>();
 
         byte[] bb = {1,2,3,4,5,6};
-        map.put("aaa",bb);
+        map.put("aaa", bb);
 
         String str = JSON.toJSONString(map);
 
@@ -51,6 +51,19 @@ public class ExampleUnitTest {
 
         System.out.print("TESTJAVA=" + str);
 
+    }
+
+    @Test
+    public void test2() {
+        String monthRate = "0.1%-0.3%";
+        String rate = monthRate.substring(0,monthRate.indexOf("%"));
+        try {
+            float ss =  Float.parseFloat(rate)/100.0000f;
+            System.out.print("ss="+ss);
+        }catch (Exception e) {
+            System.out.print("ss="+e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 }

@@ -29,6 +29,7 @@ import com.qtt.jinrong.ui.activity.loan.LoanProductDetailActivity;
 import com.qtt.jinrong.ui.activity.user.FinancingNeedsActivity;
 import com.qtt.jinrong.ui.adapter.RecommendAdAdapter;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
+import com.qtt.jinrong.ui.help.UiUtil;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.IndicatorView;
 import com.qtt.jinrong.ui.widget.LineView;
@@ -72,7 +73,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(mView == null) mView = inflater.inflate(R.layout.fragment_recommend, container, false);
+        if (mView == null) mView = inflater.inflate(R.layout.fragment_recommend, container, false);
         ViewGroup parent = (ViewGroup) mView.getParent();
         if (parent != null) {
             parent.removeView(mView);
@@ -82,7 +83,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     @Override
     protected void initView() {
-        if(isInit) return;
+        if (isInit) return;
         super.initView();
 
         mTitltBar.setTitle(getString(R.string.recommend_title));
@@ -92,6 +93,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
             @Override
             public void onRefresh() {
                 mIRecommendPresenter.requestAd();
+                mIRecommendPresenter.requestRecommendLoan();
             }
         });
 
@@ -146,7 +148,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     @Click(R.id.loanApplyList)
     void clickloanApplyList() {
-        if(mUserInfo == null) {
+        if (mUserInfo == null) {
             login();
             return;
         }
@@ -156,7 +158,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     @Click(R.id.laonMaterial)
     void clickLoanMaterial() {
-        if(mUserInfo == null) {
+        if (mUserInfo == null) {
             login();
             return;
         }
@@ -166,6 +168,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     /**
      * 切换到贷款tab
+     *
      * @param loanTypeEnum
      */
     private void goToLoanTab(LoanTypeEnum loanTypeEnum) {
@@ -180,6 +183,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
 
     /**
      * 切换到信用卡tab
+     *
      * @param levelEnum
      */
     private void goToCreditTab(CreditLevelEnum levelEnum) {
@@ -193,33 +197,37 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
     }
 
 
-    /******  IRecommendView  *******/
+    /******
+     * IRecommendView
+     *******/
     @Override
     public void onRequestAd(List<AdModel> adModels) {
-        if(mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
-        if(adModels == null) return;
-        if(mRecommendAdAdapter == null) {
-            mRecommendAdAdapter = new RecommendAdAdapter(getActivity(),adModels);
+        if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
+        if (adModels == null) return;
+        if (mRecommendAdAdapter == null) {
+            mRecommendAdAdapter = new RecommendAdAdapter(getActivity(), adModels);
             mIndictor.setAdapter(mRecommendAdAdapter);
-        }
-        else mRecommendAdAdapter.update(adModels);
+        } else mRecommendAdAdapter.update(adModels);
 
         mIndictor.setIndicator(adModels.size());
     }
 
     @Override
     public void onRequestLoan(List<LoanModel> loanModels) {
-        if(loanModels == null || loanModels.size() == 0) return;
+        if (loanModels == null || loanModels.size() == 0) return;
+
+        loanListView.removeAllViews();
+
         View view;
         SimpleDraweeView img;
         TextView title;
-        TextView  company;
+        TextView company;
         RatingBar rb;
-        TextView  interestTotal;
-        TextView  monthPay;
+        TextView interestTotal;
+        TextView monthPay;
         LoanModel mLoanModel;
 
-        for(int i=0;i<loanModels.size();i++) {
+        for (int i = 0; i < loanModels.size(); i++) {
             view = LayoutInflater.from(getActivity()).inflate(R.layout.loan_item, null);
             img = (SimpleDraweeView) view.findViewById(R.id.img);
             title = (TextView) view.findViewById(R.id.title);
@@ -231,6 +239,11 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
             mLoanModel = loanModels.get(i);
             view.setTag(mLoanModel);
 
+            float monthRate = UiUtil.getMonthRate(mLoanModel.monthRate);
+            int totalRate = UiUtil.calculateRate(mLoanModel.compound, monthRate, 12, 100000);
+            mLoanModel.setRate(totalRate + "元");
+            mLoanModel.setMoney((totalRate +  100000 )/ 12 + "元");
+
             title.setText(mLoanModel.getTitle());
             company.setText(mLoanModel.getOwnedCompany());
             interestTotal.setText("总利息 ：" + mLoanModel.getRate());
@@ -240,7 +253,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
             try {
                 Uri uri = Uri.parse(mLoanModel.getThumpImg());
                 img.setImageURI(uri);
-            }catch (Exception e) {
+            } catch (Exception e) {
                 LogUtil.d("加载图片", "URL=" + mLoanModel.getThumpImg() + " Exception=" + e.getMessage());
             }
 
@@ -248,7 +261,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanProductDetailActivity.class));
-                    intent.putExtra(LoanProductDetailActivity.INTENT_LOAN, (LoanModel)v.getTag());
+                    intent.putExtra(LoanProductDetailActivity.INTENT_LOAN, (LoanModel) v.getTag());
                     startActivity(intent);
                 }
             });
@@ -256,7 +269,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendView {
             loanListView.addView(view);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     getResources().getDimensionPixelOffset(R.dimen.margin_step_1));
-            loanListView.addView(new LineView(getActivity()),params);
+            loanListView.addView(new LineView(getActivity()), params);
         }
 
     }

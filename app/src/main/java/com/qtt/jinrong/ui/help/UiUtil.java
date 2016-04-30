@@ -84,4 +84,23 @@ public class UiUtil {
         return (int)totalInterest;
     }
 
+    /**
+     * 获取月利率
+     * @param monthRate
+     * @return
+     */
+    public static float getMonthRate(String monthRate) {
+        if(TextUtils.isEmpty(monthRate)
+                || !monthRate.contains("%")) return 0;
+
+        String rate = monthRate.substring(0,monthRate.indexOf("%"));
+        try {
+            return Float.parseFloat(rate)/100f;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
 }

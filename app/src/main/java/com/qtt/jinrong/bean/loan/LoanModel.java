@@ -16,12 +16,16 @@ public class LoanModel implements Parcelable {
     private String title;
     /** 所属公司*/
     private String ownedCompany;
+    /** 月利率*/
+    public String monthRate;
     /** 总利息*/
     private String rate;
     /** 月供*/
     private String money;
     /** 评分*/
     private float score;
+    /** 是否是复利*/
+    public boolean compound;
 
     public String getId() {
         return id;
@@ -87,6 +91,9 @@ public class LoanModel implements Parcelable {
         this.money = money;
     }
 
+    public LoanModel() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -99,12 +106,11 @@ public class LoanModel implements Parcelable {
         dest.writeString(this.thumpImg);
         dest.writeString(this.title);
         dest.writeString(this.ownedCompany);
+        dest.writeString(this.monthRate);
         dest.writeString(this.rate);
         dest.writeString(this.money);
         dest.writeFloat(this.score);
-    }
-
-    public LoanModel() {
+        dest.writeByte(compound ? (byte) 1 : (byte) 0);
     }
 
     protected LoanModel(Parcel in) {
@@ -113,18 +119,18 @@ public class LoanModel implements Parcelable {
         this.thumpImg = in.readString();
         this.title = in.readString();
         this.ownedCompany = in.readString();
+        this.monthRate = in.readString();
         this.rate = in.readString();
         this.money = in.readString();
         this.score = in.readFloat();
+        this.compound = in.readByte() != 0;
     }
 
     public static final Creator<LoanModel> CREATOR = new Creator<LoanModel>() {
-        @Override
         public LoanModel createFromParcel(Parcel source) {
             return new LoanModel(source);
         }
 
-        @Override
         public LoanModel[] newArray(int size) {
             return new LoanModel[size];
         }

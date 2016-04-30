@@ -19,6 +19,7 @@ import com.qtt.jinrong.presenter.impl.LoanListPresenterImpl;
 import com.qtt.jinrong.ui.activity.loan.LoanProductDetailActivity;
 import com.qtt.jinrong.ui.adapter.LoanAdapter;
 import com.qtt.jinrong.ui.fragment.common.BaseFragment;
+import com.qtt.jinrong.ui.help.UiUtil;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.filter.FilterLoanAdapter;
 import com.qtt.jinrong.ui.widget.filter.FilterManager;
@@ -212,6 +213,16 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
             mLoanAdapter.update(list);
         } else {
             mLoanAdapter.add(list);
+        }
+
+        //计算总利息和月供
+        LoanModel model;
+        for(int i=0;i<list.size();i++) {
+            model = list.get(i);
+            float monthRate = UiUtil.getMonthRate(model.monthRate);
+            int totalRate = UiUtil.calculateRate(model.compound,monthRate,mRequest.getLimi(),mRequest.getQuota()*10000);
+            model.setRate(totalRate+"元");
+            model.setMoney((totalRate+mRequest.getQuota()*10000)/mRequest.getLimi()+"元");
         }
 
         if(list.size() < mRequest.getPageSize()) {
