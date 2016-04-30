@@ -18,6 +18,7 @@ import com.qtt.jinrong.bean.loan.LoanProductRecommendRequest;
 import com.qtt.jinrong.presenter.ILoanApplyResultPresenter;
 import com.qtt.jinrong.presenter.impl.LoanApplyResultPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseActivity;
+import com.qtt.jinrong.ui.help.UiUtil;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.view.ILoanApplyResultView;
 
@@ -118,8 +119,11 @@ public class LoanApplyResultActivity extends BaseActivity implements ILoanApplyR
             TextView monthPay = (TextView) view.findViewById(R.id.monthPay);
 
             title.setText(mLoanModel.getTitle());
-            interestTotal.setText("总利息: "+mLoanModel.getRate());
-            monthPay.setText("月供: " + mLoanModel.getMoney());
+            float monthRate = UiUtil.getMonthRate(mLoanModel.monthRate);
+            int totalRate = UiUtil.calculateRate(mLoanModel.compound, monthRate, term, amount*10000);
+            totalRate += mLoanModel.monthManageFee*term+mLoanModel.onceManageFee;
+            interestTotal.setText("总利息: "+totalRate+"元");
+            monthPay.setText("月供: " + (totalRate+amount*10000)/term+"元");
 
             try {
                 Uri uri = Uri.parse(mLoanModel.getThumpImg());

@@ -128,6 +128,8 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), GeneratedClassUtils.get(LoanProductDetailActivity.class));
                 intent.putExtra(LoanProductDetailActivity.INTENT_LOAN,mLoanAdapter.getItem(position-1));
+                intent.putExtra(LoanProductDetailActivity.INTENT_TOTAL,mRequest.getQuota());
+                intent.putExtra(LoanProductDetailActivity.INTENT_TERM,mRequest.getLimi());
                 startActivity(intent);
             }
         });
@@ -139,7 +141,7 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         list.add(getResources().getStringArray(R.array.filter41));
         list.add(getResources().getStringArray(R.array.filter42));
         list.add(getResources().getStringArray(R.array.filter43));
-        int[] mFilter123Selected = {4, 4, 0};
+        int[] mFilter123Selected = {4, 3, 0};
         int[] mFilter4Selected = {0, 0, 0};
         mFilterAdapter.setData(getResources().getStringArray(R.array.filter1),
                 getResources().getStringArray(R.array.filter2),

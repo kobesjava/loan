@@ -130,8 +130,12 @@ public class LoanApplyDetailActivity extends BaseActivity implements ILoanApplyD
         model.setTitle(loanApplyModel.getTitle());
         model.setThumpImg(loanApplyModel.getThumpImg());
         intent.putExtra(LoanProductDetailActivity.INTENT_LOAN, model);
-        intent.putExtra(LoanProductDetailActivity.INTENT_TOTAL,loanApplyModel.getMoney()/10000);
-        intent.putExtra(LoanProductDetailActivity.INTENT_TERM,loanApplyModel.getExpires());
+        if(loanApplyModel.getMoney() != null && loanApplyModel.getMoney().intValue() > 0) {
+            intent.putExtra(LoanProductDetailActivity.INTENT_TOTAL,loanApplyModel.getMoney()/10000);
+        }
+        if(loanApplyModel.getExpires() != null && loanApplyModel.getExpires().intValue() > 0) {
+            intent.putExtra(LoanProductDetailActivity.INTENT_TERM,loanApplyModel.getExpires());
+        }
         startActivity(intent);
     }
 

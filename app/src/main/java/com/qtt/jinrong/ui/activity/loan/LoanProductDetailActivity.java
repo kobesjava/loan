@@ -89,6 +89,11 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
 
         mProductName.setText(mLoanModel.getTitle());
 
+        Integer amount = mIntent.getIntExtra(INTENT_TOTAL,10);
+        Integer term = mIntent.getIntExtra(INTENT_TERM, 12);
+        mAmount.setText(String.valueOf(amount));
+        mTerm.setText(String.valueOf(term));
+
         try {
             Uri uri = Uri.parse(mLoanModel.getThumpImg());
             mProductIcon.setImageURI(uri);
@@ -249,10 +254,7 @@ public class LoanProductDetailActivity extends BaseActivity implements ILoanProd
             }
         });
 
-        Integer amount = mIntent.getIntExtra(INTENT_TOTAL,0)>0?mIntent.getIntExtra(INTENT_TOTAL,0):detail.getAmount();
-        Integer term = mIntent.getIntExtra(INTENT_TERM, 0)>0?mIntent.getIntExtra(INTENT_TERM, 0):detail.getExpires();
-        mAmount.setText(String.valueOf(amount));
-        mTerm.setText(String.valueOf(term));
+        updateInterestRate();
 
         mLoanTip.setText("额度范围 : " + mDetail.getAmountLow() + "万-" + mDetail.getAmountHigh() + "万"
                 + "  期限范围 : " + mDetail.getExpiresLow() + "个月-" + mDetail.getExpiresHigh() + "个月");
