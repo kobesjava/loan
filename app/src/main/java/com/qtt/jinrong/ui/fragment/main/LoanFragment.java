@@ -72,7 +72,7 @@ public class LoanFragment extends BaseFragment implements ILoanListView {
         //初始化请求对象
         mRequest = new LoanListRequest();
         mRequest.setQuota(10);
-        mRequest.setLimi(24);
+        mRequest.setLimi(12);
         mRequest.setIdentity(1);
         mRequest.setGuaranteeWay(1);
         mRequest.setRepay(1);
