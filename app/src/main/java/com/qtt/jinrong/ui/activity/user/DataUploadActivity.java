@@ -114,7 +114,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
     private void takePhotot() {
         Intent camIntent = new Intent("android.media.action.IMAGE_CAPTURE");
         Intent systemCamIntent = new Intent(camIntent);
-        systemCamIntent.setComponent(new ComponentName("com.android.camera", "com.android.camera.Camera"));
+        //systemCamIntent.setComponent(new ComponentName("com.android.camera", "com.android.camera.Camera"));
 
         String oriPath = Constants.DATAINFO_DIR;
         if (!new File(oriPath).exists()) {
