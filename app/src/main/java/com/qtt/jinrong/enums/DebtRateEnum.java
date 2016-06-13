@@ -11,8 +11,8 @@ public enum DebtRateEnum {
 
     _30P(1,"0-30%"),
     _50P(2,"31-50%"),
-    _70P(1,"51-70%"),
-    _70P以上(1,"70%以上");
+    _70P(3,"51-70%"),
+    _70P以上(4,"70%以上");
 
     private int code;
     private String title;
