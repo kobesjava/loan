@@ -114,7 +114,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             @Override
             public void onItemSelect(int position, String val) {
                 provinceEnum = ProvinceEnum.values()[position];
-                request.setRegisterProvince(provinceEnum.getCode());
+                request.setRegisterProvince(provinceEnum.name());
                 mProvinceText.setText(val);
                 mCityText.setText("");
                 request.setRegisterCity(null);
@@ -133,7 +133,7 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setRegisterCity(position + 1);
+                request.setRegisterCity(val);
                 mCityText.setText(val);
             }
         });
@@ -224,7 +224,8 @@ public class BaseInfoActivity extends BaseSelectActivity implements IBaseInfoVie
             this.provinceEnum = provinceEnum;
             mProvinceText.setText(provinceEnum.name());
         }
-        String city = DistrictUtil.getCity(getApplication(),this.provinceEnum,model.getRegisterCity());
+        //String city = DistrictUtil.getCity(getApplication(),this.provinceEnum,model.getRegisterCity());
+        String city = model.getRegisterCity();
         if(!TextUtils.isEmpty(city)) mCityText.setText(city);
         if(!TextUtils.isEmpty(model.getRegisterAddr())) addressText.setText(model.getRegisterAddr());
 

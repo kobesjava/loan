@@ -66,9 +66,9 @@ public class IdentitySaveRequest implements IRequest {
     /** 现单位工龄*/
     private Integer currSeniority;
     /** 工作地 省*/
-    private Integer workProvince;
+    private String workProvince;
     /** 工作地 市*/
-    private Integer workCity;
+    private String workCity;
     /** 工作详细地址*/
     private String workAddr;
     /** 收入发放方式*/
@@ -91,6 +91,111 @@ public class IdentitySaveRequest implements IRequest {
     private String avocationInfo;
     //副业月收入（元）
     private Integer avocationAmt;
+
+    /**
+     * 店铺类型
+     */
+    private Integer shopTpye;
+
+    /**
+     * 店铺名称
+     */
+    private String shopName;
+
+    /**
+     * 店铺地址
+     */
+    private String shopAddr;
+
+    /**
+     * 店铺用户名
+     */
+    private String shopUserName;
+
+    /**
+     * 店铺账号
+     */
+    private String shopAccount;
+
+    /**
+     * 店铺月均交易额
+     */
+    private Integer shopAvgMon;
+
+    /**
+     * 店铺近180天销售总金额
+     */
+    private Integer shop180Sales;
+
+    /**
+     * 店铺近90天成功支付订单
+     */
+    private Integer shop90Order;
+
+    /**
+     * 店铺月支付金额
+     */
+    private Integer shopMonPay;
+
+    /**
+     * 店铺开始经营时间
+     */
+    private Integer shopStartTime;
+
+    /**
+     * 店铺实际注册人
+     */
+    private String shopReg;
+
+    /**
+     * 借款人姓名
+     */
+    private String borrowerName;
+
+    /**
+     * 借款人移动电话
+     */
+    private String borrowerPhone;
+
+    /**
+     * 借款人备用电话
+     */
+    private String borrowerSecondPhone;
+
+    /**
+     * 借款人固话
+     */
+    private String borrowerTel;
+
+    /**
+     * 借款人身份证号码
+     */
+    private String borrowerIdNum;
+
+    /**
+     * 借款人单位地址
+     */
+    private String borrowerCompanyAddr;
+
+    /**
+     * 联系人姓名
+     */
+    private String contactName;
+
+    /**
+     * 联系人关系
+     */
+    private String contactRelation;
+
+    /**
+     * 联系人公司单位
+     */
+    private String contactCompany;
+
+    /**
+     * 联系人手机号码
+     */
+    private String contactPhone;
 
     public String getUserId() {
         return userId;
@@ -140,19 +245,19 @@ public class IdentitySaveRequest implements IRequest {
         this.currSeniority = currSeniority;
     }
 
-    public Integer getWorkProvince() {
+    public String getWorkProvince() {
         return workProvince;
     }
 
-    public void setWorkProvince(Integer workProvince) {
+    public void setWorkProvince(String workProvince) {
         this.workProvince = workProvince;
     }
 
-    public Integer getWorkCity() {
+    public String getWorkCity() {
         return workCity;
     }
 
-    public void setWorkCity(Integer workCity) {
+    public void setWorkCity(String workCity) {
         this.workCity = workCity;
     }
 
@@ -404,6 +509,174 @@ public class IdentitySaveRequest implements IRequest {
         this.avocationAmt = avocationAmt;
     }
 
+    public Integer getShopTpye() {
+        return shopTpye;
+    }
+
+    public void setShopTpye(Integer shopTpye) {
+        this.shopTpye = shopTpye;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public String getShopAddr() {
+        return shopAddr;
+    }
+
+    public void setShopAddr(String shopAddr) {
+        this.shopAddr = shopAddr;
+    }
+
+    public String getShopUserName() {
+        return shopUserName;
+    }
+
+    public void setShopUserName(String shopUserName) {
+        this.shopUserName = shopUserName;
+    }
+
+    public String getShopAccount() {
+        return shopAccount;
+    }
+
+    public void setShopAccount(String shopAccount) {
+        this.shopAccount = shopAccount;
+    }
+
+    public Integer getShopAvgMon() {
+        return shopAvgMon;
+    }
+
+    public void setShopAvgMon(Integer shopAvgMon) {
+        this.shopAvgMon = shopAvgMon;
+    }
+
+    public Integer getShop180Sales() {
+        return shop180Sales;
+    }
+
+    public void setShop180Sales(Integer shop180Sales) {
+        this.shop180Sales = shop180Sales;
+    }
+
+    public Integer getShop90Order() {
+        return shop90Order;
+    }
+
+    public void setShop90Order(Integer shop90Order) {
+        this.shop90Order = shop90Order;
+    }
+
+    public Integer getShopMonPay() {
+        return shopMonPay;
+    }
+
+    public void setShopMonPay(Integer shopMonPay) {
+        this.shopMonPay = shopMonPay;
+    }
+
+    public Integer getShopStartTime() {
+        return shopStartTime;
+    }
+
+    public void setShopStartTime(Integer shopStartTime) {
+        this.shopStartTime = shopStartTime;
+    }
+
+    public String getShopReg() {
+        return shopReg;
+    }
+
+    public void setShopReg(String shopReg) {
+        this.shopReg = shopReg;
+    }
+
+    public String getBorrowerName() {
+        return borrowerName;
+    }
+
+    public void setBorrowerName(String borrowerName) {
+        this.borrowerName = borrowerName;
+    }
+
+    public String getBorrowerPhone() {
+        return borrowerPhone;
+    }
+
+    public void setBorrowerPhone(String borrowerPhone) {
+        this.borrowerPhone = borrowerPhone;
+    }
+
+    public String getBorrowerSecondPhone() {
+        return borrowerSecondPhone;
+    }
+
+    public void setBorrowerSecondPhone(String borrowerSecondPhone) {
+        this.borrowerSecondPhone = borrowerSecondPhone;
+    }
+
+    public String getBorrowerTel() {
+        return borrowerTel;
+    }
+
+    public void setBorrowerTel(String borrowerTel) {
+        this.borrowerTel = borrowerTel;
+    }
+
+    public String getBorrowerIdNum() {
+        return borrowerIdNum;
+    }
+
+    public void setBorrowerIdNum(String borrowerIdNum) {
+        this.borrowerIdNum = borrowerIdNum;
+    }
+
+    public String getBorrowerCompanyAddr() {
+        return borrowerCompanyAddr;
+    }
+
+    public void setBorrowerCompanyAddr(String borrowerCompanyAddr) {
+        this.borrowerCompanyAddr = borrowerCompanyAddr;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactRelation() {
+        return contactRelation;
+    }
+
+    public void setContactRelation(String contactRelation) {
+        this.contactRelation = contactRelation;
+    }
+
+    public String getContactCompany() {
+        return contactCompany;
+    }
+
+    public void setContactCompany(String contactCompany) {
+        this.contactCompany = contactCompany;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
     @Override
     public Map<String, Object> getParams() {
         Map<String, Object> map = new HashMap<>();
@@ -451,8 +724,28 @@ public class IdentitySaveRequest implements IRequest {
             map.put("avocation",avocation);
             map.put("avocationInfo",avocationInfo);
             map.put("avocationAmt",avocationAmt);
+        }else if(iEnum.equals(IdentityEnum.电商)) {
+            map.put("shopTpye",shopTpye);
+            map.put("shopName",shopName);
+            map.put("shopAddr",shopAddr);
+            map.put("shopUserName",shopUserName);
+            map.put("shopAccount",shopAccount);
+            map.put("shopAvgMon",shopAvgMon);
+            map.put("shop180Sales",shop180Sales);
+            map.put("shop90Order",shop90Order);
+            map.put("shopMonPay",shopMonPay);
+            map.put("shopStartTime",shopStartTime);
+            map.put("shopReg",shopReg);
+            map.put("borrowerName",borrowerName);
+            map.put("borrowerPhone",borrowerPhone);
+            map.put("borrowerSecondPhone",borrowerSecondPhone);
+            map.put("borrowerTel",borrowerTel);
+            map.put("borrowerCompanyAddr",borrowerCompanyAddr);
+            map.put("contactName",contactName);
+            map.put("contactRelation",contactRelation);
+            map.put("contactCompany",contactCompany);
+            map.put("contactPhone",contactPhone);
         }
-
         return map;
     }
 }

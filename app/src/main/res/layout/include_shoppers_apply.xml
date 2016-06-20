@@ -121,10 +121,9 @@
             style="@style/financing_needs_more_left_text"
             android:text="店铺近180天销售总金额" />
 
-        <com.qtt.jinrong.ui.widget.text.InputEditText
+        <TextView
             android:id="@+id/store180Sales"
-            style="@style/financing_needs_more_right_edittext"
-            input:input_number="true" />
+            style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
     <com.qtt.jinrong.ui.widget.LineView
@@ -134,16 +133,16 @@
     <LinearLayout
         style="@style/financing_needs_more_item"
         android:layout_marginTop="0dp"
-        android:background="@color/transparent">
+        android:background="@color/transparent"
+        android:visibility="gone">
 
         <TextView
             style="@style/financing_needs_more_left_text"
             android:text="店铺近90天成功支付订单" />
 
-        <com.qtt.jinrong.ui.widget.text.InputEditText
+        <TextView
             android:id="@+id/store90Orders"
-            style="@style/financing_needs_more_right_edittext"
-            input:input_number="true" />
+            style="@style/financing_needs_more_right_arrow_text" />
     </LinearLayout>
 
     <com.qtt.jinrong.ui.widget.LineView

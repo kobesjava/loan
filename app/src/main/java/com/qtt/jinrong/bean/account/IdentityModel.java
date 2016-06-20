@@ -56,9 +56,9 @@ public class IdentityModel {
     //现单位工龄
     private Integer currSeniority;
     //工作地（省）
-    private Integer workProvince;
+    private String workProvince;
     //工作地（市）
-    private Integer workCity;
+    private String workCity;
     //工作详细地址
     private String workAddr;
     //收入发放方式
@@ -282,19 +282,19 @@ public class IdentityModel {
         this.currSeniority = currSeniority;
     }
 
-    public Integer getWorkProvince() {
+    public String getWorkProvince() {
         return workProvince;
     }
 
-    public void setWorkProvince(Integer workProvince) {
+    public void setWorkProvince(String workProvince) {
         this.workProvince = workProvince;
     }
 
-    public Integer getWorkCity() {
+    public String getWorkCity() {
         return workCity;
     }
 
-    public void setWorkCity(Integer workCity) {
+    public void setWorkCity(String workCity) {
         this.workCity = workCity;
     }
 

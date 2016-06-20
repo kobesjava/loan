@@ -31,7 +31,9 @@ import com.qtt.jinrong.enums.ProvinceEnum;
 import com.qtt.jinrong.enums.RegistCaptialEnum;
 import com.qtt.jinrong.enums.SocialFundEnum;
 import com.qtt.jinrong.enums.SocialYearsEnum;
+import com.qtt.jinrong.enums.StoreTypeEnum;
 import com.qtt.jinrong.enums.WorkYearsEnum;
+import com.qtt.jinrong.enums.shop180SalesEnum;
 import com.qtt.jinrong.presenter.IIdentityPresenter;
 import com.qtt.jinrong.presenter.impl.IdentityPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
@@ -65,6 +67,9 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
     //woker other
     @ViewById(R.id.woView)
     View woView;
+    //woker dianshang
+    @ViewById(R.id.dsView)
+    View dsView;
 
     //企业主 个体户 item
     @ViewById(R.id.epLegalPerson)
@@ -153,6 +158,13 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
     InputEditText workAvocationEdit;
     @ViewById(R.id.workAvocationMonthSalary)
     InputEditText workAvocationMonthSalaryEdit;
+    //电商
+    @ViewById(R.id.storeType)
+    TextView storeType;
+    @ViewById(R.id.storeOpenTime)
+    TextView storeOpenTime;
+    @ViewById(R.id.store180Sales)
+    TextView store180Sales;
 
     private ProvinceEnum provinceEnum;
     IIdentityPresenter mPresenter;
@@ -195,9 +207,16 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                 if (mEnum.equals(IdentityEnum.企业户) || mEnum.equals(IdentityEnum.个体户)) {
                     epView.setVisibility(View.VISIBLE);
                     woView.setVisibility(View.GONE);
+                    dsView.setVisibility(View.GONE);
                 } else if (mEnum.equals(IdentityEnum.工薪族) || mEnum.equals(IdentityEnum.其他)) {
                     epView.setVisibility(View.GONE);
                     woView.setVisibility(View.VISIBLE);
+                    dsView.setVisibility(View.GONE);
+                }else if(mEnum.equals(IdentityEnum.电商))
+                {
+                    epView.setVisibility(View.VISIBLE);
+                    woView.setVisibility(View.GONE);
+                    dsView.setVisibility(View.GONE);
                 }
                 mIdentityText.setText(val);
                 request.setCapacity(mEnum.getCode());
@@ -446,7 +465,7 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                 ProvinceEnum mEnum = ProvinceEnum.values()[position];
                 provinceEnum = mEnum;
                 workProvinceText.setText(val);
-                request.setWorkProvince(mEnum.getCode());
+                request.setWorkProvince(mEnum.name());
             }
         });
         show();
@@ -462,7 +481,7 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
         mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
             @Override
             public void onItemSelect(int position, String val) {
-                request.setWorkCity(position+1);
+                request.setWorkCity(val);
                 workCityText.setText(val);
             }
         });
@@ -572,6 +591,50 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
         });
         show();
     }
+    //店铺类型
+    @Click(R.id.storeType)
+    void clickstoreType() {
+        mSelectView.setData(StoreTypeEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                StoreTypeEnum mEnum = StoreTypeEnum.values()[position];
+                request.setShopTpye(mEnum.getCode());
+                storeType.setText(val);
+            }
+        });
+        show();
+    }
+
+    //店铺开始经营时间
+    @Click(R.id.storeOpenTime)
+    void clickstoreOpenTime() {
+        mSelectView.setData(OperatorYearsEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                OperatorYearsEnum mEnum = OperatorYearsEnum.values()[position];
+                request.setShopStartTime(mEnum.getCode());
+                storeType.setText(val);
+            }
+        });
+        show();
+    }
+
+    //店铺近180天销售总金额
+    @Click(R.id.store180Sales)
+    void clickstore180Sales() {
+        mSelectView.setData(shop180SalesEnum.getValues());
+        mSelectView.setSelectCallback(new SelectPopView.SelectCallback() {
+            @Override
+            public void onItemSelect(int position, String val) {
+                shop180SalesEnum mEnum = shop180SalesEnum.values()[position];
+                request.setShopStartTime(mEnum.getCode());
+                storeType.setText(val);
+            }
+        });
+        show();
+    }
 
 
     /** IIdentityView **/
@@ -584,11 +647,17 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             if(iEnum.equals(IdentityEnum.企业户) || iEnum.equals(IdentityEnum.个体户)) {
                 epView.setVisibility(View.VISIBLE);
                 woView.setVisibility(View.GONE);
-            } else {
+                dsView.setVisibility(View.GONE);
+            }else if(iEnum.equals(IdentityEnum.工薪族) || iEnum.equals(IdentityEnum.其他)) {
                 epView.setVisibility(View.GONE);
                 woView.setVisibility(View.VISIBLE);
+                dsView.setVisibility(View.GONE);
+            }else if(iEnum.equals(IdentityEnum.电商)) {
+                epView.setVisibility(View.VISIBLE);
+                woView.setVisibility(View.GONE);
+                dsView.setVisibility(View.GONE);
             }
-        }
+            }
 
         //企业主 个体户
         LegalPersonEnum lpEnum = LegalPersonEnum.find(model.getCorporation());
@@ -660,7 +729,8 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
         provinceEnum = ProvinceEnum.find(model.getWorkProvince());
         if(provinceEnum != null) workProvinceText.setText(provinceEnum.name());
         //工作地(市)
-        String city = DistrictUtil.getCity(this, provinceEnum, model.getWorkCity());
+        //String city = DistrictUtil.getCity(this, provinceEnum, model.getWorkCity());
+        String city =  model.getWorkCity();
         if(!TextUtils.isEmpty(city)) workCityText.setText(city);
         //工作详细地址
         if(!TextUtils.isEmpty(model.getWorkAddr())) workAddressEdit.setText(model.getWorkAddr());

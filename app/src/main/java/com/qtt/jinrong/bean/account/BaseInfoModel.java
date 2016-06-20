@@ -9,8 +9,8 @@ public class BaseInfoModel {
     private Integer gender;
     private Integer age;
     private String idNumber;
-    private Integer registerProvince;
-    private Integer registerCity;
+    private String registerProvince;
+    private String registerCity;
     private String registerAddr;
     //婚姻情况
     private Integer marriage;
@@ -55,19 +55,19 @@ public class BaseInfoModel {
         this.idNumber = idNumber;
     }
 
-    public Integer getRegisterProvince() {
+    public String getRegisterProvince() {
         return registerProvince;
     }
 
-    public void setRegisterProvince(Integer registerProvince) {
+    public void setRegisterProvince(String registerProvince) {
         this.registerProvince = registerProvince;
     }
 
-    public Integer getRegisterCity() {
+    public String getRegisterCity() {
         return registerCity;
     }
 
-    public void setRegisterCity(Integer registerCity) {
+    public void setRegisterCity(String registerCity) {
         this.registerCity = registerCity;
     }
 

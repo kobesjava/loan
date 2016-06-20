@@ -74,4 +74,13 @@ public enum ProvinceEnum {
         }
         return null;
     }
+
+    public static ProvinceEnum find(String name) {
+        if(name == null) return null;
+        ProvinceEnum[] enums = ProvinceEnum.values();
+        for(int i=0;i<enums.length;i++) {
+            if(enums[i].name().equals(name) ) return enums[i];
+        }
+        return null;
+    }
 }
