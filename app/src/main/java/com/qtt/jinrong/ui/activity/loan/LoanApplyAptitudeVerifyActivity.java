@@ -104,10 +104,10 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
     InputEditText storeAccount;
     @ViewById(R.id.storeMonthTurnover)
     InputEditText storeMonthTurnover;
-    @ViewById(R.id.store180Sales)
-    InputEditText store180Sales;
-    @ViewById(R.id.store90Orders)
-    InputEditText store90Orders;
+//    @ViewById(R.id.store180Sales)
+//    InputEditText store180Sales;
+//    @ViewById(R.id.store90Orders)
+//    InputEditText store90Orders;
     @ViewById(R.id.storeMonthPays)
     InputEditText storeMonthPays;
     @ViewById(R.id.storeOpenTime)
@@ -505,8 +505,8 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             if(UiUtil.isEmpty(storeUsername,"请填写店铺用户名")) return;
             if(UiUtil.isEmpty(storeAccount,"请填写店铺账号")) return;
             if(!UiUtil.isValidInt(storeMonthTurnover, "请填写店铺月均交易额")) return;
-            if(!UiUtil.isValidInt(store180Sales,"请填写店铺近180天销售总金额")) return;
-            if(!UiUtil.isValidInt(store90Orders, "请填写店铺近90天成功支付订单")) return;
+//            if(!UiUtil.isValidInt(store180Sales,"请填写店铺近180天销售总金额")) return;
+//            if(!UiUtil.isValidInt(store90Orders, "请填写店铺近90天成功支付订单")) return;
             if(!UiUtil.isValidInt(storeMonthPays, "请填写店铺月支付金额")) return;
             if(UiUtil.isEmpty(storeOpenTime,"请填写店铺开始经营时间")) return;
             if(UiUtil.isEmpty(storeRegistUser,"请填写店铺实际注册人")) return;
@@ -563,8 +563,8 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
         request.shopUserName = storeUsername.getString();
         request.shopAccount = storeAccount.getString();
         request.shopAvgMon = UiUtil.getIntVal(storeMonthTurnover, null);
-        request.shop180Sales = UiUtil.getIntVal(store180Sales, null);
-        request.shop90Order = UiUtil.getIntVal(store90Orders, null);
+//        request.shop180Sales = UiUtil.getIntVal(store180Sales, null);
+//        request.shop90Order = UiUtil.getIntVal(store90Orders, null);
         request.shopMonPay = UiUtil.getIntVal(storeMonthPays, null);
         request.shopReg = storeRegistUser.getString();
         request.borrowerName = loanUsername.getString();
@@ -638,10 +638,10 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             storeAccount.setText(model.shopAccount);
         if(model.shopAvgMon != null && model.shopAvgMon.intValue() > 0)
             storeMonthTurnover.setText(String.valueOf(model.shopAvgMon));
-        if(model.shop180Sales != null && model.shop180Sales.intValue()>0)
-            store180Sales.setText(String.valueOf(model.shop180Sales));
-        if(model.shop90Order != null && model.shop90Order.intValue()>0)
-            store90Orders.setText(String.valueOf(model.shop90Order));
+//        if(model.shop180Sales != null && model.shop180Sales.intValue()>0)
+//            store180Sales.setText(String.valueOf(model.shop180Sales));
+//        if(model.shop90Order != null && model.shop90Order.intValue()>0)
+//            store90Orders.setText(String.valueOf(model.shop90Order));
         if(model.shopMonPay != null && model.shopMonPay.intValue()>0)
             storeMonthPays.setText(String.valueOf(model.shopMonPay));
         if(!TextUtils.isEmpty(model.shopStartTime))
@@ -734,10 +734,10 @@ public class LoanApplyAptitudeVerifyActivity extends BaseSelectActivity implemen
             request.shopAccount = storeAccount.getString();
         if(!TextUtils.isEmpty(storeMonthTurnover.getString()))
             request.shopAvgMon = Integer.parseInt(storeMonthTurnover.getString());
-        if(!TextUtils.isEmpty(store180Sales.getString()))
-            request.shop180Sales = Integer.parseInt(store180Sales.getString());
-        if(!TextUtils.isEmpty(store90Orders.getString()))
-            request.shop90Order = Integer.parseInt(store90Orders.getString());
+//        if(!TextUtils.isEmpty(store180Sales.getString()))
+//            request.shop180Sales = Integer.parseInt(store180Sales.getString());
+//        if(!TextUtils.isEmpty(store90Orders.getString()))
+//            request.shop90Order = Integer.parseInt(store90Orders.getString());
         if(!TextUtils.isEmpty(storeMonthPays.getString()))
             request.shopMonPay = Integer.parseInt(storeMonthPays.getString());
         if(!TextUtils.isEmpty(storeRegistUser.getString()))

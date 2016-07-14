@@ -115,7 +115,8 @@
     <LinearLayout
         style="@style/financing_needs_more_item"
         android:layout_marginTop="0dp"
-        android:background="@color/transparent">
+        android:background="@color/transparent"
+        android:visibility="gone">
 
         <TextView
             style="@style/financing_needs_more_left_text"
