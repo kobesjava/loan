@@ -1,6 +1,5 @@
 package com.qtt.jinrong.ui.activity.user;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
@@ -78,9 +77,9 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
         dataModel = new DataModel();
         dataModel.setImgType(DataTypeEnum.营业执照.getCode());
         models.add(dataModel);
-        dataModel = new DataModel();
-        dataModel.setImgType(DataTypeEnum.个人征信.getCode());
-        models.add(dataModel);
+//        dataModel = new DataModel();
+//        dataModel.setImgType(DataTypeEnum.个人征信.getCode());
+//        models.add(dataModel);
         dataModel = new DataModel();
         dataModel.setImgType(DataTypeEnum.个人头像.getCode());
         models.add(dataModel);
@@ -181,10 +180,7 @@ public class DataUploadActivity extends BaseActivity implements IDataUploadVIew 
             } else if(position == 2) {
                 holder.tip.setText("点击扫描营业执照");
                 holder.tv.setText("营业执照");
-            } else if(position == 3) {
-                holder.tip.setText("点击扫描个人征信");
-                holder.tv.setText("个人征信");
-            } else if(position == 4) {
+            }else if(position == 3) {
                 holder.tip.setText("点击扫描个人头像");
                 holder.tv.setText("个人头像");
             }

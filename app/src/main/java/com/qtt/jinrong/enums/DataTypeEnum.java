@@ -12,8 +12,7 @@ public enum DataTypeEnum {
     身份证正面(1,0),
     身份证反面(2,1),
     营业执照(3,2),
-    个人征信(4,3),
-    个人头像(5,4);
+    个人头像(4,3);
 
     private int code;
     private int index;
