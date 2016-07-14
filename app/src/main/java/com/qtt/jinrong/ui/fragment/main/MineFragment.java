@@ -203,7 +203,7 @@ public class MineFragment extends BaseFragment {
      */
     private void showHouseShareDialog() {
         View contentView = View.inflate(getActivity(), R.layout.house_detail_share_board_layout2, null);
-        final AlertDialog shareAlertDialog = DialogBuilder.getAlertDialog(getActivity()).setTitle("分享钱太太给好友").setView(contentView).show();
+        final AlertDialog shareAlertDialog = DialogBuilder.getAlertDialog(getActivity()).setTitle("分享一塔湖图金融超市给好友").setView(contentView).show();
         shareAlertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
@@ -256,9 +256,9 @@ public class MineFragment extends BaseFragment {
     public void shareByWeChat(SocializeListeners.SnsPostListener shareCallBackListener) {
         UMImage shareImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
         WeiXinShareContent content = new WeiXinShareContent();
-            content.setShareContent("钱太太金融");
-            content.setTitle("钱太太金融超市");
-            content.setTargetUrl("http://www.qttjinrong.com");
+            content.setShareContent("一塔湖图金融超市");
+            content.setTitle("一塔湖图金融超市");
+            content.setTargetUrl("http://www.1tht.loan");
             content.setShareMedia(shareImage);
 
         ShareUtil.getInstance(getActivity()).shareToWeiXin(content, shareCallBackListener);
@@ -270,9 +270,9 @@ public class MineFragment extends BaseFragment {
     public void shareByWeChatCircle(SocializeListeners.SnsPostListener shareCallBackListener) {
         UMImage shareImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
         CircleShareContent content = new CircleShareContent();
-        content.setShareContent("钱太太金融");
-        content.setTitle("钱太太金融超市");
-        content.setTargetUrl("http://www.qttjinrong.com");
+        content.setShareContent("一塔湖图金融超市");
+        content.setTitle("一塔湖图金融超市");
+        content.setTargetUrl("http://www.1tht.loan");
         content.setShareMedia(shareImage);
 
         ShareUtil.getInstance(getActivity()).shareToWeiXinCircle(content, shareCallBackListener);

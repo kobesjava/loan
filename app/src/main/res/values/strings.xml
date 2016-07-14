@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">钱太太</string>
+    <string name="app_name">一塔湖图金融超市</string>
 
     <!-- common -->
     <string name="confirm">确定</string>
@@ -29,7 +29,7 @@
     <string name="main_mine">我的</string>
 
     <!-- recommend tab -->
-    <string name="recommend_title">钱太太金融</string>
+    <string name="recommend_title">一塔湖图金融超市</string>
     <string name="recommend_loan_enterprise">企业贷款</string>
     <string name="recommend_loan_worker">上班族贷款</string>
     <string name="recommend_loan_credit">信用贷款</string>
