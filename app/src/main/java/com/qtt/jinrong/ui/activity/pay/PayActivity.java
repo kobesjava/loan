@@ -113,7 +113,7 @@ public class PayActivity extends BaseActivity implements IPayView{
         request.setPartner("2088101568358171");
         request.setSeller("2088101568358171");
         request.setBody("测试商品详情");
-        request.setNotify_url("http://www.qttjinrong.com");
+        request.setNotify_url("http://www.miaorong.loan");
         request.setOrderId("838447347989");
         request.setPrice(0.01f);
         request.setSubject("会员付款");
