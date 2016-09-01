@@ -16,7 +16,10 @@ import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.qtt.framework.util.DeviceUtil;
+import com.qtt.jinrong.R;
 import com.qtt.jinrong.util.BitmapUtil;
+import com.qtt.jinrong.util.ToastUtil;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXImageObject;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
@@ -37,11 +40,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.qtt.jinrong.util.ToastUtil;
-import com.qtt.framework.util.DeviceUtil;
-
-import com.qtt.jinrong.R;
-
 public class ShareUtil {
     private static ShareUtil sInstance;
     private Context mContext;
@@ -51,8 +49,8 @@ public class ShareUtil {
      */
 //    public static final String WEIXIN_APP_ID = "wxb4ebbcc69ee4ba81";
 //    public static final String WEIXIN_APP_SECRET = "b46b888a8197aebba04a5d7c9cc33f23";
-    public static final String WEIXIN_APP_ID = "wxb7ccd433977e4bcb";
-    public static final String WEIXIN_APP_SECRET = "49d358fd1e6f6fb1429428ef63905a91";
+    public static final String WEIXIN_APP_ID = "wx7a714590392841c7";
+    public static final String WEIXIN_APP_SECRET = "ec5e7473f526b7974fcdd266b4511eb3";
     private static final int SUPPORT_FRIEND_LINE_LEVEL = 0x21020001;
     private IWXAPI mApi;
     /**

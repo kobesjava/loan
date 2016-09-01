@@ -74,8 +74,8 @@ android {
         applicationId "com.qtt.jinrong"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 7
-        versionName "1.6"//1.6<==>7
+        versionCode 9
+        versionName "1.6.2"//1.6.2<==>9
 
         // dex突破65535的限制
         multiDexEnabled true

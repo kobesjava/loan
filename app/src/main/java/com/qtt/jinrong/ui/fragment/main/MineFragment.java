@@ -254,11 +254,11 @@ public class MineFragment extends BaseFragment {
      * 分享至微信
      */
     public void shareByWeChat(SocializeListeners.SnsPostListener shareCallBackListener) {
-        UMImage shareImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
+        UMImage shareImage = new UMImage(getActivity(), "http://www.miaorong.loan/Public/Home/images/logo_share.png");
         WeiXinShareContent content = new WeiXinShareContent();
             content.setShareContent("秒融金融超市");
             content.setTitle("秒融金融超市");
-            content.setTargetUrl("http://www.1tht.loan");
+            content.setTargetUrl("http://www.miaorong.loan");
             content.setShareMedia(shareImage);
 
         ShareUtil.getInstance(getActivity()).shareToWeiXin(content, shareCallBackListener);
@@ -268,11 +268,11 @@ public class MineFragment extends BaseFragment {
      * 分享至微信朋友圈
      */
     public void shareByWeChatCircle(SocializeListeners.SnsPostListener shareCallBackListener) {
-        UMImage shareImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
+        UMImage shareImage = new UMImage(getActivity(), "http://www.miaorong.loan/Public/Home/images/logo_share.png");
         CircleShareContent content = new CircleShareContent();
         content.setShareContent("秒融金融超市");
         content.setTitle("秒融金融超市");
-        content.setTargetUrl("http://www.1tht.loan");
+        content.setTargetUrl("http://www.miaorong.loan");
         content.setShareMedia(shareImage);
 
         ShareUtil.getInstance(getActivity()).shareToWeiXinCircle(content, shareCallBackListener);
