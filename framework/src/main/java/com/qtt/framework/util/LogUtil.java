@@ -27,7 +27,7 @@ public final class LogUtil {
     public static int d(String tag, String msg) {
         if (AppConfig.host_env.equals("prod") )
         {
-            //return -1;
+            return -1;
         }
         return Log.d(tag, msg);
     }
