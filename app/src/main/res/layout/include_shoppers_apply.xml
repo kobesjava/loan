@@ -129,7 +129,8 @@
 
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:visibility="gone"/>
 
     <LinearLayout
         style="@style/financing_needs_more_item"
@@ -148,7 +149,8 @@
 
     <com.qtt.jinrong.ui.widget.LineView
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:visibility="gone"/>
 
     <LinearLayout
         style="@style/financing_needs_more_item"

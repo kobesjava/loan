@@ -1,5 +1,7 @@
 package com.qtt.jinrong.bean.account;
 
+import android.text.TextUtils;
+
 import com.qtt.jinrong.bean.IRequest;
 import com.qtt.jinrong.enums.IdentityEnum;
 
@@ -11,191 +13,192 @@ import java.util.Map;
  */
 public class IdentitySaveRequest implements IRequest {
 
-    private String userId;
+    public String userId;
     /** 身份*/
-    private Integer capacity;
+    public Integer capacity;
 
     //法人或股东
-    private Integer corporation;
+    public Integer corporation;
     //企业名称
-    private String epName;
+    public String epName;
     //企业地址
-    private String epAddr;
+    public String epAddr;
     //所属行业
-    private Integer epIndustry;
+    public Integer epIndustry;
     //企业规模（人）
-    private Integer epScale;
+    public Integer epScale;
     //企业经营地
-    private Integer epBuss;
+    public Integer epBuss;
     //经营年限
-    private Integer epPeriod;
+    public Integer epPeriod;
     //注册资金
-    private Integer epCapital;
+    public Integer epCapital;
     //主营业务
-    private String epMain;
+    public String epMain;
     //年营业额（万元）
-    private Integer epAnnualTurnover;
+    public Integer epAnnualTurnover;
     //年开票额
-    private Integer epTicket;
+    public Integer epTicket;
     //年营业收入
-    private Integer epAnnualRevenue;
+    public Integer epAnnualRevenue;
     //月对公流水
-    private Integer epContraryWater;
+    public Integer epContraryWater;
     //月对私流水
-    private Integer epPrivateWater;
+    public Integer epPrivateWater;
     //资产负债率
-    private Integer epLeverage;
+    public Integer epLeverage;
     //年净利润
-    private Integer epNetProfit;
+    public Integer epNetProfit;
     //企业欠款情况
-    private Integer epDebt;
+    public Integer epDebt;
     //欠款机构名称
-    private String epDebtName;
+    public String epDebtName;
     //欠款余额
-    private Integer epDebtAmt;
+    public Integer epDebtAmt;
     //月还款额（万元）
-    private Integer epMonthRepay;
+    public Integer epMonthRepay;
 
 
     /** 就职公司类型*/
-    private Integer companyType;
+    public Integer companyType;
     /** 就职公司名称*/
-    private String companyName;
+    public String companyName;
     /** 职位*/
-    private Integer job;
+    public Integer job;
     /** 现单位工龄*/
-    private Integer currSeniority;
+    public Integer currSeniority;
     /** 工作地 省*/
-    private String workProvince;
+    public String workProvince;
     /** 工作地 市*/
-    private String workCity;
+    public String workCity;
     /** 工作详细地址*/
-    private String workAddr;
+    public String workAddr;
     /** 收入发放方式*/
-    private Integer payWay;
+    public Integer payWay;
     /** 月打卡工资 元*/
-    private Integer wages;
+    public Integer wages;
     /** 月均总收入 元*/
-    private Integer monthlyIncome;
+    public Integer monthlyIncome;
     /** 能否提供收入证明*/
-    private Integer verifiableIncome;
+    public Integer verifiableIncome;
     /** 社保公积金*/
-    private Integer socialSecurity;
+    public Integer socialSecurity;
     /** 公积金连续缴纳年限*/
-    private Integer accuFundAge;
+    public Integer accuFundAge;
     /** 社保连续缴纳年限*/
-    private Integer socialSecurityAge;
+    public Integer socialSecurityAge;
     /** 有无副业*/
-    private Integer avocation;
+    public Integer avocation;
     //副业内容
-    private String avocationInfo;
+    public String avocationInfo;
     //副业月收入（元）
-    private Integer avocationAmt;
+    public Integer avocationAmt;
 
+    //电商
     /**
      * 店铺类型
      */
-    private Integer shopTpye;
+    public Integer shopTpye;
 
     /**
      * 店铺名称
      */
-    private String shopName;
+    public String shopName;
 
     /**
      * 店铺地址
      */
-    private String shopAddr;
+    public String shopAddr;
 
     /**
      * 店铺用户名
      */
-    private String shopUserName;
+    public String shopUserName;
 
     /**
      * 店铺账号
      */
-    private String shopAccount;
+    public String shopAccount;
 
     /**
      * 店铺月均交易额
      */
-    private Integer shopAvgMon;
+    public Integer shopAvgMon;
 
     /**
      * 店铺近180天销售总金额
      */
-    private Integer shop180Sales;
+    public Integer shop180Sales;
 
     /**
      * 店铺近90天成功支付订单
      */
-    private Integer shop90Order;
+    public Integer shop90Order;
 
     /**
      * 店铺月支付金额
      */
-    private Integer shopMonPay;
+    public Integer shopMonPay;
 
     /**
      * 店铺开始经营时间
      */
-    private Integer shopStartTime;
+    public Integer shopStartTime;
 
     /**
      * 店铺实际注册人
      */
-    private String shopReg;
+    public String shopReg;
 
     /**
      * 借款人姓名
      */
-    private String borrowerName;
+    public String borrowerName;
 
     /**
      * 借款人移动电话
      */
-    private String borrowerPhone;
+    public String borrowerPhone;
 
     /**
      * 借款人备用电话
      */
-    private String borrowerSecondPhone;
+    public String borrowerSecondPhone;
 
     /**
      * 借款人固话
      */
-    private String borrowerTel;
+    public String borrowerTel;
 
     /**
      * 借款人身份证号码
      */
-    private String borrowerIdNum;
+    public String borrowerIdNum;
 
     /**
      * 借款人单位地址
      */
-    private String borrowerCompanyAddr;
+    public String borrowerCompanyAddr;
 
     /**
      * 联系人姓名
      */
-    private String contactName;
+    public String contactName;
 
     /**
      * 联系人关系
      */
-    private String contactRelation;
+    public String contactRelation;
 
     /**
      * 联系人公司单位
      */
-    private String contactCompany;
+    public String contactCompany;
 
     /**
      * 联系人手机号码
      */
-    private String contactPhone;
+    public String contactPhone;
 
     public String getUserId() {
         return userId;

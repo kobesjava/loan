@@ -37,6 +37,7 @@ import com.qtt.jinrong.enums.shop180SalesEnum;
 import com.qtt.jinrong.presenter.IIdentityPresenter;
 import com.qtt.jinrong.presenter.impl.IdentityPresenterImpl;
 import com.qtt.jinrong.ui.activity.common.BaseSelectActivity;
+import com.qtt.jinrong.ui.help.UiUtil;
 import com.qtt.jinrong.ui.widget.CommonTitleBar;
 import com.qtt.jinrong.ui.widget.SelectPopView;
 import com.qtt.jinrong.ui.widget.text.InputEditText;
@@ -158,13 +159,46 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
     InputEditText workAvocationEdit;
     @ViewById(R.id.workAvocationMonthSalary)
     InputEditText workAvocationMonthSalaryEdit;
+
     //电商
     @ViewById(R.id.storeType)
     TextView storeType;
+    @ViewById(R.id.storeName)
+    InputEditText storeName;
+    @ViewById(R.id.storeAddress)
+    InputEditText storeAddress;
+    @ViewById(R.id.storeUsername)
+    InputEditText storeUsername;
+    @ViewById(R.id.storeAccount)
+    InputEditText storeAccount;
+    @ViewById(R.id.storeMonthTurnover)
+    InputEditText storeMonthTurnover;
+    @ViewById(R.id.storeMonthPays)
+    InputEditText storeMonthPays;
     @ViewById(R.id.storeOpenTime)
     TextView storeOpenTime;
-    @ViewById(R.id.store180Sales)
-    TextView store180Sales;
+    @ViewById(R.id.storeRegistUser)
+    InputEditText storeRegistUser;
+    @ViewById(R.id.loanUsername)
+    InputEditText loanUsername;
+    @ViewById(R.id.loanMobile)
+    InputEditText loanMobile;
+    @ViewById(R.id.loanMobile1)
+    InputEditText loanMobile1;
+    @ViewById(R.id.loanTelPhone)
+    InputEditText loanTelPhone;
+    @ViewById(R.id.loanIdCard)
+    InputEditText loanIdCard;
+    @ViewById(R.id.loanAddress)
+    InputEditText loanAddress;
+    @ViewById(R.id.contactsUsername)
+    InputEditText contactsUsername;
+    @ViewById(R.id.contactsRelationship)
+    InputEditText contactsRelationship;
+    @ViewById(R.id.contactsConpany)
+    InputEditText contactsConpany;
+    @ViewById(R.id.contactsMobile)
+    InputEditText contactsMobile;
 
     private ProvinceEnum provinceEnum;
     IIdentityPresenter mPresenter;
@@ -214,9 +248,9 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                     dsView.setVisibility(View.GONE);
                 }else if(mEnum.equals(IdentityEnum.电商))
                 {
-                    epView.setVisibility(View.VISIBLE);
+                    epView.setVisibility(View.GONE);
                     woView.setVisibility(View.GONE);
-                    dsView.setVisibility(View.GONE);
+                    dsView.setVisibility(View.VISIBLE);
                 }
                 mIdentityText.setText(val);
                 request.setCapacity(mEnum.getCode());
@@ -615,7 +649,7 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
             public void onItemSelect(int position, String val) {
                 OperatorYearsEnum mEnum = OperatorYearsEnum.values()[position];
                 request.setShopStartTime(mEnum.getCode());
-                storeType.setText(val);
+                storeOpenTime.setText(val);
             }
         });
         show();
@@ -653,9 +687,9 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
                 woView.setVisibility(View.VISIBLE);
                 dsView.setVisibility(View.GONE);
             }else if(iEnum.equals(IdentityEnum.电商)) {
-                epView.setVisibility(View.VISIBLE);
+                epView.setVisibility(View.GONE);
                 woView.setVisibility(View.GONE);
-                dsView.setVisibility(View.GONE);
+                dsView.setVisibility(View.VISIBLE);
             }
             }
 
@@ -776,6 +810,30 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
         if(!TextUtils.isEmpty(model.getAvocationInfo())) workAvocationEdit.setText(model.getAvocationInfo());
         //副业月收入
         if(model.getAvocationAmt() != null && model.getAvocationAmt() != 0) workAvocationMonthSalaryEdit.setText(String.valueOf(model.getAvocationAmt()));
+
+        //电商
+        StoreTypeEnum mEnum = StoreTypeEnum.find(model.shopTpye);
+        if(mEnum != null) storeType.setText(mEnum.getTitle());
+        OperatorYearsEnum oy1Enum = OperatorYearsEnum.find(model.shopStartTime);
+        if(oy1Enum != null) storeOpenTime.setText(oy1Enum.getTitle());
+        storeName.setText(model.shopName);
+        storeAddress.setText(model.shopAddr);
+        storeUsername.setText(model.shopUserName);
+        storeAccount.setText(model.shopAccount);
+        if(model.shopAvgMon!=null) storeMonthTurnover.setText(String.valueOf(model.shopAvgMon));
+        if(model.shopMonPay!=null) storeMonthPays.setText(String.valueOf(model.shopMonPay));
+        storeRegistUser.setText(model.shopReg);
+        loanUsername.setText(model.borrowerName);
+        loanMobile.setText(model.borrowerPhone);
+        loanMobile1.setText(model.borrowerSecondPhone);
+        loanTelPhone.setText(model.borrowerTel);
+        loanIdCard.setText(model.borrowerIdNum);
+        loanAddress.setText(model.borrowerCompanyAddr);
+        contactsUsername.setText(model.contactName);
+        contactsRelationship.setText(model.contactRelation);
+        contactsConpany.setText(model.contactCompany);
+        contactsMobile.setText(model.contactPhone);
+
     }
 
     @Override
@@ -815,6 +873,25 @@ public class IdentityActivity extends BaseSelectActivity implements IIdentityVie
         //副业月收入
         if(TextUtils.isEmpty(workAvocationMonthSalaryEdit.getString())) request.setAvocationAmt(0);
         else request.setAvocationAmt(Integer.valueOf(workAvocationMonthSalaryEdit.getString()));
+
+        //电商
+        request.setShopName(storeName.getString());
+        request.setShopAddr(storeAddress.getString());
+        request.setShopUserName(storeUsername.getString());
+        request.setShopAccount(storeAccount.getString());
+        request.setShopAvgMon(UiUtil.getIntVal(storeMonthTurnover,null));
+        request.setShopMonPay(UiUtil.getIntVal(storeMonthPays,null));
+        request.setShopReg(storeRegistUser.getString());
+        request.setBorrowerName(loanUsername.getString());
+        request.setBorrowerPhone(loanMobile.getString());
+        request.setBorrowerSecondPhone(loanMobile1.getString());
+        request.setBorrowerTel(loanTelPhone.getString());
+        request.setBorrowerIdNum(loanIdCard.getString());
+        request.setBorrowerCompanyAddr(loanAddress.getString());
+        request.setContactName(contactsUsername.getString());
+        request.setContactRelation(contactsRelationship.getString());
+        request.setContactCompany(contactsConpany.getString());
+        request.setContactPhone(contactsMobile.getString());
 
         return request;
     }
